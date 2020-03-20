@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemy : MonoBehaviour
+public class FlyingEnemyIA : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float fireRate;
+    public bool isActive;
+    
+    private Entity entity;
+    
     [SerializeField]
     private float fireCount;
-    [SerializeField]
-    private GameObject bullet;
-    private GameObject body;
-
     private float nbFired;
-    private float lastFired;
-    private int direction;
+
     private bool shooting;
 
     GameObject player;
@@ -24,35 +19,29 @@ public class FlyingEnemy : MonoBehaviour
     void Start()
     {
         nbFired = 0;
-        direction = 0;
-        lastFired = 0;
+        isActive = true;
         shooting = false;
         player = GameObject.FindGameObjectWithTag("Player");
-        body = transform.GetChild(0).gameObject;
+        entity = GetComponent<Entity>();
     }
-
 
     void Update()
     {
+        if (!isActive)
+            return;
         if (!shooting)
-        { 
+        {
             if (player.transform.position.x - transform.position.x < -0.25)
-                direction = -1;
+                entity.MoveLeft();
             else if (player.transform.position.x - transform.position.x > 0.25)
-                direction = 1;
+                entity.MoveRight();
             else
-            {
                 shooting = true;
-                direction = 0;
-            }
-            transform.Translate(Time.deltaTime * speed * direction, 0, 0);
         }
         else
         {
-            if (Time.time > lastFired + fireRate)
-            {
-                lastFired = Time.time;
-                Instantiate(bullet, body.transform.position + Vector3.down, Quaternion.identity);
+            if (entity.Shoot())
+            { 
                 nbFired++;
                 if (nbFired >= fireCount)
                 { 
