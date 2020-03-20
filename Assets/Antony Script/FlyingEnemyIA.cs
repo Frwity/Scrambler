@@ -5,29 +5,26 @@ using UnityEngine;
 public class FlyingEnemyIA : MonoBehaviour
 {
     public bool isActive;
-    
     private Entity entity;
     
     [SerializeField]
     private float fireCount;
     private float nbFired;
-
     private bool shooting;
-
     GameObject player;
 
     void Start()
     {
         nbFired = 0;
-        isActive = true;
         shooting = false;
         player = GameObject.FindGameObjectWithTag("Player");
+        
         entity = GetComponent<Entity>();
     }
 
     void Update()
     {
-        if (!isActive)
+        if (!isActive || player == null)
             return;
         if (!shooting)
         {

@@ -33,7 +33,8 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetAxisRaw("Fire1") == 1)
             entity.Shoot();
 
-        if (entity.Collinding() != null && Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && isInVirus) // TODO opti
+        if (entity.Collinding() != null && entity.Collinding().gameObject.GetComponent<Entity>() != null && entity.Collinding().gameObject.GetComponent<Entity>().isControllable() 
+        &&  Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && isInVirus) // TODO opti
         {
             lastControl = Time.time;
             Destroy(transform.GetChild(0).gameObject);
@@ -46,9 +47,9 @@ public class PlayerControl : MonoBehaviour
         {
             lastControl = Time.time;
             entity.transform.parent = transform.parent;
+            entity.ActivateAI();
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
             isInVirus = true;
-            entity.ActivateAI();
         }
     }
 

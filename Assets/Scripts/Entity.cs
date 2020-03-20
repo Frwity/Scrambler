@@ -78,6 +78,12 @@ public class Entity : MonoBehaviour
         return collidingObj;
     }
 
+    public bool isControllable()
+    {
+        return controllable;
+    }
+    
+
     private void OnCollisionStay(Collision collision)
     {
         collidingObj = collision.gameObject;

@@ -56,9 +56,7 @@ public class FlyingEnemySkill : EntitySkill
             return true;
         }
         else
-        { 
             return false;
-        }
     }
 
     public override bool ActivateAI()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7254752742261615079}
   - component: {fileID: 7254752742261615076}
   - component: {fileID: 7254752742261615077}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: EnemyBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 7254752743176503141}
   - component: {fileID: 4442814981796264992}
   - component: {fileID: 3290501465314614134}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: FlyingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36996d6363dc183498434ffe541b77c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
   fireCount: 3
 --- !u!114 &4442814981796264992
 MonoBehaviour:

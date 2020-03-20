@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBullet : MonoBehaviour
+public class BasicBasicBullet : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float damage;
-
     void Start()
     {
         
@@ -16,7 +11,7 @@ public class BasicBullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0, Time.deltaTime * -speed, 0);
+        
     }
 
     private void OnCollisionEnter(Collision collision)

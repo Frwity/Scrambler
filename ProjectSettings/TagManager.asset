@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - PlayerMove
   layers:
   - Default
   - TransparentFX
@@ -15,12 +14,12 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Ground
-  - PlayerMove
-  - FlyingSurface
+  - HoverSurface
+  - Entity
   - Bullet
-  - Enemy
+  - Ground
+  - Ignore
+  - 
   - 
   - 
   - 
