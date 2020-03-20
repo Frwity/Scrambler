@@ -152,8 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44944172909b803498687bf6087a5133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperRange: 20
-  lowerRange: 1
+  upperFireRange: 20
+  lowerFireRange: 0
+  detectionRange: 30
+  distanceToKeepAwayFromPlayer: 10
+  speed: 0.05
   firePower: 1000
   FireCooldown: 5
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
@@ -678,5 +681,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  nbJump: 2
-  jumpForce: 5
+  nbJump: 20
+  jumpForce: 10

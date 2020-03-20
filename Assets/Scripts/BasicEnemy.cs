@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
-    [SerializeField] private float upperRange;
-    [SerializeField] private float lowerRange;
+    [SerializeField] private float upperFireRange;
+    [SerializeField] private float lowerFireRange;
+
+    [SerializeField] private float detectionRange;
+    [SerializeField] private float distanceToKeepAwayFromPlayer;
+    [SerializeField] private float speed;
 
     [SerializeField] private float firePower;
 
@@ -19,10 +23,14 @@ public class BasicEnemy : MonoBehaviour
 
     private bool lookingRight; // Obviously, if FALSE, the enemy is looking left.
 
+    private bool hasFirstFired = false;
+
     // Start is called before the first frame update
     void Start()
     {
         playerTarget = GameObject.FindGameObjectWithTag("PlayerMove");
+
+        cooldownCounter = FireCooldown;
     }
 
     // Update is called once per frame
@@ -33,19 +41,29 @@ public class BasicEnemy : MonoBehaviour
 
         IAlogicUpdate(vecToPlayer);
 
-        if (cooldownCounter > 0)
-            cooldownCounter -= Time.smoothDeltaTime;
-
         Debug.Log(distToPlayer);
 
-        if (lowerRange < distToPlayer               &&
-                         distToPlayer < upperRange  &&
+        if ( distanceToKeepAwayFromPlayer < distToPlayer &&
+                                            distToPlayer < detectionRange )
+            Walk();
 
-            cooldownCounter <= 0)
+        if ( lowerFireRange < distToPlayer &&
+                              distToPlayer < upperFireRange)
         {
-            cooldownCounter = FireCooldown;
+            if (cooldownCounter > 0)
+            {
+                cooldownCounter -= Time.smoothDeltaTime;
+            }
+            else
+            {
+                cooldownCounter = FireCooldown;
 
-            Shoot();
+                Shoot();
+            }
+        }
+        else if (cooldownCounter < FireCooldown)
+        {
+            cooldownCounter += Time.smoothDeltaTime / 2f;
         }
     }
 
@@ -60,6 +78,18 @@ public class BasicEnemy : MonoBehaviour
         else
         {
             firedBullet.GetComponent<Rigidbody>().AddForce(-firePower, 0, 0);
+        }
+    }
+
+    public void Walk()
+    {
+        if (lookingRight)
+        {
+            transform.Translate( speed, 0, 0);
+        }
+        else
+        {
+            transform.Translate(-speed, 0, 0);
         }
     }
 
