@@ -19,12 +19,12 @@ public class CurveBullet : MonoBehaviour
         
         
         transform.localRotation = Quaternion.LookRotation(GetComponent<Rigidbody>().velocity, vel);
-        Debug.Log(transform.position.z);
+        //Debug.Log(transform.position.z);
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log($"collided with {other.gameObject.name}");
+        //Debug.Log($"collided with {other.gameObject.name}");
         Destroy(this.gameObject);
     }
 }

@@ -327,11 +327,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d23c6d516c81c84b8a1604d694a3979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingDir: {x: -0.2, y: 1}
+  angleInDeg: 0
+  precision: 0
   shootingStrength: 500
   bulletPrefab: {fileID: 229876011891524967, guid: b79dc48c714a84d4abc7d97357ea548a,
     type: 3}
   cooldown: 1
+  numberOfProjectile: 1
 --- !u!65 &1740738573
 BoxCollider:
   m_ObjectHideFlags: 0
