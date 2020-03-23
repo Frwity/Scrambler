@@ -21,6 +21,7 @@ public class TankSkill : EntitySkill
     private int lastRotationAngle;
     private int angletoPass;
     [HideInInspector] public float rangePoint;
+    
     Vector2 Rotate(Vector2 aPoint, float aDegree)
     {
         return Quaternion.Euler(0,0,aDegree) * aPoint;
@@ -34,7 +35,7 @@ public class TankSkill : EntitySkill
                      + Mathf.Sqrt(Mathf.Pow(shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad), 2) 
                                   + 2* Physics.gravity.magnitude * transform.position.y ));
         Debug.LogWarning(transform.position.x + rangePoint);
-        shootingDir = Rotate(transform.right, angleInDeg);
+        shootingDir = Rotate(Vector3.right, angleInDeg);
         lastAngle = angleInDeg;
         currentCooldown = 0;
     }
@@ -74,16 +75,22 @@ public class TankSkill : EntitySkill
 
     public override bool Shoot()
     {
+        
         if (currentCooldown > 0)
             return false;
-        int angleToAdd = Random.Range(-precision, precision);
-        Vector2 newShootDir = Rotate(shootingDir, angleToAdd);
-        GameObject bulletInst = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), 
-            this.GetComponent<Collider>(), true);
-        testBullet bullett = bulletInst.GetComponent<testBullet>();
-        bullett.velocity = new Vector3(newShootDir.x, newShootDir.y, 0) * shootingStrength;
+        
+        for (int i = 0; i < numberOfProjectile; i++)
+        {
+            int angleToAdd = Random.Range(-precision, precision);
+            Vector2 newShootDir = Rotate(shootingDir, angleToAdd);
+            GameObject bulletInst = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), 
+                this.GetComponent<Collider>(), true);
+            testBullet bullett = bulletInst.GetComponent<testBullet>();
+            bullett.velocity = new Vector3(newShootDir.x, newShootDir.y, 0) * shootingStrength;
 
+        }
+        
         
         currentCooldown = cooldown;
         return true;

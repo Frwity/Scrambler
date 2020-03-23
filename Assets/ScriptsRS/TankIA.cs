@@ -41,9 +41,9 @@ public class TankIA : MonoBehaviour
                 direction = Direction.LEFT;
                 transform.rotation = Quaternion.Euler(0,180,0);
             }
-            if (player.transform.position.x - (transform.position.x + rangePoint) < -0.15)
+            if (player.transform.position.x - (transform.position.x + (rangePoint * (int)direction)) < -0.15)
                 entity.MoveLeft();
-            else if (player.transform.position.x - (transform.position.x + rangePoint) > 0.15)
+            else if (player.transform.position.x - (transform.position.x + (rangePoint * (int)direction)) > 0.15)
                 entity.MoveRight();
             else
                 shooting = true;
