@@ -5,10 +5,9 @@ using UnityEngine;
 public class BasicEnemySkill : EntitySkill
 {
     [SerializeField] private GameObject bullet;
-    [SerializeField] private float firePower;
     [SerializeField] private float speed;
 
-    private int direction;
+    public short direction; // goes to -1 if moving left, 1 if moving right.
 
     [SerializeField] private float fireRate;
     private float lastFired;
@@ -43,7 +42,7 @@ public class BasicEnemySkill : EntitySkill
 
     public override bool MoveRight()
     {
-        transform.Translate(Time.deltaTime * speed, 0, 0, Space.World);;
+        transform.Translate(Time.deltaTime * speed, 0, 0, Space.World);
         direction = 1;
 
         return true;
@@ -54,7 +53,11 @@ public class BasicEnemySkill : EntitySkill
         if (Time.time > fireRate + lastFired)
         {
             GameObject firedBullet = Instantiate(bullet, transform.position + Vector3.right * direction, Quaternion.identity);
-            firedBullet.GetComponent<Rigidbody>().AddForce(firePower * direction, 0, 0);
+
+            BasicBasicBullet bulletParameters = firedBullet.GetComponent<BasicBasicBullet>();
+
+            firedBullet.transform.transform.Rotate(new Vector3(0, 0, 1), Random.Range(-bulletParameters.imprecision, bulletParameters.imprecision));
+            firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.right * bulletParameters.shootingPower * direction);
 
             lastFired = Time.time;
             return true;
