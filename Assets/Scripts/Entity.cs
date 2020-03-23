@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,13 +14,19 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract bool DesactivateAI();
 }
 
+[Serializable]
+public enum Direction
+{
+    LEFT = -1,
+    RIGHT = 1,
+};
 
 public class Entity : MonoBehaviour
 {
     [SerializeField]
     private int life;
     [SerializeField]
-    private EntitySkill entitySkill;
+    public EntitySkill entitySkill;
     [SerializeField]
     public bool controllable;
 
