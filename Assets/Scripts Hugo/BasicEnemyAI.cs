@@ -23,6 +23,8 @@ public class BasicEnemyAI : MonoBehaviour
 
     private bool lookingRight; // Obviously, if FALSE, the enemy is looking left.
 
+    private BasicEnemySkill associatedBES;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -32,19 +34,44 @@ public class BasicEnemyAI : MonoBehaviour
         lookingRight = flipped;
 
         entity = GetComponent<Entity>();
+
+        associatedBES = GetComponent<BasicEnemySkill>();
+
+        associatedBES.direction = (short)(lookingRight ? 1 : -1);
     }
 
     void Update()
     {
-        if (!isActive || player == null)
-            return;
-        IAcontrol();
+        if (isActive && player != null)
+            IAcontrol();
+        else
+            PLdirectionLookCoheranceCheck();
+    }
+
+    private void AIdirectionLookCoheranceCheck()
+    {
+        if ((lookingRight == true && associatedBES.direction == -1) || (lookingRight == false && associatedBES.direction == 1))
+        {
+            associatedBES.direction = (short)(lookingRight ? 1 : -1);
+
+            Debug.Log(associatedBES.direction);
+        }
+    }
+
+    private void PLdirectionLookCoheranceCheck()
+    {
+        if ((lookingRight == true && associatedBES.direction == -1) || (lookingRight == false && associatedBES.direction == 1))
+        {
+            FlipAround();
+        }
     }
 
     public void FlipAround()
     {
         transform.Rotate(0, (flipped ? -180 : 180), 0);
         flipped ^= true;
+
+        lookingRight ^= true;
     }
 
     private bool LookingAtPlayer(float playerXrelativetoEnemy)
@@ -65,8 +92,6 @@ public class BasicEnemyAI : MonoBehaviour
             {
                 FlipAround();
 
-                lookingRight ^= true;
-
                 reactionTime = maxReactionTime;
             }
 
@@ -85,6 +110,8 @@ public class BasicEnemyAI : MonoBehaviour
     {
         Vector3 vecToPlayer = (player.transform.position - transform.position);
         float distToPlayer = vecToPlayer.magnitude;
+
+        AIdirectionLookCoheranceCheck();
 
         if (AIflipControl(vecToPlayer.x) && distToPlayer < detectionRange)
         {
