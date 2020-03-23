@@ -65,13 +65,6 @@ public class VirusSkill : EntitySkill
         throw new System.NotImplementedException();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
-        {
-            jumped = 0;
-        }
-    }
 
     public override bool ActivateAI()
     {
@@ -83,5 +76,13 @@ public class VirusSkill : EntitySkill
     {
         GetComponent<FlyingEnemyIA>().isActive = false;
         return true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
+        {
+            jumped = 0;
+        }
     }
 }

@@ -25,7 +25,7 @@ public abstract class EntitySkill : MonoBehaviour
 public class Entity : MonoBehaviour
 {
     [SerializeField] private int life;
-    [SerializeField] private EntitySkill entitySkill;
+    [SerializeField] public EntitySkill entitySkill;
     [SerializeField] public bool controllable;
 
     public bool isHidden;

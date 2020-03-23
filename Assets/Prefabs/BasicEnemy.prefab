@@ -143,10 +143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4313e5db7a93c524ca85f4d4e8dde7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nbJump: 1
+  jumpForce: 10
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
-  firePower: 100
   speed: 5
-  fireRate: 2
+  direction: 0
+  fireRate: 1
 --- !u!114 &8348260990958963665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +164,7 @@ MonoBehaviour:
   life: 5
   entitySkill: {fileID: 5559768263519713667}
   controllable: 1
+  isHidden: 0
 --- !u!1 &6531962691780716590
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TankIA : MonoBehaviour
 {
+    enum Direction
+    {
+        RIGHT,
+        LEFT
+    };
     // Start is called before the first frame update
     public bool isActive;
     private Entity entity;

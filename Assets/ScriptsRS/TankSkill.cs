@@ -86,7 +86,7 @@ public class TankSkill : EntitySkill
             GameObject bulletInst = Instantiate(bulletPrefab, transform.position, transform.rotation);
             Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), 
                 this.GetComponent<Collider>(), true);
-            testBullet bullett = bulletInst.GetComponent<testBullet>();
+            CurveBullet bullett = bulletInst.GetComponent<CurveBullet>();
             bullett.velocity = new Vector3(newShootDir.x, newShootDir.y, 0) * shootingStrength;
 
         }
