@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class FlyingEnemySkill : EntitySkill
 {
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float fireRate;
+    [SerializeField] private float speed;
+
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float fireRate;
     private float lastFired;
 
-    [SerializeField]
-    private GameObject bullet;
-    private GameObject body;
 
     void Start()
     {
         lastFired = 0;
-        body = transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -51,7 +47,7 @@ public class FlyingEnemySkill : EntitySkill
     {
         if (Time.time > lastFired + fireRate)
         {
-            Instantiate(bullet, body.transform.position + Vector3.down, Quaternion.identity);
+            Instantiate(bullet, transform.position + Vector3.down, Quaternion.identity);
             lastFired = Time.time;
             return true;
         }

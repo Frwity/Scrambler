@@ -7,30 +7,30 @@ public class FlyingEnemyIA : MonoBehaviour
     public bool isActive;
     private Entity entity;
     
-    [SerializeField]
-    private float fireCount;
+    [SerializeField]  private float fireCount;
     private float nbFired;
     private bool shooting;
-    GameObject player;
+    private bool haveTarget;
+    Vector3 targetPos;
 
     void Start()
     {
         nbFired = 0;
         shooting = false;
-        player = GameObject.FindGameObjectWithTag("Player");
-        
+        haveTarget = false;
+
         entity = GetComponent<Entity>();
     }
 
     void Update()
     {
-        if (!isActive || player == null)
+        if (!isActive || !haveTarget && !shooting)
             return;
         if (!shooting)
         {
-            if (player.transform.position.x - transform.position.x < -0.25)
+            if (targetPos.x - transform.position.x < -0.25)
                 entity.MoveLeft();
-            else if (player.transform.position.x - transform.position.x > 0.25)
+            else if (targetPos.x - transform.position.x > 0.25)
                 entity.MoveRight();
             else
                 shooting = true;
@@ -46,6 +46,23 @@ public class FlyingEnemyIA : MonoBehaviour
                     nbFired = 0;
                 }
             }
+        }
+    }
+    
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            haveTarget = true;
+            targetPos = other.gameObject.transform.position;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            haveTarget = false;
         }
     }
 }

@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField]
-    private float controlCD;
+    [SerializeField] private float controlCD;
     private float lastControl;
-    [SerializeField]
-    private GameObject virus;
+    [SerializeField] private GameObject virus;
 
     private Entity entity;
 
@@ -30,24 +28,31 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetAxis("Horizontal") < 0)
             entity.MoveLeft();
 
-        if (Input.GetAxisRaw("Fire1") == 1)
+        if (Input.GetAxisRaw("Vertical") == 1)
+            entity.HideInGB();
+        if (entity.isHidden && Input.GetAxis("Vertical") < 1)
+            entity.ExitHiding();
+
+        if (Input.GetAxisRaw("RT") == 1)
             entity.Shoot();
 
         if (entity.Collinding() != null && entity.Collinding().gameObject.GetComponent<Entity>() != null && entity.Collinding().gameObject.GetComponent<Entity>().isControllable() 
-        &&  Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && isInVirus) // TODO opti
+        &&  Input.GetAxisRaw("Fire1") == 1 && Time.time > controlCD + lastControl && isInVirus) // TODO opti
         {
             lastControl = Time.time;
             Destroy(transform.GetChild(0).gameObject);
             entity.Collinding().gameObject.transform.parent = transform;
             entity = entity.Collinding().gameObject.GetComponent<Entity>();
             isInVirus = false;
+            entity.tag = "Player";
             entity.DesactivateAI();
         }
-        if (Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && !isInVirus)
+        if (Input.GetAxisRaw("Fire1") == 1 && Time.time > controlCD + lastControl && !isInVirus)
         {
             lastControl = Time.time;
             entity.transform.parent = transform.parent;
             entity.ActivateAI();
+            entity.tag = "Enemy";
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
             isInVirus = true;
         }

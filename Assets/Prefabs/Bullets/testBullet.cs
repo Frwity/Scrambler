@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingBasicBullet : MonoBehaviour
+public class testBullet : MonoBehaviour
 {
-    [SerializeField] private float speed;
     [SerializeField] private int damage;
+    [SerializeField] private float speed;
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class FlyingBasicBullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0, Time.deltaTime * -speed, 0);
+        transform.Translate(Time.deltaTime * speed, 0, 0);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -24,5 +24,6 @@ public class FlyingBasicBullet : MonoBehaviour
             collision.gameObject.GetComponent<Entity>().InflictDamage(damage);
         }
         Destroy(gameObject);
+
     }
 }

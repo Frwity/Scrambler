@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class VirusSkill : EntitySkill
 {
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private int nbJump;
-    [SerializeField]
-    private float jumpForce;
+    [SerializeField] private float speed;
+    [SerializeField] private int nbJump;
+    [SerializeField] private float jumpForce;
 
     private int jumped;
     private bool falling;
@@ -70,7 +67,7 @@ public class VirusSkill : EntitySkill
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             jumped = 0;
         }

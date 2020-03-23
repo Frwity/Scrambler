@@ -11,22 +11,30 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract bool Dash();
     public abstract bool ActivateAI();
     public abstract bool DesactivateAI();
+    public void HideInBG()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 2);
+    }
+    public void ExitHiding()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+    }
 }
 
 
 public class Entity : MonoBehaviour
 {
-    [SerializeField]
-    private int life;
-    [SerializeField]
-    private EntitySkill entitySkill;
-    [SerializeField]
-    public bool controllable;
+    [SerializeField] private int life;
+    [SerializeField] private EntitySkill entitySkill;
+    [SerializeField] public bool controllable;
+
+    public bool isHidden;
 
     private GameObject collidingObj;
 
     void Start()
     {
+        isHidden = false; 
         collidingObj = null;
     }
 
@@ -82,7 +90,21 @@ public class Entity : MonoBehaviour
     {
         return controllable;
     }
-    
+
+    public void HideInGB()
+    {
+        isHidden = true;
+        entitySkill.HideInBG();
+    }
+    public void ExitHiding()
+    {
+        entitySkill.ExitHiding();
+        isHidden = false;
+    }
+    public void InflictDamage(int damage)
+    {
+        life -= damage;
+    }
 
     private void OnCollisionStay(Collision collision)
     {
