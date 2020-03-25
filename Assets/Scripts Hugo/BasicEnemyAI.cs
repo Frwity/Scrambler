@@ -53,8 +53,6 @@ public class BasicEnemyAI : MonoBehaviour
         if ((lookingRight == true && associatedBES.direction == -1) || (lookingRight == false && associatedBES.direction == 1))
         {
             associatedBES.direction = (short)(lookingRight ? 1 : -1);
-
-            Debug.Log(associatedBES.direction);
         }
     }
 
