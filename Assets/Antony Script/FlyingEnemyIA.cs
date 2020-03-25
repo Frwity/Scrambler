@@ -7,7 +7,7 @@ public class FlyingEnemyIA : MonoBehaviour
     public bool isActive;
     private Entity entity;
     
-    [SerializeField]  private float fireCount;
+    [SerializeField] private float fireCount;
     private float nbFired;
     private bool shooting;
     private bool haveTarget;
@@ -29,15 +29,15 @@ public class FlyingEnemyIA : MonoBehaviour
         if (!shooting)
         {
             if (targetPos.x - transform.position.x < -0.25)
-                entity.MoveLeft();
+                entity.MoveLeft(-1);
             else if (targetPos.x - transform.position.x > 0.25)
-                entity.MoveRight();
+                entity.MoveRight(1);
             else
                 shooting = true;
         }
         else
         {
-            if (entity.Shoot())
+            if (entity.Shoot(new Vector3(0, 0, 0)))
             { 
                 nbFired++;
                 if (nbFired >= fireCount)

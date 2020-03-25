@@ -13,6 +13,8 @@ public class PlayerControl : MonoBehaviour
 
     private bool isInVirus;
 
+    private Vector3 aimDireciton;
+
     void Start()
     {
         lastControl = 0;
@@ -22,19 +24,20 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("Horizontal") > 0)
-            entity.MoveRight();
-
-        if (Input.GetAxis("Horizontal") < 0)
-            entity.MoveLeft();
 
         if (Input.GetAxisRaw("Vertical") == 1)
             entity.HideInGB();
         if (entity.isHidden && Input.GetAxis("Vertical") < 1)
             entity.ExitHiding();
 
+        entity.MoveRight(Input.GetAxis("Horizontal"));
+        entity.MoveLeft(Input.GetAxis("Horizontal"));
+
+        aimDireciton.x = Input.GetAxis("RHorizontal");
+        aimDireciton.y = Input.GetAxis("RVertical");
+
         if (Input.GetAxisRaw("RT") == 1)
-            entity.Shoot();
+            entity.Shoot(aimDireciton);
 
         if (entity.Collinding() != null && entity.Collinding().gameObject.GetComponent<Entity>() != null && entity.Collinding().gameObject.GetComponent<Entity>().isControllable() 
         &&  Input.GetAxisRaw("Fire1") == 1 && Time.time > controlCD + lastControl && isInVirus) // TODO opti

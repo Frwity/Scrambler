@@ -21,29 +21,24 @@ public class FlyingEnemySkill : EntitySkill
         
     }
 
-    public override bool Dash()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override bool Jump()
     {
         throw new System.NotImplementedException();
     }
 
-    public override bool MoveLeft()
+    public override bool MoveLeft(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * -speed, 0, 0);
+        transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
         return true;
     }
 
-    public override bool MoveRight()
+    public override bool MoveRight(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * speed, 0, 0);
+        transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
         return true;
     }
 
-    public override bool Shoot()
+    public override bool Shoot(Vector3 direction)
     {
         if (Time.time > lastFired + fireRate)
         {

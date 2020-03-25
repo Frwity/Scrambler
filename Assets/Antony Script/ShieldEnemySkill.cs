@@ -13,10 +13,11 @@ public class ShieldEnemySkill : EntitySkill
     private Rigidbody rb;
 
     [SerializeField] private float dashTime;
+    [SerializeField] private float dashForce;
+    [SerializeField] private float dashCD;
+    [SerializeField] private int dashDamage;
     private float dashed;
     private bool dashing;
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashCD;
     private float lastDash;
 
     void Start()
@@ -37,17 +38,11 @@ public class ShieldEnemySkill : EntitySkill
 
     void Update()
     {
-        if (dashing)
-            transform.Translate(Time.deltaTime * dashSpeed, 0, 0);
-        if (Time.time > dashTime + dashed)
+        if (Time.time > dashTime + dashed && dashing)
         {
+            rb.velocity = new Vector3(0, 0, rb.velocity.z);
             dashing = false;
         }
-    }
-
-    public override bool Dash()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override bool Jump()
@@ -62,22 +57,25 @@ public class ShieldEnemySkill : EntitySkill
         return false;
     }
 
-    public override bool MoveLeft()
+    public override bool MoveLeft(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * -speed, 0, 0);
+        if (!dashing)
+            rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
         return true;
     }
 
-    public override bool MoveRight()
+    public override bool MoveRight(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * speed, 0, 0);
+        if (!dashing)
+            rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
         return true;
     }
 
-    public override bool Shoot()
+    public override bool Shoot(Vector3 direction)
     {
-        if (Time.time > lastDash + dashCD)
+        if (Time.time > lastDash + dashCD && direction.magnitude > 0.1)
         {
+            rb.velocity = new Vector3(dashForce * direction.normalized.x, dashForce * -direction.normalized.y, rb.velocity.z);
             dashing = true;
             dashed = Time.time;
             lastDash = Time.time;
@@ -105,6 +103,15 @@ public class ShieldEnemySkill : EntitySkill
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             jumped = 0;
+        }
+
+        if (dashing && gameObject.CompareTag("Player") && collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<Entity>().InflictDamage(dashDamage);
+        }
+        if (dashing && gameObject.CompareTag("Enemy") && collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Entity>().InflictDamage(dashDamage);
         }
     }
 }

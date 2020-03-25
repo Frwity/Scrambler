@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - PlayerMove
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX

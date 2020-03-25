@@ -8,14 +8,20 @@ public class VirusSkill : EntitySkill
     [SerializeField] private int nbJump;
     [SerializeField] private float jumpForce;
 
+
+
     private int jumped;
+    private int wallDir;
     private bool falling;
+    private bool touchingWall;
     private Rigidbody rb;
 
     void Start()
     {
+        touchingWall = false;
         falling = true;
         jumped = 0;
+        wallDir = 0;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -32,7 +38,15 @@ public class VirusSkill : EntitySkill
 
     public override bool Jump()
     {
-        if (jumped < nbJump && falling)
+        if (touchingWall)
+        {
+            rb.velocity = new Vector3(jumpForce * wallDir, jumpForce, rb.velocity.z);
+            jumped = 1;
+            falling = false;
+            touchingWall = false;
+            return true;
+        }
+        else if (jumped < nbJump && falling)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             jumped++;
@@ -42,29 +56,22 @@ public class VirusSkill : EntitySkill
         return false;
     }
 
-    public override bool MoveLeft()
+    public override bool MoveLeft(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * -speed, 0, 0);
-        return true;
-
-    }
-
-    public override bool MoveRight()
-    {
-        transform.Translate(Time.deltaTime * speed, 0, 0);
+        rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
         return true;
     }
 
-    public override bool Shoot()
+    public override bool MoveRight(float moveSpeed)
+    {
+        rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
+        return true;
+    }
+
+    public override bool Shoot(Vector3 direction)
     {
         return false;
     }
-
-    public override bool Dash()
-    {
-        throw new System.NotImplementedException();
-    }
-
 
     public override bool ActivateAI()
     {
@@ -83,6 +90,23 @@ public class VirusSkill : EntitySkill
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             jumped = 0;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        { 
+            touchingWall = true;
+            if (collision.gameObject.transform.position.x - transform.position.x > 0)
+                wallDir = -1;
+            else
+                wallDir = 1;
+        }
+        else
+        {
+            wallDir = 0;
+            touchingWall = false;
         }
     }
 }

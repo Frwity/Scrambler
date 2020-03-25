@@ -5,10 +5,9 @@ using UnityEngine;
 public abstract class EntitySkill : MonoBehaviour
 {
     public abstract bool Jump();
-    public abstract bool MoveLeft();
-    public abstract bool MoveRight();
-    public abstract bool Shoot();
-    public abstract bool Dash();
+    public abstract bool MoveLeft(float moveSpeed);
+    public abstract bool MoveRight(float moveSpeed);
+    public abstract bool Shoot(Vector3 direction);
     public abstract bool ActivateAI();
     public abstract bool DesactivateAI();
     public void HideInBG()
@@ -51,24 +50,19 @@ public class Entity : MonoBehaviour
         return entitySkill.Jump();
     }
 
-    public bool MoveLeft()
+    public bool MoveLeft(float moveSpeed)
     {
-        return entitySkill.MoveLeft();
+        return entitySkill.MoveLeft(moveSpeed);
     }
 
-    public bool MoveRight()
+    public bool MoveRight(float moveSpeed)
     {
-        return entitySkill.MoveRight();
+        return entitySkill.MoveRight(moveSpeed);
     }
 
-    public bool Dash()
+    public bool Shoot(Vector3 direction)
     {
-        return entitySkill.Dash();
-    }
-
-    public bool Shoot()
-    {
-        return entitySkill.Shoot();
+        return entitySkill.Shoot(direction);
     }
 
     public bool ActivateAI()
