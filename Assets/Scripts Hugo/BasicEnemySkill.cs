@@ -50,12 +50,7 @@ public class BasicEnemySkill : EntitySkill
         return false;
     }
 
-    public override bool Dash()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override bool MoveLeft()
+    public override bool MoveLeft(float moveSpeed)
     {
         transform.Translate(Time.deltaTime * -speed, 0, 0, Space.World);
         direction = -1;
@@ -63,7 +58,7 @@ public class BasicEnemySkill : EntitySkill
         return true;
     }
 
-    public override bool MoveRight()
+    public override bool MoveRight(float moveSpeed)
     {
         transform.Translate(Time.deltaTime * speed, 0, 0, Space.World);
         direction = 1;
@@ -71,7 +66,7 @@ public class BasicEnemySkill : EntitySkill
         return true;
     }
 
-    public override bool Shoot()
+    public override bool Shoot(Vector3 directionVector)
     {
         if (Time.time > fireRate + lastFired)
         {
@@ -80,7 +75,7 @@ public class BasicEnemySkill : EntitySkill
             BasicBasicBullet bulletParameters = firedBullet.GetComponent<BasicBasicBullet>();
 
             firedBullet.transform.transform.Rotate(new Vector3(0, 0, 1), Random.Range(-bulletParameters.imprecision, bulletParameters.imprecision));
-            firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.right * bulletParameters.shootingPower * direction);
+            firedBullet.GetComponent<Rigidbody>().AddForce(directionVector * bulletParameters.shootingPower);
 
             lastFired = Time.time;
             return true;

@@ -116,13 +116,13 @@ public class BasicEnemyAI : MonoBehaviour
             if (distanceToKeepAwayFromPlayer < distToPlayer)
             {
                 if (vecToPlayer.x > 0)
-                    entity.MoveRight();
+                    entity.MoveRight(1);
                 else
-                    entity.MoveLeft();
+                    entity.MoveLeft(1);
             }
 
             if (lowerFireRange < distToPlayer && distToPlayer < upperFireRange)
-                entity.Shoot();
+                entity.Shoot(vecToPlayer.normalized);
         }
     }
 }

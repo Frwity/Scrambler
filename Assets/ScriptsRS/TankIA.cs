@@ -58,11 +58,11 @@ public class TankIA : MonoBehaviour
             {
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveLeft();
+                    entity.MoveLeft(1);
                 }
                 else
                 {
-                    entity.MoveRight();
+                    entity.MoveRight(1);
                 }
                     
             }
@@ -70,11 +70,11 @@ public class TankIA : MonoBehaviour
             {
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveRight();
+                    entity.MoveRight(1);
                 }
                 else
                 {
-                    entity.MoveLeft();
+                    entity.MoveLeft(1);
                 }
             }
             else
@@ -82,7 +82,7 @@ public class TankIA : MonoBehaviour
         }
         else
         {
-            if (entity.Shoot())
+            if (entity.Shoot(new Vector3(1, 1, 1)))
             { 
                 nbFired++;
                 if (nbFired >= fireCount)
