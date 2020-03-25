@@ -6,8 +6,8 @@ public class TankIA : MonoBehaviour
 {
     enum Direction
     {
-        RIGHT,
-        LEFT
+        RIGHT = 1,
+        LEFT = -1,
     };
     // Start is called before the first frame update
     public bool isActive;
@@ -19,12 +19,17 @@ public class TankIA : MonoBehaviour
     private bool shooting;
     [SerializeField]
     private Direction direction = Direction.RIGHT;
+
+    private TankSkill ts;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        
-        entity = GetComponent<Entity>();
-        TankSkill ts = entity.entitySkill as TankSkill;
+        if (direction == Direction.LEFT)
+        {
+            transform.rotation = Quaternion.Euler(0,180,0);
+        }
+        entity = GetComponent<Entity>(); 
+        ts = entity.entitySkill as TankSkill;
         rangePoint = ts.rangePoint;
     }
 
@@ -35,21 +40,43 @@ public class TankIA : MonoBehaviour
             return;
         if (!shooting)
         {
+            
             if (player.transform.position.x > transform.position.x && (direction == Direction.LEFT))
             {
                 direction = Direction.RIGHT;
-         
+                ts.changeRotation();
                 transform.rotation =  Quaternion.Euler(0,0,0);
             }
             else if (player.transform.position.x < transform.position.x &&(direction == Direction.RIGHT)) 
             {
                 direction = Direction.LEFT;
+                ts.changeRotation();
                 transform.rotation = Quaternion.Euler(0,180,0);
             }
-            if (player.transform.position.x - (transform.position.x + (rangePoint * (int)direction)) < -0.15)
-                entity.MoveLeft();
-            else if (player.transform.position.x - (transform.position.x + (rangePoint * (int)direction)) > 0.15)
-                entity.MoveRight();
+            Debug.Log( (transform.position.x + ((int) direction * rangePoint)));
+            if ((player.transform.position.x ) < (transform.position.x + ((int) direction * rangePoint) -0.15))
+            {
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveLeft();
+                }
+                else
+                {
+                    entity.MoveRight();
+                }
+                    
+            }
+            else if ((player.transform.position.x ) > (transform.position.x + ((int) direction * rangePoint)+0.15))
+            {
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveRight();
+                }
+                else
+                {
+                    entity.MoveLeft();
+                }
+            }
             else
                 shooting = true;
         }
