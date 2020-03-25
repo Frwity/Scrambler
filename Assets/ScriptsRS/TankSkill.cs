@@ -26,6 +26,11 @@ public class TankSkill : EntitySkill
     {
         return Quaternion.Euler(0,0,aDegree) * aPoint;
     }
+
+    public void changeRotation()
+    {
+        angleInDeg = -angleInDeg;
+    }
     void Start()
     {
         int a = angleInDeg;
