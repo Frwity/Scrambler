@@ -8,6 +8,7 @@ public class SuicideSkill : EntitySkill
     [SerializeField] private float speed;
     [SerializeField] private float chargeTime;
     [SerializeField] private float exploRay;
+    [SerializeField] private int damage;
     private float timer = 0;
     // Start is called before the first frame update
     void Start()
@@ -33,13 +34,13 @@ public class SuicideSkill : EntitySkill
 
     public override bool MoveLeft(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * -speed, 0, 0);
+        transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
         return true;
     }
 
     public override bool MoveRight(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * speed, 0, 0);
+        transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
         return true;
     }
 
@@ -49,11 +50,11 @@ public class SuicideSkill : EntitySkill
         Debug.Log($"timer : {timer} / {chargeTime}");
         if (timer >= chargeTime)
         {
-            GameObject player =GameObject.FindWithTag("Player");
+            GameObject player = GameObject.FindWithTag("Player");
             Vector3 toPlayer = player.transform.position - transform.position;
             if (toPlayer.magnitude < exploRay)
             {
-                player.GetComponent<Entity>().InflictDamage(6);
+                player.GetComponent<Entity>().InflictDamage(damage);
             }
             return true;
         }

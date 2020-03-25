@@ -69,11 +69,11 @@ public class suicideIA : MonoBehaviour
             {
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveRight(1);
+                    entity.MoveRight(-1);
                 }
                 else
                 {
-                    entity.MoveLeft(1);
+                    entity.MoveLeft(-1);
                 }
             }
             else

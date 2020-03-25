@@ -52,7 +52,7 @@ public class BasicEnemySkill : EntitySkill
 
     public override bool MoveLeft(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * -speed, 0, 0, Space.World);
+        transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0, Space.World);
         direction = -1;
 
         return true;
@@ -60,7 +60,7 @@ public class BasicEnemySkill : EntitySkill
 
     public override bool MoveRight(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * speed, 0, 0, Space.World);
+        transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0, Space.World);
         direction = 1;
 
         return true;

@@ -68,13 +68,13 @@ public class TankSkill : EntitySkill
 
     public override bool MoveLeft(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * -speed, 0, 0);
+        transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
         return true;
     }
 
     public override bool MoveRight(float moveSpeed)
     {
-        transform.Translate(Time.deltaTime * speed, 0, 0);
+        transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
         return true;
     }
 

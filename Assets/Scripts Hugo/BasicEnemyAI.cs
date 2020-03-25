@@ -118,7 +118,7 @@ public class BasicEnemyAI : MonoBehaviour
                 if (vecToPlayer.x > 0)
                     entity.MoveRight(1);
                 else
-                    entity.MoveLeft(1);
+                    entity.MoveLeft(-1);
             }
 
             if (lowerFireRange < distToPlayer && distToPlayer < upperFireRange)
