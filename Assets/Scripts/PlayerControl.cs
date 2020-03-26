@@ -6,12 +6,12 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float controlCD;
-    private float lastControl;
-    [SerializeField] private GameObject virus;
+    [HideInInspector]public float lastControl;
+    public GameObject virus;
 
-    private Entity entity;
+    /*[HideInInspector]*/public Entity entity;
 
-    private bool isInVirus;
+    /*[HideInInspector]*/public bool isInVirus;
 
     private Vector3 aimDireciton;
 

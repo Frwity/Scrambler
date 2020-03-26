@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7987167876143128017}
   - component: {fileID: 7987167876143128018}
   m_Layer: 9
-  m_Name: update Virus
+  m_Name: Virus
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,9 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b197fcebbe6044bfc336b1942674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 2
+  life: 9
   entitySkill: {fileID: 7987167876143128017}
   controllable: 1
+  isHidden: 0
 --- !u!1 &7987167877625211968
 GameObject:
   m_ObjectHideFlags: 0
