@@ -29,9 +29,9 @@ public class CurveBullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<Entity>().InflictDamage(damage);
         }
-        Debug.Log($"collided at {collision.GetContact(0).point}");
+        Debug.Log($"collided at {collision.collider.name}");
         Vector3 v = collision.GetContact(0).point - new Vector3(5.33f, 1.78158f, 0);
-        Debug.Log($" length from tank to point = {v.magnitude}");
+        
         Destroy(this.gameObject);
     }
 }

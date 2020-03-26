@@ -21,7 +21,7 @@ public class TankSkill : EntitySkill
     private int lastRotationAngle;
     private int angletoPass;
     [HideInInspector] public float rangePoint;
-    
+    private Direction dir;
     Vector2 Rotate(Vector2 aPoint, float aDegree)
     {
         return Quaternion.Euler(0,0,aDegree) * aPoint;
@@ -43,6 +43,7 @@ public class TankSkill : EntitySkill
         shootingDir = Rotate(Vector3.right, angleInDeg);
         lastAngle = angleInDeg;
         currentCooldown = 0;
+        dir = Direction.NONE;
     }
 
     // Update is called once per frame
@@ -68,12 +69,48 @@ public class TankSkill : EntitySkill
 
     public override bool MoveLeft(float moveSpeed)
     {
+        if (!GetComponent<TankIA>().isActive)
+        {
+            if (Input.GetAxis("RHorizontal") < -0.05f && dir != Direction.LEFT)
+            {
+                transform.rotation = Quaternion.Euler(0,180,0);
+                changeRotation();
+                dir = Direction.LEFT;
+            }
+            else if (Input.GetAxis("RHorizontal") > 0.05f && dir != Direction.RIGHT)
+            {
+                 transform.rotation = Quaternion.Euler(0,0,0);
+                 changeRotation();
+                 dir = Direction.RIGHT;
+            }
+            transform.Translate(Time.deltaTime * speed * moveSpeed * (float) dir, 0, 0);
+            Debug.Log(Time.deltaTime * speed * moveSpeed * (float) dir);
+            return true;
+        }
         transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
         return true;
     }
 
     public override bool MoveRight(float moveSpeed)
     {
+        if (!GetComponent<TankIA>().isActive)
+        {
+            if (Input.GetAxis("RHorizontal") < -0.05f && dir != Direction.LEFT)
+            {
+                transform.rotation = Quaternion.Euler(0,180,0);
+                changeRotation();
+                dir = Direction.LEFT;
+            }
+            else if (Input.GetAxis("RHorizontal") > 0.05f && dir != Direction.RIGHT)
+            {
+                transform.rotation = Quaternion.Euler(0,0,0);
+                changeRotation();
+                dir = Direction.RIGHT;
+            }
+            transform.Translate(Time.deltaTime * speed * moveSpeed * (float) dir, 0, 0);
+            Debug.Log(Time.deltaTime * speed * moveSpeed * (float) dir);
+            return true;
+        }
         transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
         return true;
     }
@@ -92,6 +129,7 @@ public class TankSkill : EntitySkill
             Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), 
                 this.GetComponent<Collider>(), true);
             CurveBullet bullett = bulletInst.GetComponent<CurveBullet>();
+            
             bullett.velocity = new Vector3(newShootDir.x, newShootDir.y, 0) * shootingStrength;
 
         }
@@ -115,6 +153,6 @@ public class TankSkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-        throw new System.NotImplementedException();
+
     }
 }

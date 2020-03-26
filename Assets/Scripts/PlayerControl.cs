@@ -6,12 +6,12 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float controlCD;
-    private float lastControl;
-    [SerializeField] private GameObject virus;
+    [HideInInspector] public float lastControl;
+    public GameObject virus;
 
-    private Entity entity;
+    [HideInInspector] public Entity entity;
 
-    private bool isInVirus;
+    [HideInInspector] public bool isInVirus;
 
     public short lastDirection;
 
@@ -19,8 +19,10 @@ public class PlayerControl : MonoBehaviour
 
     private SmoothCamera camera;
 
+    [HideInInspector] public Transform entityTr;
     void Start()
     {
+        entityTr = new RectTransform();
         lastControl = 0;
         entity = GetComponentInChildren<Entity>();
         isInVirus = true;
@@ -81,6 +83,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         GameObject.FindGameObjectWithTag("Camera").GetComponent<SmoothCamera>().ActualizeTarget();
+        entityTr.position = transform.GetChild(0).position;
     }
 
     private void FixedUpdate()

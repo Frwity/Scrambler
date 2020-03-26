@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction
+{
+    RIGHT = 1,
+    LEFT = -1,
+    NONE = 0,
+};
 public class TankIA : MonoBehaviour
 {
-    enum Direction
-    {
-        RIGHT = 1,
-        LEFT = -1,
-    };
+    
     // Start is called before the first frame update
     public bool isActive;
     private Entity entity;
@@ -58,11 +60,11 @@ public class TankIA : MonoBehaviour
             {
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveRight(1);
+                    entity.MoveRight(-1);
                 }
                 else
                 {
-                    entity.MoveLeft(-1);
+                    entity.MoveLeft(1);
                 }
                     
             }
@@ -70,11 +72,11 @@ public class TankIA : MonoBehaviour
             {
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveLeft(-1);
+                    entity.MoveLeft(1);
                 }
                 else
                 {
-                    entity.MoveRight(1);
+                    entity.MoveRight(-1);
                 }
             }
             else
