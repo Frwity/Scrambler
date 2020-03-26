@@ -68,7 +68,7 @@ public class BasicEnemySkill : EntitySkill
 
     public override bool Shoot(Vector3 directionVector)
     {
-        if (Time.time > fireRate + lastFired)
+        if (Time.time > fireRate + lastFired && directionVector != new Vector3(0, 0, 0))
         {
             GameObject firedBullet = Instantiate(bullet, transform.position + Vector3.right * direction, Quaternion.identity);
 

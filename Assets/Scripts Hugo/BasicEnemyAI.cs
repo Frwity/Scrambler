@@ -66,7 +66,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void FlipAround()
     {
-        transform.Rotate(0, (flipped ? -180 : 180), 0);
+        transform.GetChild(0).Translate(new Vector3(0f, flipped ? 1f : -1f, 0));
         flipped ^= true;
 
         lookingRight ^= true;

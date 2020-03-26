@@ -8,6 +8,7 @@ TagManager:
   - PlayerMove
   - Enemy
   - Wall
+  - Camera
   layers:
   - Default
   - TransparentFX
