@@ -52,7 +52,7 @@ public class suicideIA : MonoBehaviour
                 
                 transform.rotation = Quaternion.Euler(0,180,0);
             }
-            Debug.Log( transform.position.x );
+
             if ((player.transform.position.x ) < (transform.position.x  -0.45))
             {
                 if (direction == Direction.RIGHT)

@@ -70,4 +70,9 @@ public class SuicideSkill : EntitySkill
     {
         throw new System.NotImplementedException();
     }
+
+    public override void AimDirection(Vector3 direction)
+    {
+
+    }
 }

@@ -64,6 +64,6 @@ public class FlyingEnemySkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-        throw new System.NotImplementedException();
+
     }
 }

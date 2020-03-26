@@ -113,5 +113,8 @@ public class TankSkill : EntitySkill
         return true;
     }
 
-   
+    public override void AimDirection(Vector3 direction)
+    {
+        throw new System.NotImplementedException();
+    }
 }
