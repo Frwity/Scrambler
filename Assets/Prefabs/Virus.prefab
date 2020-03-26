@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 7987167877625211975}
   - component: {fileID: 7987167877625211974}
   - component: {fileID: 7987167877625211973}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: HoverEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

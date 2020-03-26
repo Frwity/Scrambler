@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +27,6 @@ public class Entity : MonoBehaviour
     [SerializeField] private int life;
     [SerializeField] public EntitySkill entitySkill;
     [SerializeField] public bool controllable;
-
     public bool isHidden;
 
     private GameObject collidingObj;
@@ -35,6 +35,8 @@ public class Entity : MonoBehaviour
     {
         isHidden = false; 
         collidingObj = null;
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
+        
     }
 
     void Update()
@@ -108,4 +110,67 @@ public class Entity : MonoBehaviour
     {
         collidingObj = null;
     }
+    Vector2 Rotate(Vector2 aPoint, float aDegree)
+    {
+        return Quaternion.Euler(0,0,aDegree) * aPoint;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (CompareTag("Player"))
+        {
+            return;
+        }
+        float mag = (other.transform.position - transform.position).magnitude;
+        //int visionMask = LayerMask.NameToLayer("Vision");
+        int visionMask = 1 << 13 ;
+        int hoverMask = 1 << 8;
+        int bulletMask = 1 << 10;
+        bulletMask = ~bulletMask;
+        hoverMask = ~hoverMask;
+        visionMask = ~visionMask;
+        visionMask += hoverMask;
+        visionMask += bulletMask;
+        Vector3 playerPos;
+        
+        if (other.CompareTag("Player"))
+        {
+            playerPos = other.transform.position;
+            //Debug.Log("player found");
+        }
+        else
+        {
+            //Debug.Log("player not found");
+            return;
+        }
+
+        playerPos = (playerPos - transform.position);
+        playerPos.y -= other.transform.localScale.y/2.0f;
+        
+        for (int i = 0; i <= 2; i++)
+        {
+            Vector2 toShoot = playerPos;
+            toShoot.y += (other.transform.localScale.y / 2.0f)* i;
+            toShoot.Normalize();
+            Ray ray = new Ray(transform.position, toShoot);
+            RaycastHit hit;
+            
+            if (Physics.Raycast(ray, out hit, mag + 10.0f, visionMask))
+            {
+                Debug.Log("ouch");
+                if (hit.collider.CompareTag("Player"))
+                {
+                    Debug.DrawRay(transform.position, toShoot * hit.distance, Color.magenta);
+                }
+                else
+                {
+                    Debug.Log(hit.collider.name);
+                    Debug.DrawRay(transform.position, toShoot * hit.distance, Color.green);
+                }
+            }
+        }
+
+    }
+
 }
+

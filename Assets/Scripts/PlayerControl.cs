@@ -14,9 +14,10 @@ public class PlayerControl : MonoBehaviour
     /*[HideInInspector]*/public bool isInVirus;
 
     private Vector3 aimDireciton;
-
+    [HideInInspector] public Transform entityTr;
     void Start()
     {
+        entityTr = new RectTransform();
         lastControl = 0;
         entity = GetComponentInChildren<Entity>();
         isInVirus = true;
@@ -59,6 +60,8 @@ public class PlayerControl : MonoBehaviour
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
             isInVirus = true;
         }
+
+        entityTr.position = transform.GetChild(0).position;
     }
 
     private void FixedUpdate()
