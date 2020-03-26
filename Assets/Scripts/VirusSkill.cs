@@ -103,10 +103,19 @@ public class VirusSkill : EntitySkill
             else
                 wallDir = 1;
         }
-        else
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
         {
             wallDir = 0;
             touchingWall = false;
         }
+    }
+
+    public override void AimDirection(Vector3 direction)
+    {
+
     }
 }

@@ -61,4 +61,9 @@ public class FlyingEnemySkill : EntitySkill
         GetComponent<FlyingEnemyIA>().isActive = false;
         return true;
     }
+
+    public override void AimDirection(Vector3 direction)
+    {
+        throw new System.NotImplementedException();
+    }
 }

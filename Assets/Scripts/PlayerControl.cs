@@ -24,17 +24,20 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetAxisRaw("Vertical") == 1)
             entity.HideInGB();
         if (entity.isHidden && Input.GetAxis("Vertical") < 1)
             entity.ExitHiding();
 
-        entity.MoveRight(Input.GetAxis("Horizontal"));
-        entity.MoveLeft(Input.GetAxis("Horizontal"));
+        if (Input.GetAxisRaw("Horizontal") > 0)
+            entity.MoveRight(Input.GetAxis("Horizontal"));
+        if (Input.GetAxisRaw("Horizontal") < 0)
+            entity.MoveLeft(Input.GetAxis("Horizontal"));
 
         aimDireciton.x = Input.GetAxis("RHorizontal");
-        aimDireciton.y = Input.GetAxis("RVertical");
+        aimDireciton.y = -Input.GetAxis("RVertical");
+
+        entity.AimDirection(aimDireciton);
 
         if (Input.GetAxisRaw("RT") == 1)
             entity.Shoot(aimDireciton);

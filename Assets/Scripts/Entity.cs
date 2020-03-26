@@ -8,6 +8,7 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract bool MoveLeft(float moveSpeed);
     public abstract bool MoveRight(float moveSpeed);
     public abstract bool Shoot(Vector3 direction);
+    public abstract void AimDirection(Vector3 direction);
     public abstract bool ActivateAI();
     public abstract bool DesactivateAI();
     public void HideInBG()
@@ -63,6 +64,11 @@ public class Entity : MonoBehaviour
     public bool Shoot(Vector3 direction)
     {
         return entitySkill.Shoot(direction);
+    }
+
+    public void AimDirection(Vector3 direction)
+    {
+        entitySkill.AimDirection(direction);
     }
 
     public bool ActivateAI()

@@ -20,6 +20,8 @@ public class ShieldEnemySkill : EntitySkill
     private bool dashing;
     private float lastDash;
 
+    private GameObject shield;
+
     void Start()
     {
         falling = true;
@@ -28,6 +30,7 @@ public class ShieldEnemySkill : EntitySkill
         jumped = 0;
         lastDash = 0;
         rb = GetComponent<Rigidbody>();
+        shield = transform.GetChild(0).gameObject;
     }
 
     private void FixedUpdate()
@@ -75,7 +78,7 @@ public class ShieldEnemySkill : EntitySkill
     {
         if (Time.time > lastDash + dashCD && direction.magnitude > 0.1)
         {
-            rb.velocity = new Vector3(dashForce * direction.normalized.x, dashForce * -direction.normalized.y, rb.velocity.z);
+            rb.velocity = new Vector3(dashForce * direction.normalized.x, dashForce * direction.normalized.y, rb.velocity.z);
             dashing = true;
             dashed = Time.time;
             lastDash = Time.time;
@@ -84,6 +87,11 @@ public class ShieldEnemySkill : EntitySkill
         }
         else
             return false;
+    }
+
+    public override void AimDirection(Vector3 direction)
+    {
+        shield.transform.rotation = Quaternion.Euler(0, 0, Mathf.Asin(direction.normalized.x / direction.normalized.y));
     }
 
     public override bool ActivateAI()
