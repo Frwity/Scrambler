@@ -95,18 +95,7 @@ public class TankSkill : EntitySkill
     {
         if (!GetComponent<TankIA>().isActive)
         {
-            if (Input.GetAxis("RHorizontal") < -0.05f && dir != Direction.LEFT)
-            {
-                transform.rotation = Quaternion.Euler(0,180,0);
-                changeRotation();
-                dir = Direction.LEFT;
-            }
-            else if (Input.GetAxis("RHorizontal") > 0.05f && dir != Direction.RIGHT)
-            {
-                transform.rotation = Quaternion.Euler(0,0,0);
-                changeRotation();
-                dir = Direction.RIGHT;
-            }
+            
             transform.Translate(Time.deltaTime * speed * moveSpeed * (float) dir, 0, 0);
             Debug.Log(Time.deltaTime * speed * moveSpeed * (float) dir);
             return true;
@@ -153,6 +142,17 @@ public class TankSkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-
+        if (direction.x < -0.05f && dir != Direction.LEFT)
+        {
+            transform.rotation = Quaternion.Euler(0,180,0);
+            changeRotation();
+            dir = Direction.LEFT;
+        }
+        else if (direction.x > 0.05f && dir != Direction.RIGHT)
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+            changeRotation();
+            dir = Direction.RIGHT;
+        }
     }
 }
