@@ -906,11 +906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45fd901ceafd14b46b364910bab87497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 651984198}
   defaultDistance: {x: 0, y: 2, z: -10}
-  offsetToTarget: {x: 5, y: 0, z: 0}
-  dampDistance: 10
-  dampRotation: 10
+  offsetToTarget: {x: 2, y: 0, z: 0}
+  dampDistance: 2
+  dampRotation: 1
 --- !u!1 &1266212460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1174,7 @@ PrefabInstance:
     - target: {fileID: 6531962691575589102, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6531962691575589102, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
@@ -1185,7 +1184,7 @@ PrefabInstance:
     - target: {fileID: 6531962691575589102, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6531962691575589102, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
@@ -1200,7 +1199,7 @@ PrefabInstance:
     - target: {fileID: 6531962691575589102, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6531962691575589102, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
@@ -1211,6 +1210,16 @@ PrefabInstance:
         type: 3}
       propertyPath: firePower
       value: 452.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: lowerFireRange
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}

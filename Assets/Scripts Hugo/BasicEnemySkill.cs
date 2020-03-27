@@ -74,7 +74,7 @@ public class BasicEnemySkill : EntitySkill
 
             BasicBasicBullet bulletParameters = firedBullet.GetComponent<BasicBasicBullet>();
 
-            firedBullet.transform.transform.Rotate(new Vector3(0, 0, 1), Random.Range(-bulletParameters.imprecision, bulletParameters.imprecision));
+            firedBullet.transform.Rotate(0, 0, Random.Range(-bulletParameters.imprecision, bulletParameters.imprecision));
             firedBullet.GetComponent<Rigidbody>().AddForce(directionVector * bulletParameters.shootingPower);
 
             lastFired = Time.time;
