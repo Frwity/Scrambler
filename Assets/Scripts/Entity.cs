@@ -132,11 +132,18 @@ public class Entity : MonoBehaviour
         int visionMask = 1 << 13 ;
         int hoverMask = 1 << 8;
         int bulletMask = 1 << 10;
+        int shieldMask = 1 << 14;
+        int PossessMask = 1 << 15;
         bulletMask = ~bulletMask;
         hoverMask = ~hoverMask;
         visionMask = ~visionMask;
+        shieldMask = ~shieldMask;
+        PossessMask = ~PossessMask;
+        
         visionMask += hoverMask;
         visionMask += bulletMask;
+        visionMask += shieldMask;
+        visionMask += PossessMask;
         Vector3 playerPos;
         
         if (other.CompareTag("Player"))
