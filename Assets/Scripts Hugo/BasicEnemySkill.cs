@@ -14,8 +14,6 @@ public class BasicEnemySkill : EntitySkill
     [SerializeField] private GameObject bullet;
     [SerializeField] private float speed;
 
-    public short direction; // goes to -1 if moving left, 1 if moving right.
-
     [SerializeField] private float fireRate;
     private float lastFired;
 
@@ -53,7 +51,6 @@ public class BasicEnemySkill : EntitySkill
     public override bool MoveLeft(float moveSpeed)
     {
         rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
-        direction = -1;
 
         return true;
     }
@@ -61,7 +58,6 @@ public class BasicEnemySkill : EntitySkill
     public override bool MoveRight(float moveSpeed)
     {
         rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
-        direction = 1;
 
         return true;
     }
@@ -70,7 +66,7 @@ public class BasicEnemySkill : EntitySkill
     {
         if (Time.time > fireRate + lastFired && directionVector != new Vector3(0, 0, 0))
         {
-            GameObject firedBullet = Instantiate(bullet, transform.position + Vector3.right * direction, Quaternion.identity);
+            GameObject firedBullet = Instantiate(bullet, transform.position - transform.GetChild(1).right, Quaternion.identity);
 
             BasicBasicBullet bulletParameters = firedBullet.GetComponent<BasicBasicBullet>();
 

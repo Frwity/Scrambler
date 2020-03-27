@@ -36,17 +36,8 @@ public class BasicEnemyAI : MonoBehaviour
 
         if (flipped)
         {
-            FlipAround();
-
-            lookingRight = true;
-            flipped = true;
+            LookAround();
         }
-        else
-        {
-            lookingRight = false;
-        }
-
-        associatedBES.direction = (short)(lookingRight ? 1 : -1);
     }
 
     void Update()
@@ -54,29 +45,44 @@ public class BasicEnemyAI : MonoBehaviour
         if (isActive && player != null)
             IAcontrol();
         else
-            PLdirectionLookCoheranceCheck();
+            PLdirectionLookbyStick();
     }
 
-    private void AIdirectionLookCoheranceCheck()
+    public void PLdirectionLookbyStick()
     {
-        if ((lookingRight == true && associatedBES.direction == -1) || (lookingRight == false && associatedBES.direction == 1))
+        float stickX = Input.GetAxis("RHorizontal");
+
+        if (stickX > 0.05f && !lookingRight)
         {
-            associatedBES.direction = (short)(lookingRight ? 1 : -1);
+            LookRight();
+        }
+            
+        if (stickX < -0.05f && lookingRight)
+        {
+            LookLeft();
         }
     }
 
-    private void PLdirectionLookCoheranceCheck()
+    public void LookRight()
     {
-        if ((lookingRight == true && associatedBES.direction == -1) || (lookingRight == false && associatedBES.direction == 1))
-        {
-            FlipAround();
-        }
+        transform.GetChild(1).Rotate(0, 180, 0);
+        
+        flipped = true;
+        lookingRight = true;
     }
 
-    public void FlipAround()
+    public void LookLeft()
+    {
+        transform.GetChild(1).Rotate(0, -180, 0);
+
+        flipped = false;
+        lookingRight = false;
+    }
+
+    public void LookAround()
     {
         transform.GetChild(1).Rotate(0, flipped ? -180 : 180, 0);
-        
+
         flipped ^= true;
         lookingRight ^= true;
     }
@@ -97,9 +103,11 @@ public class BasicEnemyAI : MonoBehaviour
                 reactionTime -= Time.smoothDeltaTime;
             else
             {
-                FlipAround();
-
                 reactionTime = maxReactionTime;
+
+                LookAround();
+
+                return true;
             }
 
             return false;
@@ -117,8 +125,6 @@ public class BasicEnemyAI : MonoBehaviour
     {
         Vector3 vecToPlayer = (player.transform.position - transform.position);
         float distToPlayer = vecToPlayer.magnitude;
-
-        AIdirectionLookCoheranceCheck();
 
         if (AIflipControl(vecToPlayer.x) && distToPlayer < detectionRange)
         {
