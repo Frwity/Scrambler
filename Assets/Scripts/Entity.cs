@@ -112,15 +112,6 @@ public class Entity : MonoBehaviour
     {
         life -= damage;
     }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        collidingObj = collision.gameObject;
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        collidingObj = null;
-    }
     Vector2 Rotate(Vector2 aPoint, float aDegree)
     {
         return Quaternion.Euler(0,0,aDegree) * aPoint;
@@ -128,6 +119,7 @@ public class Entity : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        collidingObj = other.gameObject;
         if (CompareTag("Player"))
         {
             return;
@@ -188,6 +180,9 @@ public class Entity : MonoBehaviour
         }
 
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        collidingObj = null;
+    }
 }
 

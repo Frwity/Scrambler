@@ -19,6 +19,6 @@ public class HidingZone : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(transform.position, transform.localScale);
+        Gizmos.DrawWireCube(transform.position, transform.localScale);
     }
 }

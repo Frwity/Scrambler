@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
 
     private Vector3 aimDireciton;
 
+    private GameObject collidingObj;
 
     void Start()
     {
@@ -57,18 +58,23 @@ public class PlayerControl : MonoBehaviour
             entity.Shoot(aimDireciton);
         }
 
-        if (entity.Collinding() != null && entity.Collinding().gameObject.GetComponent<Entity>() != null && entity.Collinding().gameObject.GetComponent<Entity>().isControllable() 
-        &&  Input.GetAxisRaw("Fire1") == 1 && Time.time > controlCD + lastControl && isInVirus) // TODO opti
+        collidingObj = entity.Collinding();
+        if (collidingObj != null 
+        && collidingObj.CompareTag("PossessZone") 
+        && collidingObj.transform.parent.GetComponent<Entity>() != null 
+        && collidingObj.transform.parent.GetComponent<Entity>().isControllable() 
+        && Input.GetAxisRaw("Fire3") == 1 
+        && Time.time > controlCD + lastControl && isInVirus) // TODO opti
         {
             lastControl = Time.time;
             Destroy(transform.GetChild(0).gameObject);
-            entity.Collinding().gameObject.transform.parent = transform;
-            entity = entity.Collinding().gameObject.GetComponent<Entity>();
+            collidingObj.transform.parent.parent = transform;
+            entity = collidingObj.transform.parent.GetComponent<Entity>();
             isInVirus = false;
             entity.tag = "Player";
             entity.DesactivateAI();
         }
-        if (Input.GetAxisRaw("Fire1") == 1 && Time.time > controlCD + lastControl && !isInVirus)
+        if (Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && !isInVirus)
         {
             lastControl = Time.time;
             entity.transform.parent = transform.parent;
@@ -79,13 +85,11 @@ public class PlayerControl : MonoBehaviour
 
             
         }
-
-        GameObject.FindGameObjectWithTag("Camera").GetComponent<SmoothCamera>().ActualizeTarget();
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetAxisRaw("Fire2") == 1)
+        if (Input.GetAxisRaw("Fire1") == 1)
             entity.Jump();
     }
 }
