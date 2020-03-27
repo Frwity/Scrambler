@@ -30,7 +30,7 @@ public class ShieldEnemySkill : EntitySkill
         jumped = 0;
         lastDash = 0;
         rb = GetComponent<Rigidbody>();
-        shield = transform.GetChild(0).gameObject;
+        shield = transform.GetChild(2).gameObject;
     }
 
     private void FixedUpdate()

@@ -15,7 +15,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     [SerializeField] private float maxReactionTime;
 
-    [SerializeField] private bool flipped; // shall be set to false if at it's spawn, the enemy is looking left.
+    [SerializeField] private bool flipped; // If checked, the enemy will spawn looking RIGHT, do *NOT* rotate the model manually.
 
     private GameObject player;
 
@@ -27,15 +27,24 @@ public class BasicEnemyAI : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player          = GameObject.FindGameObjectWithTag("Player");
+        entity          = GetComponent<Entity>();
+        associatedBES   = GetComponent<BasicEnemySkill>();
+
 
         reactionTime = maxReactionTime;
 
-        lookingRight = flipped;
+        if (flipped)
+        {
+            FlipAround();
 
-        entity = GetComponent<Entity>();
-
-        associatedBES = GetComponent<BasicEnemySkill>();
+            lookingRight = true;
+            flipped = true;
+        }
+        else
+        {
+            lookingRight = false;
+        }
 
         associatedBES.direction = (short)(lookingRight ? 1 : -1);
     }
@@ -66,9 +75,9 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void FlipAround()
     {
-        transform.GetChild(0).Translate(new Vector3(0f, flipped ? 1f : -1f, 0));
+        transform.GetChild(0).Rotate(0, flipped ? -180 : 180, 0);
+        
         flipped ^= true;
-
         lookingRight ^= true;
     }
 
