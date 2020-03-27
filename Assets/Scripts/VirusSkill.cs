@@ -32,7 +32,7 @@ public class VirusSkill : EntitySkill
 
     private void FixedUpdate()
     {
-        if (rb.velocity.y >= -0.1 && rb.velocity.y <= 0.1)
+        if (rb.velocity.y < 0)
             falling = true;
     }
 
