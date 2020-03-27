@@ -68,7 +68,7 @@ public class BasicEnemySkill : EntitySkill
     {
         if (Time.time > fireRate + lastFired && directionVector != new Vector3(0, 0, 0))
         {
-            GameObject firedBullet = Instantiate(bullet, transform.position - transform.GetChild(2).right, Quaternion.identity);
+            GameObject firedBullet = Instantiate(bullet, transform.position - transform.right, Quaternion.identity);
 
             BasicBasicBullet bulletParameters = firedBullet.GetComponent<BasicBasicBullet>();
 
