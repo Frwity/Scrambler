@@ -17,6 +17,8 @@ public class BasicEnemySkill : EntitySkill
     [SerializeField] private float fireRate;
     private float lastFired;
 
+    public float xAim = 0f;
+
     void Start()
     {
         falling = true;
@@ -66,7 +68,7 @@ public class BasicEnemySkill : EntitySkill
     {
         if (Time.time > fireRate + lastFired && directionVector != new Vector3(0, 0, 0))
         {
-            GameObject firedBullet = Instantiate(bullet, transform.position - transform.GetChild(1).right, Quaternion.identity);
+            GameObject firedBullet = Instantiate(bullet, transform.position - transform.GetChild(2).right, Quaternion.identity);
 
             BasicBasicBullet bulletParameters = firedBullet.GetComponent<BasicBasicBullet>();
 
@@ -102,6 +104,6 @@ public class BasicEnemySkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-
+        xAim = direction.x;
     }
 }

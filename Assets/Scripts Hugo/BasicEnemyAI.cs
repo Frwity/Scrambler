@@ -50,7 +50,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void PLdirectionLookbyStick()
     {
-        float stickX = Input.GetAxis("RHorizontal");
+        float stickX = associatedBES.xAim;
 
         if (stickX > 0.05f && !lookingRight)
         {
@@ -65,7 +65,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void LookRight()
     {
-        transform.GetChild(2).Rotate(0, 180, 0);
+        transform.GetChild(2).rotation = Quaternion.Euler(0, 180, 0);
         
         flipped = true;
         lookingRight = true;
@@ -73,7 +73,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void LookLeft()
     {
-        transform.GetChild(2).Rotate(0, -180, 0);
+        transform.GetChild(2).rotation = Quaternion.Euler(0, 0, 0);
 
         flipped = false;
         lookingRight = false;
