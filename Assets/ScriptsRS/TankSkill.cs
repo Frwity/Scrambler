@@ -20,6 +20,7 @@ public class TankSkill : EntitySkill
     private int lastAngle;
     private int lastRotationAngle;
     private int angletoPass;
+    private int angleRotated;
     [HideInInspector] public float rangePoint;
     private Direction dir;
     Vector2 Rotate(Vector2 aPoint, float aDegree)
@@ -29,11 +30,12 @@ public class TankSkill : EntitySkill
 
     public void changeRotation()
     {
-        angleInDeg = -angleInDeg;
+        angleRotated = angleInDeg * (int)dir;
     }
     void Start()
     {
-        int a = angleInDeg;
+        angleRotated = angleInDeg;
+        int a = angleRotated;
         rangePoint = (shootingStrength / Physics.gravity.magnitude) 
                   * Mathf.Cos(a * Mathf.Deg2Rad) 
                   * (shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad) 
@@ -52,7 +54,8 @@ public class TankSkill : EntitySkill
         if (lastAngle != angleInDeg || lastRotationAngle != (int)transform.rotation.y)
         {
             //Debug.Log(transform.right);
-            shootingDir = Rotate(transform.right,  angleInDeg);
+            angleRotated = angleInDeg * (int) dir;
+            shootingDir = Rotate(transform.right,  angleRotated);
             lastAngle = angleInDeg;
             lastRotationAngle = (int)transform.rotation.y;
         }
@@ -74,14 +77,16 @@ public class TankSkill : EntitySkill
             if (Input.GetAxis("RHorizontal") < -0.05f && dir != Direction.LEFT)
             {
                 transform.rotation = Quaternion.Euler(0,180,0);
-                changeRotation();
                 dir = Direction.LEFT;
+                changeRotation();
+                
             }
             else if (Input.GetAxis("RHorizontal") > 0.05f && dir != Direction.RIGHT)
             {
                  transform.rotation = Quaternion.Euler(0,0,0);
-                 changeRotation();
                  dir = Direction.RIGHT;
+                 changeRotation();
+
             }
             transform.Translate(Time.deltaTime * speed * moveSpeed * (float) dir, 0, 0);
             //Debug.Log(Time.deltaTime * speed * moveSpeed * (float) dir);
@@ -145,14 +150,16 @@ public class TankSkill : EntitySkill
         if (direction.x < -0.05f && dir != Direction.LEFT)
         {
             transform.rotation = Quaternion.Euler(0,180,0);
-            changeRotation();
             dir = Direction.LEFT;
+            changeRotation();
+
         }
         else if (direction.x > 0.05f && dir != Direction.RIGHT)
         {
             transform.rotation = Quaternion.Euler(0,0,0);
-            changeRotation();
             dir = Direction.RIGHT;
+            changeRotation();
+
         }
     }
 }
