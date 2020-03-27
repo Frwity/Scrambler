@@ -48,7 +48,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         aimDireciton.x = Input.GetAxis("RHorizontal");
-        aimDireciton.y = -Input.GetAxis("RVertical");
+        aimDireciton.y = Input.GetAxis("RVertical");
 
         entity.AimDirection(aimDireciton);
 
