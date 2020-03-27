@@ -65,7 +65,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void LookRight()
     {
-        transform.GetChild(1).Rotate(0, 180, 0);
+        transform.GetChild(2).Rotate(0, 180, 0);
         
         flipped = true;
         lookingRight = true;
@@ -73,7 +73,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void LookLeft()
     {
-        transform.GetChild(1).Rotate(0, -180, 0);
+        transform.GetChild(2).Rotate(0, -180, 0);
 
         flipped = false;
         lookingRight = false;
@@ -81,7 +81,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void LookAround()
     {
-        transform.GetChild(1).Rotate(0, flipped ? -180 : 180, 0);
+        transform.GetChild(2).Rotate(0, flipped ? -180 : 180, 0);
 
         flipped ^= true;
         lookingRight ^= true;

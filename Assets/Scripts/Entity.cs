@@ -16,7 +16,7 @@ public abstract class EntitySkill : MonoBehaviour
     {
         Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 3);
             
-        if (hitInfo.collider.CompareTag("HidingZone"))
+        if (hitInfo.collider && hitInfo.collider.CompareTag("HidingZone"))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 2);
         }
