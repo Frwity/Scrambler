@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Wall
   - Camera
+  - HidingZone
   layers:
   - Default
   - TransparentFX

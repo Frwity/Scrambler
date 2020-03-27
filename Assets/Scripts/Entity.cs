@@ -14,7 +14,12 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract bool DesactivateAI();
     public void HideInBG()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, 2);
+        Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 3);
+            
+        if (hitInfo.collider.CompareTag("HidingZone"))
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 2);
+        }
     }
     public void ExitHiding()
     {
@@ -163,16 +168,15 @@ public class Entity : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, mag + 10.0f, visionMask))
             {
-                Debug.Log("ouch");
-                if (hit.collider.CompareTag("Player"))
-                {
-                    Debug.DrawRay(transform.position, toShoot * hit.distance, Color.magenta);
-                }
-                else
-                {
-                    Debug.Log(hit.collider.name);
-                    Debug.DrawRay(transform.position, toShoot * hit.distance, Color.green);
-                }
+                //if (hit.collider.CompareTag("Player"))
+                //{
+                //    Debug.DrawRay(transform.position, toShoot * hit.distance, Color.magenta);
+                //}
+                //else
+                //{
+                //    Debug.Log(hit.collider.name);
+                //    Debug.DrawRay(transform.position, toShoot * hit.distance, Color.green);
+                //}
             }
         }
 

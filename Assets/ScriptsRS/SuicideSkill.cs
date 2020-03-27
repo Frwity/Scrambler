@@ -31,7 +31,7 @@ public class SuicideSkill : EntitySkill
 
     public override bool Jump()
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 
     public override bool MoveLeft(float moveSpeed)
@@ -49,7 +49,7 @@ public class SuicideSkill : EntitySkill
     public override bool Shoot(Vector3 direction)
     {
         timer += Time.smoothDeltaTime;
-        Debug.Log($"timer : {timer} / {chargeTime}");
+        //Debug.Log($"timer : {timer} / {chargeTime}");
         if (timer >= chargeTime)
         {
             Entity[] entitylist = GameObject.FindObjectsOfType<Entity>();
@@ -66,7 +66,7 @@ public class SuicideSkill : EntitySkill
                 if (toEnt.magnitude < exploRay)
                 {
                     entity.InflictDamage(6);
-                    Debug.LogWarning($"inflicted damage to {entity.name}");
+                    //Debug.LogWarning($"inflicted damage to {entity.name}");
                 }
             }
 

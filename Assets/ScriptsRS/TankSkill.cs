@@ -39,7 +39,7 @@ public class TankSkill : EntitySkill
                   * (shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad) 
                      + Mathf.Sqrt(Mathf.Pow(shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad), 2) 
                                   + 2* Physics.gravity.magnitude * transform.position.y ));
-        Debug.LogWarning(transform.position.x + rangePoint);
+        //Debug.LogWarning(transform.position.x + rangePoint);
         shootingDir = Rotate(Vector3.right, angleInDeg);
         lastAngle = angleInDeg;
         currentCooldown = 0;
@@ -51,7 +51,7 @@ public class TankSkill : EntitySkill
     {
         if (lastAngle != angleInDeg || lastRotationAngle != (int)transform.rotation.y)
         {
-            Debug.Log(transform.right);
+            //Debug.Log(transform.right);
             shootingDir = Rotate(transform.right,  angleInDeg);
             lastAngle = angleInDeg;
             lastRotationAngle = (int)transform.rotation.y;
@@ -64,7 +64,7 @@ public class TankSkill : EntitySkill
 
     public override bool Jump()
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 
     public override bool MoveLeft(float moveSpeed)
@@ -84,7 +84,7 @@ public class TankSkill : EntitySkill
                  dir = Direction.RIGHT;
             }
             transform.Translate(Time.deltaTime * speed * moveSpeed * (float) dir, 0, 0);
-            Debug.Log(Time.deltaTime * speed * moveSpeed * (float) dir);
+            //Debug.Log(Time.deltaTime * speed * moveSpeed * (float) dir);
             return true;
         }
         transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);
@@ -108,7 +108,7 @@ public class TankSkill : EntitySkill
                 dir = Direction.RIGHT;
             }
             transform.Translate(Time.deltaTime * speed * moveSpeed * (float) dir, 0, 0);
-            Debug.Log(Time.deltaTime * speed * moveSpeed * (float) dir);
+            //Debug.Log(Time.deltaTime * speed * moveSpeed * (float) dir);
             return true;
         }
         transform.Translate(Time.deltaTime * speed * moveSpeed, 0, 0);

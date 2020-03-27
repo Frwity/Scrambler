@@ -7,13 +7,13 @@ public class ShieldEnemyAI : MonoBehaviour
     public bool isActive;
     private Entity entity;
 
-    private bool dashing;
+    //private bool dashing;
     private bool haveTarget;
     Vector3 targetPos;
 
     void Start()
     {
-        dashing = false;
+        //dashing = false;
         haveTarget = false;
 
         entity = GetComponent<Entity>();

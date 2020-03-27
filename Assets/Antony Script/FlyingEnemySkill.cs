@@ -23,7 +23,7 @@ public class FlyingEnemySkill : EntitySkill
 
     public override bool Jump()
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 
     public override bool MoveLeft(float moveSpeed)

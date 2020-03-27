@@ -17,16 +17,12 @@ public class PlayerControl : MonoBehaviour
 
     private Vector3 aimDireciton;
 
-    private SmoothCamera camera;
 
-    [HideInInspector] public Transform entityTr;
     void Start()
     {
-        entityTr = new RectTransform();
         lastControl = 0;
         entity = GetComponentInChildren<Entity>();
         isInVirus = true;
-        camera = GameObject.FindGameObjectWithTag("Camera").GetComponent<SmoothCamera>();
     }
 
     void Update()
@@ -36,7 +32,11 @@ public class PlayerControl : MonoBehaviour
         if (entity.isHidden && Input.GetAxis("Vertical") < 1)
             entity.ExitHiding();
 
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        if (Input.GetAxisRaw("Horizontal") == 0)
+        {
+            entity.MoveRight(0);
+        }
+        else if (Input.GetAxisRaw("Horizontal") > 0)
         {
             entity.MoveRight(Input.GetAxis("Horizontal"));
             lastDirection = 1;
@@ -66,7 +66,6 @@ public class PlayerControl : MonoBehaviour
             entity = entity.Collinding().gameObject.GetComponent<Entity>();
             isInVirus = false;
             entity.tag = "Player";
-            camera.ActualizeTarget();
             entity.DesactivateAI();
         }
         if (Input.GetAxisRaw("Fire1") == 1 && Time.time > controlCD + lastControl && !isInVirus)
@@ -76,14 +75,12 @@ public class PlayerControl : MonoBehaviour
             entity.ActivateAI();
             entity.tag = "Enemy";
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
-            camera.ActualizeTarget();
             isInVirus = true;
 
             
         }
 
         GameObject.FindGameObjectWithTag("Camera").GetComponent<SmoothCamera>().ActualizeTarget();
-        entityTr.position = transform.GetChild(0).position;
     }
 
     private void FixedUpdate()
