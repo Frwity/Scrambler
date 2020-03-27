@@ -19,8 +19,7 @@ public class TankIA : MonoBehaviour
     [SerializeField] private float rangePoint;
     private float nbFired;
     private bool shooting;
-    [SerializeField]
-    private Direction direction = Direction.RIGHT;
+    public Direction direction = Direction.RIGHT;
 
     private TankSkill ts;
     void Start()

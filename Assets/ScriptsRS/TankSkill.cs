@@ -135,12 +135,14 @@ public class TankSkill : EntitySkill
 
     public override bool ActivateAI()
     {
+        GetComponent<TankIA>().direction = dir;
         GetComponent<TankIA>().isActive = true;
         return true;
     }
 
     public override bool DesactivateAI()
     {
+        dir = GetComponent<TankIA>().direction;
         GetComponent<TankIA>().isActive = false;
         return true;
     }
