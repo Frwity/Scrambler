@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
         {
             entity = Instantiate(virus, new Vector3(-100, 2, 0), Quaternion.identity, transform).GetComponent<Entity>();
             isInVirus = true;
+            return;
         }
         if (Input.GetAxisRaw("Vertical") == 1)
             entity.HideInGB();
@@ -50,12 +51,12 @@ public class PlayerControl : MonoBehaviour
         {
             entity.MoveRight(0);
         }
-        else if (Input.GetAxisRaw("Horizontal") > 0)
+        else if (Input.GetAxisRaw("Horizontal") > 0.01)
         {
             entity.MoveRight(Input.GetAxis("Horizontal"));
             lastDirection = 1;
         }
-        else if (Input.GetAxisRaw("Horizontal") < 0)
+        else if (Input.GetAxisRaw("Horizontal") < 0.01)
         {
             entity.MoveLeft(Input.GetAxis("Horizontal"));
             lastDirection = -1;
@@ -100,6 +101,8 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!entity)
+            return;
         tTransform.transform.position = entity.transform.position;
         if (Input.GetAxisRaw("Fire1") == 1)
             entity.Jump();
