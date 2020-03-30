@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   nbJump: 1
-  jumpForce: 10
+  jumpForce: 22
 --- !u!114 &7987167876143128018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0
+  gravity: -34
 --- !u!1 &7987167877625211968
 GameObject:
   m_ObjectHideFlags: 0
