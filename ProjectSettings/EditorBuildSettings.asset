@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/8a332b6e50a690a47a04878323c3d669
+    guid: 8a332b6e50a690a47a04878323c3d669
   - enabled: 1
     path: Assets/Scenes/Scene Antony.unity
-    guid: 8a332b6e50a690a47a04878323c3d669
+    guid: e6e7d5375adeca34896f59f369cf04e7
   m_configObjects: {}

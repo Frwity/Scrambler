@@ -8,15 +8,31 @@ public class GravityScale : MonoBehaviour
 
     private Rigidbody rb;
 
+    private bool isOnGround;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        isOnGround = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(new Vector3(0, gravity, 0));
+        if (!isOnGround)
+            rb.AddForce(new Vector3(0, gravity, 0));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+            isOnGround = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+            isOnGround = false;
     }
 }
