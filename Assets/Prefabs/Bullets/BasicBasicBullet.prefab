@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingPower: 1000
+  damage: 1
   imprecision: 10

@@ -36,6 +36,11 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        if (!entity)
+        {
+            entity = Instantiate(virus, new Vector3(-100, 2, 0), Quaternion.identity, transform).GetComponent<Entity>();
+            isInVirus = true;
+        }
         if (Input.GetAxisRaw("Vertical") == 1)
             entity.HideInGB();
         if (entity.isHidden && Input.GetAxis("Vertical") < 1)
