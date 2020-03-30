@@ -105,8 +105,8 @@ public class Entity : MonoBehaviour
     }
     public void ExitHiding()
     {
-        entitySkill.ExitHiding();
         isHidden = false;
+        entitySkill.ExitHiding();
     }
     public void InflictDamage(int damage)
     {
@@ -182,6 +182,10 @@ public class Entity : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.CompareTag("HidingZone"))
+        {
+            ExitHiding();
+        }
         collidingObj = null;
     }
 }

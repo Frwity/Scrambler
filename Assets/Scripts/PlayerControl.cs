@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
     [HideInInspector] public float lastControl;
     public GameObject virus;
 
-    [HideInInspector] public Entity entity;
+    /*[HideInInspector]*/ public Entity entity;
 
     [HideInInspector] public bool isInVirus;
 
@@ -19,11 +19,19 @@ public class PlayerControl : MonoBehaviour
 
     private GameObject collidingObj;
 
+    private Cinemachine.CinemachineVirtualCamera virtualCamera;
+
+    private GameObject tTransform;
+
     void Start()
     {
+        virtualCamera = GameObject.FindGameObjectWithTag("VirtualCam").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         lastControl = 0;
         entity = GetComponentInChildren<Entity>();
         isInVirus = true;
+        tTransform = new GameObject();
+        virtualCamera.Follow = tTransform.transform;
+        virtualCamera.LookAt = tTransform.transform;
     }
 
     void Update()
@@ -82,13 +90,12 @@ public class PlayerControl : MonoBehaviour
             entity.tag = "Enemy";
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
             isInVirus = true;
-
-            
         }
     }
 
     private void FixedUpdate()
     {
+        tTransform.transform.position = entity.transform.position;
         if (Input.GetAxisRaw("Fire1") == 1)
             entity.Jump();
     }
