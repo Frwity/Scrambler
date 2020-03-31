@@ -12,6 +12,7 @@ TagManager:
   - HidingZone
   - PossessZone
   - VirtualCam
+  - Shield
   layers:
   - Default
   - TransparentFX

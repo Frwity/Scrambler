@@ -7,17 +7,21 @@ public class VirusSkill : EntitySkill
     [SerializeField] private float speed;
     [SerializeField] private int nbJump;
     [SerializeField] private float jumpForce;
+    [SerializeField] [Range(0, 1)] private float airControlFactor;
+    [SerializeField] [Range(0, 1)] private float accelerationFactor;
 
 
 
     private int jumped;
     private int wallDir;
     private bool falling;
+    private bool grounded;
     private bool touchingWall;
     private Rigidbody rb;
 
     void Start()
     {
+        grounded = false;
         touchingWall = false;
         falling = true;
         jumped = 0;
@@ -27,18 +31,23 @@ public class VirusSkill : EntitySkill
 
     void Update()
     {
-
     }
 
     private void FixedUpdate()
     {
+        if (rb.velocity.x > speed)
+            rb.velocity = new Vector3(speed, rb.velocity.y, rb.velocity.z);
+
+        if (rb.velocity.x < -speed)
+            rb.velocity = new Vector3(-speed, rb.velocity.y, rb.velocity.z);
+
         if (rb.velocity.y < 0)
             falling = true;
     }
 
     public override bool Jump()
     {
-        if (touchingWall)
+        if (touchingWall && !grounded)
         {
             rb.velocity = new Vector3(jumpForce * wallDir, jumpForce, rb.velocity.z);
             jumped = 1;
@@ -58,13 +67,21 @@ public class VirusSkill : EntitySkill
 
     public override bool MoveLeft(float moveSpeed)
     {
-        rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
+        if (!grounded)
+            rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * airControlFactor, rb.velocity.y, rb.velocity.z);
+        else
+            rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor, rb.velocity.y, rb.velocity.z);
+
         return true;
     }
 
     public override bool MoveRight(float moveSpeed)
     {
-        rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
+        if (!grounded)
+            rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * airControlFactor, rb.velocity.y, rb.velocity.z);
+        else
+            rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor, rb.velocity.y, rb.velocity.z);
+
         return true;
     }
 
@@ -75,13 +92,11 @@ public class VirusSkill : EntitySkill
 
     public override bool ActivateAI()
     {
-        GetComponent<FlyingEnemyIA>().isActive = true;
         return true;
     }
 
     public override bool DesactivateAI()
     {
-        GetComponent<FlyingEnemyIA>().isActive = false;
         return true;
     }
 
@@ -89,12 +104,17 @@ public class VirusSkill : EntitySkill
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
+            grounded = true;
             jumped = 0;
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            grounded = true;
+        }
         if (collision.gameObject.CompareTag("Wall"))
         { 
             touchingWall = true;
@@ -107,6 +127,10 @@ public class VirusSkill : EntitySkill
 
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            grounded = false;
+        }
         if (collision.gameObject.CompareTag("Wall"))
         {
             wallDir = 0;

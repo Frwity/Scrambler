@@ -91,7 +91,13 @@ public class ShieldEnemySkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-        shield.transform.rotation = Quaternion.Euler(0, 0, Mathf.Asin(direction.normalized.x / direction.normalized.y));
+        float tempY;
+        if (direction.y < 0.15f)
+            tempY = 0.15f;
+        else
+            tempY = direction.y;
+        if (direction.magnitude > 0.3)
+            shield.transform.rotation = Quaternion.LookRotation(new Vector3(-direction.x, -tempY, 90), Vector3.forward);
     }
 
     public override bool ActivateAI()

@@ -18,7 +18,7 @@ public class GravityScale : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!isOnGround)
             rb.AddForce(new Vector3(0, gravity, 0));

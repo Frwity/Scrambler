@@ -6,15 +6,17 @@ public class FlyingBasicBullet : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private int damage;
+    
+    private Vector3 direction;
 
     void Start()
     {
-        
+        direction = new Vector3(0.0f, -1.0f, 0.0f);
     }
 
     void Update()
     {
-        transform.Translate(0, Time.deltaTime * -speed, 0);
+        transform.Translate(direction * Time.deltaTime * speed);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -23,6 +25,14 @@ public class FlyingBasicBullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<Entity>().InflictDamage(damage);
         }
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Debug.Log(direction.ToString());
+            direction = -direction;
+            Debug.Log(direction.ToString());
+            return;
+        }
+        
         Destroy(gameObject);
     }
 }

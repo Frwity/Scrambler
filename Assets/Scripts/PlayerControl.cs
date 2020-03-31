@@ -23,11 +23,14 @@ public class PlayerControl : MonoBehaviour
 
     private GameObject tTransform;
 
+    private bool jumped;
+
     void Start()
     {
         virtualCamera = GameObject.FindGameObjectWithTag("VirtualCam").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         lastControl = 0;
         entity = GetComponentInChildren<Entity>();
+        jumped = false;
         isInVirus = true;
         tTransform = new GameObject();
         virtualCamera.Follow = tTransform.transform;
@@ -46,21 +49,6 @@ public class PlayerControl : MonoBehaviour
             entity.HideInGB();
         if (entity.isHidden && Input.GetAxis("Vertical") < 1)
             entity.ExitHiding();
-
-        if (Input.GetAxisRaw("Horizontal") == 0)
-        {
-            entity.MoveRight(0);
-        }
-        else if (Input.GetAxisRaw("Horizontal") > 0.01)
-        {
-            entity.MoveRight(Input.GetAxis("Horizontal"));
-            lastDirection = 1;
-        }
-        else if (Input.GetAxisRaw("Horizontal") < 0.01)
-        {
-            entity.MoveLeft(Input.GetAxis("Horizontal"));
-            lastDirection = -1;
-        }
 
         aimDireciton.x = Input.GetAxis("RHorizontal");
         aimDireciton.y = Input.GetAxis("RVertical");
@@ -103,8 +91,29 @@ public class PlayerControl : MonoBehaviour
     {
         if (!entity)
             return;
-        tTransform.transform.position = entity.transform.position;
-        if (Input.GetAxisRaw("Fire1") == 1)
+        if (Input.GetAxisRaw("Horizontal") == 0)
+        {
+            entity.MoveRight(0);
+        }
+        else if (Input.GetAxisRaw("Horizontal") > 0.01)
+        {
+            entity.MoveRight(Input.GetAxis("Horizontal"));
+            lastDirection = 1;
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0.01)
+        {
+            entity.MoveLeft(Input.GetAxis("Horizontal"));
+            lastDirection = -1;
+        }
+        if (Input.GetAxis("Fire1") == 0)
+        {
+            jumped = false;
+        }
+        if (!jumped && Input.GetAxisRaw("Fire1") == 1)
+        {   
+            jumped = true;
             entity.Jump();
+        }
+        tTransform.transform.position = entity.transform.position;
     }
 }
