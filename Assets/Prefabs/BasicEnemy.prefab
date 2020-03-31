@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 6531962691575589098}
   - component: {fileID: 5559768263519713667}
   - component: {fileID: 8348260990958963665}
+  - component: {fileID: 947260122666559739}
   m_Layer: 9
   m_Name: BasicEnemy
   m_TagString: Enemy
@@ -195,7 +196,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6531962691575589097}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -235,10 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbJump: 1
-  jumpForce: 10
+  jumpForce: 7
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
-  speed: 5
+  speed: 8
   fireRate: 1
+  xAim: 0
 --- !u!114 &8348260990958963665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +257,19 @@ MonoBehaviour:
   entitySkill: {fileID: 5559768263519713667}
   controllable: 1
   isHidden: 0
+--- !u!114 &947260122666559739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6531962691575589097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: -20
 --- !u!1 &6531962691780716590
 GameObject:
   m_ObjectHideFlags: 0
