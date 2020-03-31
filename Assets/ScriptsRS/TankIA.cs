@@ -20,7 +20,12 @@ public class TankIA : MonoBehaviour
     private float nbFired;
     private bool shooting;
     public Direction direction = Direction.RIGHT;
-
+    [SerializeField] float currentLostTimer = 0.0f;
+    [SerializeField] private float lostTimer;
+    [SerializeField]private bool hasPlayerGoneInBack = false; 
+    [SerializeField]private bool HasTurnedOnce = false;
+    [SerializeField] private float Backtimer = 0.0f;
+    [SerializeField] private float currentBackTimer = 0.0f;
     private TankSkill ts;
     void Start()
     {
@@ -39,23 +44,26 @@ public class TankIA : MonoBehaviour
     {
         if (!isActive || player == null)
             return;
-        if (!shooting)
+        if (!shooting && entity.isPlayerInSight)
         {
-            
-            if (player.transform.position.x > transform.position.x && (direction == Direction.LEFT))
+            currentLostTimer = 0.0f;
+            currentBackTimer = 0.0f;
+            hasPlayerGoneInBack = false;
+            HasTurnedOnce = false;
+            if (entity.lastPlayerPosKnown.x > transform.position.x && (direction == Direction.LEFT))
             {
                 direction = Direction.RIGHT;
                 ts.changeRotation();
                 transform.rotation =  Quaternion.Euler(0,0,0);
             }
-            else if (player.transform.position.x < transform.position.x &&(direction == Direction.RIGHT)) 
+            else if (entity.lastPlayerPosKnown.x < transform.position.x &&(direction == Direction.RIGHT)) 
             {
                 direction = Direction.LEFT;
                 ts.changeRotation();
                 transform.rotation = Quaternion.Euler(0,180,0);
             }
             //Debug.Log( (transform.position.x + ((int) direction * rangePoint)));
-            if ((player.transform.position.x ) < (transform.position.x + ((int) direction * rangePoint) -0.15))
+            if ((entity.lastPlayerPosKnown.x ) < (transform.position.x + ((int) direction * rangePoint) -0.15))
             {
                 if (direction == Direction.RIGHT)
                 {
@@ -67,7 +75,7 @@ public class TankIA : MonoBehaviour
                 }
                     
             }
-            else if ((player.transform.position.x ) > (transform.position.x + ((int) direction * rangePoint)+0.15))
+            else if ((entity.lastPlayerPosKnown.x ) > (transform.position.x + ((int) direction * rangePoint)+0.15))
             {
                 if (direction == Direction.RIGHT)
                 {
@@ -81,7 +89,67 @@ public class TankIA : MonoBehaviour
             else
                 shooting = true;
         }
-        else
+        else if (entity.LostPlayer)
+        {
+            if (currentLostTimer < lostTimer)
+            {
+                currentLostTimer += Time.smoothDeltaTime;
+                return;
+            }
+            if (entity.lastPlayerPosKnown.x > transform.position.x && (direction == Direction.LEFT) && !HasTurnedOnce)
+            {
+                direction = Direction.RIGHT;
+                ts.changeRotation();
+                hasPlayerGoneInBack = true;
+                HasTurnedOnce = true;
+                transform.rotation =  Quaternion.Euler(0,0,0);
+            }
+            else if (entity.lastPlayerPosKnown.x < transform.position.x &&(direction == Direction.RIGHT) && !HasTurnedOnce) 
+            {
+                direction = Direction.LEFT;
+                ts.changeRotation();
+                hasPlayerGoneInBack = true;
+                HasTurnedOnce = true;
+                transform.rotation = Quaternion.Euler(0,180,0);
+            }
+            if ((entity.lastPlayerPosKnown.x ) < (transform.position.x  -0.15) && !hasPlayerGoneInBack)
+            {
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveRight(-1);
+                }
+                else
+                {
+                    entity.MoveLeft(1);
+                }
+                    
+            }
+            else if ((entity.lastPlayerPosKnown.x ) > (transform.position.x+0.15)&& !hasPlayerGoneInBack)
+            {
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveLeft(1);
+                }
+                else
+                {
+                    entity.MoveRight(-1);
+                }
+            }
+            else if (hasPlayerGoneInBack && currentBackTimer < Backtimer)
+            {
+                currentBackTimer += Time.smoothDeltaTime;
+                Debug.Log("HERE");
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveLeft(1);
+                }
+                else
+                {
+                    entity.MoveRight(1);
+                }
+            }
+        }
+        else if (shooting)
         {
             if (entity.Shoot(new Vector3(1, 1, 1)))
             { 
@@ -92,6 +160,10 @@ public class TankIA : MonoBehaviour
                     nbFired = 0;
                 }
             }
+        }
+        else
+        {
+            //move
         }
     }
 }
