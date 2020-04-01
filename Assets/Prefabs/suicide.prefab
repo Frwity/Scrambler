@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2462951506704342485}
   - component: {fileID: 2462951506704342484}
   - component: {fileID: 2462951506704342483}
+  - component: {fileID: 648543573952791465}
   m_Layer: 9
   m_Name: suicide
   m_TagString: Enemy
@@ -139,9 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f2d9f8589feb64fa5e1d98ce585ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 12
   chargeTime: 1
-  exploRay: 100
+  exploRay: 10
   damage: 100
 --- !u!114 &2462951506704342483
 MonoBehaviour:
@@ -159,6 +160,19 @@ MonoBehaviour:
   entitySkill: {fileID: 2462951506704342484}
   controllable: 1
   isHidden: 0
+--- !u!114 &648543573952791465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462951506704342486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: -15
 --- !u!1 &3044287290998218745
 GameObject:
   m_ObjectHideFlags: 0

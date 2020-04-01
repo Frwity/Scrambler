@@ -111,7 +111,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!114 &7987167876143128017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   nbJump: 1
-  jumpForce: 22
+  jumpForce: 18
   airControlFactor: 0.13
   accelerationFactor: 0.13
 --- !u!114 &7987167876143128018
@@ -145,6 +145,9 @@ MonoBehaviour:
   entitySkill: {fileID: 7987167876143128017}
   controllable: 1
   isHidden: 0
+  isPlayerInSight: 0
+  LostPlayer: 0
+  lastPlayerPosKnown: {x: 0, y: 0, z: 0}
 --- !u!114 &504269849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -34
+  gravity: -15
 --- !u!1 &7987167877625211968
 GameObject:
   m_ObjectHideFlags: 0

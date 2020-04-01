@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 487638414128119990}
   - component: {fileID: 487638414128119991}
   - component: {fileID: 487638414128119985}
+  - component: {fileID: 834707874345409293}
   m_Layer: 9
   m_Name: Tank
   m_TagString: Enemy
@@ -149,7 +150,7 @@ MonoBehaviour:
     type: 3}
   cooldown: 1
   numberOfProjectile: 3
-  speed: 3
+  speed: 5
   rangePoint: 0
 --- !u!114 &487638414128119985
 MonoBehaviour:
@@ -167,6 +168,19 @@ MonoBehaviour:
   entitySkill: {fileID: 487638414128119991}
   controllable: 1
   isHidden: 0
+--- !u!114 &834707874345409293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487638414128119982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: -15
 --- !u!1 &714007453377370538
 GameObject:
   m_ObjectHideFlags: 0
