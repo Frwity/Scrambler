@@ -23,6 +23,8 @@ public class TankSkill : EntitySkill
     private int angleRotated;
     [HideInInspector] public float rangePoint;
     private Direction dir;
+
+    [SerializeField] private GameObject cannon;
     Vector2 Rotate(Vector2 aPoint, float aDegree)
     {
         return Quaternion.Euler(0,0,aDegree) * aPoint;
@@ -30,7 +32,8 @@ public class TankSkill : EntitySkill
 
     public void changeRotation()
     {
-        angleRotated = angleInDeg * (int)dir;
+        //angleRotated = angleInDeg * (int)dir;
+        shootingDir.x = -shootingDir.x;
     }
     void Start()
     {
@@ -54,8 +57,8 @@ public class TankSkill : EntitySkill
         if (lastAngle != angleInDeg || lastRotationAngle != (int)transform.rotation.y)
         {
             //Debug.Log(transform.right);
-            angleRotated = angleInDeg * (int) dir;
-            shootingDir = Rotate(transform.right,  angleRotated);
+            //angleRotated = angleInDeg * (int) dir;
+            //shootingDir = Rotate(transform.right,  angleRotated);
             lastAngle = angleInDeg;
             lastRotationAngle = (int)transform.rotation.y;
         }
@@ -78,14 +81,14 @@ public class TankSkill : EntitySkill
             {
                 transform.rotation = Quaternion.Euler(0,180,0);
                 dir = Direction.LEFT;
-                changeRotation();
+                //changeRotation();
                 
             }
             else if (Input.GetAxis("RHorizontal") > 0.05f && dir != Direction.RIGHT)
             {
                  transform.rotation = Quaternion.Euler(0,0,0);
                  dir = Direction.RIGHT;
-                 changeRotation();
+                 //changeRotation();
 
             }
             transform.Translate(Time.deltaTime * speed * moveSpeed * (float) dir, 0, 0);
@@ -119,7 +122,7 @@ public class TankSkill : EntitySkill
         {
             int angleToAdd = Random.Range(-precision, precision);
             Vector2 newShootDir = Rotate(shootingDir, angleToAdd);
-            GameObject bulletInst = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            GameObject bulletInst = Instantiate(bulletPrefab, cannon.transform.position, transform.rotation);
             Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), 
                 this.GetComponent<Collider>(), true);
             CurveBullet bullett = bulletInst.GetComponent<CurveBullet>();
@@ -154,14 +157,22 @@ public class TankSkill : EntitySkill
             transform.rotation = Quaternion.Euler(0,180,0);
             dir = Direction.LEFT;
             changeRotation();
-
+            
+            
         }
         else if (direction.x > 0.05f && dir != Direction.RIGHT)
         {
             transform.rotation = Quaternion.Euler(0,0,0);
             dir = Direction.RIGHT;
             changeRotation();
+            
+        }
 
+        if (Mathf.Abs(direction.x) > 0.05 && direction.y > -0.05)
+        {
+            shootingDir = direction.normalized;
+            Vector3 forw = new Vector3(-shootingDir.y, shootingDir.x, transform.position.z);
+            cannon.transform.rotation = Quaternion.LookRotation(forw, shootingDir);
         }
     }
 }
