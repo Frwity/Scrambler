@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBasicBullet : MonoBehaviour
+public class BasicBasicBullet : BulletSharedClass
 {
-    [SerializeField] public float shootingPower;
-    [SerializeField] private int damage;
-
-    [SerializeField] public float imprecision; // is a measure in degrees, forming a cone of fire. 
-
     void Start()
     {
 
@@ -16,7 +11,7 @@ public class BasicBasicBullet : MonoBehaviour
 
     void Update()
     {
-        
+        transform.Translate(direction * Time.deltaTime * speed);
     }
 
     private void OnCollisionEnter(Collision collision)
