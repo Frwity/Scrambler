@@ -12,12 +12,14 @@ public class BasicEnemySkill : EntitySkill
     private Rigidbody rb;
 
     [SerializeField] private GameObject bullet;
-    [SerializeField] private float speed;
+    
+    [SerializeField] private float moveSpeed;
 
     [SerializeField] private float fireRate;
+    [SerializeField] private float imprecision; // is a measure in degrees, forming a cone of fire. 
     private float lastFired;
 
-    public float xAim = 0f;
+    [HideInInspector] public float xAim = 0f;
 
     void Start()
     {
@@ -50,16 +52,16 @@ public class BasicEnemySkill : EntitySkill
         return false;
     }
 
-    public override bool MoveLeft(float moveSpeed)
+    public override bool MoveLeft(float _moveSpeed)
     {
-        rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(moveSpeed * _moveSpeed, rb.velocity.y, rb.velocity.z);
 
         return true;
     }
 
-    public override bool MoveRight(float moveSpeed)
+    public override bool MoveRight(float _moveSpeed)
     {
-        rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(moveSpeed * _moveSpeed, rb.velocity.y, rb.velocity.z);
 
         return true;
     }
@@ -70,10 +72,11 @@ public class BasicEnemySkill : EntitySkill
         {
             GameObject firedBullet = Instantiate(bullet, transform.position - transform.right, Quaternion.identity);
 
-            BasicBasicBullet bulletParameters = firedBullet.GetComponent<BasicBasicBullet>();
+            directionVector = Quaternion.Euler(0, 0, Random.Range(-imprecision, imprecision)) * directionVector;
 
-            firedBullet.transform.Rotate(0, 0, Random.Range(-bulletParameters.imprecision, bulletParameters.imprecision));
-            firedBullet.GetComponent<Rigidbody>().AddForce(directionVector * bulletParameters.shootingPower);
+            BulletSharedClass firedBulletInfo = firedBullet.GetComponent<BulletSharedClass>();
+            firedBulletInfo.direction = directionVector.normalized;
+            firedBulletInfo.shooter = gameObject;
 
             lastFired = Time.time;
             return true;

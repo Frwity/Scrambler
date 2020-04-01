@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingBasicBullet : MonoBehaviour
+public class FlyingBasicBullet : BulletSharedClass
 {
-    [SerializeField] private float speed;
-    [SerializeField] private int damage;
-    
-    private Vector3 direction;
-
     void Start()
     {
         direction = new Vector3(0.0f, -1.0f, 0.0f);
