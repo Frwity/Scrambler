@@ -125,7 +125,7 @@ public class Entity : MonoBehaviour
         collidingObj = other.gameObject;
         if (CompareTag("Player") || CompareTag("PossessZone"))
         {
-            Debug.Log($"collided with {gameObject.name}");
+            //Debug.Log($"collided with {gameObject.name}");
             return;
         }
 

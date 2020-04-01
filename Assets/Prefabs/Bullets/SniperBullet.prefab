@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4927462526213168821}
   m_Layer: 10
   m_Name: SniperBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,3 +107,4 @@ MonoBehaviour:
   speed: 50
   damage: 2
   direction: {x: 0, y: 0, z: 0}
+  shooter: {fileID: 0}

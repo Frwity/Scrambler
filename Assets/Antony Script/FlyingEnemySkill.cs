@@ -42,7 +42,10 @@ public class FlyingEnemySkill : EntitySkill
     {
         if (Time.time > lastFired + fireRate)
         {
-            Instantiate(bullet, transform.position + Vector3.down, Quaternion.identity);
+            GameObject firedBullet = Instantiate(bullet, transform.position + Vector3.down, Quaternion.identity);
+            BulletSharedClass firedBulletInfo = firedBullet.GetComponent<BulletSharedClass>();
+            firedBulletInfo.direction = Vector3.down;
+            firedBulletInfo.shooter = gameObject;
             lastFired = Time.time;
             return true;
         }

@@ -118,7 +118,6 @@ public class ShieldEnemySkill : EntitySkill
         {
             jumped = 0;
         }
-
         if (dashing && gameObject.CompareTag("Player") && collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<Entity>().InflictDamage(dashDamage);
