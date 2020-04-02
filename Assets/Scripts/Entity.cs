@@ -36,7 +36,7 @@ public class Entity : MonoBehaviour
     public bool isHidden;
 
     private GameObject collidingObj;
-    [HideInInspector]public bool isPlayerInSight = false;
+    public bool isPlayerInSight = false;
     [HideInInspector]public bool LostPlayer = false;
     [HideInInspector]public Vector3 lastPlayerPosKnown;
 
@@ -115,23 +115,21 @@ public class Entity : MonoBehaviour
     {
         life -= damage;
     }
-
-    private void OnTriggerEnter(Collider other)
+    Vector2 Rotate(Vector2 aPoint, float aDegree)
     {
-        collidingObj = other.gameObject;
+        return Quaternion.Euler(0,0,aDegree) * aPoint;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("PossessZone"))
-            collidingObj = other.gameObject;
-        //if (CompareTag("Player") || CompareTag("PossessZone"))
-        //{
-        //    Debug.Log($"collided with {gameObject.name}");
-        //    return;
-        //}
-    }
+        collidingObj = other.gameObject;
+        if (CompareTag("Player") || CompareTag("PossessZone"))
+        {
+            //Debug.Log($"collided with {gameObject.name}");
+            return;
+        }
 
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("HidingZone"))

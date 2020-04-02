@@ -16,11 +16,12 @@ public class SuicideSkill : EntitySkill
 
 
     
-    private int jumped;
-    private int wallDir;
-    private bool falling;
-    private bool grounded;
-    private bool touchingWall;
+    [SerializeField]private int jumped;
+    [SerializeField]private int wallDir;
+    [SerializeField]private bool falling;
+    [SerializeField]private bool grounded;
+    [SerializeField] private bool touchingWall;
+    [SerializeField] private bool Roofed;
     private Rigidbody rb;
     private float timer = 0;
 
@@ -31,6 +32,7 @@ public class SuicideSkill : EntitySkill
         grounded = false;
         touchingWall = false;
         falling = true;
+        Roofed = false;
         jumped = 0;
         wallDir = 0;
         rb = GetComponent<Rigidbody>();
@@ -49,7 +51,7 @@ public class SuicideSkill : EntitySkill
 
         if (rb.velocity.x < -speed)
             rb.velocity = new Vector3(-speed, rb.velocity.y, rb.velocity.z);
-        if (rb.velocity.y > speed)
+        if (rb.velocity.y > speed && touchingWall)
         {
             rb.velocity = new Vector3(rb.velocity.x, speed, rb.velocity.z);
         }
@@ -64,8 +66,9 @@ public class SuicideSkill : EntitySkill
 
     public override bool Jump()
     {
-        if (touchingWall && !grounded)
+        if (touchingWall && !grounded && !Roofed)
         {
+            
             rb.velocity = new Vector3(jumpForce * wallDir, jumpForce, rb.velocity.z);
             jumped = 1;
             falling = false;
@@ -73,8 +76,15 @@ public class SuicideSkill : EntitySkill
             
             return true;
         }
+        else if (Roofed)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, -jumpForce, rb.velocity.z);
+            Roofed = false;
+            return true;
+        }
         else if (jumped < nbJump && falling)
         {
+            
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             jumped++;
             falling = false;
@@ -87,13 +97,26 @@ public class SuicideSkill : EntitySkill
 
     public override bool MoveLeft(float moveSpeed)
     {
-        if (!grounded && !touchingWall)
+        if (!grounded && !touchingWall && !Roofed)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * airControlFactor, rb.velocity.y, rb.velocity.z);
+        else if (Roofed && touchingWall)
+        {
+                    rb.velocity = Vector3.zero;
+                    float xy = -speed * wallDir * moveSpeed * accelerationFactor * Time.smoothDeltaTime;
+                    transform.Translate(new Vector3(xy,xy, 0));
+                    
+        }
         else if (touchingWall)
         {
             
             rb.velocity = Vector3.zero;
             transform.Translate(new Vector3(0,-speed* wallDir * moveSpeed * accelerationFactor * Time.smoothDeltaTime, 0));
+        }
+        else if (Roofed)
+        {
+            rb.velocity = Vector3.zero;
+            transform.Translate(new Vector3(-speed * moveSpeed * accelerationFactor * Time.smoothDeltaTime,0, 0));
+
         }
 
         if (grounded && touchingWall)
@@ -109,13 +132,27 @@ public class SuicideSkill : EntitySkill
 
     public override bool MoveRight(float moveSpeed)
     {
-        if (!grounded && !touchingWall)
+        if (!grounded && !touchingWall && !Roofed)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * airControlFactor, rb.velocity.y, rb.velocity.z);
+        else if (Roofed && touchingWall)
+        {
+            rb.velocity = Vector3.zero;
+            float xy = -speed * moveSpeed * wallDir * accelerationFactor * Time.smoothDeltaTime;
+            
+            transform.Translate(new Vector3(xy,xy, 0));
+            Debug.Log("eeeee");
+        }
         else if (touchingWall)
         {
             
             rb.velocity = Vector3.zero;
             transform.Translate(new Vector3(0,-speed* wallDir * moveSpeed* accelerationFactor * Time.smoothDeltaTime, 0));
+        }
+        else if (Roofed)
+        {
+            rb.velocity = Vector3.zero;
+            transform.Translate(new Vector3(-speed * moveSpeed * accelerationFactor * Time.smoothDeltaTime,0, 0));
+
         }
         if (grounded && touchingWall)
         {
@@ -198,6 +235,13 @@ public class SuicideSkill : EntitySkill
         {
             rb.useGravity = false;
         }
+        if (collision.gameObject.CompareTag("Roof"))
+        {
+            Roofed = true;
+            rb.useGravity = false;
+            rb.velocity = Vector3.zero;
+            
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -222,11 +266,20 @@ public class SuicideSkill : EntitySkill
         {
             grounded = false;
         }
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") )
         {
             wallDir = 0;
             touchingWall = false;
-            rb.useGravity = true;
+            if (!Roofed)
+                rb.useGravity = true;
+        }
+        if (collision.gameObject.CompareTag("Roof"))
+        {
+            Roofed = false;
+            if(!touchingWall)
+                rb.useGravity = true;
+            
+            
         }
     }
 }

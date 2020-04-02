@@ -238,6 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3677809049107683151}
   - component: {fileID: 190301162499211976}
+  - component: {fileID: 8934826148471059542}
   m_Layer: 13
   m_Name: Vision
   m_TagString: Untagged
@@ -272,6 +273,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.827194, y: 4.1393814, z: 1}
   m_Center: {x: 2.1246338, y: 1.5696907, z: 0}
+--- !u!114 &8934826148471059542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859917821911075791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bfbcd63518c424b9713042d8450018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6922781912599982004
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +411,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -10, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -10.000001, y: 0.000000089631044, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -470,3 +483,6 @@ MonoBehaviour:
   entitySkill: {fileID: 6922781912599982002}
   controllable: 1
   isHidden: 1
+  isPlayerInSight: 0
+  LostPlayer: 0
+  lastPlayerPosKnown: {x: 0, y: 0, z: 0}

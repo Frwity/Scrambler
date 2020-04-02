@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   direction: 1
-  speed: 50
+  speed: 10
 --- !u!1 &1482909440423840129
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class Vision : MonoBehaviour
         }
 
         
-        Debug.Log($"{name}");
+        
         float mag = (other.transform.position - transform.position).magnitude;
         //int visionMask = LayerMask.NameToLayer("Vision");
         int visionMask = 1 << 13 ;
@@ -58,7 +58,7 @@ public class Vision : MonoBehaviour
             //Debug.Log("player not found");
             return;
         }
-
+        //Debug.Log($"{name}");
         playerPos = (playerPos - transform.position);
         playerPos.y -= other.transform.localScale.y/2.0f;
         
@@ -74,6 +74,7 @@ public class Vision : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
+                    //Debug.Log("/*DOUBLE*/ VISION");
                     entity.isPlayerInSight = true;
                     entity.LostPlayer = false;
                     entity.lastPlayerPosKnown = other.transform.position;
