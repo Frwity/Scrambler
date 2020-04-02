@@ -115,21 +115,23 @@ public class Entity : MonoBehaviour
     {
         life -= damage;
     }
-    Vector2 Rotate(Vector2 aPoint, float aDegree)
+
+    private void OnTriggerEnter(Collider other)
     {
-        return Quaternion.Euler(0,0,aDegree) * aPoint;
+        collidingObj = other.gameObject;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        collidingObj = other.gameObject;
-        if (CompareTag("Player") || CompareTag("PossessZone"))
-        {
-            //Debug.Log($"collided with {gameObject.name}");
-            return;
-        }
-
+        if (other.CompareTag("PossessZone"))
+            collidingObj = other.gameObject;
+        //if (CompareTag("Player") || CompareTag("PossessZone"))
+        //{
+        //    Debug.Log($"collided with {gameObject.name}");
+        //    return;
+        //}
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("HidingZone"))
