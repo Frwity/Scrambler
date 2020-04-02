@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CurveBullet : MonoBehaviour
+public class CurveBullet : BulletSharedClass
 {
-    [SerializeField] private int damage;
     public Vector3 velocity;
     
     // Start is called before the first frame update
@@ -23,15 +22,8 @@ public class CurveBullet : MonoBehaviour
         transform.localRotation = Quaternion.LookRotation(velocity);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public override void doBehavior(GameObject hitObject)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<Entity>().InflictDamage(damage);
-        }
-        //Debug.Log($"collided at {collision.collider.name}");
-        Vector3 v = collision.GetContact(0).point - new Vector3(5.33f, 1.78158f, 0);
-        
-        Destroy(this.gameObject);
+        hitObject.GetComponent<Entity>().InflictDamage(damage);
     }
 }

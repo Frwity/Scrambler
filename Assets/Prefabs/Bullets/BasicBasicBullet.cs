@@ -14,12 +14,8 @@ public class BasicBasicBullet : BulletSharedClass
         transform.Translate(direction * Time.deltaTime * speed);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public override void doBehavior(GameObject hitObject)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<Entity>().InflictDamage(damage);
-        }
-        Destroy(gameObject);
+        hitObject.gameObject.GetComponent<Entity>().InflictDamage(damage);
     }
 }

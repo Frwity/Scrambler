@@ -34,10 +34,16 @@ public class RocketBullet : BulletSharedClass
         {
             if ((inRange.CompareTag("Player") || inRange.CompareTag("Enemy")) && (inRange.gameObject != shooter))
             {
-                inRange.GetComponent<Entity>().InflictDamage(damage);
+                if (inRange.GetComponent<Entity>())
+                    inRange.GetComponent<Entity>().InflictDamage(damage);
             }
         }
 
         Destroy(gameObject);
+    }
+
+    public override void doBehavior(GameObject hitObject)
+    {
+
     }
 }

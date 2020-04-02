@@ -78,4 +78,13 @@ public class FlyingEnemySkill : EntitySkill
     {
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
 }

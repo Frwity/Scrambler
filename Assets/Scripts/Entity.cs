@@ -56,6 +56,11 @@ public class Entity : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        collidingObj = null;
+    }
+
     public bool Jump()
     {
         return entitySkill.Jump();

@@ -225,6 +225,12 @@ public class SuicideSkill : EntitySkill
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             grounded = true;

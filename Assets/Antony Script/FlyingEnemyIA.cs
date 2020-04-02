@@ -26,7 +26,7 @@ public class FlyingEnemyIA : MonoBehaviour
 
     void Update()
     {
-        if (!isActive  && !shooting)
+        if (!isActive)
             return;
         if (!shooting && entity.isPlayerInSight)
         {

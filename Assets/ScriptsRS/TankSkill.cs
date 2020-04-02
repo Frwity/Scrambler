@@ -175,4 +175,13 @@ public class TankSkill : EntitySkill
             cannon.transform.rotation = Quaternion.LookRotation(forw, shootingDir);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
 }

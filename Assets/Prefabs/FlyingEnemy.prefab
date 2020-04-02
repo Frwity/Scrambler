@@ -259,6 +259,7 @@ MonoBehaviour:
   speed: 3
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
   fireRate: 1
+  MaxAngle: 0
 --- !u!114 &7546050685290015936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ GameObject:
   - component: {fileID: 7546050685399595587}
   m_Layer: 8
   m_Name: Hover
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

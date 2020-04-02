@@ -114,17 +114,14 @@ public class ShieldEnemySkill : EntitySkill
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
+            Destroy(collision.gameObject);
+        }
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             jumped = 0;
-        }
-        if (dashing && gameObject.CompareTag("Player") && collision.gameObject.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<Entity>().InflictDamage(dashDamage);
-        }
-        if (dashing && gameObject.CompareTag("Enemy") && collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<Entity>().InflictDamage(dashDamage);
         }
     }
 }
