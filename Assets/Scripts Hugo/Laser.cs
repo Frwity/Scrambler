@@ -10,11 +10,18 @@ public class Laser : BulletSharedClass
     // Start is called before the first frame update
     void Start()
     {
-        transform.localScale += new Vector3(0, range, 0);
-        transform.Translate( direction * (range + 1) );
+        if ( Physics.Raycast(transform.position, direction, range) )
+        {
+            transform.localScale += new Vector3(0, range, 0);
+            transform.Translate(direction * (range + 1));
 
-        transform.Rotate(Quaternion.LookRotation(direction).eulerAngles);
-        transform.Rotate(90, 0, 0);
+            transform.Rotate(Quaternion.LookRotation(direction).eulerAngles);
+            transform.Rotate(90, 0, 0);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -26,11 +33,8 @@ public class Laser : BulletSharedClass
             Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public override void doBehavior(GameObject hitObject)
     {
-        if ( (other.CompareTag("Player") || other.CompareTag("Enemy")) && (other.gameObject != shooter) )
-        {
-            other.GetComponent<Entity>().InflictDamage(damage);
-        }
+        hitObject.GetComponent<Entity>().InflictDamage(damage);
     }
 }

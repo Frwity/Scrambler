@@ -10,4 +10,6 @@ public abstract class BulletSharedClass : MonoBehaviour
     [HideInInspector] public Vector3 direction;
 
     [HideInInspector] public GameObject shooter;
+
+    abstract public void doBehavior(GameObject hitObject);
 }

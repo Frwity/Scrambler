@@ -16,18 +16,16 @@ public class FlyingBasicBullet : BulletSharedClass
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        if ( !collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Entity>().InflictDamage(damage);
-        }
-        if (collision.gameObject.CompareTag("Shield"))
-        {
-            Debug.Log(direction.ToString());
-            direction = -direction;
-            Debug.Log(direction.ToString());
-            return;
+            Destroy(gameObject);
         }
         
-        Destroy(gameObject);
+        
+    }
+
+    public override void doBehavior(GameObject hitObject)
+    {
+        hitObject.gameObject.GetComponent<Entity>().InflictDamage(damage);
     }
 }

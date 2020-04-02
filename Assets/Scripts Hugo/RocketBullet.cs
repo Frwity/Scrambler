@@ -40,4 +40,9 @@ public class RocketBullet : BulletSharedClass
 
         Destroy(gameObject);
     }
+
+    public override void doBehavior(GameObject hitObject)
+    {
+        throw new System.NotImplementedException();
+    }
 }

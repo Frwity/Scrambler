@@ -17,12 +17,15 @@ public class SniperBullet : BulletSharedClass
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+    {   
+        if ( !collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Enemy") )
         {
-            collision.gameObject.GetComponent<Entity>().InflictDamage(damage);
+            Destroy(gameObject);
         }
-        
-        Destroy(gameObject);
+    }
+
+    public override void doBehavior(GameObject hitObject)
+    {
+        hitObject.gameObject.GetComponent<Entity>().InflictDamage(damage);
     }
 }
