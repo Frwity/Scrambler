@@ -130,6 +130,12 @@ MonoBehaviour:
   fireCount: 3
   rangePoint: 0
   direction: 1
+  currentLostTimer: 0
+  lostTimer: 0
+  hasPlayerGoneInBack: 0
+  HasTurnedOnce: 0
+  Backtimer: 0
+  currentBackTimer: 0
 --- !u!114 &487638414128119991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +157,7 @@ MonoBehaviour:
   numberOfProjectile: 3
   speed: 3
   rangePoint: 0
+  cannon: {fileID: 1266014278261994395}
 --- !u!114 &487638414128119985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +174,9 @@ MonoBehaviour:
   entitySkill: {fileID: 487638414128119991}
   controllable: 1
   isHidden: 0
+  isPlayerInSight: 0
+  LostPlayer: 0
+  lastPlayerPosKnown: {x: 0, y: 0, z: 0}
 --- !u!1 &714007453377370538
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15955543966552162}
   - component: {fileID: 6825482928527436219}
+  - component: {fileID: 3829835072760936783}
   m_Layer: 13
   m_Name: Vision
   m_TagString: Untagged
@@ -211,6 +222,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.134268, y: 3.6229951, z: 1}
   m_Center: {x: 1.5671344, y: 0.5, z: 0}
+--- !u!114 &3829835072760936783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714007453377370538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bfbcd63518c424b9713042d8450018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1266014278261994395
 GameObject:
   m_ObjectHideFlags: 0

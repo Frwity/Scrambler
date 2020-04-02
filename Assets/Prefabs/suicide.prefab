@@ -143,6 +143,16 @@ MonoBehaviour:
   chargeTime: 1
   exploRay: 100
   damage: 100
+  nbJump: 0
+  jumpForce: 0
+  airControlFactor: 0
+  accelerationFactor: 0
+  jumped: 0
+  wallDir: 0
+  falling: 0
+  grounded: 0
+  touchingWall: 0
+  Roofed: 0
 --- !u!114 &2462951506704342483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +169,9 @@ MonoBehaviour:
   entitySkill: {fileID: 2462951506704342484}
   controllable: 1
   isHidden: 0
+  isPlayerInSight: 0
+  LostPlayer: 0
+  lastPlayerPosKnown: {x: 0, y: 0, z: 0}
 --- !u!1 &3044287290998218745
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2029378501080835673}
   - component: {fileID: 5217735967891963359}
+  - component: {fileID: 2947804271951078214}
   m_Layer: 13
   m_Name: Vision
   m_TagString: Untagged
@@ -261,3 +275,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.8644347, y: 2, z: 1}
   m_Center: {x: 1.1175807, y: 0, z: 0}
+--- !u!114 &2947804271951078214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629686167547707716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bfbcd63518c424b9713042d8450018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 185343002686624217}
   - component: {fileID: 1698287548134132551}
+  - component: {fileID: 279276819345725500}
   m_Layer: 13
   m_Name: Vision
   m_TagString: Untagged
@@ -44,6 +45,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.2947464, y: 9.162856, z: 1}
   m_Center: {x: 0.11565018, y: -4.081428, z: 0}
+--- !u!114 &279276819345725500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185437375206564043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bfbcd63518c424b9713042d8450018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4841390487621402919
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   fireCount: 3
+  lostTimer: 0
 --- !u!114 &7546050685290015934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +275,9 @@ MonoBehaviour:
   entitySkill: {fileID: 7546050685290015934}
   controllable: 1
   isHidden: 0
+  isPlayerInSight: 0
+  LostPlayer: 0
+  lastPlayerPosKnown: {x: 0, y: 0, z: 0}
 --- !u!1 &7546050685399595584
 GameObject:
   m_ObjectHideFlags: 0

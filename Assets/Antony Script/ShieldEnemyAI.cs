@@ -6,7 +6,9 @@ public class ShieldEnemyAI : MonoBehaviour
 {
     public bool isActive;
     private Entity entity;
-
+    private float currentLostTimer = 0.0f;
+    [SerializeField]private float lostTimer = 0.0f;
+    private bool shooting = false;
     //private bool dashing;
     private bool haveTarget;
     Vector3 targetPos;
@@ -21,30 +23,32 @@ public class ShieldEnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (!isActive || !haveTarget)
+        if (!isActive)
             return;
-
-        if (targetPos.x - transform.position.x < -0.25)
-            entity.MoveLeft(-1);
-        else if (targetPos.x - transform.position.x > 0.25)
-            entity.MoveRight(1);
-       
-    }
-
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        if(entity.isPlayerInSight)
         {
-            haveTarget = true;
-            targetPos = other.gameObject.transform.position;
+            currentLostTimer = 0.0f;
+            if (entity.lastPlayerPosKnown.x - transform.position.x < -0.25)
+                entity.MoveLeft(-1);
+            else if (entity.lastPlayerPosKnown.x - transform.position.x > 0.25)
+                entity.MoveRight(1);
+        }
+        else if (entity.LostPlayer)
+        {
+            if (currentLostTimer < lostTimer)
+            {
+                currentLostTimer += Time.smoothDeltaTime;
+                return;
+            }
+            if (entity.lastPlayerPosKnown.x - transform.position.x < -0.25)
+                entity.MoveLeft(-1);
+            else if (entity.lastPlayerPosKnown.x - transform.position.x > 0.25)
+                entity.MoveRight(1);
+        }
+        else if (shooting)
+        {
+            
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            haveTarget = false;
-        }
-    }
+    
 }

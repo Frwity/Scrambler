@@ -36,7 +36,7 @@ public class Entity : MonoBehaviour
     public bool isHidden;
 
     private GameObject collidingObj;
-    [HideInInspector]public bool isPlayerInSight = false;
+    public bool isPlayerInSight = false;
     [HideInInspector]public bool LostPlayer = false;
     [HideInInspector]public Vector3 lastPlayerPosKnown;
 
@@ -125,7 +125,7 @@ public class Entity : MonoBehaviour
         collidingObj = other.gameObject;
         if (CompareTag("Player") || CompareTag("PossessZone"))
         {
-            Debug.Log($"collided with {gameObject.name}");
+            //Debug.Log($"collided with {gameObject.name}");
             return;
         }
 

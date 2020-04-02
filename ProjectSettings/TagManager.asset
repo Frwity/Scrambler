@@ -13,6 +13,7 @@ TagManager:
   - PossessZone
   - VirtualCam
   - Shield
+  - Roof
   layers:
   - Default
   - TransparentFX
