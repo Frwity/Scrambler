@@ -127,8 +127,10 @@ MonoBehaviour:
   speed: 15
   nbJump: 1
   jumpForce: 18
+  wallFallSpeed: 1
   airControlFactor: 0.13
   accelerationFactor: 0.13
+  jumped: 0
 --- !u!114 &7987167876143128018
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -83,6 +83,7 @@ public class PlayerControl : MonoBehaviour
             entity.ActivateAI();
             entity.tag = "Enemy";
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
+            entity.GetComponent<VirusSkill>().jumped = 1;
             isInVirus = true;
         }
     }

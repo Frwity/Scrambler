@@ -7,12 +7,11 @@ public class VirusSkill : EntitySkill
     [SerializeField] private float speed;
     [SerializeField] private int nbJump;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float wallFallSpeed;
     [SerializeField] [Range(0, 1)] private float airControlFactor;
     [SerializeField] [Range(0, 1)] private float accelerationFactor;
 
-
-
-    private int jumped;
+    [HideInInspector] public int jumped;
     private int wallDir;
     private bool falling;
     private bool grounded;
@@ -23,8 +22,8 @@ public class VirusSkill : EntitySkill
     {
         grounded = false;
         touchingWall = false;
-        falling = true;
-        jumped = 0;
+        falling = false;
+        //jumped = 0;
         wallDir = 0;
         rb = GetComponent<Rigidbody>();
     }
@@ -111,9 +110,10 @@ public class VirusSkill : EntitySkill
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             grounded = true;
+            jumped = 0;
         }
         if (collision.gameObject.CompareTag("Wall"))
         { 
@@ -122,12 +122,14 @@ public class VirusSkill : EntitySkill
                 wallDir = -1;
             else
                 wallDir = 1;
+            if (!grounded)
+                transform.Translate(0, -wallFallSpeed * Time.deltaTime, 0);
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             grounded = false;
         }
