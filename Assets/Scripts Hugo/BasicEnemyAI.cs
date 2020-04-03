@@ -27,11 +27,14 @@ public class BasicEnemyAI : MonoBehaviour
     
     [SerializeField]private float currentLostTimer = 0.0f;
     [SerializeField]private float lostTimer = 0.0f;
+
     [SerializeField]private bool hasPlayerGoneInBack = false; 
     [SerializeField]private bool HasTurnedOnce = false;
     [SerializeField] private float Backtimer = 0.0f;
     [SerializeField] private float currentBackTimer = 0.0f;
+    
     private bool previousFlip = false;
+
     void Start()
     {
         player          = GameObject.FindGameObjectWithTag("Player");
@@ -134,15 +137,19 @@ public class BasicEnemyAI : MonoBehaviour
     {
         Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position);
         float distToPlayer = vecToPlayer.magnitude;
+
         Debug.Log(entity.isPlayerInSight);
+        
         if (entity.isPlayerInSight)
         {
             AIflipControl(vecToPlayer.x);
+
             previousFlip = flipped;
             currentLostTimer = 0.0f;
             currentBackTimer = 0.0f;
             hasPlayerGoneInBack = false;
             HasTurnedOnce = false;
+
             if (distanceToKeepAwayFromPlayer < distToPlayer)
             {
                 
@@ -192,6 +199,7 @@ public class BasicEnemyAI : MonoBehaviour
                  if (currentBackTimer < Backtimer)
                  {
                      currentBackTimer += Time.smoothDeltaTime;
+
                      if (lookingRight)
                      {
                          entity.MoveRight(1);
