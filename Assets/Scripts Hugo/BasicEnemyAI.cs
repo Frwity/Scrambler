@@ -31,7 +31,9 @@ public class BasicEnemyAI : MonoBehaviour
     [SerializeField]private bool HasTurnedOnce = false;
     [SerializeField] private float Backtimer = 0.0f;
     [SerializeField] private float currentBackTimer = 0.0f;
+    [SerializeField] private float lostSpeed = 2.0f;
     private bool previousFlip = false;
+    [SerializeField] private Road Path;
     void Start()
     {
         player          = GameObject.FindGameObjectWithTag("Player");
@@ -88,10 +90,11 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void LookAround()
     {
-        transform.Rotate(0, flipped ? -180 : 180, 0);
-
         previousFlip = flipped;
         flipped ^= true;
+        transform.Rotate(0, flipped ? -180 : 180, 0);
+
+        
         
         lookingRight ^= true;
     }
@@ -108,7 +111,7 @@ public class BasicEnemyAI : MonoBehaviour
     {
         if (!LookingAtPlayer(playerXrelativetoEnemy))
         {
-            if (reactionTime > 0)
+            if (reactionTime > 0 && !(!entity.isPlayerInSight && !entity.LostPlayer))
                 reactionTime -= Time.smoothDeltaTime;
             else
             {
@@ -134,7 +137,7 @@ public class BasicEnemyAI : MonoBehaviour
     {
         Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position);
         float distToPlayer = vecToPlayer.magnitude;
-        Debug.Log(entity.isPlayerInSight);
+        
         if (entity.isPlayerInSight)
         {
             AIflipControl(vecToPlayer.x);
@@ -175,15 +178,15 @@ public class BasicEnemyAI : MonoBehaviour
                  HasTurnedOnce = true;
              }
              
-             if (vecToPlayer.x > 0.15 && !hasPlayerGoneInBack)
+             if (vecToPlayer.x > 0.15*lostSpeed && !hasPlayerGoneInBack)
              {
-                 Debug.Log("RIUGHT");
-                 entity.MoveRight(1);
+                 
+                 entity.MoveRight(lostSpeed/ associatedBES.moveSpeed);
              }
-             else if (vecToPlayer.x < -0.15 && !hasPlayerGoneInBack)
+             else if (vecToPlayer.x < -0.15*lostSpeed && !hasPlayerGoneInBack)
              {
-                 Debug.Log("LUEFTE");
-                 entity.MoveLeft(-1);
+                 
+                 entity.MoveLeft(-lostSpeed / associatedBES.moveSpeed);
              }
 
              if (hasPlayerGoneInBack)
@@ -194,15 +197,40 @@ public class BasicEnemyAI : MonoBehaviour
                      currentBackTimer += Time.smoothDeltaTime;
                      if (lookingRight)
                      {
-                         entity.MoveRight(1);
+                         entity.MoveRight(1/ associatedBES.moveSpeed);
                      }
                      else
                      {
-                         entity.MoveRight(-1);
+                         entity.MoveRight(-1/ associatedBES.moveSpeed);
                      }
                  }
              }
              
+        }
+        else
+        {
+            for (int i = 0; i < Path.size; i++)
+            {
+                if (!Path.Checkpoints[Path.CurrentIndex].enabled)
+                {
+                    Path.CurrentIndex++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Vector3 toCheckpoint = Path.Checkpoints[Path.CurrentIndex].checkPointPos - transform.position;
+            AIflipControl(toCheckpoint.x);
+            previousFlip = flipped;
+            if (toCheckpoint.x > 0.15* associatedBES.moveSpeed)
+                entity.MoveRight(1);
+            else if (toCheckpoint.x < -0.15* associatedBES.moveSpeed)
+                entity.MoveLeft(-1);
+            else
+            {
+                Path.CurrentIndex++;
+            }
         }
     }
 }
