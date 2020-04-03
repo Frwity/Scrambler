@@ -14,7 +14,7 @@ public class TankIA : MonoBehaviour
     // Start is called before the first frame update
     public bool isActive;
     private Entity entity;
-    GameObject player;
+
     [SerializeField] private float fireCount;
     [SerializeField] private float rangePoint;
     private float nbFired;
@@ -27,9 +27,10 @@ public class TankIA : MonoBehaviour
     [SerializeField] private float Backtimer = 0.0f;
     [SerializeField] private float currentBackTimer = 0.0f;
     private TankSkill ts;
+    [SerializeField] private Road Path;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        
         if (direction == Direction.LEFT)
         {
             transform.rotation = Quaternion.Euler(0,180,0);
@@ -42,7 +43,7 @@ public class TankIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isActive || player == null)
+        if (!isActive)
             return;
         if (!shooting && entity.isPlayerInSight)
         {
@@ -62,7 +63,6 @@ public class TankIA : MonoBehaviour
                 ts.changeRotation();
                 transform.rotation = Quaternion.Euler(0,180,0);
             }
-            //Debug.Log( (transform.position.x + ((int) direction * rangePoint)));
             if ((entity.lastPlayerPosKnown.x ) < (transform.position.x + ((int) direction * rangePoint) -0.15))
             {
                 if (direction == Direction.RIGHT)
@@ -138,7 +138,6 @@ public class TankIA : MonoBehaviour
             else if (hasPlayerGoneInBack && currentBackTimer < Backtimer)
             {
                 currentBackTimer += Time.smoothDeltaTime;
-                Debug.Log("HERE");
                 if (direction == Direction.RIGHT)
                 {
                     entity.MoveLeft(1);
@@ -163,7 +162,58 @@ public class TankIA : MonoBehaviour
         }
         else
         {
-            //move
+            for (int i = 0; i < Path.size; i++)
+            {
+                if (!Path.Checkpoints[Path.CurrentIndex].enabled)
+                {
+                    Path.CurrentIndex++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            
+            float currentCheckpointPosX = (Path.Checkpoints[Path.CurrentIndex].checkPointPos.x);
+            if (currentCheckpointPosX > transform.position.x && (direction == Direction.LEFT))
+            {
+                direction = Direction.RIGHT;
+                ts.changeRotation();
+                transform.rotation =  Quaternion.Euler(0,0,0);
+            }
+            else if (currentCheckpointPosX < transform.position.x &&(direction == Direction.RIGHT)) 
+            {
+                direction = Direction.LEFT;
+                ts.changeRotation();
+                transform.rotation = Quaternion.Euler(0,180,0);
+            }
+            if ((currentCheckpointPosX ) < (transform.position.x  -0.15))
+            {
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveRight(-1);
+                }
+                else
+                {
+                    entity.MoveLeft(1);
+                }
+                    
+            }
+            else if ((currentCheckpointPosX ) > (transform.position.x +0.15))
+            {
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveLeft(1);
+                }
+                else
+                {
+                    entity.MoveRight(-1);
+                }
+            }
+            else
+            {
+                Path.CurrentIndex++;
+            }
         }
     }
 }

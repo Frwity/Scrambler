@@ -13,7 +13,7 @@ public class BasicEnemySkill : EntitySkill
 
     [SerializeField] private GameObject bullet;
     
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public float moveSpeed;
 
     [SerializeField] private float fireRate;
     [SerializeField] private float imprecision; // is a measure in degrees, forming a cone of fire. 
