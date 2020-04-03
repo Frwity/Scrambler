@@ -119,7 +119,6 @@ public class VirusSkill : EntitySkill
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             grounded = true;
-            jumped = 0;
         }
         if (collision.gameObject.CompareTag("Wall"))
         { 
