@@ -37,10 +37,6 @@ public class ShieldEnemySkill : EntitySkill
 
     void Update()
     {
-        if (Time.time > lastSlam + slamCD)
-        {
-            rb.velocity = new Vector3(0, 0, rb.velocity.z);
-        }
         slamed = false;
     }
 
