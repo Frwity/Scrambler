@@ -12,23 +12,19 @@ public class ShieldEnemySkill : EntitySkill
     private bool falling;
     private Rigidbody rb;
 
-    [SerializeField] private float dashTime;
-    [SerializeField] private float dashForce;
-    [SerializeField] private float dashCD;
-    [SerializeField] private int dashDamage;
-    private float dashed;
-    private bool dashing;
-    private float lastDash;
+    [SerializeField] private float slamCD;
+    [SerializeField] private int slamDamage;
+    private float lastSlam;
+    bool slamed;
 
     private GameObject shield;
 
     void Start()
     {
         falling = true;
-        dashing = false;
-        dashed = 0;
+        slamed = false;
         jumped = 0;
-        lastDash = 0;
+        lastSlam = 0;
         rb = GetComponent<Rigidbody>();
         shield = transform.GetChild(2).gameObject;
     }
@@ -41,11 +37,11 @@ public class ShieldEnemySkill : EntitySkill
 
     void Update()
     {
-        if (Time.time > dashTime + dashed && dashing)
+        if (Time.time > lastSlam + slamCD)
         {
             rb.velocity = new Vector3(0, 0, rb.velocity.z);
-            dashing = false;
         }
+        slamed = false;
     }
 
     public override bool Jump()
@@ -62,27 +58,23 @@ public class ShieldEnemySkill : EntitySkill
 
     public override bool MoveLeft(float moveSpeed)
     {
-        if (!dashing)
-            rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
         return true;
     }
 
     public override bool MoveRight(float moveSpeed)
     {
-        if (!dashing)
-            rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(speed * moveSpeed, rb.velocity.y, rb.velocity.z);
         return true;
     }
 
     public override bool Shoot(Vector3 direction)
     {
-        if (Time.time > lastDash + dashCD && direction.magnitude > 0.1)
+        if (Time.time > lastSlam + slamCD && direction.magnitude > 0.1)
         {
-            rb.velocity = new Vector3(dashForce * direction.normalized.x, dashForce * direction.normalized.y, rb.velocity.z);
-            dashing = true;
-            dashed = Time.time;
-            lastDash = Time.time;
 
+            slamed = true;
+            lastSlam = Time.time;
             return true;
         }
         else
@@ -122,6 +114,18 @@ public class ShieldEnemySkill : EntitySkill
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             jumped = 0;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player"))
+        {
+            if (slamed)
+            {
+                collision.gameObject.GetComponent<Entity>().InflictDamage(slamDamage);
+                slamed = false;
+            }
         }
     }
 }

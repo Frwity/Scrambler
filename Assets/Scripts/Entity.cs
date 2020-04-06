@@ -12,16 +12,21 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract void AimDirection(Vector3 direction);
     public abstract bool ActivateAI();
     public abstract bool DesactivateAI();
-    public void HideInBG()
+    public void InteractWithBG()
     {
         Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 3);
-            
+
         if (hitInfo.collider && hitInfo.collider.CompareTag("HidingZone"))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 2);
         }
+
+        if (hitInfo.collider && hitInfo.collider.CompareTag("Node"))
+        {
+            hitInfo.collider.gameObject.GetComponent<Node>().Teleport(gameObject);
+        }
     }
-    public void ExitHiding()
+    public void UninteractWithBG()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
@@ -106,15 +111,15 @@ public class Entity : MonoBehaviour
         return controllable;
     }
 
-    public void HideInGB()
+    public void InteractWithBG()
     {
         isHidden = true;
-        entitySkill.HideInBG();
+        entitySkill.InteractWithBG();
     }
-    public void ExitHiding()
+    public void UninteractWithBG()
     {
         isHidden = false;
-        entitySkill.ExitHiding();
+        entitySkill.UninteractWithBG();
     }
     public void InflictDamage(int damage)
     {
@@ -139,7 +144,7 @@ public class Entity : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HidingZone"))
         {
-            ExitHiding();
+            UninteractWithBG();
         }
         collidingObj = null;
     }

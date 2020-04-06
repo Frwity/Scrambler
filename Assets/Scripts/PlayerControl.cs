@@ -45,10 +45,13 @@ public class PlayerControl : MonoBehaviour
             isInVirus = true;
             return;
         }
-        if (Input.GetAxisRaw("Vertical") == 1)
-            entity.HideInGB();
+        if (Input.GetAxisRaw("Vertical") == 1 && Time.time > controlCD + lastControl && isInVirus)
+        {
+            lastControl = Time.time;
+            entity.InteractWithBG();
+        }
         if (entity.isHidden && Input.GetAxis("Vertical") < 1)
-            entity.ExitHiding();
+            entity.UninteractWithBG();
 
         aimDireciton.x = Input.GetAxis("RHorizontal");
         aimDireciton.y = Input.GetAxis("RVertical");
@@ -61,12 +64,13 @@ public class PlayerControl : MonoBehaviour
         }
 
         collidingObj = entity.Collinding();
+
         if (collidingObj != null 
         && collidingObj.CompareTag("PossessZone") 
         && collidingObj.transform.parent.GetComponent<Entity>() != null 
         && collidingObj.transform.parent.GetComponent<Entity>().isControllable() 
         && Input.GetAxisRaw("Fire3") == 1 
-        && Time.time > controlCD + lastControl && isInVirus) // TODO opti
+        && Time.time > controlCD + lastControl && isInVirus) // TODO plsu bo
         {
             lastControl = Time.time;
             Destroy(transform.GetChild(0).gameObject);
