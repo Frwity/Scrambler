@@ -65,7 +65,7 @@ using UnityEditor;
         foreach (var vari in Checkpoints)
         {
             Gizmos.color = vari.color;
-         
+            vari.ParentPos = transform;
             if (!vari.enabled)
             {
                 Color c = Gizmos.color;

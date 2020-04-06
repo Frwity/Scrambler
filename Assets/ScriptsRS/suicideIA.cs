@@ -26,6 +26,7 @@ public class suicideIA : MonoBehaviour
     [SerializeField]private bool HasTurnedOnce = false;
     [SerializeField] private float Backtimer = 0.0f;
     [SerializeField] private float currentBackTimer = 0.0f;
+    [SerializeField] private Road Path;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -41,7 +42,7 @@ public class suicideIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isActive || player == null)
+        if (!isActive)
             return;
         if (!shooting && entity.isPlayerInSight)
         {
@@ -153,23 +154,115 @@ public class suicideIA : MonoBehaviour
                     entity.MoveRight(-1);
                 }
             }
-            else if (shooting)
+        }
+        else if (shooting)
+        {
+            if (entity.Shoot(new Vector3(1, 1, 1)))
             {
-                if (entity.Shoot(new Vector3(1, 1, 1)))
+                Destroy(gameObject);
+            }
+            else
+            {
+                if (Mathf.Abs(player.transform.position.x - transform.position.x) > 0.5f && waitFrame == 1)
                 {
-                    Destroy(gameObject);
+                    scs.ResetTimer();
+                    shooting = false;
+                }
+
+                if (waitFrame == 0)
+                    waitFrame = 1;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Path.size; i++)
+            {
+                if (!Path.Checkpoints[Path.CurrentIndex].enabled)
+                {
+                    Path.CurrentIndex++;
                 }
                 else
                 {
-                    if (Mathf.Abs(player.transform.position.x - transform.position.x) > 0.5f && waitFrame == 1)
-                    {
-                        scs.ResetTimer();
-                        shooting = false;
-                    }
-
-                    if (waitFrame == 0)
-                        waitFrame = 1;
+                    break;
                 }
+            }
+            
+            float currentCheckpointPosX = (Path.Checkpoints[Path.CurrentIndex].checkPointPos.x);
+            float currentCheckpointPosY = (Path.Checkpoints[Path.CurrentIndex].checkPointPos.y);
+            if (currentCheckpointPosX > transform.position.x && (direction == Direction.LEFT))
+            {
+                direction = Direction.RIGHT;
+                transform.rotation =  Quaternion.Euler(0,0,0);
+            }
+            else if (currentCheckpointPosX < transform.position.x &&(direction == Direction.RIGHT)) 
+            {
+                direction = Direction.LEFT;
+                transform.rotation = Quaternion.Euler(0,180,0);
+            }
+            if ((currentCheckpointPosX ) < (transform.position.x  -0.15))
+            {
+                
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveRight(-1);
+                }
+                else
+                {
+                    entity.MoveLeft(-1);
+                }
+                    
+            }
+            else if ((currentCheckpointPosX ) > (transform.position.x +0.15))
+            {
+                int i = 1;
+                if (scs.touchingWall || scs.Roofed)
+                {
+                    i *= -1;
+                }
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveLeft(1*i);
+                }
+                else
+                {
+                    entity.MoveRight(1*i);
+                }
+            }
+            else if ((currentCheckpointPosY) < (transform.position.y - 0.15))
+            {
+                int i = 1;
+                if (scs.touchingWall || scs.Roofed)
+                {
+                    i *= -1;
+                }
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveRight(-1*i);
+                }
+                else
+                {
+                    entity.MoveLeft(-1*i);
+                }
+            }
+            else if ((currentCheckpointPosY) > (transform.position.y + 0.15))
+            {
+                int i = 1;
+                if (scs.touchingWall || scs.Roofed)
+                {
+                    i *= -1;
+                }
+                if (direction == Direction.RIGHT)
+                {
+                    entity.MoveLeft(1*i);
+                }
+                else
+                {
+                    entity.MoveRight(1*i);
+                }
+            }
+            else
+            {
+                Path.CurrentIndex++;
             }
         }
     }
