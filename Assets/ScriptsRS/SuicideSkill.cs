@@ -20,8 +20,8 @@ public class SuicideSkill : EntitySkill
     [SerializeField]private int wallDir;
     [SerializeField]private bool falling;
     [SerializeField]private bool grounded;
-    [SerializeField] private bool touchingWall;
-    [SerializeField] private bool Roofed;
+    [SerializeField] public bool touchingWall;
+    [SerializeField] public bool Roofed;
     private Rigidbody rb;
     private float timer = 0;
 
