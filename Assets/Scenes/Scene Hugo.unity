@@ -11802,12 +11802,12 @@ PrefabInstance:
         type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 3517571761744688880, guid: 06aa0c89c59587246bf253f0a71b30ad,
+      objectReference: {fileID: 3517571761744688880, guid: 9b0ffbb7974c7604393858ff3c824c20,
         type: 3}
     - target: {fileID: 5559768263519713667, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: moveSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5559768263519713667, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
