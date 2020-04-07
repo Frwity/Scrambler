@@ -13,6 +13,8 @@ public class FlyingEnemyIA : MonoBehaviour
     private bool haveTarget;
     private float currentLostTimer = 0.0f;
     [SerializeField]private float lostTimer = 0.0f;
+    
+    [SerializeField] private Road Path;
     Vector3 targetPos;
 
     void Start()
@@ -62,6 +64,38 @@ public class FlyingEnemyIA : MonoBehaviour
                     shooting = false;
                     nbFired = 0;
                 }
+            }
+        }
+        else
+        {
+            if (!Path)
+                return;
+            for (int i = 0; i < Path.size; i++)
+            {
+                if (!Path.Checkpoints[Path.CurrentIndex].enabled)
+                {
+                    Path.CurrentIndex++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            
+            float currentCheckpointPosX = (Path.Checkpoints[Path.CurrentIndex].checkPointPos.x);
+           
+            if ((currentCheckpointPosX ) < (transform.position.x  -0.15))
+            {
+                entity.MoveLeft(-1);
+            }
+            else if ((currentCheckpointPosX ) > (transform.position.x +0.15))
+            {
+                entity.MoveRight(1);
+                
+            }
+            else
+            {
+                Path.CurrentIndex++;
             }
         }
     }

@@ -209,6 +209,8 @@ public class BasicEnemyAI : MonoBehaviour
         }
         else
         {
+            if (!Path)
+                return;
             for (int i = 0; i < Path.size; i++)
             {
                 if (!Path.Checkpoints[Path.CurrentIndex].enabled)
