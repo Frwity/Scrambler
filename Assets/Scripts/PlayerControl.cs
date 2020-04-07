@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float controlCD;
+    [SerializeField] private Vector3 respawnCoord;
     [HideInInspector] public float lastControl;
     public GameObject virus;
 
@@ -41,7 +42,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (!entity)
         {
-            entity = Instantiate(virus, new Vector3(-100, 2, 0), Quaternion.identity, transform).GetComponent<Entity>();
+            entity = Instantiate(virus, respawnCoord, Quaternion.identity, transform).GetComponent<Entity>();
             isInVirus = true;
             return;
         }

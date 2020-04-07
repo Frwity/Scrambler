@@ -15,14 +15,14 @@ public class ShieldEnemySkill : EntitySkill
     [SerializeField] private float slamCD;
     [SerializeField] private int slamDamage;
     private float lastSlam;
-    bool slamed;
+
+    [HideInInspector] public GameObject shieldSlamCollider;
 
     private GameObject shield;
 
     void Start()
     {
         falling = true;
-        slamed = false;
         jumped = 0;
         lastSlam = 0;
         rb = GetComponent<Rigidbody>();
@@ -33,11 +33,6 @@ public class ShieldEnemySkill : EntitySkill
     {
         if (rb.velocity.y >= -0.1 && rb.velocity.y <= 0.1)
             falling = true;
-    }
-
-    void Update()
-    {
-        slamed = false;
     }
 
     public override bool Jump()
@@ -68,8 +63,8 @@ public class ShieldEnemySkill : EntitySkill
     {
         if (Time.time > lastSlam + slamCD && direction.magnitude > 0.1)
         {
-
-            slamed = true;
+            if (shieldSlamCollider)
+                shieldSlamCollider.GetComponent<Entity>().InflictDamage(slamDamage);
             lastSlam = Time.time;
             return true;
         }
@@ -85,7 +80,11 @@ public class ShieldEnemySkill : EntitySkill
         else
             tempY = direction.y;
         if (direction.magnitude > 0.3)
+        {
             shield.transform.rotation = Quaternion.LookRotation(new Vector3(-direction.x, -tempY, 90), Vector3.forward);
+            transform.GetChild(1).localRotation = Quaternion.LookRotation(new Vector3(-direction.x, -tempY, 90), Vector3.forward);
+            transform.GetChild(1).position = transform.position + (transform.position - shield.gameObject.transform.GetChild(0).transform.GetChild(0).position) * 1.5f;
+        }
     }
 
     public override bool ActivateAI()
@@ -111,17 +110,6 @@ public class ShieldEnemySkill : EntitySkill
         {
             jumped = 0;
         }
-    }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player"))
-        {
-            if (slamed)
-            {
-                collision.gameObject.GetComponent<Entity>().InflictDamage(slamDamage);
-                slamed = false;
-            }
-        }
     }
 }
