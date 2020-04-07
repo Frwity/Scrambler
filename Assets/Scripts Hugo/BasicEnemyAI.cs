@@ -139,7 +139,13 @@ public class BasicEnemyAI : MonoBehaviour
     {
         Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position);
         float distToPlayer = vecToPlayer.magnitude;
-        
+        if (entity.isInBackGround)
+        {
+            if (entity.isPlayerInSight)
+                entity.Shoot(vecToPlayer.normalized);
+            return;
+                
+        }
         if (entity.isPlayerInSight)
         {
             AIflipControl(vecToPlayer.x);

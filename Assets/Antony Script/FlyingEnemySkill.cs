@@ -10,8 +10,9 @@ public class FlyingEnemySkill : EntitySkill
     [SerializeField] private float fireRate;
     private float lastFired;
     [SerializeField] private int MaxAngle;
-    private Vector3 toShoot;
+    [SerializeField] private Vector3 toShoot;
     private int precision = 0;
+    private float currentCD = 0.0f;
 
     void Start()
     {
@@ -20,7 +21,8 @@ public class FlyingEnemySkill : EntitySkill
 
     void Update()
     {
-        
+        if (currentCD < fireRate)
+            currentCD += Time.smoothDeltaTime;
     }
 
     public override bool Jump()
@@ -42,19 +44,19 @@ public class FlyingEnemySkill : EntitySkill
 
     public override bool Shoot(Vector3 direction)
     {
-        toShoot = direction;
-        if (Time.time > lastFired + fireRate)
+        //toShoot = direction;
+        //if (Time.time > lastFired + fireRate)
+        
+        if (currentCD > fireRate)
         {
+            currentCD = 0.0f;
             Instantiate(bullet, transform.position + Vector3.down, Quaternion.identity);
             BulletSharedClass b = bullet.GetComponent<BulletSharedClass>();
             
             //Debug.Log(toShoot);
-            if (toShoot.y > -0.05)
-            {
-                toShoot.y = -0.05f;
-            }
-            toShoot.Normalize();
-            b.direction = toShoot;
+            
+           
+            b.direction = toShoot.normalized;
             lastFired = Time.time;
             return true;
         }
@@ -76,7 +78,11 @@ public class FlyingEnemySkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-
+        toShoot = direction;
+        if (toShoot.y > -0.05)
+        {
+            toShoot.y = -0.05f;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -7,9 +7,9 @@ using UnityEditor;
 [ExecuteInEditMode] public class Road : MonoBehaviour
 {
     // Start is called before the first frame update
-    
-    
 
+
+    [SerializeField] private float Radius = 1.0f;
     public CheckpointData[] Checkpoints = new CheckpointData[0];
     [HideInInspector] private int currentIndex;
 
@@ -72,7 +72,7 @@ using UnityEditor;
                 c.a = 0.5f;
                 Gizmos.color = c;
             }
-            Gizmos.DrawSphere(vari.checkPointPos , 1.0f);
+            Gizmos.DrawSphere(vari.checkPointPos , Radius);
         }
     }
     

@@ -36,10 +36,10 @@ public class Entity : MonoBehaviour
     public bool isHidden;
 
     private GameObject collidingObj;
-    public bool isPlayerInSight = false;
+    /*[HideInInspector]*/public bool isPlayerInSight = false;
     [HideInInspector]public bool LostPlayer = false;
-    [HideInInspector]public Vector3 lastPlayerPosKnown;
-
+    /*[HideInInspector]*/public Vector3 lastPlayerPosKnown;
+    public bool isInBackGround = false;
     void Start()
     {
         isHidden = false; 
