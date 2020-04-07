@@ -121,10 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f29cc651540d847bf7be7aee3fc26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.3
   damage: 2
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
-  rateOfAcceleration: 0.1
+  rateOfAcceleration: 0.75
   explosionRange: 1
   speedLimit: 50
