@@ -11,7 +11,9 @@ public class ShieldEnemyAI : MonoBehaviour
     private bool shooting = false;
     //private bool dashing;
     private bool haveTarget;
-    Vector3 targetPos;
+    private Vector3 targetPos;
+    [SerializeField] private float AIResetTimer = 0.0f;
+    private float currentAIResetTimer = 0.0f;
     [SerializeField] private Road Path;
     void Start()
     {
@@ -40,10 +42,15 @@ public class ShieldEnemyAI : MonoBehaviour
                 currentLostTimer += Time.smoothDeltaTime;
                 return;
             }
+            currentAIResetTimer += Time.smoothDeltaTime;
             if (entity.lastPlayerPosKnown.x - transform.position.x < -0.25)
                 entity.MoveLeft(-1);
             else if (entity.lastPlayerPosKnown.x - transform.position.x > 0.25)
                 entity.MoveRight(1);
+            else if (currentAIResetTimer > AIResetTimer)
+            {
+                entity.LostPlayer = false;
+            }
         }
         else if (shooting)
         {
@@ -68,7 +75,7 @@ public class ShieldEnemyAI : MonoBehaviour
             
             if ((currentCheckpointPosX ) < (transform.position.x  -0.15))
             {
-                Debug.Log("aaaaa");
+                
                 entity.MoveLeft(-1);
             }
             else if ((currentCheckpointPosX ) > (transform.position.x +0.15))

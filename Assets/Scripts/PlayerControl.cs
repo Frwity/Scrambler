@@ -61,12 +61,13 @@ public class PlayerControl : MonoBehaviour
         }
 
         collidingObj = entity.Collinding();
+        
         if (collidingObj != null 
-        && collidingObj.CompareTag("PossessZone") 
-        && collidingObj.transform.parent.GetComponent<Entity>() != null 
-        && collidingObj.transform.parent.GetComponent<Entity>().isControllable() 
-        && Input.GetAxisRaw("Fire3") == 1 
-        && Time.time > controlCD + lastControl && isInVirus) // TODO opti
+            && collidingObj.CompareTag("PossessZone") 
+            && collidingObj.transform.parent.GetComponent<Entity>() != null 
+            && collidingObj.transform.parent.GetComponent<Entity>().isControllable() 
+            && Input.GetAxisRaw("Fire3") == 1 
+            && Time.time > controlCD + lastControl && isInVirus) // TODO opti
         {
             lastControl = Time.time;
             Destroy(transform.GetChild(0).gameObject);
@@ -80,7 +81,7 @@ public class PlayerControl : MonoBehaviour
         {
             lastControl = Time.time;
             entity.transform.parent = transform.parent;
-            entity.ActivateAI();
+            //entity.ActivateAI();
             entity.tag = "Enemy";
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
             entity.GetComponent<VirusSkill>().jumped = 1;

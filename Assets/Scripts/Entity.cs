@@ -127,12 +127,12 @@ public class Entity : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        collidingObj = other.gameObject;
-        if (CompareTag("Player") || CompareTag("PossessZone"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Vision"))
         {
-            //Debug.Log($"collided with {gameObject.name}");
             return;
         }
+        collidingObj = other.gameObject;
+        
 
     }
     private void OnTriggerExit(Collider other)
