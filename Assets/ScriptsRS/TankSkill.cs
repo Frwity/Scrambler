@@ -125,9 +125,9 @@ public class TankSkill : EntitySkill
             GameObject bulletInst = Instantiate(bulletPrefab, cannon.transform.position, transform.rotation);
             Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), 
                 this.GetComponent<Collider>(), true);
-            CurveBullet bullett = bulletInst.GetComponent<CurveBullet>();
+            CurvedBulletSharedClass bullett = bulletInst.GetComponent<CurvedBulletSharedClass>();
             
-            bullett.velocity = new Vector3(newShootDir.x, newShootDir.y, 0) * shootingStrength;
+            bullett.direction = new Vector3(newShootDir.x, newShootDir.y, 0) * shootingStrength;
 
         }
         
@@ -181,7 +181,6 @@ public class TankSkill : EntitySkill
         if (collision.gameObject.CompareTag("Bullet"))
         {
             collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
-            Destroy(collision.gameObject);
         }
     }
 }

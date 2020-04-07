@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBullet : BulletSharedClass
+public class FireBullet : CurvedBulletSharedClass
 {
     [SerializeField] Vector3 fireRange = new Vector3(1f, 0.5f, 0.5f);
 
@@ -11,7 +11,7 @@ public class FireBullet : BulletSharedClass
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody>().AddForce(direction * speed, ForceMode.Impulse);
+        //GetComponent<Rigidbody>().AddForce(velocity.normalized * speed, ForceMode.Impulse);
     }
 
     // Update is called once per frame

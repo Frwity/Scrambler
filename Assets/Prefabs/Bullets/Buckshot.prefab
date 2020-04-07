@@ -125,7 +125,7 @@ MonoBehaviour:
   damage: 0
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
-  coneOfFire: 15
+  coneOfFire: 40
   numberOfBullets: 10
   buckshotPellet: {fileID: 3517571761744688880, guid: 7bbd7d63eed27954283b773c8a5d40d9,
     type: 3}

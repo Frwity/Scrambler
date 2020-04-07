@@ -28,22 +28,31 @@ public class RocketBullet : BulletSharedClass
 
     private void OnCollisionEnter(Collision collision)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRange);
-
-        foreach (Collider inRange in colliders)
-        {
-            if ((inRange.CompareTag("Player") || inRange.CompareTag("Enemy")) && (inRange.gameObject != shooter))
-            {
-                if (inRange.GetComponent<Entity>())
-                    inRange.GetComponent<Entity>().InflictDamage(damage);
-            }
-        }
-
-        Destroy(gameObject);
+        Explode();
     }
 
     public override void doBehavior(GameObject hitObject)
     {
 
+    }
+
+    private void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRange);
+
+        foreach (Collider inRange in colliders)
+        {
+            if (inRange.CompareTag("Player") || inRange.CompareTag("Enemy"))
+            {
+                if (!Physics.Raycast(transform.position, inRange.transform.position - transform.position,
+                                                         Mathf.Abs(transform.position.magnitude - inRange.transform.position.magnitude),
+                                                         1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Shield")))
+                {
+                    inRange.GetComponent<Entity>().InflictDamage(damage);
+                }
+            }
+        }
+
+        Destroy(gameObject);
     }
 }
