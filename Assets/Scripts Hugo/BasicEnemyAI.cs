@@ -32,6 +32,8 @@ public class BasicEnemyAI : MonoBehaviour
     [SerializeField] private float Backtimer = 0.0f;
     [SerializeField] private float currentBackTimer = 0.0f;
     [SerializeField] private float lostSpeed = 2.0f;
+    [SerializeField] private float AIResetTimer = 0.0f;
+    private float currentAIResetTimer = 0.0f;
     private bool previousFlip = false;
     [SerializeField] private Road Path;
     void Start()
@@ -51,7 +53,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (isActive && player != null)
+        if (isActive)
             IAcontrol();
         else
             PLdirectionLookbyStick();
@@ -137,7 +139,13 @@ public class BasicEnemyAI : MonoBehaviour
     {
         Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position);
         float distToPlayer = vecToPlayer.magnitude;
-        
+        if (entity.isInBackGround)
+        {
+            if (entity.isPlayerInSight)
+                entity.Shoot(vecToPlayer.normalized);
+            return;
+                
+        }
         if (entity.isPlayerInSight)
         {
             AIflipControl(vecToPlayer.x);
@@ -146,6 +154,7 @@ public class BasicEnemyAI : MonoBehaviour
             currentBackTimer = 0.0f;
             hasPlayerGoneInBack = false;
             HasTurnedOnce = false;
+            
             if (distanceToKeepAwayFromPlayer < distToPlayer)
             {
                 
@@ -165,7 +174,7 @@ public class BasicEnemyAI : MonoBehaviour
                  currentLostTimer += Time.smoothDeltaTime;
                  return;
              }
-
+             currentAIResetTimer += Time.smoothDeltaTime;
              if (!HasTurnedOnce)
              {
                  AIflipControl(vecToPlayer.x);
@@ -189,7 +198,7 @@ public class BasicEnemyAI : MonoBehaviour
                  entity.MoveLeft(-lostSpeed / associatedBES.moveSpeed);
              }
 
-             if (hasPlayerGoneInBack)
+             else if (hasPlayerGoneInBack)
              {
                  
                  if (currentBackTimer < Backtimer)
@@ -204,6 +213,10 @@ public class BasicEnemyAI : MonoBehaviour
                          entity.MoveRight(-1/ associatedBES.moveSpeed);
                      }
                  }
+             }
+             else if (currentAIResetTimer > AIResetTimer)
+             {
+                 entity.LostPlayer = false;
              }
              
         }

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class SuicideSkill : EntitySkill
 {
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
     [SerializeField] private float chargeTime;
-    [SerializeField] private float exploRay;
+    [SerializeField] public float exploRay;
     [SerializeField] private int damage;
     [SerializeField] private int nbJump;
     [SerializeField] private float jumpForce;

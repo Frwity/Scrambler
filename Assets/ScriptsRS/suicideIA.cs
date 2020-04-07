@@ -26,6 +26,8 @@ public class suicideIA : MonoBehaviour
     [SerializeField]private bool HasTurnedOnce = false;
     [SerializeField] private float Backtimer = 0.0f;
     [SerializeField] private float currentBackTimer = 0.0f;
+    [SerializeField] private float AIResetTimer = 0.0f;
+    private float currentAIResetTimer = 0.0f;
     [SerializeField] private Road Path;
     void Start()
     {
@@ -98,8 +100,8 @@ public class suicideIA : MonoBehaviour
                 currentLostTimer += Time.smoothDeltaTime;
                 return;
             }
-
-            if (entity.lastPlayerPosKnown.x > transform.position.x && (direction == Direction.LEFT) && !HasTurnedOnce)
+            currentAIResetTimer += Time.smoothDeltaTime;
+            if (entity.lastPlayerPosKnown.x > transform.position.x + 0.15*scs.speed && (direction == Direction.LEFT) && !HasTurnedOnce)
             {
                 direction = Direction.RIGHT;
                 
@@ -107,7 +109,7 @@ public class suicideIA : MonoBehaviour
                 HasTurnedOnce = true;
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            else if (entity.lastPlayerPosKnown.x < transform.position.x && (direction == Direction.RIGHT) &&
+            else if (entity.lastPlayerPosKnown.x < transform.position.x- 0.15*scs.speed && (direction == Direction.RIGHT) &&
                      !HasTurnedOnce)
             {
                 direction = Direction.LEFT;
@@ -117,7 +119,7 @@ public class suicideIA : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
-            if ((entity.lastPlayerPosKnown.x) < (transform.position.x - 0.15) && !hasPlayerGoneInBack)
+            if ((entity.lastPlayerPosKnown.x) < (transform.position.x - 0.15*scs.speed) && !hasPlayerGoneInBack)
             {
                 if (direction == Direction.RIGHT)
                 {
@@ -130,7 +132,7 @@ public class suicideIA : MonoBehaviour
                 }
 
             }
-            else if ((entity.lastPlayerPosKnown.x) > (transform.position.x + 0.15) && !hasPlayerGoneInBack)
+            else if ((entity.lastPlayerPosKnown.x) > (transform.position.x + 0.15*scs.speed) && !hasPlayerGoneInBack)
             {
                 if (direction == Direction.RIGHT)
                 {
@@ -154,6 +156,10 @@ public class suicideIA : MonoBehaviour
                     entity.MoveRight(-1);
                 }
             }
+            else if (currentAIResetTimer > AIResetTimer)
+            {
+                entity.LostPlayer = false;
+            }
         }
         else if (shooting)
         {
@@ -163,7 +169,7 @@ public class suicideIA : MonoBehaviour
             }
             else
             {
-                if (Mathf.Abs(player.transform.position.x - transform.position.x) > 0.5f && waitFrame == 1)
+                if (Mathf.Abs(entity.lastPlayerPosKnown.x - transform.position.x) > scs.exploRay && waitFrame == 1)
                 {
                     scs.ResetTimer();
                     shooting = false;

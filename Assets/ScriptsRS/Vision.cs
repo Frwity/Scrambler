@@ -64,7 +64,7 @@ public class Vision : MonoBehaviour
         
         for (int i = 0; i <= 2; i++)
         {
-            Vector2 toShoot = playerPos;
+            Vector3 toShoot = playerPos;
             toShoot.y += (other.transform.localScale.y / 2.0f)* i;
             toShoot.Normalize();
             Ray ray = new Ray(transform.position, toShoot);
@@ -72,6 +72,7 @@ public class Vision : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, mag + 10.0f, visionMask))
             {
+                Debug.Log(ray.direction);
                 if (hit.collider.CompareTag("Player"))
                 {
                     //Debug.Log("/*DOUBLE*/ VISION");

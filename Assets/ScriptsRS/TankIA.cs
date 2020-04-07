@@ -20,14 +20,16 @@ public class TankIA : MonoBehaviour
     private float nbFired;
     private bool shooting;
     public Direction direction = Direction.RIGHT;
-    [SerializeField] float currentLostTimer = 0.0f;
+     float currentLostTimer = 0.0f;
     [SerializeField] private float lostTimer;
-    [SerializeField]private bool hasPlayerGoneInBack = false; 
-    [SerializeField]private bool HasTurnedOnce = false;
+    private bool hasPlayerGoneInBack = false; 
+    private bool HasTurnedOnce = false;
     [SerializeField] private float Backtimer = 0.0f;
-    [SerializeField] private float currentBackTimer = 0.0f;
+    private float currentBackTimer = 0.0f;
     private TankSkill ts;
     [SerializeField] private Road Path;
+    [SerializeField] private float AIResetTimer = 0.0f;
+    private float currentAIResetTimer = 0.0f;
     void Start()
     {
         
@@ -96,6 +98,7 @@ public class TankIA : MonoBehaviour
                 currentLostTimer += Time.smoothDeltaTime;
                 return;
             }
+            currentAIResetTimer += Time.smoothDeltaTime;
             if (entity.lastPlayerPosKnown.x > transform.position.x && (direction == Direction.LEFT) && !HasTurnedOnce)
             {
                 direction = Direction.RIGHT;
@@ -147,6 +150,12 @@ public class TankIA : MonoBehaviour
                     entity.MoveRight(1);
                 }
             }
+            else if (currentAIResetTimer > AIResetTimer)
+            {
+                entity.LostPlayer = false;
+            }
+           
+            
         }
         else if (shooting)
         {
@@ -162,6 +171,7 @@ public class TankIA : MonoBehaviour
         }
         else
         {
+            currentAIResetTimer = 0.0f;
             for (int i = 0; i < Path.size; i++)
             {
                 if (!Path.Checkpoints[Path.CurrentIndex].enabled)

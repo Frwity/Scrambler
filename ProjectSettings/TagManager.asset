@@ -15,6 +15,7 @@ TagManager:
   - Shield
   - Roof
   - Bullet
+  - BerthaBulletZone
   - Node
   layers:
   - Default

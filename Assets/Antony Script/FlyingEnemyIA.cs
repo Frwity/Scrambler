@@ -15,8 +15,9 @@ public class FlyingEnemyIA : MonoBehaviour
     [SerializeField]private float lostTimer = 0.0f;
     
     [SerializeField] private Road Path;
-    Vector3 targetPos;
-
+    private Vector3 targetPos;
+    [SerializeField] private float AIResetTimer = 0.0f;
+    private float currentAIResetTimer = 0.0f;
     void Start()
     {
         nbFired = 0;
@@ -48,10 +49,15 @@ public class FlyingEnemyIA : MonoBehaviour
                 currentLostTimer += Time.smoothDeltaTime;
                 return;
             }
+            currentAIResetTimer += Time.smoothDeltaTime;
             if (entity.lastPlayerPosKnown.x - transform.position.x < -0.25)
                 entity.MoveLeft(-1);
             else if (entity.lastPlayerPosKnown.x - transform.position.x > 0.25)
                 entity.MoveRight(1);
+            else if (currentAIResetTimer > AIResetTimer)
+            {
+                entity.LostPlayer = false;
+            }
            
         }
         else if (shooting)
