@@ -111,7 +111,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!114 &7987167876143128017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,11 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5afb0259fd3a249ac80cc808ca2c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 15
   nbJump: 1
-  jumpForce: 16
+  jumpForce: 18
   wallFallSpeed: 1
-  airControlFactor: 0.16
+  airControlFactor: 0.13
   accelerationFactor: 0.13
   jumped: 0
 --- !u!114 &7987167876143128018
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -14
+  gravity: -15
 --- !u!1 &7987167877625211968
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7987167877625211968}
-  m_Material: {fileID: 13400000, guid: 598749a37d47f634f880814e7e6910f6, type: 2}
+  m_Material: {fileID: 13400000, guid: b5f7cba914e37b042bf65253dcbe3fd2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3517571761744688882}
   - component: {fileID: 3517571761744688883}
   - component: {fileID: -1530645574334760377}
-  - component: {fileID: 7361972789961998397}
+  - component: {fileID: -3296851861128908435}
   m_Layer: 10
-  m_Name: BouncyBullet
+  m_Name: FireBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3517571761744688880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -87,7 +87,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3517571761744688880}
-  m_Material: {fileID: 13400000, guid: a07cc98519160104dae850ccbb587e7d, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -101,15 +101,15 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3517571761744688880}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &7361972789961998397
+--- !u!114 &-3296851861128908435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,12 +118,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3517571761744688880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2173b786d3d9fd40ac9d95c7c17fe1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c537273d13b036419a224b9762e3a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  damage: 5
+  damage: 0
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
-  bounces: 3
-  explosionRange: 1
+  fireRange: {x: 3, y: 0.5, z: 0.5}
+  fireZone: {fileID: 1828231098107120287, guid: 1d6e0df27c8aa4b48a464a4113bc54ae,
+    type: 3}
