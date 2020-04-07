@@ -155,7 +155,7 @@ MonoBehaviour:
     type: 3}
   cooldown: 1
   numberOfProjectile: 3
-  speed: 3
+  speed: 7.5
   rangePoint: 0
   cannon: {fileID: 1266014278261994395}
 --- !u!114 &487638414128119985

@@ -128,7 +128,7 @@ Transform:
   - {fileID: 4712938930402323719}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6531962691575589101
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -222,6 +222,12 @@ MonoBehaviour:
   distanceToKeepAwayFromPlayer: 10
   maxReactionTime: 2
   flipped: 1
+  currentLostTimer: 0
+  lostTimer: 0
+  hasPlayerGoneInBack: 0
+  HasTurnedOnce: 0
+  Backtimer: 0
+  currentBackTimer: 0
 --- !u!114 &5559768263519713667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,9 +241,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbJump: 1
-  jumpForce: 10
+  jumpForce: 8.5
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
-  moveSpeed: 0
+  moveSpeed: 11
   fireRate: 1
   imprecision: 0
   xAim: 0
