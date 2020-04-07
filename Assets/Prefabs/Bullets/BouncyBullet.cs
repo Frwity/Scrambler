@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncyBullet : BulletSharedClass
+public class BouncyBullet : CurvedBulletSharedClass
 {
     [SerializeField] short bounces = 3; // at 0, it explodes.
 
@@ -11,13 +11,13 @@ public class BouncyBullet : BulletSharedClass
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody>().AddForce(direction * speed, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(direction.normalized * speed, ForceMode.Impulse);
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void FixedUpdate()
     {
-
+        // unused
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,9 +44,14 @@ public class BouncyBullet : BulletSharedClass
 
         foreach (Collider inRange in colliders)
         {
-            if ( inRange.CompareTag("Player") || inRange.CompareTag("Enemy") )
+            if (inRange.CompareTag("Player") || inRange.CompareTag("Enemy"))
             {
-                inRange.GetComponent<Entity>().InflictDamage(damage);
+                if (!Physics.Raycast(transform.position, inRange.transform.position - transform.position, 
+                                                         Mathf.Abs(transform.position.magnitude - inRange.transform.position.magnitude),
+                                                         1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Shield")) )
+                {
+                    inRange.GetComponent<Entity>().InflictDamage(damage);
+                }
             }
         }
 

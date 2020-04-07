@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimedStickyBullet : BulletSharedClass
+public class TimedStickyBullet : CurvedBulletSharedClass
 {
     [SerializeField] float explosionRange = 1f;
 
     [SerializeField] float timeLimit = 5f;
+
+    bool touchedSurface = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +19,23 @@ public class TimedStickyBullet : BulletSharedClass
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(direction * Time.deltaTime * speed, Space.World);
+        //transform.Translate(velocity * Time.deltaTime * speed, Space.World);
 
         timeLimit -= Time.deltaTime;
 
         if (timeLimit <= 0)
         {
             Explode();
+        }
+    }
+
+    protected override void FixedUpdate()
+    {
+        if (!touchedSurface)
+        {
+            transform.position += direction * Time.fixedDeltaTime;
+            direction += Physics.gravity * Time.fixedDeltaTime;
+            transform.localRotation = Quaternion.LookRotation(direction);
         }
     }
 
@@ -36,6 +48,7 @@ public class TimedStickyBullet : BulletSharedClass
         else
         {
             direction = Vector3.zero;
+            touchedSurface = true;
         }
     }
 
@@ -52,7 +65,12 @@ public class TimedStickyBullet : BulletSharedClass
         {
             if (inRange.CompareTag("Player") || inRange.CompareTag("Enemy"))
             {
-                inRange.GetComponent<Entity>().InflictDamage(damage);
+                if (!Physics.Raycast(transform.position, inRange.transform.position - transform.position,
+                                                         Mathf.Abs(transform.position.magnitude - inRange.transform.position.magnitude),
+                                                         1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Shield")))
+                {
+                    inRange.GetComponent<Entity>().InflictDamage(damage);
+                }
             }
         }
 
