@@ -72,7 +72,7 @@ public class Vision : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, mag + 10.0f, visionMask))
             {
-                Debug.Log(ray.direction);
+                //Debug.Log(ray.direction);
                 if (hit.collider.CompareTag("Player"))
                 {
                     //Debug.Log("/*DOUBLE*/ VISION");

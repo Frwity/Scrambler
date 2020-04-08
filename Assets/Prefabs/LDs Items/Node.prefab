@@ -26,7 +26,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conjointNode: {fileID: 8138705193650179592}
-  teleportationTime: 0
+  teleportationSpeed: 0.5
 --- !u!1 &3468079971695688562
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conjointNode: {fileID: 2804748415921273777}
-  teleportationTime: 0
+  teleportationSpeed: 0.5
 --- !u!1001 &275722704750515969
 PrefabInstance:
   m_ObjectHideFlags: 0

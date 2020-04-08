@@ -5,25 +5,21 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] private float controlCD;
-    [SerializeField] private Vector3 respawnCoord;
-    [HideInInspector] public float lastControl;
-    public GameObject virus;
-
-    /*[HideInInspector]*/ public Entity entity;
-
-    [HideInInspector] public bool isInVirus;
-
-    public short lastDirection;
-
-    private Vector3 aimDireciton;
-
-    private GameObject collidingObj;
+    [SerializeField] public GameObject virus;
+    [HideInInspector] public RoomManager actualRoom;
 
     private Cinemachine.CinemachineVirtualCamera virtualCamera;
-
     private GameObject tTransform;
 
+    [HideInInspector] public Entity entity;
+    [HideInInspector] public bool isInVirus;
+    private GameObject collidingObj;
+
+    [SerializeField] private Vector3 defaultSpawnPoint;
+    [SerializeField] private float controlCD;
+    [HideInInspector] public float lastControl;
+    [HideInInspector] public short lastDirection;
+    private Vector3 aimDireciton;
     private bool jumped;
 
     void Start()
@@ -34,16 +30,25 @@ public class PlayerControl : MonoBehaviour
         jumped = false;
         isInVirus = true;
         tTransform = new GameObject();
+        tTransform.name = "CameraFocus";
         virtualCamera.Follow = tTransform.transform;
         virtualCamera.LookAt = tTransform.transform;
     }
 
     void Update()
     {
-        if (!entity)
+        if (!entity) // on entity die
         {
-            entity = Instantiate(virus, respawnCoord, Quaternion.identity, transform).GetComponent<Entity>();
             isInVirus = true;
+            if (actualRoom)
+            {
+                entity = Instantiate(virus, actualRoom.respawnPoint, Quaternion.identity, transform).GetComponent<Entity>();
+                actualRoom.ResetRoom();
+            }
+            else
+            {
+                entity = Instantiate(virus, defaultSpawnPoint, Quaternion.identity, transform).GetComponent<Entity>();               
+            }
             return;
         }
         if (Input.GetAxisRaw("Vertical") == 1 && Time.time > controlCD + lastControl && isInVirus)
@@ -85,7 +90,6 @@ public class PlayerControl : MonoBehaviour
         {
             lastControl = Time.time;
             entity.transform.parent = transform.parent;
-            entity.ActivateAI();
             entity.tag = "Enemy";
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
             entity.GetComponent<VirusSkill>().jumped = 1;
