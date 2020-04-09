@@ -22,10 +22,10 @@ public class suicideIA : MonoBehaviour
     private SuicideSkill scs;
     private float currentLostTimer = 0.0f;
     [SerializeField]private float lostTimer = 0.0f;
-    [SerializeField]private bool hasPlayerGoneInBack = false; 
-    [SerializeField]private bool HasTurnedOnce = false;
+    private bool hasPlayerGoneInBack = false; 
+    private bool HasTurnedOnce = false;
     [SerializeField] private float Backtimer = 0.0f;
-    [SerializeField] private float currentBackTimer = 0.0f;
+     private float currentBackTimer = 0.0f;
     [SerializeField] private float AIResetTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
     [SerializeField] private Road Path;

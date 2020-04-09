@@ -10,7 +10,7 @@ public class FlyingEnemySkill : EntitySkill
     [SerializeField] private float fireRate;
     private float lastFired;
     [SerializeField] private int MaxAngle;
-    [SerializeField] private Vector3 toShoot;
+     private Vector3 toShoot;
     private int precision = 0;
     private float currentCD = 0.0f;
 
