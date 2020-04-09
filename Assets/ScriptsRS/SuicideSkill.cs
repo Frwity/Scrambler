@@ -16,12 +16,12 @@ public class SuicideSkill : EntitySkill
 
 
     
-    [SerializeField]private int jumped;
-    [SerializeField]private int wallDir;
-    [SerializeField]private bool falling;
-    [SerializeField]private bool grounded;
-    [SerializeField] public bool touchingWall;
-    [SerializeField] public bool Roofed;
+    private int jumped;
+    private int wallDir;
+    private bool falling;
+    private bool grounded;
+    public bool touchingWall;
+    public bool Roofed;
     private Rigidbody rb;
     private float timer = 0;
 
