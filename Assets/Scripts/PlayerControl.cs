@@ -56,8 +56,13 @@ public class PlayerControl : MonoBehaviour
             lastControl = Time.time;
             entity.InteractWithBG();
         }
-        if (entity.isHidden && Input.GetAxis("Vertical") < 1)
-            entity.UninteractWithBG();
+        else if (Input.GetAxisRaw("Vertical") == -1 && Time.time > controlCD + lastControl && isInVirus)
+        {
+            lastControl = Time.time;
+            entity.InteractWithFG();
+        }
+        else if (entity.isHidden && Input.GetAxis("Vertical") < 0.9 && Input.GetAxis("Vertical") > -0.9)
+            entity.Uninteract();
 
         aimDireciton.x = Input.GetAxis("RHorizontal");
         aimDireciton.y = Input.GetAxis("RVertical");

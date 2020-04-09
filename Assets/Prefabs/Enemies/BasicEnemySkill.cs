@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VirusSkill : EntitySkill
+public class BasicEnemySkill : EntitySkill
 {
-    [SerializeField] private float maxSpeed;
+    [SerializeField] public float maxSpeed;
     [SerializeField] private int nbJump;
     [SerializeField] private float jumpForce;
     [SerializeField] private float wallFallSpeed;
@@ -19,6 +19,14 @@ public class VirusSkill : EntitySkill
     private bool touchingWall;
     private Rigidbody rb;
 
+
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float fireRate;
+    [SerializeField] private float imprecision; // is a measure in degrees, forming a cone of fire. 
+
+    [HideInInspector] public float xAim = 0f;
+    private float lastFired;
+
     void Start()
     {
         grounded = false;
@@ -31,6 +39,7 @@ public class VirusSkill : EntitySkill
 
     void Update()
     {
+        
     }
 
     private void FixedUpdate()
@@ -47,7 +56,7 @@ public class VirusSkill : EntitySkill
 
     public override bool Jump()
     {
-        if (canWallJump  && touchingWall && !grounded)
+        if (canWallJump && touchingWall && !grounded)
         {
             rb.velocity = new Vector3(jumpForce * wallDir, jumpForce, rb.velocity.z);
             jumped = 1;
@@ -85,18 +94,34 @@ public class VirusSkill : EntitySkill
         return true;
     }
 
-    public override bool Shoot(Vector3 direction)
+    public override bool Shoot(Vector3 directionVector)
     {
-        return false;
+        if (Time.time > fireRate + lastFired)
+        {
+            GameObject firedBullet = Instantiate(bullet, transform.position - transform.right, Quaternion.identity);
+
+            directionVector = Quaternion.Euler(0, 0, Random.Range(-imprecision, imprecision)) * directionVector;
+
+            BulletSharedClass firedBulletInfo = firedBullet.GetComponent<BulletSharedClass>();
+            firedBulletInfo.direction = directionVector.normalized;
+            firedBulletInfo.shooter = gameObject;
+
+            lastFired = Time.time;
+            return true;
+        }
+        else
+            return false;
     }
 
     public override bool ActivateAI()
     {
+        GetComponent<BasicEnemyAI>().isActive = true;
         return true;
     }
 
     public override bool DesactivateAI()
     {
+        GetComponent<BasicEnemyAI>().isActive = false;
         return true;
     }
 
@@ -121,7 +146,7 @@ public class VirusSkill : EntitySkill
             grounded = true;
         }
         if (collision.gameObject.CompareTag("Wall"))
-        { 
+        {
             touchingWall = true;
             if (collision.gameObject.transform.position.x - transform.position.x > 0)
                 wallDir = -1;
@@ -147,6 +172,6 @@ public class VirusSkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-
+        xAim = direction.x;
     }
 }
