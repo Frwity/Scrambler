@@ -476,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   lostTimer: 0
+  AIResetTimer: 0
   Path: {fileID: 0}
 --- !u!114 &6922781912599982002
 MonoBehaviour:
@@ -492,8 +493,9 @@ MonoBehaviour:
   speed: 5
   nbJump: 2
   jumpForce: 20
-  slamCD: 0
-  slamDamage: 0
+  slamCD: 1
+  slamDamage: 1
+  shieldSlamCollider: {fileID: 0}
 --- !u!114 &6922781912599982003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,3 +515,4 @@ MonoBehaviour:
   isPlayerInSight: 0
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
+  isInBackGround: 0

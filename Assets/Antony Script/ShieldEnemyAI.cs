@@ -7,18 +7,13 @@ public class ShieldEnemyAI : MonoBehaviour
     public bool isActive;
     private Entity entity;
     private float currentLostTimer = 0.0f;
-    [SerializeField]private float lostTimer = 0.0f;
-    private bool shooting = false;
-    //private bool dashing;
-    private bool haveTarget;
-    private Vector3 targetPos;
+    [SerializeField] private float lostTimer = 0.0f;
     [SerializeField] private float AIResetTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
     [SerializeField] private Road Path;
+
     void Start()
     {
-        //dashing = false;
-        haveTarget = false;
 
         entity = GetComponent<Entity>();
     }
@@ -34,6 +29,9 @@ public class ShieldEnemyAI : MonoBehaviour
                 entity.MoveLeft(-1);
             else if (entity.lastPlayerPosKnown.x - transform.position.x > 0.25)
                 entity.MoveRight(1);
+
+            entity.AimDirection((entity.lastPlayerPosKnown - transform.position).normalized);
+            entity.Shoot((entity.lastPlayerPosKnown - transform.position).normalized);
         }
         else if (entity.LostPlayer)
         {
@@ -44,17 +42,21 @@ public class ShieldEnemyAI : MonoBehaviour
             }
             currentAIResetTimer += Time.smoothDeltaTime;
             if (entity.lastPlayerPosKnown.x - transform.position.x < -0.25)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                entity.AimDirection((entity.lastPlayerPosKnown - transform.position).normalized);
                 entity.MoveLeft(-1);
+            }
             else if (entity.lastPlayerPosKnown.x - transform.position.x > 0.25)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                entity.AimDirection((entity.lastPlayerPosKnown - transform.position).normalized);
                 entity.MoveRight(1);
+            }
             else if (currentAIResetTimer > AIResetTimer)
             {
                 entity.LostPlayer = false;
             }
-        }
-        else if (shooting)
-        {
-            
         }
         else
         {
