@@ -5,9 +5,11 @@ using UnityEngine;
 public class FireBullet : CurvedBulletSharedClass
 {
     [SerializeField] Vector3 fireRange = new Vector3(1f, 0.5f, 0.5f);
+    
+    [SerializeField] float fireLifeTime = 2f;
 
     [SerializeField] GameObject fireZone;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class FireBullet : CurvedBulletSharedClass
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -47,6 +49,9 @@ public class FireBullet : CurvedBulletSharedClass
         fire.transform.localScale = fireRange;
 
         fire.transform.Rotate(rotation, Space.World);
+
+        fire.GetComponent<DeadZone>().lifeTime = fireLifeTime;
+        fire.GetComponent<LDBlock>().isActive = true;
 
         Debug.Log(rotation);
 

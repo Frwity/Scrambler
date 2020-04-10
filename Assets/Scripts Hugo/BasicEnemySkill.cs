@@ -21,6 +21,8 @@ public class BasicEnemySkill : EntitySkill
 
     [HideInInspector] public float xAim = 0f;
 
+    Vector3 lastDirection = Vector3.zero;
+
     void Start()
     {
         falling = true;
@@ -68,8 +70,15 @@ public class BasicEnemySkill : EntitySkill
 
     public override bool Shoot(Vector3 directionVector)
     {
-        if (Time.time > fireRate + lastFired && directionVector != new Vector3(0, 0, 0))
+        if (directionVector.magnitude < 0.1)
         {
+            directionVector = lastDirection;
+        }
+        
+        lastDirection = directionVector;
+
+        if (Time.time > fireRate + lastFired)
+        {    
             GameObject firedBullet = Instantiate(bullet, transform.position - transform.right, Quaternion.identity);
 
             directionVector = Quaternion.Euler(0, 0, Random.Range(-imprecision, imprecision)) * directionVector;
