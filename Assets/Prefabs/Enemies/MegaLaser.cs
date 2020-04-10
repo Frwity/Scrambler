@@ -12,7 +12,7 @@ public class MegaLaser : MonoBehaviour
     float currentTime = 0f;
     
     [SerializeField] GameObject laserObject;
-    [SerializeField] Vector3 laserDimension;
+    [SerializeField] Vector3 laserDimension = Vector3.zero;
 
     GameObject actualLazer;
 

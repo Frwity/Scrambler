@@ -21,11 +21,14 @@ public class BasicEnemySkill : EntitySkill
 
 
     [SerializeField] private GameObject bullet;
+    
     [SerializeField] private float fireRate;
     [SerializeField] private float imprecision; // is a measure in degrees, forming a cone of fire. 
+    private float lastFired;
 
     [HideInInspector] public float xAim = 0f;
-    private float lastFired;
+
+    Vector3 lastDirection = Vector3.zero;
 
     void Start()
     {
@@ -35,12 +38,14 @@ public class BasicEnemySkill : EntitySkill
 
         wallDir = 0;
         rb = GetComponent<Rigidbody>();
+        lastFired = 0;
     }
 
     void Update()
     {
         
     }
+
 
     private void FixedUpdate()
     {
@@ -96,8 +101,15 @@ public class BasicEnemySkill : EntitySkill
 
     public override bool Shoot(Vector3 directionVector)
     {
-        if (Time.time > fireRate + lastFired)
+        if (directionVector.magnitude < 0.1)
         {
+            directionVector = lastDirection;
+        }
+        
+        lastDirection = directionVector;
+
+        if (Time.time > fireRate + lastFired)
+        {    
             GameObject firedBullet = Instantiate(bullet, transform.position - transform.right, Quaternion.identity);
 
             directionVector = Quaternion.Euler(0, 0, Random.Range(-imprecision, imprecision)) * directionVector;

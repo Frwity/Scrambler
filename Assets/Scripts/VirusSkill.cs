@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class VirusSkill : EntitySkill
 {
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private int nbJump;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float wallFallSpeed;
-    [SerializeField] [Range(0, 1)] private float airControlFactor;
-    [SerializeField] [Range(0, 1)] private float accelerationFactor;
-    [SerializeField] private bool canWallJump;
+    [SerializeField] private float maxSpeed = 0.0f;
+    [SerializeField] private int nbJump = 0;
+    [SerializeField] private float jumpForce = 0.0f;
+    [SerializeField] private float wallFallSpeed = 0.0f;
+    [SerializeField] [Range(0, 1)] private float airControlFactor = 0.0f;
+    [SerializeField] [Range(0, 1)] private float accelerationFactor = 0.0f;
+    [SerializeField] private bool canWallJump = false;
 
-    [HideInInspector] public int jumped;
+    [HideInInspector] public int jumped = 0;
     private int wallDir;
     private bool falling;
     private bool grounded;

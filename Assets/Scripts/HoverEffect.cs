@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class HoverEffect : MonoBehaviour
 {
-    [SerializeField]
-    private float hoverSpeed;
-    [SerializeField]
-    private float maxHeight;
-    [SerializeField]
-    private float minHeight;
+    [SerializeField] private float hoverSpeed = 0.0f;
+    [SerializeField] private float maxHeight = 0.0f;
+    [SerializeField] private float minHeight = 0.0f;
 
     private float hoverHeight;
     private float hoverRange;
