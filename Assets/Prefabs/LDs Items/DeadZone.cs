@@ -14,6 +14,8 @@ public class DeadZone : LDBlock
     private bool isTriggering;
     private float timer;
 
+    public float lifeTime = -1f; // May be modified externally at creation / Set at 0 or bellow and the time drain will not be triggered (infinite life time)
+
     void Start()
     {
         actualTriggeringTime = timeToTrigger;
@@ -24,6 +26,13 @@ public class DeadZone : LDBlock
 
     void Update()
     {
+        if (lifeTime > 0)
+        {
+            lifeTime -= Time.deltaTime;
+
+            if (lifeTime <= 0) Destroy(gameObject);
+        }
+
         if (!isActive || !isTriggering || !entity)
             return;
 
