@@ -18,7 +18,7 @@ public class LazerBullet : BulletSharedClass
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("LuL");
+
     }
 
     public override void doBehavior(GameObject hitObject)

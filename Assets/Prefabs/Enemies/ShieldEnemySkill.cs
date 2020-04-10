@@ -61,7 +61,7 @@ public class ShieldEnemySkill : EntitySkill
 
     public override bool Shoot(Vector3 direction)
     {
-        if (Time.time > lastSlam + slamCD && direction.magnitude > 0.1)
+        if (Time.time > lastSlam + slamCD)
         {
             if (shieldSlamCollider)
                 shieldSlamCollider.GetComponent<Entity>().InflictDamage(slamDamage);

@@ -29,6 +29,14 @@ public class Node : MonoBehaviour
                 toTeleport.GetComponent<Rigidbody>().isKinematic = false;
                 toTeleport.GetComponent<MeshRenderer>().enabled = true;
             }
+            else if ((toTeleport.transform.position - transform.position).magnitude > (teleportPos - transform.position).magnitude)
+            {
+                toTeleport.transform.position = teleportPos;
+                teleporting = false;
+                toTeleport.GetComponent<Rigidbody>().useGravity = true;
+                toTeleport.GetComponent<Rigidbody>().isKinematic = false;
+                toTeleport.GetComponent<MeshRenderer>().enabled = true;
+            }
         }
     }
 
@@ -36,7 +44,7 @@ public class Node : MonoBehaviour
     {
         teleporting = true;
         this.toTeleport = toTeleport;
-        teleportPos = conjointNode.transform.position + Vector3.back * 2;
+        teleportPos = new Vector3(conjointNode.transform.position.x, conjointNode.transform.position.y, 0);
         direction = (teleportPos - toTeleport.transform.position).normalized;
         toTeleport.GetComponent<MeshRenderer>().enabled = false;
         toTeleport.GetComponent<Rigidbody>().useGravity = false;

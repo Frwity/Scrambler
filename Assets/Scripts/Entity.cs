@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class EntitySkill : MonoBehaviour
 {
+    [SerializeField] private float interactionRange;
     public abstract bool Jump();
     public abstract bool MoveLeft(float moveSpeed);
     public abstract bool MoveRight(float moveSpeed);
@@ -14,19 +15,31 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract bool DesactivateAI();
     public void InteractWithBG()
     {
-        Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 3);
+        Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, interactionRange);
 
         if (hitInfo.collider && hitInfo.collider.CompareTag("HidingZone"))
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 2);
+            transform.position = new Vector3(transform.position.x, transform.position.y, hitInfo.transform.position.z);
         }
-
-        if (hitInfo.collider && hitInfo.collider.CompareTag("Node"))
+        else if (hitInfo.collider && hitInfo.collider.CompareTag("Node"))
         {
             hitInfo.collider.gameObject.GetComponent<Node>().Teleport(gameObject);
         }
     }
-    public void UninteractWithBG()
+    public void InteractWithFG()
+    {
+        Physics.Raycast(transform.position, Vector3.back, out RaycastHit hitInfo, interactionRange);
+
+        if (hitInfo.collider && hitInfo.collider.CompareTag("HidingZone"))
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, hitInfo.transform.position.z);
+        }
+        else if (hitInfo.collider && hitInfo.collider.CompareTag("Node"))
+        {
+            hitInfo.collider.gameObject.GetComponent<Node>().Teleport(gameObject);
+        }
+    }
+    public void Uninteract()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
@@ -116,18 +129,19 @@ public class Entity : MonoBehaviour
         isHidden = true;
         entitySkill.InteractWithBG();
     }
-    public void UninteractWithBG()
+    public void InteractWithFG()
+    {
+        isHidden = true;
+        entitySkill.InteractWithFG();
+    }
+    public void Uninteract()
     {
         isHidden = false;
-        entitySkill.UninteractWithBG();
+        entitySkill.Uninteract();
     }
     public void InflictDamage(int damage)
     {
         life -= damage;
-    }
-    Vector2 Rotate(Vector2 aPoint, float aDegree)
-    {
-        return Quaternion.Euler(0,0,aDegree) * aPoint;
     }
 
     private void OnTriggerStay(Collider other)
@@ -144,7 +158,7 @@ public class Entity : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HidingZone"))
         {
-            UninteractWithBG();
+            Uninteract();
         }
         collidingObj = null;
     }

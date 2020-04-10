@@ -124,12 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5afb0259fd3a249ac80cc808ca2c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  interactionRange: 5
+  maxSpeed: 10
   nbJump: 1
   jumpForce: 18
   wallFallSpeed: 1
   airControlFactor: 0.13
   accelerationFactor: 0.13
+  canWallJump: 1
   jumped: 0
 --- !u!114 &7987167876143128018
 MonoBehaviour:
@@ -150,6 +152,7 @@ MonoBehaviour:
   isPlayerInSight: 0
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
+  isInBackGround: 0
 --- !u!114 &504269849
 MonoBehaviour:
   m_ObjectHideFlags: 0
