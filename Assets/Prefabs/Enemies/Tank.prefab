@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 487638414128119982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.33, y: 1.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 3.75, z: 3}
   m_Children:
   - {fileID: 15955543966552162}
   - {fileID: 81484261096667713}
@@ -130,12 +130,10 @@ MonoBehaviour:
   fireCount: 3
   rangePoint: 0
   direction: 1
-  currentLostTimer: 0
   lostTimer: 0
-  hasPlayerGoneInBack: 0
-  HasTurnedOnce: 0
   Backtimer: 0
-  currentBackTimer: 0
+  Path: {fileID: 0}
+  AIResetTimer: 0
 --- !u!114 &487638414128119991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,14 +146,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73e8c7cb231e89468c063ecdea612fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionRange: 0
+  maxSpeed: 0
+  nbJump: 0
+  jumpForce: 0
+  wallFallSpeed: 0
+  airControlFactor: 0
+  accelerationFactor: 0
+  canWallJump: 0
+  jumped: 0
   angleInDeg: 70
   precision: 3
   shootingStrength: 10
-  bulletPrefab: {fileID: 1373324732904411685, guid: 63b98bad1262af64b9fcfd8120f8cdd8,
-    type: 3}
   cooldown: 1
   numberOfProjectile: 3
-  speed: 7.5
+  bulletPrefab: {fileID: 1373324732904411685, guid: 63b98bad1262af64b9fcfd8120f8cdd8,
+    type: 3}
   rangePoint: 0
   cannon: {fileID: 1266014278261994395}
 --- !u!114 &487638414128119985
@@ -177,6 +183,7 @@ MonoBehaviour:
   isPlayerInSight: 0
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
+  isInBackGround: 0
 --- !u!1 &714007453377370538
 GameObject:
   m_ObjectHideFlags: 0

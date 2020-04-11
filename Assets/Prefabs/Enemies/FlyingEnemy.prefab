@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 7546050685290015938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.2161627, y: 8.88, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_Children:
   - {fileID: 185343002686624217}
   - {fileID: 6074951667394394232}
@@ -244,6 +244,8 @@ MonoBehaviour:
   isActive: 1
   fireCount: 3
   lostTimer: 0
+  Path: {fileID: 0}
+  AIResetTimer: 0
 --- !u!114 &7546050685290015934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,10 +258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb1828efe3c2fee4a922a26722015b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionRange: 0
   speed: 3
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
   fireRate: 1
-  MaxAngle: 0
 --- !u!114 &7546050685290015936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +281,7 @@ MonoBehaviour:
   isPlayerInSight: 0
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
+  isInBackGround: 0
 --- !u!1 &7546050685399595584
 GameObject:
   m_ObjectHideFlags: 0
