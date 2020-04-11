@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2462951506704342486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.75, z: 1}
   m_Children:
   - {fileID: 2029378501080835673}
   - {fileID: 7017290377553411384}
@@ -127,6 +127,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   direction: 1
+  lostTimer: 0
+  Backtimer: 0
+  AIResetTimer: 0
+  Path: {fileID: 0}
 --- !u!114 &2462951506704342484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f2d9f8589feb64fa5e1d98ce585ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionRange: 0
   speed: 1
   chargeTime: 1
   exploRay: 100
@@ -147,10 +152,6 @@ MonoBehaviour:
   jumpForce: 0
   airControlFactor: 0
   accelerationFactor: 0
-  jumped: 0
-  wallDir: 0
-  falling: 0
-  grounded: 0
   touchingWall: 0
   Roofed: 0
 --- !u!114 &2462951506704342483
@@ -172,6 +173,7 @@ MonoBehaviour:
   isPlayerInSight: 0
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
+  isInBackGround: 0
 --- !u!1 &3044287290998218745
 GameObject:
   m_ObjectHideFlags: 0
