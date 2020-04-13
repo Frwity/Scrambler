@@ -7,15 +7,15 @@ public class BasicEnemyAI : MonoBehaviour
     public bool isActive;
     private Entity entity;
 
-    [SerializeField] private float upperFireRange;
-    [SerializeField] private float lowerFireRange;
+    [SerializeField] private float upperFireRange = 0.0f;
+    [SerializeField] private float lowerFireRange = 0.0f;
 
-    [SerializeField] private float detectionRange; // must be > upperFireRange
-    [SerializeField] private float distanceToKeepAwayFromPlayer;
+    [SerializeField] private float detectionRange = 0.0f; // must be > upperFireRange
+    [SerializeField] private float distanceToKeepAwayFromPlayer = 0.0f;
 
-    [SerializeField] private float maxReactionTime;
+    [SerializeField] private float maxReactionTime = 0.0f;
 
-    [SerializeField] private bool flipped; // If checked, the enemy will spawn looking RIGHT, do *NOT* rotate the model manually.
+    [SerializeField] private bool flipped = false; // If checked, the enemy will spawn looking RIGHT, do *NOT* rotate the model manually.
 
     private GameObject player;
 
@@ -24,23 +24,23 @@ public class BasicEnemyAI : MonoBehaviour
     private bool lookingRight; // Obviously, if FALSE, the enemy is looking left.
 
     private BasicEnemySkill associatedBES;
-    
-    private float currentLostTimer = 0.0f;
-    [SerializeField]private float lostTimer = 0.0f;
-    private bool hasPlayerGoneInBack = false; 
-    [SerializeField]private bool HasTurnedOnce = false;
+
+    [SerializeField] private float lostTimer = 0.0f;
+    [SerializeField] private bool HasTurnedOnce = false;
     [SerializeField] private float Backtimer = 0.0f;
-     private float currentBackTimer = 0.0f;
     [SerializeField] private float lostSpeed = 2.0f;
     [SerializeField] private float AIResetTimer = 0.0f;
+    [SerializeField] private Road Path = null;
+    private float currentLostTimer = 0.0f;
+    private bool hasPlayerGoneInBack = false;
+    private float currentBackTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
     private bool previousFlip = false;
-    [SerializeField] private Road Path;
     void Start()
     {
-        player          = GameObject.FindGameObjectWithTag("Player");
-        entity          = GetComponent<Entity>();
-        associatedBES   = GetComponent<BasicEnemySkill>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        entity = GetComponent<Entity>();
+        associatedBES = GetComponent<BasicEnemySkill>();
 
 
         reactionTime = maxReactionTime;
@@ -67,7 +67,7 @@ public class BasicEnemyAI : MonoBehaviour
         {
             LookRight();
         }
-            
+
         if (stickX < -0.05f && lookingRight)
         {
             LookLeft();
@@ -77,7 +77,7 @@ public class BasicEnemyAI : MonoBehaviour
     public void LookRight()
     {
         transform.rotation = Quaternion.Euler(0, 180, 0);
-        
+
         flipped = true;
         lookingRight = true;
     }
@@ -96,8 +96,8 @@ public class BasicEnemyAI : MonoBehaviour
         flipped ^= true;
         transform.Rotate(0, flipped ? -180 : 180, 0);
 
-        
-        
+
+
         lookingRight ^= true;
     }
 
@@ -144,7 +144,7 @@ public class BasicEnemyAI : MonoBehaviour
             if (entity.isPlayerInSight)
                 entity.Shoot(vecToPlayer.normalized);
             return;
-                
+
         }
         if (entity.isPlayerInSight)
         {
@@ -154,10 +154,10 @@ public class BasicEnemyAI : MonoBehaviour
             currentBackTimer = 0.0f;
             hasPlayerGoneInBack = false;
             HasTurnedOnce = false;
-            
+
             if (distanceToKeepAwayFromPlayer < distToPlayer)
             {
-                
+
                 if (vecToPlayer.x > 0)
                     entity.MoveRight(1);
                 else
@@ -169,56 +169,56 @@ public class BasicEnemyAI : MonoBehaviour
         }
         else if (entity.LostPlayer)
         {
-             if (currentLostTimer < lostTimer)
-             {
-                 currentLostTimer += Time.smoothDeltaTime;
-                 return;
-             }
-             currentAIResetTimer += Time.smoothDeltaTime;
-             if (!HasTurnedOnce)
-             {
-                 AIflipControl(vecToPlayer.x);
-             }
-             
-             if (previousFlip != flipped)
-             {
-                 previousFlip = flipped;
-                 hasPlayerGoneInBack = true;
-                 HasTurnedOnce = true;
-             }
-             
-             if (vecToPlayer.x > 0.15*lostSpeed && !hasPlayerGoneInBack)
-             {
-                 
-                 entity.MoveRight(lostSpeed/ associatedBES.moveSpeed);
-             }
-             else if (vecToPlayer.x < -0.15*lostSpeed && !hasPlayerGoneInBack)
-             {
-                 
-                 entity.MoveLeft(-lostSpeed / associatedBES.moveSpeed);
-             }
+            if (currentLostTimer < lostTimer)
+            {
+                currentLostTimer += Time.smoothDeltaTime;
+                return;
+            }
+            currentAIResetTimer += Time.smoothDeltaTime;
+            if (!HasTurnedOnce)
+            {
+                AIflipControl(vecToPlayer.x);
+            }
 
-             else if (hasPlayerGoneInBack)
-             {
-                 
-                 if (currentBackTimer < Backtimer)
-                 {
-                     currentBackTimer += Time.smoothDeltaTime;
-                     if (lookingRight)
-                     {
-                         entity.MoveRight(1/ associatedBES.moveSpeed);
-                     }
-                     else
-                     {
-                         entity.MoveRight(-1/ associatedBES.moveSpeed);
-                     }
-                 }
-             }
-             else if (currentAIResetTimer > AIResetTimer)
-             {
-                 entity.LostPlayer = false;
-             }
-             
+            if (previousFlip != flipped)
+            {
+                previousFlip = flipped;
+                hasPlayerGoneInBack = true;
+                HasTurnedOnce = true;
+            }
+
+            if (vecToPlayer.x > 0.15 * lostSpeed && !hasPlayerGoneInBack)
+            {
+
+                entity.MoveRight(lostSpeed / associatedBES.maxSpeed);
+            }
+            else if (vecToPlayer.x < -0.15 * lostSpeed && !hasPlayerGoneInBack)
+            {
+
+                entity.MoveLeft(-lostSpeed / associatedBES.maxSpeed);
+            }
+
+            else if (hasPlayerGoneInBack)
+            {
+
+                if (currentBackTimer < Backtimer)
+                {
+                    currentBackTimer += Time.smoothDeltaTime;
+                    if (lookingRight)
+                    {
+                        entity.MoveRight(1 / associatedBES.maxSpeed);
+                    }
+                    else
+                    {
+                        entity.MoveRight(-1 / associatedBES.maxSpeed);
+                    }
+                }
+            }
+            else if (currentAIResetTimer > AIResetTimer)
+            {
+                entity.LostPlayer = false;
+            }
+
         }
         else
         {
@@ -238,9 +238,9 @@ public class BasicEnemyAI : MonoBehaviour
             Vector3 toCheckpoint = Path.Checkpoints[Path.CurrentIndex].checkPointPos - transform.position;
             AIflipControl(toCheckpoint.x);
             previousFlip = flipped;
-            if (toCheckpoint.x > 0.15* associatedBES.moveSpeed)
+            if (toCheckpoint.x > 0.15 * associatedBES.maxSpeed)
                 entity.MoveRight(1);
-            else if (toCheckpoint.x < -0.15* associatedBES.moveSpeed)
+            else if (toCheckpoint.x < -0.15 * associatedBES.maxSpeed)
                 entity.MoveLeft(-1);
             else
             {

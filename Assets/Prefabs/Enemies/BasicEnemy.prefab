@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 6531962691575589099}
   - component: {fileID: -54433944152827307}
   - component: {fileID: 6531962691575589098}
-  - component: {fileID: 5559768263519713667}
+  - component: {fileID: 3540965566175353325}
   - component: {fileID: 8348260990958963665}
   m_Layer: 9
   m_Name: BasicEnemy
@@ -222,13 +222,13 @@ MonoBehaviour:
   distanceToKeepAwayFromPlayer: 10
   maxReactionTime: 2
   flipped: 1
-  currentLostTimer: 0
   lostTimer: 0
-  hasPlayerGoneInBack: 0
   HasTurnedOnce: 0
   Backtimer: 0
-  currentBackTimer: 0
---- !u!114 &5559768263519713667
+  lostSpeed: 2
+  AIResetTimer: 0
+  Path: {fileID: 0}
+--- !u!114 &3540965566175353325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,15 +237,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6531962691575589097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4313e5db7a93c524ca85f4d4e8dde7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f5263de07187ecf4ba6cd4ae295acbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionRange: 0
+  maxSpeed: 2
   nbJump: 1
-  jumpForce: 8.5
-  bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
-  moveSpeed: 11
+  jumpForce: 3
+  wallFallSpeed: 0
+  airControlFactor: 1
+  accelerationFactor: 1
+  canWallJump: 0
+  jumped: 0
+  bullet: {fileID: 3517571761744688880, guid: 06aa0c89c59587246bf253f0a71b30ad, type: 3}
   fireRate: 1
-  imprecision: 0
+  imprecision: 5
   xAim: 0
 --- !u!114 &8348260990958963665
 MonoBehaviour:
@@ -260,12 +266,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 5
-  entitySkill: {fileID: 5559768263519713667}
+  entitySkill: {fileID: 3540965566175353325}
   controllable: 1
   isHidden: 0
   isPlayerInSight: 0
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
+  isInBackGround: 0
 --- !u!1 &6531962691780716590
 GameObject:
   m_ObjectHideFlags: 0
