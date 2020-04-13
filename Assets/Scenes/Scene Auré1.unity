@@ -78285,12 +78285,12 @@ PrefabInstance:
     - target: {fileID: 7987167876143128017, guid: bb103c6604ba9b64186e6b7c9bd773b6,
         type: 3}
       propertyPath: airControlFactor
-      value: 0.13
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 7987167876143128017, guid: bb103c6604ba9b64186e6b7c9bd773b6,
         type: 3}
       propertyPath: accelerationFactor
-      value: 0.25
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 504269849, guid: bb103c6604ba9b64186e6b7c9bd773b6, type: 3}
       propertyPath: gravity
