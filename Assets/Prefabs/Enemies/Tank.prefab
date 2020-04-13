@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 487638414128119990}
   - component: {fileID: 487638414128119991}
   - component: {fileID: 487638414128119985}
+  - component: {fileID: 5346664872798806781}
   m_Layer: 9
   m_Name: Tank
   m_TagString: Enemy
@@ -147,19 +148,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 0
-  maxSpeed: 0
-  nbJump: 0
-  jumpForce: 0
+  maxSpeed: 3
+  nbJump: 1
+  jumpForce: 5
   wallFallSpeed: 0
-  airControlFactor: 0
-  accelerationFactor: 0
+  airControlFactor: 0.1
+  accelerationFactor: 0.15
   canWallJump: 0
   jumped: 0
   angleInDeg: 70
-  precision: 3
-  shootingStrength: 10
-  cooldown: 1
-  numberOfProjectile: 3
+  precision: 10
+  shootingStrength: 11
+  cooldown: 1.5
+  numberOfProjectile: 1
   bulletPrefab: {fileID: 1373324732904411685, guid: 63b98bad1262af64b9fcfd8120f8cdd8,
     type: 3}
   rangePoint: 0
@@ -184,6 +185,19 @@ MonoBehaviour:
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
   isInBackGround: 0
+--- !u!114 &5346664872798806781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487638414128119982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: -28
 --- !u!1 &714007453377370538
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714007453377370538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487638414128119989}
@@ -361,7 +375,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1583213745103522203
 MonoBehaviour:

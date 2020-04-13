@@ -27,7 +27,7 @@ public class TankSkill : EntitySkill
     [SerializeField] private int numberOfProjectile = 1;    
     [SerializeField] private GameObject bulletPrefab;
 
-    [HideInInspector] public float rangePoint;
+    /*[HideInInspector]*/ public float rangePoint;
     private Direction dir;
     private Vector2 shootingDir;
     private float currentCooldown;
