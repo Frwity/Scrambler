@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/8a332b6e50a690a47a04878323c3d669
-    guid: 8a332b6e50a690a47a04878323c3d669
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/Scene Antony.unity
     guid: e6e7d5375adeca34896f59f369cf04e7
+  - enabled: 1
+    path: "Assets/Scenes/Scene Aur\xE91.unity"
+    guid: bdcd3e58a2aed9c418260ca879e27461
   m_configObjects: {}
