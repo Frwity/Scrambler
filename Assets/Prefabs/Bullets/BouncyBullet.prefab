@@ -126,4 +126,4 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
   bounces: 3
-  explosionRange: 1
+  explosionRange: 2.5

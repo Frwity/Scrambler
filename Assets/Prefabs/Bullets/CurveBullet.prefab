@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  damage: 1
+  damage: 2
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
 --- !u!54 &6742424996192171319
