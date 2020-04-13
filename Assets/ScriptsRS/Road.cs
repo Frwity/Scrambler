@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
 [ExecuteInEditMode] public class Road : MonoBehaviour
 {
@@ -78,6 +80,7 @@ using UnityEditor;
     
 }
 
+#if UNITY_EDITOR
 
 [CustomEditor(typeof(Road)), CanEditMultipleObjects]
 public class PathEditor : Editor
@@ -98,11 +101,7 @@ public class PathEditor : Editor
                 vari.checkPointPos = newTargetPosition;
             }
         }
-       
-        
-        
-
-        
-        
     }
 }
+
+#endif
