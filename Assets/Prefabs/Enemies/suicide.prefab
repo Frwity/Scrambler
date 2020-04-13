@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2462951506704342486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1.75, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2029378501080835673}
   - {fileID: 7017290377553411384}
@@ -143,15 +143,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f2d9f8589feb64fa5e1d98ce585ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRange: 0
-  speed: 1
-  chargeTime: 1
-  exploRay: 100
-  damage: 100
-  nbJump: 0
-  jumpForce: 0
-  airControlFactor: 0
-  accelerationFactor: 0
+  interactionRange: 5
+  speed: 13.1
+  chargeTime: 0.5
+  exploRay: 10
+  damage: 5
+  nbJump: 1
+  jumpForce: 20
+  airControlFactor: 0.098
+  accelerationFactor: 0.064
   touchingWall: 0
   Roofed: 0
 --- !u!114 &2462951506704342483
@@ -275,8 +275,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.8644347, y: 2, z: 1}
-  m_Center: {x: 1.1175807, y: 0, z: 0}
+  m_Size: {x: 15.121952, y: 10.081041, z: 5.95108}
+  m_Center: {x: 6.138138, y: 2.09122, z: -0.18807101}
 --- !u!114 &2947804271951078214
 MonoBehaviour:
   m_ObjectHideFlags: 0

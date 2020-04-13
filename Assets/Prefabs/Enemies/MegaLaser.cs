@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MegaLaser : MonoBehaviour
 {
+    [SerializeField] float delay = 0f;
     [SerializeField] float cooldowTime = 2f;
     [SerializeField] float warningTime = 2f; // Also serves for the charge-up squence
     [SerializeField] float fireTime = 1f;
@@ -23,6 +24,8 @@ public class MegaLaser : MonoBehaviour
     void Start()
     {
         totalTime = cooldowTime + warningTime + fireTime;
+
+        currentTime -= delay;
     }
 
     // Update is called once per frame
