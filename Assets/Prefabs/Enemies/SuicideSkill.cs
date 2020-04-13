@@ -190,7 +190,8 @@ public class SuicideSkill : EntitySkill
             }
 
             PlayerControl pl = gameObject.GetComponentInParent<PlayerControl>();
-            
+            if (!pl)
+                return false;
             pl.lastControl = Time.time;
             pl.entity.transform.parent = transform.parent;
             pl.entity.ActivateAI();

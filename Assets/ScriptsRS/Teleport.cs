@@ -18,6 +18,12 @@ public class Teleport : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (!toTP)
+        { 
+            Destroy(gameObject);
+            return;
+        }
+
         if (other.CompareTag("Bullet"))
         {
             other.transform.position = new Vector3(toTP.position.x, transform.position.y, toTP.position.z);

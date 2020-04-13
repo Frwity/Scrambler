@@ -125,6 +125,7 @@ MonoBehaviour:
   damage: 0
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
-  fireRange: {x: 16.66, y: 0.5, z: 0.5}
+  fireRange: {x: 5, y: 0.5, z: 0.5}
+  fireLifeTime: 2
   fireZone: {fileID: 1828231098107120287, guid: 1d6e0df27c8aa4b48a464a4113bc54ae,
     type: 3}

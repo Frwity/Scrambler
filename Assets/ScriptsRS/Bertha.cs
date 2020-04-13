@@ -26,6 +26,8 @@ public class Bertha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Drone)
+            return;
         if (currCooldown < Cooldown)
         {
             currCooldown += Time.smoothDeltaTime;
@@ -40,10 +42,11 @@ public class Bertha : MonoBehaviour
 
     void shootBullet()
     {
+        if (!Drone)
+            return ;
         if (currCooldown < Cooldown)
         {
-            
-            return;
+            return ;
         }
         GameObject bu = Instantiate(bullet, transform.GetChild(0).position, transform.rotation);
         bu.transform.localScale += new Vector3(1,1,1);
@@ -51,6 +54,6 @@ public class Bertha : MonoBehaviour
         Physics.IgnoreCollision(bu.GetComponent<Collider>(), GetComponent<Collider>(), true);
         Rigidbody rb = bu.GetComponent<Rigidbody>();
         rb.AddForce(Vector3.up * shootForce);
-            
+        currCooldown = 0;
     }
 }
