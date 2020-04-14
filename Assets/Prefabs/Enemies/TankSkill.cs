@@ -58,7 +58,7 @@ public class TankSkill : EntitySkill
         rb = GetComponent<Rigidbody>();
 
         angleRotated = angleInDeg;
-        int a = angleRotated;
+        int a = angleRotated + precision/2;
         rangePoint = (shootingStrength / Physics.gravity.magnitude) 
                   * Mathf.Cos(a * Mathf.Deg2Rad) 
                   * (shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad) 
