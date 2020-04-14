@@ -43,7 +43,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.2947464, y: 9.162856, z: 1}
+  m_Size: {x: 16, y: 9.162856, z: 1}
   m_Center: {x: 0.11565018, y: -4.081428, z: 0}
 --- !u!114 &279276819345725500
 MonoBehaviour:
@@ -145,7 +145,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7546050685290015938}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.2161627, y: 8.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -227,7 +227,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &7546050685290015937
 MonoBehaviour:
@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  fireCount: 3
-  lostTimer: 0
+  fireCount: 1
+  lostTimer: 1
   Path: {fileID: 0}
   AIResetTimer: 0
 --- !u!114 &7546050685290015934
@@ -259,9 +259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 0
-  speed: 3
+  speed: 10
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
-  fireRate: 1
+  fireRate: 0.52
 --- !u!114 &7546050685290015936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b197fcebbe6044bfc336b1942674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 4
+  life: 5
   entitySkill: {fileID: 7546050685290015934}
   controllable: 1
   isHidden: 0
