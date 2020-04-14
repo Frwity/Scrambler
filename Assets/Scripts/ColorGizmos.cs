@@ -19,8 +19,11 @@ public class ColorGizmos : MonoBehaviour
 
     private void OnDrawGizmos()
     {  
-        Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+        Vector3 c = GetComponent<BoxCollider>().center;
+        Gizmos.matrix = Matrix4x4.TRS(transform.position  , transform.rotation, transform.lossyScale);
         Gizmos.color = color;
-        Gizmos.DrawWireCube(Vector3.zero, transform.localScale);
+        Vector3 s = GetComponent<BoxCollider>().size;
+        
+        Gizmos.DrawWireCube(c, s);
     }
 }

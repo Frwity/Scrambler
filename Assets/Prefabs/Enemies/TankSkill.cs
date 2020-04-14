@@ -59,11 +59,12 @@ public class TankSkill : EntitySkill
 
         angleRotated = angleInDeg;
         int a = angleRotated + precision/2;
-        rangePoint = (shootingStrength / Physics.gravity.magnitude) 
-                  * Mathf.Cos(a * Mathf.Deg2Rad) 
-                  * (shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad) 
-                     + Mathf.Sqrt(Mathf.Pow(shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad), 2) 
-                                  + 2* Physics.gravity.magnitude * transform.position.y ));
+        rangePoint = (shootingStrength / Physics.gravity.magnitude)
+                     * Mathf.Cos(a * Mathf.Deg2Rad)
+                     * (shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad)
+                        + Mathf.Sqrt(Mathf.Pow(shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad), 2)
+                                     + 2 * Physics.gravity.magnitude * transform.position.y))
+                     + cannon.transform.localPosition.y;
         shootingDir = Rotate(Vector3.right, angleInDeg);
         lastAngle = angleInDeg;
         currentCooldown = 0;
