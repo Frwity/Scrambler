@@ -110,7 +110,7 @@ public class BasicEnemySkill : EntitySkill
 
         if (Time.time > fireRate + lastFired)
         {    
-            GameObject firedBullet = Instantiate(bullet, transform.position - transform.right, Quaternion.identity);
+            GameObject firedBullet = Instantiate(bullet, transform.position - transform.right * 2 + transform.up * 2, Quaternion.identity);
 
             directionVector = Quaternion.Euler(0, 0, Random.Range(-imprecision, imprecision)) * directionVector;
 
@@ -141,7 +141,7 @@ public class BasicEnemySkill : EntitySkill
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
+            collision.gameObject.GetComponent<BulletSharedClass>().DoBehavior(gameObject);
         }
 
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))

@@ -23,6 +23,8 @@ public class Lazer : BulletSharedClass
             firedLazer.transform.Translate(toHit / 2);
             firedLazer.transform.localScale = new Vector3(0.25f, 0.25f, toHit.x);
             firedLazer.transform.localRotation = Quaternion.LookRotation(toHit);
+
+            firedLazer.GetComponent<BulletSharedClass>().shooter = shooter;
         }
         else
         {
@@ -40,10 +42,5 @@ public class Lazer : BulletSharedClass
             Destroy(gameObject);
             Destroy(firedLazer);
         }
-    }
-
-    public override void doBehavior(GameObject hitObject)
-    {
-        hitObject.GetComponent<Entity>().InflictDamage(damage);
     }
 }

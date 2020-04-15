@@ -26,12 +26,12 @@ public class RocketBullet : BulletSharedClass
             speed = speedLimit;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         Explode();
     }
 
-    public override void doBehavior(GameObject hitObject)
+    public override void DoBehavior(GameObject hitObject)
     {
 
     }

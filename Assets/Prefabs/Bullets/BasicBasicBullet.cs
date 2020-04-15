@@ -13,9 +13,4 @@ public class BasicBasicBullet : BulletSharedClass
     {
         transform.Translate(direction * Time.deltaTime * speed);
     }
-
-    public override void doBehavior(GameObject hitObject)
-    {
-        hitObject.gameObject.GetComponent<Entity>().InflictDamage(damage);
-    }
 }

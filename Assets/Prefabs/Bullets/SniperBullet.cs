@@ -15,9 +15,4 @@ public class SniperBullet : BulletSharedClass
     {
         transform.Translate(direction * Time.deltaTime * speed, Space.World);
     }
-
-    public override void doBehavior(GameObject hitObject)
-    {
-        hitObject.gameObject.GetComponent<Entity>().InflictDamage(damage);
-    }
 }

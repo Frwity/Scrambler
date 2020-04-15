@@ -228,7 +228,7 @@ public class SuicideSkill : EntitySkill
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
+            collision.gameObject.GetComponent<BulletSharedClass>().DoBehavior(gameObject);
             Destroy(collision.gameObject);
         }
 

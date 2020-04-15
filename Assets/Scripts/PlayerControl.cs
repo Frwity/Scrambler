@@ -15,7 +15,9 @@ public class PlayerControl : MonoBehaviour
     [HideInInspector] public bool isInVirus;
     private GameObject collidingObj;
 
+    [SerializeField] bool autoSetDefaultSpawnPt = false;
     [SerializeField] private Vector3 defaultSpawnPoint;
+
     [SerializeField] private float controlCD;
     [HideInInspector] public float lastControl;
     [HideInInspector] public short lastDirection;
@@ -33,6 +35,8 @@ public class PlayerControl : MonoBehaviour
         tTransform.name = "CameraFocus";
         virtualCamera.Follow = tTransform.transform;
         virtualCamera.LookAt = tTransform.transform;
+
+        if (autoSetDefaultSpawnPt) defaultSpawnPoint = transform.GetChild(0).position;
     }
 
     void Update()

@@ -66,7 +66,7 @@ public class DroneSkill : EntitySkill
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
+            collision.gameObject.GetComponent<BulletSharedClass>().DoBehavior(gameObject);
         }
     }
 }

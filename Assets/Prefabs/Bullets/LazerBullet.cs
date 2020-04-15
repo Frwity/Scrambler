@@ -20,9 +20,4 @@ public class LazerBullet : BulletSharedClass
     {
 
     }
-
-    public override void doBehavior(GameObject hitObject)
-    {
-        hitObject.GetComponent<Entity>().InflictDamage(damage);
-    }
 }
