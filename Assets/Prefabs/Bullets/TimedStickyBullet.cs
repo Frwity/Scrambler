@@ -39,7 +39,7 @@ public class TimedStickyBullet : CurvedBulletSharedClass
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
@@ -52,7 +52,7 @@ public class TimedStickyBullet : CurvedBulletSharedClass
         }
     }
 
-    public override void doBehavior(GameObject hitObject)
+    public override void DoBehavior(GameObject hitObject)
     {
         Explode();
     }

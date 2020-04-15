@@ -103,7 +103,7 @@ public class ShieldEnemySkill : EntitySkill
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            collision.gameObject.GetComponent<BulletSharedClass>().doBehavior(gameObject);
+            collision.gameObject.GetComponent<BulletSharedClass>().DoBehavior(gameObject);
         }
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {

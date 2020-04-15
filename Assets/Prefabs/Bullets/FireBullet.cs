@@ -37,11 +37,6 @@ public class FireBullet : CurvedBulletSharedClass
         }
     }
 
-    public override void doBehavior(GameObject hitObject)
-    {
-        //SpreadFire(hitObject.transform.rotation);
-    }
-
     private void SpreadFire(Vector3 rotation)
     {
         GameObject fire = Instantiate(fireZone, transform.position, Quaternion.identity);

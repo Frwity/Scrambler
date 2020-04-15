@@ -19,9 +19,4 @@ public class BuckshotPellet : BulletSharedClass
     {
 
     }
-
-    public override void doBehavior(GameObject hitObject)
-    {
-        hitObject.gameObject.GetComponent<Entity>().InflictDamage(damage);
-    }
 }

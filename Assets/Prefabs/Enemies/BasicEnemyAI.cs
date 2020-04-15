@@ -137,7 +137,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     private void IAcontrol()
     {
-        Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position);
+        Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position - transform.right * 2 - transform.up * 2);
         float distToPlayer = vecToPlayer.magnitude;
         if (entity.isInBackGround)
         {

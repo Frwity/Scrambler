@@ -9,9 +9,4 @@ public class CurveBullet : CurvedBulletSharedClass
     {
         transform.localRotation = Quaternion.LookRotation(direction);
     }
-
-    public override void doBehavior(GameObject hitObject)
-    {
-        hitObject.GetComponent<Entity>().InflictDamage(damage);
-    }
 }

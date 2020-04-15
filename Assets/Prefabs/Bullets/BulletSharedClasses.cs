@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,13 @@ public abstract class BulletSharedClass : MonoBehaviour
 
     [HideInInspector] public GameObject shooter;
 
-    abstract public void doBehavior(GameObject hitObject);
+    public virtual void DoBehavior(GameObject hitObject)
+    {
+        if ((hitObject != shooter) && !(shooter.CompareTag("Enemy") && hitObject.CompareTag("Enemy")) )
+        {
+            hitObject.GetComponent<Entity>().InflictDamage(damage);
+        }
+    }
 
     protected virtual void OnCollisionEnter(Collision collision)
     {

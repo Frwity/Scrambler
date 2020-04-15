@@ -33,7 +33,7 @@ public class BouncyBullet : CurvedBulletSharedClass
         }
     }
 
-    public override void doBehavior(GameObject hitObject)
+    public override void DoBehavior(GameObject hitObject)
     {
         Explode();
     }
@@ -50,7 +50,8 @@ public class BouncyBullet : CurvedBulletSharedClass
                                                          Mathf.Abs(transform.position.magnitude - inRange.transform.position.magnitude),
                                                          1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Shield")) )
                 {
-                    inRange.GetComponent<Entity>().InflictDamage(damage);
+                    if (inRange != shooter)
+                        inRange.GetComponent<Entity>().InflictDamage(damage);
                 }
             }
         }

@@ -15,11 +15,6 @@ public class Buckshot : BulletSharedClass
 
     [SerializeField] GameObject buckshotPellet;
 
-    public override void doBehavior(GameObject hitObject) // UNUSED //
-    {
-        throw new System.NotSupportedException();
-    }
-
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +32,7 @@ public class Buckshot : BulletSharedClass
             BulletSharedClass firedBulletInfo = firedBullet.GetComponent<BulletSharedClass>();
 
             firedBulletInfo.direction = Quaternion.Euler(0, 0, angle) * direction;
-            firedBulletInfo.shooter = gameObject;
+            firedBulletInfo.shooter = shooter;
         }
 
         Destroy(gameObject);
