@@ -136,10 +136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cooldown: 1
   Imprecision: 0
-  shootForce: 1500
+  shootForce: 500
   damage: 0
   Drone: {fileID: 0}
-  bullet: {fileID: 5641237700545541784, guid: f2fe72de50be35047919d29219da8e10, type: 3}
+  bullet: {fileID: 4329976375078021210, guid: 0af11437a5980d44a8fba26151d21193, type: 3}
 --- !u!1001 &5768317900813236216
 PrefabInstance:
   m_ObjectHideFlags: 0

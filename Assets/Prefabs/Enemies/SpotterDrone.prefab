@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 0
-  speed: 100
+  speed: 12
   OnShoot:
     m_PersistentCalls:
       m_Calls: []
