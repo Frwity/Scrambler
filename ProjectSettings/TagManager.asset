@@ -17,6 +17,11 @@ TagManager:
   - Bullet
   - BerthaBulletZone
   - Node
+  - Continue
+  - Canvas
+  - Retry
+  - Levels
+  - MainMenu
   layers:
   - Default
   - TransparentFX
