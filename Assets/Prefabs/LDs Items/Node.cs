@@ -28,6 +28,7 @@ public class Node : MonoBehaviour
                 toTeleport.GetComponent<Rigidbody>().useGravity = true;
                 toTeleport.GetComponent<Rigidbody>().isKinematic = false;
                 toTeleport.GetComponent<MeshRenderer>().enabled = true;
+                toTeleport.GetComponent<Collider>().enabled = true;
             }
             else if ((toTeleport.transform.position - transform.position).magnitude > (teleportPos - transform.position).magnitude)
             {
@@ -36,6 +37,7 @@ public class Node : MonoBehaviour
                 toTeleport.GetComponent<Rigidbody>().useGravity = true;
                 toTeleport.GetComponent<Rigidbody>().isKinematic = false;
                 toTeleport.GetComponent<MeshRenderer>().enabled = true;
+                toTeleport.GetComponent<Collider>().enabled = true;
             }
         }
     }
@@ -49,5 +51,6 @@ public class Node : MonoBehaviour
         toTeleport.GetComponent<MeshRenderer>().enabled = false;
         toTeleport.GetComponent<Rigidbody>().useGravity = false;
         toTeleport.GetComponent<Rigidbody>().isKinematic = true;
+        toTeleport.GetComponent<Collider>().enabled = false;
     }
 }

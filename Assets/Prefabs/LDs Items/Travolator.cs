@@ -27,6 +27,6 @@ public class Travolator : LDBlock
         if (!isActive)
             return;
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-            other.transform.Translate(speed * directionInt * Time.deltaTime, 0, 0);
+            other.transform.Translate(speed * directionInt * Time.deltaTime, 0, 0, Space.World);
     }
 }

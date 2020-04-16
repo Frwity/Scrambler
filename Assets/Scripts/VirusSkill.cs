@@ -31,6 +31,7 @@ public class VirusSkill : EntitySkill
 
     void Update()
     {
+
     }
 
     private void FixedUpdate()
@@ -42,7 +43,9 @@ public class VirusSkill : EntitySkill
             rb.velocity = new Vector3(-maxSpeed, rb.velocity.y, rb.velocity.z);
 
         if (rb.velocity.y < 0)
+        {
             falling = true;
+        }
     }
 
     public override bool Jump()
@@ -50,7 +53,7 @@ public class VirusSkill : EntitySkill
         if (canWallJump  && touchingWall && !grounded)
         {
             rb.velocity = new Vector3(jumpForce * wallDir, jumpForce, rb.velocity.z);
-            jumped = 1;
+            jumped++;
             falling = false;
             touchingWall = false;
             return true;
@@ -110,7 +113,8 @@ public class VirusSkill : EntitySkill
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             grounded = true;
-            jumped = 0;
+            if (falling)
+                jumped = 0;
         }
     }
 

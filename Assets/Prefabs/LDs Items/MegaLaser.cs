@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MegaLaser : MonoBehaviour
+public class MegaLaser : LDBlock
 {
     [SerializeField] float delay = 0f;
     [SerializeField] float cooldowTime = 2f;
@@ -31,6 +31,8 @@ public class MegaLaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isActive)
+            return;
         currentTime += Time.deltaTime;
 
         if (currentTime < cooldowTime)

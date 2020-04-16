@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class PlayerControl : MonoBehaviour
 {
+    public Vector2 RoundVector2(Vector2 vector, int multiplier = 1)
+    {
+        return new Vector2(Mathf.Round(vector.x * multiplier) / multiplier,
+                           Mathf.Round(vector.y * multiplier) / multiplier);
+    }
     [SerializeField] public GameObject virus;
     [HideInInspector] public RoomManager actualRoom;
 
@@ -43,8 +49,11 @@ public class PlayerControl : MonoBehaviour
     {
         if (!entity) // on entity die
         {
-            isInVirus = true;
-            if (actualRoom)
+            if (!isInVirus)
+            {
+                entity = Instantiate(virus, tTransform.transform.position, Quaternion.identity, transform).GetComponent<Entity>();
+            }
+            else if (actualRoom)
             {
                 entity = Instantiate(virus, actualRoom.respawnPoint, Quaternion.identity, transform).GetComponent<Entity>();
                 actualRoom.ResetRoom();
@@ -53,6 +62,7 @@ public class PlayerControl : MonoBehaviour
             {
                 entity = Instantiate(virus, defaultSpawnPoint, Quaternion.identity, transform).GetComponent<Entity>();               
             }
+            isInVirus = true;
             return;
         }
         if (Input.GetAxisRaw("Vertical") == 1 && Time.time > controlCD + lastControl && isInVirus)
@@ -71,11 +81,11 @@ public class PlayerControl : MonoBehaviour
         aimDireciton.x = Input.GetAxis("RHorizontal");
         aimDireciton.y = Input.GetAxis("RVertical");
 
-        entity.AimDirection(aimDireciton);
+        entity.AimDirection(RoundVector2(aimDireciton));
 
         if (Input.GetAxisRaw("RT") == 1)
         {
-            entity.Shoot(aimDireciton);
+            entity.Shoot(RoundVector2(aimDireciton));
         }
 
         collidingObj = entity.Collinding();
@@ -104,6 +114,7 @@ public class PlayerControl : MonoBehaviour
             entity.GetComponent<VirusSkill>().jumped = 1;
             isInVirus = true;
         }
+        tTransform.transform.position = entity.transform.position;
     }
 
     private void FixedUpdate()
@@ -133,6 +144,5 @@ public class PlayerControl : MonoBehaviour
             jumped = true;
             entity.Jump();
         }
-        tTransform.transform.position = entity.transform.position;
     }
 }

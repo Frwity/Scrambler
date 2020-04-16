@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Door;
     [HideInInspector] public Vector3 respawnPoint;
 
     private GameObject[] childCopyList;
     private GameObject[] childList;
     private int nbChild;
+    private int resetMax = 0;
 
     void Start()
     {
@@ -19,15 +21,22 @@ public class RoomManager : MonoBehaviour
         for (int i = 2; i < nbChild; ++i)
         {
             childList[i - 2] = transform.GetChild(i).gameObject;
+            if (transform.GetChild(i).gameObject.CompareTag("Enemy"))
+                resetMax++;
+
             childCopyList[i - 2] = Instantiate(transform.GetChild(i).gameObject, transform.GetChild(0));
             childCopyList[i - 2].SetActive(false);
         }
+        resetMax = nbChild - resetMax;
     }
 
 
     void Update()
     {
-
+        if (transform.childCount <= resetMax)
+        {
+            Destroy(Door);
+        }
     }
 
     public void ResetRoom()
