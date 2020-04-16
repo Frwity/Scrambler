@@ -100,10 +100,10 @@ MonoBehaviour:
   interactionRange: 5
   speed: 13.1
   chargeTime: 0.5
-  exploRay: 10
+  exploRay: 6
   damage: 5
   nbJump: 1
-  jumpForce: 20
+  jumpForce: 10
   airControlFactor: 0.098
   accelerationFactor: 0.064
   touchingWall: 0
@@ -171,8 +171,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2067099, y: 1.4382511, z: 1}
+  m_Center: {x: 0.64958036, y: 0.13105518, z: 0}
 --- !u!114 &1166281488725314655
 MonoBehaviour:
   m_ObjectHideFlags: 0
