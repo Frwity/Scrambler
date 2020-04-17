@@ -204,7 +204,7 @@ public class suicideIA : EntityAI
                 direction = Direction.LEFT;
                 transform.rotation = Quaternion.Euler(0,180,0);
             }
-            if ((currentCheckpointPosX ) < (transform.position.x  -0.15))
+            if ((currentCheckpointPosX ) < (transform.position.x  -(0.15 * scs.speed)))
             {
                 
                 if (direction == Direction.RIGHT)
@@ -217,7 +217,7 @@ public class suicideIA : EntityAI
                 }
                     
             }
-            else if ((currentCheckpointPosX ) > (transform.position.x +0.15))
+            else if ((currentCheckpointPosX ) > (transform.position.x +(0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall || scs.Roofed)
