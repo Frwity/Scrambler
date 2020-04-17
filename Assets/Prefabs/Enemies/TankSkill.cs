@@ -171,9 +171,11 @@ public class TankSkill : EntitySkill
         {
             int angleToAdd = Random.Range(-precision, precision);
             Vector2 newShootDir = Rotate(shootingDir, angleToAdd);
-            GameObject bulletInst = Instantiate(bulletPrefab, cannon.transform.position, transform.rotation);
+
+            GameObject bulletInst = Instantiate(bulletPrefab, cannon.transform.position + transform.right * shootOriginPos.x + transform.up * shootOriginPos.y, transform.rotation);
+            
             Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(),
-                this.GetComponent<Collider>(), true);
+                                    GetComponent<Collider>(), true);
 
             CurvedBulletSharedClass bullett = bulletInst.GetComponent<CurvedBulletSharedClass>();
             bullett.direction = new Vector3(newShootDir.x, newShootDir.y, 0) * shootingStrength;

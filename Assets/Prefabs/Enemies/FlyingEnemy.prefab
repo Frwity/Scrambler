@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 0
+  shootOriginPos: {x: 0, y: -1}
   speed: 10
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
   fireRate: 0.52

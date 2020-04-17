@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +6,8 @@ using UnityEngine;
 public abstract class EntitySkill : MonoBehaviour
 {
     [SerializeField] private float interactionRange;
+    [SerializeField] protected Vector2 shootOriginPos;
+
     public abstract bool Jump();
     public abstract bool MoveLeft(float moveSpeed);
     public abstract bool MoveRight(float moveSpeed);
@@ -13,6 +15,7 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract void AimDirection(Vector3 direction);
     public abstract bool ActivateAI();
     public abstract bool DesactivateAI();
+
     public void InteractWithBG()
     {
         Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, interactionRange);
