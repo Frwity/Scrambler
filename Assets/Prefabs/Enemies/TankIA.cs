@@ -65,8 +65,8 @@ public class TankIA : MonoBehaviour
                 ts.changeRotation();
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
-            Debug.Log(entity.lastPlayerPosKnown.x);
-            if ((entity.lastPlayerPosKnown.x) < (transform.position.x + ((int)direction * rangePoint) - 0.15))
+            Debug.Log(ts.rangePoint);
+            if ((entity.lastPlayerPosKnown.x) < (transform.position.x + ((int)direction * ts.rangePoint) - 0.15))
             {
                 if (direction == Direction.RIGHT)
                 {
@@ -78,7 +78,7 @@ public class TankIA : MonoBehaviour
                 }
 
             }
-            else if ((entity.lastPlayerPosKnown.x) > (transform.position.x + ((int)direction * rangePoint) + 0.15))
+            else if ((entity.lastPlayerPosKnown.x) > (transform.position.x + ((int)direction * ts.rangePoint) + 0.15))
             {
                 if (direction == Direction.RIGHT)
                 {
