@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 0
+  shootOriginPos: {x: -2, y: 2}
   maxSpeed: 6
   nbJump: 1
   jumpForce: 15

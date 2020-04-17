@@ -11,6 +11,8 @@ public class EntityAI : Activable
 public abstract class EntitySkill : MonoBehaviour
 {
     [SerializeField] private float interactionRange;
+    [SerializeField] protected Vector2 shootOriginPos;
+
     public abstract bool Jump();
     public abstract bool MoveLeft(float moveSpeed);
     public abstract bool MoveRight(float moveSpeed);
@@ -70,12 +72,29 @@ public class Entity : MonoBehaviour
     [HideInInspector]public bool LostPlayer = false;
     /*[HideInInspector]*/public Vector3 lastPlayerPosKnown;
     public bool isInBackGround = false;
+
+    [SerializeField] Color hitColor = new Color(1, 0, 0);
+    [SerializeField] Color possessColor = new Color(0, 0, 1);
+    [SerializeField] float flashTime = 0.5f;
+
+    Renderer[] renderers;
+
+    Color[] originalColors;
+
     void Start()
     {
         isHidden = false; 
         collidingObj = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
-        
+
+        renderers = GetComponentsInChildren<Renderer>();
+
+        int counter = 0;
+        foreach (Renderer renderer in renderers)
+        {
+            originalColors[counter] = renderer.material.color;
+            counter++;
+        }
     }
 
     void Update()
@@ -154,6 +173,26 @@ public class Entity : MonoBehaviour
     public void InflictDamage(int damage)
     {
         life -= damage;
+    }
+
+    public void HitFlash()
+    {
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material.color = hitColor;
+        }
+
+        Invoke("ResetFlash", flashTime);
+    }
+
+    private void ResetFlash()
+    {
+        int counter = 0;
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material.color = originalColors[counter];
+            counter++;
+        }
     }
 
     private void OnTriggerStay(Collider other)

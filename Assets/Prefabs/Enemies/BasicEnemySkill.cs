@@ -110,7 +110,7 @@ public class BasicEnemySkill : EntitySkill
 
         if (Time.time > fireRate + lastFired)
         {    
-            GameObject firedBullet = Instantiate(bullet, transform.position - transform.right * 2 + transform.up * 2, Quaternion.identity);
+            GameObject firedBullet = Instantiate(bullet, transform.position + transform.right * shootOriginPos.x + transform.up * shootOriginPos.y, Quaternion.identity);
 
             directionVector = Quaternion.Euler(0, 0, Random.Range(-imprecision, imprecision)) * directionVector;
 

@@ -171,7 +171,7 @@ public class SuicideSkill : EntitySkill
         //Debug.Log($"timer : {timer} / {chargeTime}");
         if (timer >= chargeTime)
         {
-            Entity[] entitylist = GameObject.FindObjectsOfType<Entity>();
+            Entity[] entitylist = FindObjectsOfType<Entity>();
             foreach (var entity in entitylist)
             {
                 if (!GetComponent<suicideIA>().isActive )
@@ -181,7 +181,8 @@ public class SuicideSkill : EntitySkill
                         continue;
                     }
                 }
-                Vector3 toEnt = entity.transform.position - transform.position;
+
+                Vector3 toEnt = entity.transform.position - (transform.position + transform.right * shootOriginPos.x + transform.up * shootOriginPos.y);
                 if (toEnt.magnitude < exploRay)
                 {
                     entity.InflictDamage(6);
@@ -192,6 +193,7 @@ public class SuicideSkill : EntitySkill
             PlayerControl pl = gameObject.GetComponentInParent<PlayerControl>();
             if (!pl)
                 return false;
+
             pl.lastControl = Time.time;
             pl.entity.transform.parent = transform.parent;
             pl.entity.ActivateAI();
