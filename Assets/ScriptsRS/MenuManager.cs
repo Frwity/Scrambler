@@ -34,7 +34,12 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         currentScene = SceneManager.GetActiveScene();
-        if (op != null && op.isDone)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+            Destroy	(this.gameObject);
+        }
+            if (op != null && op.isDone)
         {
             op = null;
         }
