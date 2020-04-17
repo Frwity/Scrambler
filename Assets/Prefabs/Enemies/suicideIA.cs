@@ -3,16 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class suicideIA : MonoBehaviour
+public class suicideIA : EntityAI
 {
      enum Direction
     {
         RIGHT = 1,
         LEFT = -1,
     };
-    // Start is called before the first frame update
-    public bool isActive;
-    private Entity entity;
     GameObject player;
     private bool shooting;
     [SerializeField]

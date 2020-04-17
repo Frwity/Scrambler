@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveBarrel : LDBlock
+public class ExplosiveBarrel : Activable
 {
     [SerializeField] private float explosionRange;
     [SerializeField] private int damage;

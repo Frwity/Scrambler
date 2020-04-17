@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
+public class PressurePlate : Activable
 {
     [SerializeField] private GameObject toTrigger;
 
+    private Activable activable;
     void Start()
     {
-        
-    }
-
-
-    void Update()
-    {
-        
+        if (toTrigger.GetComponent<Activable>())
+        {
+            activable = toTrigger.GetComponent<Activable>();
+            isActive = true;
+        }
+        else
+            isActive = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!isActive)
+            return;
         if (other.CompareTag("Player"))
-            toTrigger.GetComponent<LDBlock>().isActive = !toTrigger.GetComponent<LDBlock>().isActive;
+        {
+            activable.isActive = !activable.isActive;
+        }
     }
 }

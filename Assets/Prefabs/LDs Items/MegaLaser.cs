@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MegaLaser : LDBlock
+public class MegaLaser : Activable
 {
     [SerializeField] float delay = 0f;
     [SerializeField] float cooldowTime = 2f;

@@ -8,13 +8,8 @@ public enum Direction
     LEFT = -1,
     NONE = 0,
 };
-public class TankIA : MonoBehaviour
+public class TankIA : EntityAI
 {
-
-    // Start is called before the first frame update
-    public bool isActive;
-    private Entity entity;
-
     [SerializeField] private float fireCount;
     [SerializeField] private float rangePoint;
     private float nbFired;
@@ -65,7 +60,7 @@ public class TankIA : MonoBehaviour
                 ts.changeRotation();
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
-            Debug.Log(ts.rangePoint);
+            //Debug.Log(ts.rangePoint);
             if ((entity.lastPlayerPosKnown.x) < (transform.position.x + ((int)direction * ts.rangePoint) - 0.15))
             {
                 if (direction == Direction.RIGHT)

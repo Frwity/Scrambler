@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemyAI : MonoBehaviour
+public class BasicEnemyAI : EntityAI
 {
-    public bool isActive;
-    private Entity entity;
-
     [SerializeField] private float upperFireRange = 0.0f;
     [SerializeField] private float lowerFireRange = 0.0f;
 

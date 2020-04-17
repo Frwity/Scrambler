@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadZone : LDBlock
+public class DeadZone : Activable
 {
     [SerializeField] private int damage;
     [SerializeField] private float timeToTrigger;

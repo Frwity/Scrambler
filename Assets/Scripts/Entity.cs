@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class EntityAI : Activable
+{
+    protected Entity entity;
+}
+
 public abstract class EntitySkill : MonoBehaviour
 {
     [SerializeField] private float interactionRange;
@@ -13,31 +18,38 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract void AimDirection(Vector3 direction);
     public abstract bool ActivateAI();
     public abstract bool DesactivateAI();
-    public void InteractWithBG()
+    public bool InteractWithBG()
     {
         Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, interactionRange);
 
         if (hitInfo.collider && hitInfo.collider.CompareTag("HidingZone"))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, hitInfo.transform.position.z);
+            return true;
         }
         else if (hitInfo.collider && hitInfo.collider.CompareTag("Node"))
         {
             hitInfo.collider.gameObject.GetComponent<Node>().Teleport(gameObject);
+            return true;
         }
+        return false;
     }
-    public void InteractWithFG()
+    public bool InteractWithFG()
     {
         Physics.Raycast(transform.position, Vector3.back, out RaycastHit hitInfo, interactionRange);
 
         if (hitInfo.collider && hitInfo.collider.CompareTag("HidingZone"))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, hitInfo.transform.position.z);
+            return true;
+
         }
         else if (hitInfo.collider && hitInfo.collider.CompareTag("Node"))
         {
             hitInfo.collider.gameObject.GetComponent<Node>().Teleport(gameObject);
+            return true;
         }
+        return false;
     }
     public void Uninteract()
     {
@@ -124,15 +136,15 @@ public class Entity : MonoBehaviour
         return controllable;
     }
 
-    public void InteractWithBG()
+    public bool InteractWithBG()
     {
         isHidden = true;
-        entitySkill.InteractWithBG();
+        return entitySkill.InteractWithBG();
     }
-    public void InteractWithFG()
+    public bool InteractWithFG()
     {
         isHidden = true;
-        entitySkill.InteractWithFG();
+        return entitySkill.InteractWithFG();
     }
     public void Uninteract()
     {
