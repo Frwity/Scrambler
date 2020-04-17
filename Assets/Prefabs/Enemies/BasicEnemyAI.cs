@@ -18,7 +18,7 @@ public class BasicEnemyAI : EntityAI
 
     private float reactionTime;
 
-    private bool lookingRight; // Obviously, if FALSE, the enemy is looking left.
+    private bool lookingRight = true; // Obviously, if FALSE, the enemy is looking left.
 
     private BasicEnemySkill associatedBES;
 
@@ -54,6 +54,7 @@ public class BasicEnemyAI : EntityAI
             IAcontrol();
         else
             PLdirectionLookbyStick();
+        
     }
 
     public void PLdirectionLookbyStick()
@@ -100,6 +101,7 @@ public class BasicEnemyAI : EntityAI
 
     private bool LookingAtPlayer(float playerXrelativetoEnemy)
     {
+        Debug.Log	($"{playerXrelativetoEnemy} and {lookingRight}");
         if ((playerXrelativetoEnemy > 0 && !lookingRight) || (playerXrelativetoEnemy < 0 && lookingRight))
             return false;
         else
@@ -110,7 +112,7 @@ public class BasicEnemyAI : EntityAI
     {
         if (!LookingAtPlayer(playerXrelativetoEnemy))
         {
-            if (reactionTime > 0 && !(!entity.isPlayerInSight && !entity.LostPlayer))
+            if (reactionTime > 0 && !(!entity.isPlayerInSight && entity.LostPlayer))
                 reactionTime -= Time.smoothDeltaTime;
             else
             {
@@ -120,7 +122,7 @@ public class BasicEnemyAI : EntityAI
 
                 return true;
             }
-
+           // Debug.Log	("ayayayaya");
             return false;
         }
         else
@@ -134,7 +136,7 @@ public class BasicEnemyAI : EntityAI
 
     private void IAcontrol()
     {
-        Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position - transform.right * 2 - transform.up * 2);
+        Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position);
         float distToPlayer = vecToPlayer.magnitude;
         if (entity.isInBackGround)
         {
@@ -179,17 +181,18 @@ public class BasicEnemyAI : EntityAI
 
             if (previousFlip != flipped)
             {
+                
                 previousFlip = flipped;
                 hasPlayerGoneInBack = true;
                 HasTurnedOnce = true;
             }
 
-            if (vecToPlayer.x > 0.15 * lostSpeed && !hasPlayerGoneInBack)
+            if (vecToPlayer.x > 0.15 * associatedBES.maxSpeed && !hasPlayerGoneInBack)
             {
 
                 entity.MoveRight(lostSpeed / associatedBES.maxSpeed);
             }
-            else if (vecToPlayer.x < -0.15 * lostSpeed && !hasPlayerGoneInBack)
+            else if (vecToPlayer.x < -0.15 * associatedBES.maxSpeed && !hasPlayerGoneInBack)
             {
 
                 entity.MoveLeft(-lostSpeed / associatedBES.maxSpeed);
