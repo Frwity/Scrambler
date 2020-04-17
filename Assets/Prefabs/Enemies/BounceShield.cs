@@ -21,7 +21,9 @@ public class BounceShield : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Vector3 direction = collision.gameObject.GetComponent<BulletSharedClass>().direction;
+            collision.gameObject.GetComponent<BulletSharedClass>().shooter = gameObject;
             collision.gameObject.transform.Rotate(transform.forward, Vector3.SignedAngle(direction, transform.right, Vector3.forward) * 2 + 180);
+
         }
     }
 

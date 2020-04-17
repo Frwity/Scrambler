@@ -10,7 +10,7 @@ public class RoomManager : MonoBehaviour
     private GameObject[] childCopyList;
     private GameObject[] childList;
     private int nbChild;
-    private int resetMax = 0;
+    private int resetMax = 2;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class RoomManager : MonoBehaviour
         for (int i = 2; i < nbChild; ++i)
         {
             childList[i - 2] = transform.GetChild(i).gameObject;
-            if (transform.GetChild(i).gameObject.CompareTag("Enemy"))
+            if (!transform.GetChild(i).gameObject.CompareTag("Enemy"))
                 resetMax++;
 
             childCopyList[i - 2] = Instantiate(transform.GetChild(i).gameObject, transform.GetChild(0));

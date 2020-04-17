@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveBarrel : MonoBehaviour
+public class ExplosiveBarrel : LDBlock
 {
     [SerializeField] private float explosionRange;
     [SerializeField] private int damage;
 
     void Start()
     {
-        
+        isActive = false;
     }
 
 
     void Update()
     {
-        
+        if (isActive)
+            Explode();
     }
 
     private void Explode()
@@ -32,7 +33,6 @@ public class ExplosiveBarrel : MonoBehaviour
                     inRange.GetComponent<Entity>().InflictDamage(damage);
             }
         }
-
         Destroy(gameObject);
     }
 

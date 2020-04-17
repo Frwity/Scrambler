@@ -32,7 +32,12 @@ public class MegaLaser : LDBlock
     void Update()
     {
         if (!isActive)
+        {
+            if (actualLazer)
+                Destroy(actualLazer);
             return;
+        }
+
         currentTime += Time.deltaTime;
 
         if (currentTime < cooldowTime)
@@ -77,7 +82,8 @@ public class MegaLaser : LDBlock
         { 
             currentTime = 0f;
 
-            if (actualLazer) Destroy(actualLazer);
+            if (actualLazer) 
+                Destroy(actualLazer);
         }
     }
 }
