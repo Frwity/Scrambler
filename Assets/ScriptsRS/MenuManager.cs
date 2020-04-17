@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     private bool loadedCam = false;
     private bool loadedMain = false;
     private bool loadingScene = false;
+    private bool hasToGoToLevelMenu = false;
     private AsyncOperation op;
     private Scene pause;
     private Scene currentScene;
@@ -37,6 +38,12 @@ public class MenuManager : MonoBehaviour
         {
             GameObject obj = GameObject.FindGameObjectWithTag("Canvas");
             mainAnim = obj.GetComponent<Animator>();
+            if (hasToGoToLevelMenu)
+            {
+                hasToGoToLevelMenu = false;
+                onLevelsButton();
+            }
+            
             Button[] butList = obj.GetComponentsInChildren<Button>();
             for (int j = 0; j < butList.Length; j++)
             {
@@ -132,7 +139,10 @@ public class MenuManager : MonoBehaviour
                         {
                             butList[j].onClick.AddListener(onLevelsButton);
                         }
-                        
+                        else if (butList[j].name == "Menu")
+                        {
+                            butList[j].onClick.AddListener(onMenuButton);
+                        }
 
                     }
                 }
@@ -177,15 +187,52 @@ public class MenuManager : MonoBehaviour
 
     public void onLevelsButton()
     {
-        if(type == loadedType.TYPE_MAIN)
+        
+        if(type == loadedType.TYPE_MAIN && mainAnim	!= null)
             mainAnim.SetBool("PressedLevels", true);
         else
         {
-            SceneManager.LoadScene(1);
+            string name = currentScene.name;
+            if(op == null)
+            {
+                op = SceneManager.LoadSceneAsync(1);
+                SceneManager.UnloadSceneAsync(name);
+            }
+            else if (op.isDone)
+            {
+                op = null;
+            }
             Time.timeScale = 1;
             loadedMain = false;
             isPause = false;
             type = loadedType.TYPE_MAIN	;
+            hasToGoToLevelMenu = true;
+        }
+    }
+
+    public void onMenuButton()
+    {
+        if (type == loadedType.TYPE_MAIN)
+        {
+            return;
+        }
+        else
+        {
+            string name = currentScene.name;
+            if(op == null)
+            {
+                op = SceneManager.LoadSceneAsync(1);
+                SceneManager.UnloadSceneAsync(name);
+            }
+            else if (op.isDone)
+            {
+                op = null;
+            }
+            Time.timeScale = 1;
+            loadedMain = false;
+            isPause = false;
+            type = loadedType.TYPE_MAIN	;
+            hasToGoToLevelMenu = false;
         }
     }
     public void onControlsButton()
