@@ -2979,6 +2979,11 @@ PrefabInstance:
       propertyPath: flipped
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: Path
+      value: 
+      objectReference: {fileID: 1685456021}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!4 &39913536 stripped
@@ -9708,7 +9713,7 @@ MonoBehaviour:
   Radius: 1
   Checkpoints:
   - ParentPos: {fileID: 111581515}
-    pos: {x: 19.273962, y: 0, z: 0}
+    pos: {x: -4.8928204, y: 0, z: 0}
     color: {r: 1, g: 0, b: 0, a: 0}
     enabled: 0
   - ParentPos: {fileID: 111581515}
@@ -21726,7 +21731,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Radius: 1
-  Checkpoints: []
+  Checkpoints:
+  - ParentPos: {fileID: 344392716}
+    pos: {x: 2.9541836, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    enabled: 0
+  - ParentPos: {fileID: 344392716}
+    pos: {x: -3.5946922, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    enabled: 0
 --- !u!4 &344392716
 Transform:
   m_ObjectHideFlags: 0
@@ -21735,7 +21748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344392714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.61, y: 4.79, z: 0}
+  m_LocalPosition: {x: -13.799999, y: -1.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25907,6 +25920,11 @@ PrefabInstance:
       propertyPath: flipped
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5959824150699617423, guid: e3eebda4cdca31744bdaf5e90086a477,
+        type: 3}
+      propertyPath: Path
+      value: 
+      objectReference: {fileID: 344392715}
     m_RemovedComponents:
     - {fileID: 582016622489518099, guid: e3eebda4cdca31744bdaf5e90086a477, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e3eebda4cdca31744bdaf5e90086a477, type: 3}
@@ -55750,7 +55768,7 @@ PrefabInstance:
     - target: {fileID: 2462951506704342485, guid: 0c184a0c513439448ab4bdb021a288ea,
         type: 3}
       propertyPath: isActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5217735967891963359, guid: 0c184a0c513439448ab4bdb021a288ea,
         type: 3}
@@ -70508,11 +70526,11 @@ MonoBehaviour:
   Radius: 1
   Checkpoints:
   - ParentPos: {fileID: 1568852473}
-    pos: {x: 16.41531, y: 0, z: 0}
+    pos: {x: 8.516148, y: 0, z: 0}
     color: {r: 1, g: 0, b: 0, a: 0}
     enabled: 0
   - ParentPos: {fileID: 1568852473}
-    pos: {x: -10.0504465, y: 0, z: 0}
+    pos: {x: -4.2672687, y: 0, z: 0}
     color: {r: 1, g: 0.72638464, b: 0, a: 0}
     enabled: 0
 --- !u!4 &1568852473
@@ -70523,7 +70541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568852471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.5, y: -10.46, z: 0}
+  m_LocalPosition: {x: 7.7999997, y: -10.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -76371,7 +76389,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Radius: 1
-  Checkpoints: []
+  Checkpoints:
+  - ParentPos: {fileID: 1685456022}
+    pos: {x: -13.271956, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    enabled: 0
+  - ParentPos: {fileID: 1685456022}
+    pos: {x: 6.6613064, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    enabled: 0
 --- !u!4 &1685456022
 Transform:
   m_ObjectHideFlags: 0
@@ -76380,7 +76406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685456020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.61, y: 4.79, z: 0}
+  m_LocalPosition: {x: 20.4, y: -0.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80567,31 +80593,6 @@ PrefabInstance:
       propertyPath: Path
       value: 
       objectReference: {fileID: 1568852472}
-    - target: {fileID: 2462951506704342485, guid: 0c184a0c513439448ab4bdb021a288ea,
-        type: 3}
-      propertyPath: isActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217735967891963359, guid: 0c184a0c513439448ab4bdb021a288ea,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 28.108221
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217735967891963359, guid: 0c184a0c513439448ab4bdb021a288ea,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 12.631272
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217735967891963359, guid: 0c184a0c513439448ab4bdb021a288ea,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 16.16666
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217735967891963359, guid: 0c184a0c513439448ab4bdb021a288ea,
-        type: 3}
-      propertyPath: m_Center.y
-      value: -0.9515896
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c184a0c513439448ab4bdb021a288ea, type: 3}
 --- !u!1 &1859273148
@@ -80713,7 +80714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860000837}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 142.0613, y: -9.616025, z: 5.182703}
+  m_LocalPosition: {x: 133.22128, y: -10.436025, z: 5.182703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 243591546}
@@ -84947,11 +84948,11 @@ MonoBehaviour:
   Radius: 1
   Checkpoints:
   - ParentPos: {fileID: 1949764467}
-    pos: {x: 17.94812, y: 0, z: 0}
+    pos: {x: 20.07332, y: 0, z: 0}
     color: {r: 1, g: 0, b: 0, a: 0}
     enabled: 0
   - ParentPos: {fileID: 1949764467}
-    pos: {x: -12.848796, y: 0, z: 0}
+    pos: {x: 9.0636215, y: 0, z: 0}
     color: {r: 1, g: 0.72638464, b: 0, a: 0}
     enabled: 0
 --- !u!4 &1949764467
