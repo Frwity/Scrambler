@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3182675774231525683}
   - component: {fileID: 5163687993625380916}
   - component: {fileID: 385032029095598600}
-  - component: {fileID: 8542505734738242924}
   - component: {fileID: 8542505735281971654}
   m_Layer: 9
   m_Name: Rocket ennemy
@@ -140,19 +139,6 @@ MonoBehaviour:
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
   isInBackGround: 0
---- !u!114 &8542505734738242924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3182675774231525680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: -28
 --- !u!114 &8542505735281971654
 MonoBehaviour:
   m_ObjectHideFlags: 0
