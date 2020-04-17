@@ -8,11 +8,19 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+    enum loadedType
+    {
+        TYPE_LEVEL,
+        TYPE_MAIN,
+        TYPE_NONE,
+    }
     private bool isPause = false;
     private bool loadedCam = false;
+    private bool loadedMain = false;
     private Scene pause;
     private Scene currentScene;
+    private Animator mainAnim;
+    private loadedType type = loadedType.TYPE_MAIN;
     void Start()
     {
         currentScene = SceneManager.GetActiveScene();
@@ -21,6 +29,63 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentScene = SceneManager.GetActiveScene();
+        if (type == loadedType.TYPE_MAIN && !loadedMain)
+        {
+            GameObject obj = GameObject.FindGameObjectWithTag("Canvas");
+            mainAnim = obj.GetComponent<Animator>();
+            Button[] butList = obj.GetComponentsInChildren<Button>();
+            for (int j = 0; j < butList.Length; j++)
+            {
+                if (butList[j].name == "Levels")
+                {
+                    butList[j].onClick.AddListener(onLevelsButton);
+                }
+                else if (butList[j].name == "Controls")
+                {
+                    butList[j].onClick.AddListener(onControlsButton);
+                }
+                else if (butList[j].name == "Credits")
+                {
+                    butList[j].onClick.AddListener(onCreditsButton);
+                }
+                else if (butList[j].name == "Exit")
+                {
+                    butList[j].onClick.AddListener(onExitButton);
+                }
+                else if (butList[j].name == "Back Button")
+                {
+                    butList[j].onClick.AddListener(onBackButton);
+                }
+                else if (butList[j].name == "Level 1")
+                {
+                    butList[j].onClick.AddListener(launchLevel1);
+                }
+                else if (butList[j].name == "Level 2")
+                {
+                    butList[j].onClick.AddListener(launchLevel2);
+                }
+                else if (butList[j].name == "Level 3")
+                {
+                    butList[j].onClick.AddListener(launchLevel3);
+                }
+                else if (butList[j].name == "Level 4")
+                {
+                    butList[j].onClick.AddListener(launchLevel4);
+                }
+                else if (butList[j].name == "Level 5")
+                {
+                    butList[j].onClick.AddListener(launchLevel5);
+                }
+                        
+            }
+
+            loadedMain = true;
+            
+        }
+
+        if (loadedMain && type == loadedType.TYPE_MAIN)
+            return;
         if (Input.GetKeyDown(KeyCode.Escape) && !isPause)
         {
             isPause = true;
@@ -48,11 +113,12 @@ public class MenuManager : MonoBehaviour
                     Button[] butList = obj.GetComponentsInChildren<Button>();
                     for (int j = 0; j < butList.Length; j++)
                     {
-                        if (butList[j].CompareTag("Continue"))
+                        if (butList[j].name == "Continue" || butList[j].name == "Back")
                         {
+                            
                             butList[j].onClick.AddListener(onContinueButton);
                         }
-                        else if (butList[j].CompareTag("Retry"))
+                        else if (butList[j].name == "Retry")
                         {
                             butList[j].onClick.AddListener(onRetryButton);
                         }
@@ -86,5 +152,51 @@ public class MenuManager : MonoBehaviour
         string name = currentScene.name;
         LoadSceneParameters p = new LoadSceneParameters(LoadSceneMode.Single);
         SceneManager.LoadScene(currentScene.name, p);
+    }
+
+    public void onLevelsButton()
+    {
+        mainAnim.SetBool("PressedLevels", true);
+    }
+    public void onControlsButton()
+    {
+        mainAnim.SetBool("PressedControls", true);
+    }
+    public void onCreditsButton()
+    {
+        mainAnim.SetBool("PressedCredits", true);
+    }
+
+    public void onBackButton()
+    {
+        mainAnim.SetBool("Goback", true);
+    }
+
+    public void launchLevel1()
+    {
+        type = loadedType.TYPE_LEVEL;
+        mainAnim = null;
+        SceneManager.LoadScene("Scenes/ryanbugfix");
+        loadedMain = false;
+    }
+    public void launchLevel2()
+    {
+        
+    }
+    public void launchLevel3()
+    {
+        
+    }
+    public void launchLevel4()
+    {
+        
+    }
+    public void launchLevel5()
+    {
+        
+    }
+    public void onExitButton()
+    {
+        Application.Quit();
     }
 }
