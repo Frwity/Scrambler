@@ -88,7 +88,6 @@ public class Bertha : MonoBehaviour
                 Gizmos.color = c;
             }
             Gizmos.DrawSphere(spawnPoint.SpawnPointPos , spawnPoint.radius);
-            Gizmos.DrawSphere(transform.position , 100);
     }
 }
 

@@ -233,7 +233,7 @@ public class suicideIA : EntityAI
                     entity.MoveRight(1*i);
                 }
             }
-            else if ((currentCheckpointPosY) < (transform.position.y - 0.15))
+            else if ((currentCheckpointPosY) < (transform.position.y -(0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall || scs.Roofed)
@@ -249,7 +249,7 @@ public class suicideIA : EntityAI
                     entity.MoveLeft(-1*i);
                 }
             }
-            else if ((currentCheckpointPosY) > (transform.position.y + 0.15))
+            else if ((currentCheckpointPosY) > (transform.position.y +(0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall || scs.Roofed)
