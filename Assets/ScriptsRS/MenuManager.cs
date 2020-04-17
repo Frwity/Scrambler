@@ -17,6 +17,8 @@ public class MenuManager : MonoBehaviour
     private bool isPause = false;
     private bool loadedCam = false;
     private bool loadedMain = false;
+    private bool loadingScene = false;
+    private AsyncOperation op;
     private Scene pause;
     private Scene currentScene;
     private Animator mainAnim;
@@ -24,13 +26,14 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         currentScene = SceneManager.GetActiveScene();
+        op = null;
     }
 
     // Update is called once per frame
     void Update()
     {
         currentScene = SceneManager.GetActiveScene();
-        if (type == loadedType.TYPE_MAIN && !loadedMain)
+        if (type == loadedType.TYPE_MAIN && !loadedMain && SceneManager.GetSceneByBuildIndex(1).isLoaded)
         {
             GameObject obj = GameObject.FindGameObjectWithTag("Canvas");
             mainAnim = obj.GetComponent<Animator>();
@@ -79,13 +82,16 @@ public class MenuManager : MonoBehaviour
                 }
                         
             }
-
+            Debug.Log(butList.Length);
             loadedMain = true;
             
         }
 
         if (loadedMain && type == loadedType.TYPE_MAIN)
+        {
+            Debug.Log("Main already loaded");
             return;
+        }
         if (Input.GetKeyDown(KeyCode.Escape) && !isPause)
         {
             isPause = true;
@@ -100,7 +106,7 @@ public class MenuManager : MonoBehaviour
         {
             onContinueButton();
         }
-        else if (pause.isLoaded && !loadedCam && isPause)
+        else if (pause.isLoaded && isPause)
         {
             GameObject[] glist = pause.GetRootGameObjects();
             bool o = false;
@@ -122,7 +128,12 @@ public class MenuManager : MonoBehaviour
                         {
                             butList[j].onClick.AddListener(onRetryButton);
                         }
+                        else if (butList[j].name == "Levels")
+                        {
+                            butList[j].onClick.AddListener(onLevelsButton);
+                        }
                         
+
                     }
                 }
             }
@@ -134,6 +145,8 @@ public class MenuManager : MonoBehaviour
     }
     public void onContinueButton()
     {
+        if(!isPause)
+            return;
         Debug.Log("vvvvvv");
         isPause = false;
         SceneManager.UnloadSceneAsync(pause);
@@ -150,13 +163,30 @@ public class MenuManager : MonoBehaviour
         isPause = false;
         loadedCam = false;
         string name = currentScene.name;
-        LoadSceneParameters p = new LoadSceneParameters(LoadSceneMode.Single);
-        SceneManager.LoadScene(currentScene.name, p);
+        SceneManager.UnloadSceneAsync(name);
+        if(op == null)
+        {
+            op = SceneManager.LoadSceneAsync(name);
+            SceneManager.UnloadSceneAsync(name);
+        }
+        else if (op.isDone)
+        {
+            op = null;
+        }
     }
 
     public void onLevelsButton()
     {
-        mainAnim.SetBool("PressedLevels", true);
+        if(type == loadedType.TYPE_MAIN)
+            mainAnim.SetBool("PressedLevels", true);
+        else
+        {
+            SceneManager.LoadScene(1);
+            Time.timeScale = 1;
+            loadedMain = false;
+            isPause = false;
+            type = loadedType.TYPE_MAIN	;
+        }
     }
     public void onControlsButton()
     {
