@@ -176,24 +176,36 @@ public class MenuManager : MonoBehaviour
     {
         type = loadedType.TYPE_LEVEL;
         mainAnim = null;
-        SceneManager.LoadScene("Scenes/ryanbugfix");
+        SceneManager.LoadScene(2);
         loadedMain = false;
     }
     public void launchLevel2()
     {
-        
+        type = loadedType.TYPE_LEVEL;
+        mainAnim = null;
+        SceneManager.LoadScene(3);
+        loadedMain = false;
     }
     public void launchLevel3()
     {
-        
+        type = loadedType.TYPE_LEVEL;
+        mainAnim = null;
+        SceneManager.LoadScene(4);
+        loadedMain = false;
     }
     public void launchLevel4()
     {
-        
+        type = loadedType.TYPE_LEVEL;
+        mainAnim = null;
+        SceneManager.LoadScene(5);
+        loadedMain = false;
     }
     public void launchLevel5()
     {
-        
+        type = loadedType.TYPE_LEVEL;
+        mainAnim = null;
+        SceneManager.LoadScene(6);
+        loadedMain = false;
     }
     public void onExitButton()
     {
