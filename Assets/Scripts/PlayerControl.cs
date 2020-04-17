@@ -117,7 +117,7 @@ public class PlayerControl : MonoBehaviour
                 lastControl = Time.time;
 
         }
-        else if (entity.isHidden && Input.GetAxis("Vertical") < 0.9 && Input.GetAxis("Vertical") > -0.9)
+        else if (entity.isHidden && Input.GetAxis("Fire3") == 0)
             entity.Uninteract();
         tTransform.transform.position = entity.transform.position;
     }
