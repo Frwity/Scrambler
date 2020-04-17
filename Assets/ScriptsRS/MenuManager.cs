@@ -34,6 +34,10 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         currentScene = SceneManager.GetActiveScene();
+        if (op != null && op.isDone)
+        {
+            op = null;
+        }
         if (type == loadedType.TYPE_MAIN && !loadedMain && SceneManager.GetSceneByBuildIndex(1).isLoaded)
         {
             GameObject obj = GameObject.FindGameObjectWithTag("Canvas");
@@ -99,7 +103,7 @@ public class MenuManager : MonoBehaviour
             Debug.Log("Main already loaded");
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPause)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPause && type == loadedType.TYPE_LEVEL)
         {
             isPause = true;
             LoadSceneParameters p = new LoadSceneParameters();
@@ -109,7 +113,7 @@ public class MenuManager : MonoBehaviour
             pause = SceneManager.LoadScene("Scenes/PauseMenu", p);
             
         }
-        else if (isPause && Input.GetKeyDown(KeyCode.Escape))
+        else if (isPause && Input.GetKeyDown(KeyCode.Escape)&& type == loadedType.TYPE_LEVEL)
         {
             onContinueButton();
         }
@@ -198,14 +202,12 @@ public class MenuManager : MonoBehaviour
                 op = SceneManager.LoadSceneAsync(1);
                 SceneManager.UnloadSceneAsync(name);
             }
-            else if (op.isDone)
-            {
-                op = null;
-            }
+            
+            type = loadedType.TYPE_MAIN	;
             Time.timeScale = 1;
             loadedMain = false;
             isPause = false;
-            type = loadedType.TYPE_MAIN	;
+            
             hasToGoToLevelMenu = true;
         }
     }
