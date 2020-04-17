@@ -16,6 +16,8 @@ public abstract class BulletSharedClass : MonoBehaviour
         if ((hitObject != shooter) && !(shooter.CompareTag("Enemy") && hitObject.CompareTag("Enemy")) )
         {
             hitObject.GetComponent<Entity>().InflictDamage(damage);
+
+            hitObject.GetComponent<Entity>().HitFlash();
         }
     }
 
