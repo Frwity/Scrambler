@@ -50,6 +50,8 @@ public class MegaLaser : Activable
             {
                 waningSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 waningSphere.transform.position = transform.position - transform.forward;
+
+                waningSphere.GetComponent<Renderer>().material.color = laserObject.GetComponentInChildren<Renderer>(false).sharedMaterial.color;
                 
                 waningSphere.transform.localScale = new Vector3(0, 0, 0);
             }

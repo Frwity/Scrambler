@@ -12,7 +12,7 @@ public class BasicEnemyAI : EntityAI
 
     [SerializeField] private float maxReactionTime = 0.0f;
 
-    [SerializeField] private bool flipped = false; // If checked, the enemy will spawn looking RIGHT, do *NOT* rotate the model manually.
+    [SerializeField] public bool flipped = false; // If checked, the enemy will spawn looking RIGHT, do *NOT* rotate the model manually.
 
     private GameObject player;
 
