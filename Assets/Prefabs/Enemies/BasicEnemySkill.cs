@@ -28,7 +28,7 @@ public class BasicEnemySkill : EntitySkill
 
     [HideInInspector] public float xAim = 0f;
 
-    Vector3 lastDirection = Vector3.zero;
+    Vector3 lastDirection;
 
     void Start()
     {
@@ -39,6 +39,8 @@ public class BasicEnemySkill : EntitySkill
         wallDir = 0;
         rb = GetComponent<Rigidbody>();
         lastFired = 0;
+
+        lastDirection = -transform.right * (GetComponent<BasicEnemyAI>().flipped ? -1 : 1);
     }
 
     void Update()

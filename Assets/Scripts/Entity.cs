@@ -89,6 +89,8 @@ public class Entity : MonoBehaviour
 
         renderers = GetComponentsInChildren<Renderer>();
 
+        originalColors = new Color[renderers.Length];
+
         int counter = 0;
         foreach (Renderer renderer in renderers)
         {
@@ -180,6 +182,16 @@ public class Entity : MonoBehaviour
         foreach (Renderer renderer in renderers)
         {
             renderer.material.color = hitColor;
+        }
+
+        Invoke("ResetFlash", flashTime);
+    }
+
+    public void possessFlash()
+    {
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material.color = possessColor;
         }
 
         Invoke("ResetFlash", flashTime);

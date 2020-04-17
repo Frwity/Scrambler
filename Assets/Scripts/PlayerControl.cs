@@ -92,6 +92,7 @@ public class PlayerControl : MonoBehaviour
             isInVirus = false;
             entity.tag = "Player";
             entity.DesactivateAI();
+            entity.possessFlash();
             tTransform.transform.position = entity.transform.position;
             return;
         }
