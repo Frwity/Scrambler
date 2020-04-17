@@ -17,6 +17,21 @@ TagManager:
   - Bullet
   - BerthaBulletZone
   - Node
+  - Continue
+  - Canvas
+  - Retry
+  - Levels
+  - MainMenu
+  - Controls
+  - Credits
+  - Exit
+  - Next
+  - Previous
+  - LV1
+  - LV2
+  - LV3
+  - LV4
+  - LV5
   layers:
   - Default
   - TransparentFX

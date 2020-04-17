@@ -19,6 +19,7 @@ public class VirusSkill : EntitySkill
     private bool touchingWall;
     private Rigidbody rb;
 
+    private Cinemachine.CinemachineVirtualCamera camera;
     void Start()
     {
         grounded = false;
@@ -31,7 +32,7 @@ public class VirusSkill : EntitySkill
 
     void Update()
     {
-
+        camera = GameObject.FindGameObjectWithTag("VirtualCam").GetComponent<Cinemachine.CinemachineVirtualCamera>();
     }
 
     private void FixedUpdate()
@@ -132,7 +133,9 @@ public class VirusSkill : EntitySkill
             else
                 wallDir = 1;
             if (!grounded)
+            {
                 transform.Translate(0, -wallFallSpeed * Time.deltaTime, 0);
+            }
         }
     }
 

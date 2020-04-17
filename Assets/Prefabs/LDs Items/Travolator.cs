@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Travolator : LDBlock
+public class Travolator : Activable
 {
     [SerializeField] private Direction direction;
     [SerializeField] private float speed;

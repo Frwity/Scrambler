@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemyAI : MonoBehaviour
+public class BasicEnemyAI : EntityAI
 {
-    public bool isActive;
-    private Entity entity;
-
     [SerializeField] private float upperFireRange = 0.0f;
     [SerializeField] private float lowerFireRange = 0.0f;
 
@@ -15,13 +12,13 @@ public class BasicEnemyAI : MonoBehaviour
 
     [SerializeField] private float maxReactionTime = 0.0f;
 
-    [SerializeField] private bool flipped = false; // If checked, the enemy will spawn looking RIGHT, do *NOT* rotate the model manually.
+    [SerializeField] public bool flipped = false; // If checked, the enemy will spawn looking RIGHT, do *NOT* rotate the model manually.
 
     private GameObject player;
 
     private float reactionTime;
 
-    private bool lookingRight; // Obviously, if FALSE, the enemy is looking left.
+    private bool lookingRight = true; // Obviously, if FALSE, the enemy is looking left.
 
     private BasicEnemySkill associatedBES;
 
@@ -57,6 +54,7 @@ public class BasicEnemyAI : MonoBehaviour
             IAcontrol();
         else
             PLdirectionLookbyStick();
+        
     }
 
     public void PLdirectionLookbyStick()
@@ -103,6 +101,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     private bool LookingAtPlayer(float playerXrelativetoEnemy)
     {
+        Debug.Log	($"{playerXrelativetoEnemy} and {lookingRight}");
         if ((playerXrelativetoEnemy > 0 && !lookingRight) || (playerXrelativetoEnemy < 0 && lookingRight))
             return false;
         else
@@ -113,7 +112,7 @@ public class BasicEnemyAI : MonoBehaviour
     {
         if (!LookingAtPlayer(playerXrelativetoEnemy))
         {
-            if (reactionTime > 0 && !(!entity.isPlayerInSight && !entity.LostPlayer))
+            if (reactionTime > 0 && !(!entity.isPlayerInSight && entity.LostPlayer))
                 reactionTime -= Time.smoothDeltaTime;
             else
             {
@@ -123,7 +122,7 @@ public class BasicEnemyAI : MonoBehaviour
 
                 return true;
             }
-
+           // Debug.Log	("ayayayaya");
             return false;
         }
         else
@@ -137,7 +136,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     private void IAcontrol()
     {
-        Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position - transform.right * 2 - transform.up * 2);
+        Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position);
         float distToPlayer = vecToPlayer.magnitude;
         if (entity.isInBackGround)
         {
@@ -182,17 +181,18 @@ public class BasicEnemyAI : MonoBehaviour
 
             if (previousFlip != flipped)
             {
+                
                 previousFlip = flipped;
                 hasPlayerGoneInBack = true;
                 HasTurnedOnce = true;
             }
 
-            if (vecToPlayer.x > 0.15 * lostSpeed && !hasPlayerGoneInBack)
+            if (vecToPlayer.x > 0.15 * associatedBES.maxSpeed && !hasPlayerGoneInBack)
             {
 
                 entity.MoveRight(lostSpeed / associatedBES.maxSpeed);
             }
-            else if (vecToPlayer.x < -0.15 * lostSpeed && !hasPlayerGoneInBack)
+            else if (vecToPlayer.x < -0.15 * associatedBES.maxSpeed && !hasPlayerGoneInBack)
             {
 
                 entity.MoveLeft(-lostSpeed / associatedBES.maxSpeed);

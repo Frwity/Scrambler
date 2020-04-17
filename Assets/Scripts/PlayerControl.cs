@@ -65,18 +65,6 @@ public class PlayerControl : MonoBehaviour
             isInVirus = true;
             return;
         }
-        if (Input.GetAxisRaw("Vertical") == 1 && Time.time > controlCD + lastControl && isInVirus)
-        {
-            lastControl = Time.time;
-            entity.InteractWithBG();
-        }
-        else if (Input.GetAxisRaw("Vertical") == -1 && Time.time > controlCD + lastControl && isInVirus)
-        {
-            lastControl = Time.time;
-            entity.InteractWithFG();
-        }
-        else if (entity.isHidden && Input.GetAxis("Vertical") < 0.9 && Input.GetAxis("Vertical") > -0.9)
-            entity.Uninteract();
 
         aimDireciton.x = Input.GetAxis("RHorizontal");
         aimDireciton.y = Input.GetAxis("RVertical");
@@ -104,6 +92,9 @@ public class PlayerControl : MonoBehaviour
             isInVirus = false;
             entity.tag = "Player";
             entity.DesactivateAI();
+            entity.possessFlash();
+            tTransform.transform.position = entity.transform.position;
+            return;
         }
         if (Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && !isInVirus)
         {
@@ -113,7 +104,22 @@ public class PlayerControl : MonoBehaviour
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
             entity.GetComponent<VirusSkill>().jumped = 1;
             isInVirus = true;
+            tTransform.transform.position = entity.transform.position;
+            return;
         }
+        if (Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && isInVirus)
+        {
+            if (!entity.InteractWithBG())
+            {
+                if (entity.InteractWithFG())
+                    lastControl = Time.time;
+            }
+            else
+                lastControl = Time.time;
+
+        }
+        else if (entity.isHidden && Input.GetAxis("Fire3") == 0)
+            entity.Uninteract();
         tTransform.transform.position = entity.transform.position;
     }
 
