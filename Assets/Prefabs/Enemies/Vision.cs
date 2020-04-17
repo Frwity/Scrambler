@@ -6,6 +6,8 @@ using UnityEngine;
 public class Vision : MonoBehaviour
 {
     private Entity entity;
+
+    private Entity player;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,10 @@ public class Vision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (entity.isPlayerInSight && player == null)
+        {
+            entity.isPlayerInSight = false;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -51,6 +56,7 @@ public class Vision : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerPos = other.transform.position;
+            player = other.GetComponent<Entity>();
             //Debug.Log("player found");
         }
         else
