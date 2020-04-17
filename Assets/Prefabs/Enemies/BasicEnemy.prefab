@@ -252,8 +252,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 12.5, z: 1}
-  m_Center: {x: -10, y: 1, z: -0}
+  m_Size: {x: 21.313522, y: 12.5, z: 1}
+  m_Center: {x: -9.343239, y: 1, z: 0}
 --- !u!114 &6070372290608620438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,11 +273,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6531962691575589102}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 21092fbb7f4f9a24f89b53703610aa90,
-        type: 3}
-      propertyPath: m_Name
-      value: Grunt
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 21092fbb7f4f9a24f89b53703610aa90,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -347,6 +342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 21092fbb7f4f9a24f89b53703610aa90,
+        type: 3}
+      propertyPath: m_Name
+      value: Grunt
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21092fbb7f4f9a24f89b53703610aa90, type: 3}
