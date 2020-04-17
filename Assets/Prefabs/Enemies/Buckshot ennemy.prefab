@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 4122962322023816584}
   - component: {fileID: 8919737688372088756}
   - component: {fileID: 582016622118467792}
-  - component: {fileID: 582016622489518099}
   m_Layer: 9
   m_Name: Buckshot ennemy
   m_TagString: Enemy
@@ -319,19 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -28
---- !u!114 &582016622489518099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5959824150699617420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a31933596918394b8459358cbbad5a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: -30
 --- !u!1 &6048254022439110302
 GameObject:
   m_ObjectHideFlags: 0
