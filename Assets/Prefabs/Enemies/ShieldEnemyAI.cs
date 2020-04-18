@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldEnemyAI : MonoBehaviour
+public class ShieldEnemyAI : EntityAI
 {
-    public bool isActive;
-    private Entity entity;
     private float currentLostTimer = 0.0f;
     [SerializeField] private float lostTimer = 0.0f;
     [SerializeField] private float AIResetTimer = 0.0f;

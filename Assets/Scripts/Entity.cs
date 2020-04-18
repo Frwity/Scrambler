@@ -3,9 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class EntityAI : Activable
+{
+    protected Entity entity;
+}
+
 public abstract class EntitySkill : MonoBehaviour
 {
     [SerializeField] private float interactionRange;
+    [SerializeField] protected Vector2 shootOriginPos;
+
     public abstract bool Jump();
     public abstract bool MoveLeft(float moveSpeed);
     public abstract bool MoveRight(float moveSpeed);
@@ -13,31 +20,38 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract void AimDirection(Vector3 direction);
     public abstract bool ActivateAI();
     public abstract bool DesactivateAI();
-    public void InteractWithBG()
+    public bool InteractWithBG()
     {
         Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, interactionRange);
 
         if (hitInfo.collider && hitInfo.collider.CompareTag("HidingZone"))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, hitInfo.transform.position.z);
+            return true;
         }
         else if (hitInfo.collider && hitInfo.collider.CompareTag("Node"))
         {
             hitInfo.collider.gameObject.GetComponent<Node>().Teleport(gameObject);
+            return true;
         }
+        return false;
     }
-    public void InteractWithFG()
+    public bool InteractWithFG()
     {
         Physics.Raycast(transform.position, Vector3.back, out RaycastHit hitInfo, interactionRange);
 
         if (hitInfo.collider && hitInfo.collider.CompareTag("HidingZone"))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, hitInfo.transform.position.z);
+            return true;
+
         }
         else if (hitInfo.collider && hitInfo.collider.CompareTag("Node"))
         {
             hitInfo.collider.gameObject.GetComponent<Node>().Teleport(gameObject);
+            return true;
         }
+        return false;
     }
     public void Uninteract()
     {
@@ -58,12 +72,31 @@ public class Entity : MonoBehaviour
     [HideInInspector]public bool LostPlayer = false;
     /*[HideInInspector]*/public Vector3 lastPlayerPosKnown;
     public bool isInBackGround = false;
+
+    [SerializeField] Color hitColor = new Color(1, 0, 0);
+    [SerializeField] Color possessColor = new Color(0, 0, 1);
+    [SerializeField] float flashTime = 0.5f;
+
+    Renderer[] renderers;
+
+    Color[] originalColors;
+
     void Start()
     {
         isHidden = false; 
         collidingObj = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
-        
+
+        renderers = GetComponentsInChildren<Renderer>();
+
+        originalColors = new Color[renderers.Length];
+
+        int counter = 0;
+        foreach (Renderer renderer in renderers)
+        {
+            originalColors[counter] = renderer.material.color;
+            counter++;
+        }
     }
 
     void Update()
@@ -124,15 +157,15 @@ public class Entity : MonoBehaviour
         return controllable;
     }
 
-    public void InteractWithBG()
+    public bool InteractWithBG()
     {
         isHidden = true;
-        entitySkill.InteractWithBG();
+        return entitySkill.InteractWithBG();
     }
-    public void InteractWithFG()
+    public bool InteractWithFG()
     {
         isHidden = true;
-        entitySkill.InteractWithFG();
+        return entitySkill.InteractWithFG();
     }
     public void Uninteract()
     {
@@ -142,6 +175,36 @@ public class Entity : MonoBehaviour
     public void InflictDamage(int damage)
     {
         life -= damage;
+    }
+
+    public void HitFlash()
+    {
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material.color = hitColor;
+        }
+
+        Invoke("ResetFlash", flashTime);
+    }
+
+    public void possessFlash()
+    {
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material.color = possessColor;
+        }
+
+        Invoke("ResetFlash", flashTime);
+    }
+
+    private void ResetFlash()
+    {
+        int counter = 0;
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material.color = originalColors[counter];
+            counter++;
+        }
     }
 
     private void OnTriggerStay(Collider other)

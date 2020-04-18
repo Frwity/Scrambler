@@ -1,22 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 public class Bertha : MonoBehaviour
 {
     [SerializeField] private float Cooldown;
     [SerializeField] private float Imprecision;
     [SerializeField] private float shootForce = 0.0f;
     [SerializeField] private float damage;
-    [SerializeField] private Entity Drone;
-
+    [SerializeField] private GameObject DroneToSpawn;
+    public SpawnPointData spawnPoint;
     private DroneSkill ds;
+    private Entity Drone;
     [SerializeField] private GameObject bullet;
     private float currCooldown = 0.0f;
     
     // Start is called before the first frame update
     void Start()
     {
+        spawnPoint.ParentPos = transform;
+        Drone = Instantiate(DroneToSpawn, spawnPoint.SpawnPointPos, Quaternion.identity).GetComponent<Entity>();
         GetComponentInChildren<Teleport>().toTP = Drone.transform;
         
         if (Drone != null)
@@ -71,4 +76,44 @@ public class Bertha : MonoBehaviour
         
         currCooldown = 0;
     }
+    
+    private void OnDrawGizmos()
+    {
+            Gizmos.color = spawnPoint.color;
+            spawnPoint.ParentPos = transform;
+            if (!spawnPoint.enabled)
+            {
+                Color c = Gizmos.color;
+                c.a = 0.5f;
+                Gizmos.color = c;
+            }
+            Gizmos.DrawSphere(spawnPoint.SpawnPointPos , spawnPoint.radius);
+    }
 }
+
+
+#if UNITY_EDITOR
+
+[CustomEditor(typeof(Bertha)), CanEditMultipleObjects]
+public class SpawnEditor : Editor
+{
+    
+    public virtual void OnSceneGUI()
+    {
+        Bertha b = (Bertha) target;
+
+        var vari = b.spawnPoint;
+            EditorGUI.BeginChangeCheck();
+            Vector3 newTargetPosition =Handles.PositionHandle(vari.SpawnPointPos, Quaternion.identity);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                //Undo.RecordObject(var, "Change Look At Target Position");
+                vari.SpawnPointPos = newTargetPosition;
+            }
+       
+    }
+    
+    
+}
+#endif

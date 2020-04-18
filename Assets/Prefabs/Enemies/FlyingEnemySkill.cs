@@ -49,7 +49,7 @@ public class FlyingEnemySkill : EntitySkill
         {
             currentCD = 0.0f;
 
-            GameObject firedBullet = Instantiate(bullet, transform.position + Vector3.down, Quaternion.identity);
+            GameObject firedBullet = Instantiate(bullet, transform.position + transform.right * shootOriginPos.x + transform.up * shootOriginPos.y, Quaternion.identity);
 
             BulletSharedClass firedBulletInfo = firedBullet.GetComponent<BulletSharedClass>();
             firedBulletInfo.direction = lastDirection.normalized;

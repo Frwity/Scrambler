@@ -16,7 +16,6 @@ public class Node : MonoBehaviour
         teleporting = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (teleporting)

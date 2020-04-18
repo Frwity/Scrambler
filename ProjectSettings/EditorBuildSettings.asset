@@ -8,10 +8,28 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Scene Antony.unity
-    guid: e6e7d5375adeca34896f59f369cf04e7
+  - enabled: 1
+    path: Assets/Scenes/start.unity
+    guid: 3894cfca29489ab4eba6081f42117b16
+  - enabled: 1
+    path: Assets/Scenes/Scene Main Menu.unity
+    guid: 88cffec4fd2a05c47a78ba04540cd5c1
   - enabled: 1
     path: "Assets/Scenes/Scene Aur\xE91.unity"
     guid: bdcd3e58a2aed9c418260ca879e27461
+  - enabled: 1
+    path: Assets/Scenes/Scene Dan.unity
+    guid: ace52c76eba075d469dd49941cd1edf0
+  - enabled: 1
+    path: Assets/Scenes/Scene Ivanv2.unity
+    guid: 44e344842875d5b4bb12866bce96a7d0
+  - enabled: 1
+    path: "Assets/Scenes/Scene J\xE9rem.unity"
+    guid: 3b2edb356669af74f87b0531f61b6fd0
+  - enabled: 1
+    path: Assets/Scenes/Scene Martin 2.unity
+    guid: 43222a44e0c9a77459551e78b1bd5949
+  - enabled: 1
+    path: Assets/Scenes/PauseMenu.unity
+    guid: 0b6c906bff2f7ff408ed4e3b5aaed119
   m_configObjects: {}

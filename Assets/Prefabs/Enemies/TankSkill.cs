@@ -63,8 +63,9 @@ public class TankSkill : EntitySkill
                      * Mathf.Cos(a * Mathf.Deg2Rad)
                      * (shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad)
                         + Mathf.Sqrt(Mathf.Pow(shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad), 2)
-                                     + 2 * Physics.gravity.magnitude * transform.position.y))
-                     + cannon.transform.localPosition.y;
+                                     + 5* Physics.gravity.magnitude * cannon.transform.localPosition.y))
+                     ;
+        Debug.Log(rangePoint);
         shootingDir = Rotate(Vector3.right, angleInDeg);
         lastAngle = angleInDeg;
         currentCooldown = 0;
@@ -170,12 +171,15 @@ public class TankSkill : EntitySkill
         {
             int angleToAdd = Random.Range(-precision, precision);
             Vector2 newShootDir = Rotate(shootingDir, angleToAdd);
-            GameObject bulletInst = Instantiate(bulletPrefab, cannon.transform.position, transform.rotation);
-            Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(),
-                this.GetComponent<Collider>(), true);
-            CurvedBulletSharedClass bullett = bulletInst.GetComponent<CurvedBulletSharedClass>();
 
+            GameObject bulletInst = Instantiate(bulletPrefab, cannon.transform.position + transform.right * shootOriginPos.x + transform.up * shootOriginPos.y, transform.rotation);
+            
+            Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(),
+                                    GetComponent<Collider>(), true);
+
+            CurvedBulletSharedClass bullett = bulletInst.GetComponent<CurvedBulletSharedClass>();
             bullett.direction = new Vector3(newShootDir.x, newShootDir.y, 0) * shootingStrength;
+            bullett.shooter = gameObject;
 
         }
 

@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemyIA : MonoBehaviour
+public class FlyingEnemyIA : EntityAI
 {
-    public bool isActive;
-    private Entity entity;
-    
     [SerializeField] private float fireCount;
     private float nbFired;
     private bool shooting;

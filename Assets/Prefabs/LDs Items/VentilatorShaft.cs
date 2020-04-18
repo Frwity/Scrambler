@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VentilatorShaft : LDBlock
+public class VentilatorShaft : Activable
 {
     [SerializeField] private float speed;
 

@@ -46,7 +46,7 @@ public class FireBullet : CurvedBulletSharedClass
         fire.transform.Rotate(rotation, Space.World);
 
         fire.GetComponent<DeadZone>().lifeTime = fireLifeTime;
-        fire.GetComponent<LDBlock>().isActive = true;
+        fire.GetComponent<Activable>().isActive = true;
 
         Debug.Log(rotation);
 

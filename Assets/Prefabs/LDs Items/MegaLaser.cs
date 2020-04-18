@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MegaLaser : LDBlock
+public class MegaLaser : Activable
 {
     [SerializeField] float delay = 0f;
     [SerializeField] float cooldowTime = 2f;
@@ -32,7 +32,12 @@ public class MegaLaser : LDBlock
     void Update()
     {
         if (!isActive)
+        {
+            if (actualLazer)
+                Destroy(actualLazer);
             return;
+        }
+
         currentTime += Time.deltaTime;
 
         if (currentTime < cooldowTime)
@@ -45,6 +50,8 @@ public class MegaLaser : LDBlock
             {
                 waningSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 waningSphere.transform.position = transform.position - transform.forward;
+
+                waningSphere.GetComponent<Renderer>().material.color = laserObject.GetComponentInChildren<Renderer>(false).sharedMaterial.color;
                 
                 waningSphere.transform.localScale = new Vector3(0, 0, 0);
             }
@@ -77,7 +84,8 @@ public class MegaLaser : LDBlock
         { 
             currentTime = 0f;
 
-            if (actualLazer) Destroy(actualLazer);
+            if (actualLazer) 
+                Destroy(actualLazer);
         }
     }
 }

@@ -3,16 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class suicideIA : MonoBehaviour
+public class suicideIA : EntityAI
 {
      enum Direction
     {
         RIGHT = 1,
         LEFT = -1,
     };
-    // Start is called before the first frame update
-    public bool isActive;
-    private Entity entity;
     GameObject player;
     private bool shooting;
     [SerializeField]
@@ -207,7 +204,7 @@ public class suicideIA : MonoBehaviour
                 direction = Direction.LEFT;
                 transform.rotation = Quaternion.Euler(0,180,0);
             }
-            if ((currentCheckpointPosX ) < (transform.position.x  -0.15))
+            if ((currentCheckpointPosX ) < (transform.position.x  -(0.15 * scs.speed)))
             {
                 
                 if (direction == Direction.RIGHT)
@@ -220,7 +217,7 @@ public class suicideIA : MonoBehaviour
                 }
                     
             }
-            else if ((currentCheckpointPosX ) > (transform.position.x +0.15))
+            else if ((currentCheckpointPosX ) > (transform.position.x +(0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall || scs.Roofed)
@@ -236,7 +233,7 @@ public class suicideIA : MonoBehaviour
                     entity.MoveRight(1*i);
                 }
             }
-            else if ((currentCheckpointPosY) < (transform.position.y - 0.15))
+            else if ((currentCheckpointPosY) < (transform.position.y -(0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall || scs.Roofed)
@@ -252,7 +249,7 @@ public class suicideIA : MonoBehaviour
                     entity.MoveLeft(-1*i);
                 }
             }
-            else if ((currentCheckpointPosY) > (transform.position.y + 0.15))
+            else if ((currentCheckpointPosY) > (transform.position.y +(0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall || scs.Roofed)
