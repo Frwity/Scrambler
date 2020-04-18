@@ -123,5 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 16
   damage: 1
+  hasLimitedTime: 1
+  lifeTime: 10
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
