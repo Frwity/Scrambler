@@ -25428,6 +25428,16 @@ PrefabInstance:
       propertyPath: Path
       value: 
       objectReference: {fileID: 344392715}
+    - target: {fileID: 4122962322023816584, guid: e3eebda4cdca31744bdaf5e90086a477,
+        type: 3}
+      propertyPath: shootOriginPos.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122962322023816584, guid: e3eebda4cdca31744bdaf5e90086a477,
+        type: 3}
+      propertyPath: shootOriginPos.x
+      value: -1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 582016622489518099, guid: e3eebda4cdca31744bdaf5e90086a477, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e3eebda4cdca31744bdaf5e90086a477, type: 3}
@@ -32933,11 +32943,11 @@ MonoBehaviour:
   Radius: 1
   Checkpoints:
   - ParentPos: {fileID: 667574166}
-    pos: {x: 17.396172, y: 0, z: 0}
+    pos: {x: 27.515846, y: 0, z: 0}
     color: {r: 0.9622642, g: 0, b: 0, a: 1}
     enabled: 1
   - ParentPos: {fileID: 667574166}
-    pos: {x: 49.304565, y: 0.33685017, z: 0}
+    pos: {x: 47.998505, y: 0.33685017, z: 0}
     color: {r: 1, g: 0.48472303, b: 0, a: 1}
     enabled: 1
 --- !u!4 &667574166
@@ -34797,7 +34807,7 @@ MonoBehaviour:
     color: {r: 0.9622642, g: 0, b: 0, a: 1}
     enabled: 1
   - ParentPos: {fileID: 733576897}
-    pos: {x: 47.34207, y: 0.33685017, z: 0}
+    pos: {x: 21.511955, y: 0.33685017, z: 0}
     color: {r: 1, g: 0.48472303, b: 0, a: 1}
     enabled: 1
 --- !u!1 &734476978
@@ -45429,11 +45439,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: Path
-      value: 
-      objectReference: {fileID: 1889341819}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &981129660
@@ -49392,6 +49397,16 @@ PrefabInstance:
       propertyPath: Path
       value: 
       objectReference: {fileID: 667574165}
+    - target: {fileID: 8587556989914390064, guid: e3eebda4cdca31744bdaf5e90086a477,
+        type: 3}
+      propertyPath: m_Mass
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122962322023816584, guid: e3eebda4cdca31744bdaf5e90086a477,
+        type: 3}
+      propertyPath: shootOriginPos.x
+      value: -1.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3eebda4cdca31744bdaf5e90086a477, type: 3}
 --- !u!1001 &1029197181
@@ -81887,7 +81902,7 @@ PrefabInstance:
     - target: {fileID: 8540519294193855697, guid: 8af16cbf1751aa6498a44f185798232a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.41661
+      value: 61.496613
       objectReference: {fileID: 0}
     - target: {fileID: 8540519294193855697, guid: 8af16cbf1751aa6498a44f185798232a,
         type: 3}
@@ -81973,7 +81988,7 @@ PrefabInstance:
     - target: {fileID: 8540519294193855691, guid: 8af16cbf1751aa6498a44f185798232a,
         type: 3}
       propertyPath: spawnPoint.enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8540519294193855691, guid: 8af16cbf1751aa6498a44f185798232a,
         type: 3}
@@ -81981,6 +81996,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4306209733115936525, guid: dd1b74f0f7ae2084b9365a4b551e6a9a,
         type: 3}
+    - target: {fileID: 8540519294193855691, guid: 8af16cbf1751aa6498a44f185798232a,
+        type: 3}
+      propertyPath: spawnPoint.pos.y
+      value: 15.000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540519294193855691, guid: 8af16cbf1751aa6498a44f185798232a,
+        type: 3}
+      propertyPath: spawnPoint.pos.x
+      value: -0.08972168
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540519294193855691, guid: 8af16cbf1751aa6498a44f185798232a,
+        type: 3}
+      propertyPath: spawnPoint.pos.z
+      value: -50.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8af16cbf1751aa6498a44f185798232a, type: 3}
 --- !u!1 &1904000001
@@ -89294,6 +89324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: accelerationFactor
       value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987167877625211973, guid: bb103c6604ba9b64186e6b7c9bd773b6,
+        type: 3}
+      propertyPath: maxHeight
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb103c6604ba9b64186e6b7c9bd773b6, type: 3}
