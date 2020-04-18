@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cooldown: 1
   Imprecision: 0
-  shootForce: 500
+  shootForce: 30
   damage: 0
   DroneToSpawn: {fileID: 0}
   spawnPoint:
@@ -153,6 +153,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8540519294193855697}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: f46e6294c7adba940ba17e3efb09d8ff,
+        type: 3}
+      propertyPath: m_Name
+      value: Bertha
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f46e6294c7adba940ba17e3efb09d8ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -222,11 +227,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: f46e6294c7adba940ba17e3efb09d8ff,
-        type: 3}
-      propertyPath: m_Name
-      value: Bertha
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f46e6294c7adba940ba17e3efb09d8ff, type: 3}
