@@ -51,16 +51,23 @@ public class PlayerControl : MonoBehaviour
         {
             if (!isInVirus)
             {
-                entity = Instantiate(virus, tTransform.transform.position, Quaternion.identity, transform).GetComponent<Entity>();
-            }
-            else if (actualRoom)
-            {
-                entity = Instantiate(virus, actualRoom.respawnPoint, Quaternion.identity, transform).GetComponent<Entity>();
-                actualRoom.ResetRoom();
+                entity = Instantiate(virus, tTransform.transform.position + Vector3.up * 0.5f, Quaternion.identity, transform).GetComponent<Entity>();
             }
             else
             {
-                entity = Instantiate(virus, defaultSpawnPoint, Quaternion.identity, transform).GetComponent<Entity>();               
+                if (actualRoom)
+                {
+                    entity = Instantiate(virus, actualRoom.respawnPoint, Quaternion.identity, transform).GetComponent<Entity>();
+                    actualRoom.ResetRoom();
+                }
+                else
+                {
+                    entity = Instantiate(virus, defaultSpawnPoint, Quaternion.identity, transform).GetComponent<Entity>();
+                }
+                foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
+                {
+                    Destroy(bullet);
+                }
             }
             isInVirus = true;
             return;

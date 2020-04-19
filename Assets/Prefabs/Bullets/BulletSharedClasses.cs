@@ -7,9 +7,23 @@ public abstract class BulletSharedClass : MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected int damage;
 
+    [SerializeField] bool hasLimitedTime = true;
+    [SerializeField] float lifeTime = 10f;
+
     [HideInInspector] public Vector3 direction;
 
     [HideInInspector] public GameObject shooter;
+
+    private void LateUpdate()
+    {
+        if (hasLimitedTime)
+        {
+            lifeTime -= Time.deltaTime;
+
+            if (lifeTime <= 0)
+                Destroy(gameObject);
+        }
+    }
 
     public virtual void DoBehavior(GameObject hitObject)
     {
@@ -23,7 +37,7 @@ public abstract class BulletSharedClass : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Shield"))
+        if (!collision.gameObject.CompareTag("Shield") && !(collision.gameObject == shooter))
         {
             Destroy(gameObject);
         }

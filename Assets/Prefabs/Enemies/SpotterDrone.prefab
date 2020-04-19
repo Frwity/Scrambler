@@ -300,6 +300,9 @@ MonoBehaviour:
   LostPlayer: 0
   lastPlayerPosKnown: {x: 0, y: 0, z: 0}
   isInBackGround: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  possessColor: {r: 0, g: 0, b: 1, a: 1}
+  flashTime: 0.5
 --- !u!114 &6015208151178812076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 0
+  shootOriginPos: {x: 0, y: -1}
   speed: 12
   OnShoot:
     m_PersistentCalls:
