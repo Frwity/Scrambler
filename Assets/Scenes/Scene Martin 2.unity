@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1867,36 +1867,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -1927,6 +1897,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &93857833
@@ -3068,6 +3068,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 699059775512775564, guid: 9d7f6237fa7410b4098d62f4907f17d7,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3182675774231525683, guid: 9d7f6237fa7410b4098d62f4907f17d7,
         type: 3}
       propertyPath: flipped
@@ -3077,11 +3082,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 699059775512775564, guid: 9d7f6237fa7410b4098d62f4907f17d7,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d7f6237fa7410b4098d62f4907f17d7, type: 3}
@@ -3865,36 +3865,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -3925,6 +3895,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!4 &177823106 stripped
@@ -8913,36 +8913,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -8973,6 +8943,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!43 &250125912
@@ -11311,16 +11311,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 9.199999
       objectReference: {fileID: 0}
-    - target: {fileID: 2804748415921273777, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
-        type: 3}
-      propertyPath: m_Name
-      value: F
-      objectReference: {fileID: 0}
-    - target: {fileID: 8138705193650179592, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
-        type: 3}
-      propertyPath: m_Name
-      value: E
-      objectReference: {fileID: 0}
     - target: {fileID: 2196889521561115896, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
         type: 3}
       propertyPath: teleportationSpeed
@@ -11330,6 +11320,16 @@ PrefabInstance:
         type: 3}
       propertyPath: teleportationSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804748415921273777, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
+        type: 3}
+      propertyPath: m_Name
+      value: F
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138705193650179592, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
+        type: 3}
+      propertyPath: m_Name
+      value: E
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edb6c7c562dd4ef4badc27ccc38cffe7, type: 3}
@@ -13568,36 +13568,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -13628,6 +13598,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!43 &407113320
@@ -16599,36 +16599,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -16659,6 +16629,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1001 &497998256
@@ -16728,36 +16728,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -16788,6 +16758,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &513946705
@@ -17165,36 +17165,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -17225,6 +17195,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &519202458
@@ -17574,36 +17574,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -17634,6 +17604,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1001 &547947983
@@ -20479,36 +20479,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -20539,6 +20509,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!43 &677955792
@@ -23151,36 +23151,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -23211,6 +23181,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &746592770
@@ -34433,6 +34433,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 385032029095598600, guid: 9d7f6237fa7410b4098d62f4907f17d7,
+        type: 3}
+      propertyPath: isInBackGround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1812862248857718948, guid: 9d7f6237fa7410b4098d62f4907f17d7,
         type: 3}
       propertyPath: m_Size.z
@@ -34452,11 +34457,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.x
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 385032029095598600, guid: 9d7f6237fa7410b4098d62f4907f17d7,
-        type: 3}
-      propertyPath: isInBackGround
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d7f6237fa7410b4098d62f4907f17d7, type: 3}
@@ -35493,36 +35493,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -35553,6 +35523,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!43 &1021353090
@@ -37302,36 +37302,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -37362,6 +37332,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &1105966630
@@ -41639,36 +41639,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -41699,6 +41669,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!43 &1204782240
@@ -44653,36 +44653,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -44713,6 +44683,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1001 &1328365237
@@ -48073,6 +48073,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 385032029095598600, guid: 9d7f6237fa7410b4098d62f4907f17d7,
+        type: 3}
+      propertyPath: isInBackGround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1812862248857718948, guid: 9d7f6237fa7410b4098d62f4907f17d7,
         type: 3}
       propertyPath: m_Size.z
@@ -48092,11 +48097,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.x
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 385032029095598600, guid: 9d7f6237fa7410b4098d62f4907f17d7,
-        type: 3}
-      propertyPath: isInBackGround
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d7f6237fa7410b4098d62f4907f17d7, type: 3}
@@ -48340,16 +48340,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 12.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2804748415921273777, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
-        type: 3}
-      propertyPath: m_Name
-      value: D
-      objectReference: {fileID: 0}
-    - target: {fileID: 8138705193650179592, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
-        type: 3}
-      propertyPath: m_Name
-      value: C
-      objectReference: {fileID: 0}
     - target: {fileID: 2196889521561115896, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
         type: 3}
       propertyPath: teleportationSpeed
@@ -48359,6 +48349,16 @@ PrefabInstance:
         type: 3}
       propertyPath: teleportationSpeed
       value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804748415921273777, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
+        type: 3}
+      propertyPath: m_Name
+      value: D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138705193650179592, guid: edb6c7c562dd4ef4badc27ccc38cffe7,
+        type: 3}
+      propertyPath: m_Name
+      value: C
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edb6c7c562dd4ef4badc27ccc38cffe7, type: 3}
@@ -57071,36 +57071,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -57131,6 +57101,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &1787478846
@@ -72447,7 +72447,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75660,36 +75660,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -75720,6 +75690,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &2012576136
@@ -77172,6 +77172,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 385032029095598600, guid: 9d7f6237fa7410b4098d62f4907f17d7,
+        type: 3}
+      propertyPath: isInBackGround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1812862248857718948, guid: 9d7f6237fa7410b4098d62f4907f17d7,
         type: 3}
       propertyPath: m_Size.z
@@ -77191,11 +77196,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.x
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 385032029095598600, guid: 9d7f6237fa7410b4098d62f4907f17d7,
-        type: 3}
-      propertyPath: isInBackGround
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d7f6237fa7410b4098d62f4907f17d7, type: 3}
@@ -77429,36 +77429,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: flipped
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: upperFireRange
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: maxReactionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: fireRate
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1286122360}
     - target: {fileID: 8348260990958963665, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
         type: 3}
       propertyPath: isInBackGround
@@ -77489,6 +77459,36 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: flipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: detectionRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: upperFireRange
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531962691575589098, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: maxReactionTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540965566175353325, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1286122360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b43f88c2a1d114588a4ad6c8c1ac0a, type: 3}
 --- !u!1 &2047416298
@@ -79404,6 +79404,11 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 13.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7987167876143128020, guid: bb103c6604ba9b64186e6b7c9bd773b6,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 504269849, guid: bb103c6604ba9b64186e6b7c9bd773b6, type: 3}
       propertyPath: gravity
       value: -28
@@ -79414,10 +79419,5 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: 598749a37d47f634f880814e7e6910f6,
         type: 2}
-    - target: {fileID: 7987167876143128020, guid: bb103c6604ba9b64186e6b7c9bd773b6,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb103c6604ba9b64186e6b7c9bd773b6, type: 3}
