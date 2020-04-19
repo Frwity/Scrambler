@@ -192,8 +192,8 @@ MonoBehaviour:
   interactionRange: 5
   shootOriginPos: {x: 0, y: 0}
   speed: 13.1
-  chargeTime: 0.5
-  exploRay: 6
+  chargeTime: 0.3
+  exploRay: 5
   damage: 5
   nbJump: 1
   jumpForce: 10
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b197fcebbe6044bfc336b1942674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 10
+  life: 5
   entitySkill: {fileID: 2462951506704342484}
   controllable: 1
   isHidden: 0
