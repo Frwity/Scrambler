@@ -8,9 +8,9 @@ public class DroneSkill : EntitySkill
     [SerializeField] private float speed;
     [HideInInspector] public UnityEvent OnShoot;
     private Entity entity;
+
     void Start()
     {
-        OnShoot = new UnityEvent();
         entity = GetComponent<Entity>();
     }
 
