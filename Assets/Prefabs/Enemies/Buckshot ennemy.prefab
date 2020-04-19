@@ -344,10 +344,10 @@ MonoBehaviour:
   detectionRange: 25
   distanceToKeepAwayFromPlayer: 5
   maxReactionTime: 1.5
-  flipped: 1
+  flipped: 0
   lostTimer: 1
   HasTurnedOnce: 0
-  Backtimer: 2
+  Backtimer: 20
   lostSpeed: 2
   AIResetTimer: 0
   Path: {fileID: 0}
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 0
-  shootOriginPos: {x: 0, y: 0.7}
+  shootOriginPos: {x: 0, y: 0.5}
   maxSpeed: 8
   nbJump: 1
   jumpForce: 8
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b197fcebbe6044bfc336b1942674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 15
   entitySkill: {fileID: 4122962322023816584}
   controllable: 1
   isHidden: 0

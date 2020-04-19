@@ -194,8 +194,8 @@ MonoBehaviour:
   shootOriginPos: {x: 0, y: 0}
   speed: 13.1
   chargeTime: 0.3
-  exploRay: 9
-  damage: 5
+  exploRay: 8
+  damage: 10
   nbJump: 1
   jumpForce: 10
   airControlFactor: 0.098

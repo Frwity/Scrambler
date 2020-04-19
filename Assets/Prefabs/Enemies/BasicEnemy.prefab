@@ -142,12 +142,12 @@ MonoBehaviour:
   upperFireRange: 20
   lowerFireRange: 5
   detectionRange: 25
-  distanceToKeepAwayFromPlayer: 10
+  distanceToKeepAwayFromPlayer: 5
   maxReactionTime: 2
-  flipped: 1
-  lostTimer: 2
+  flipped: 0
+  lostTimer: 1
   HasTurnedOnce: 0
-  Backtimer: 1
+  Backtimer: 20
   lostSpeed: 2
   AIResetTimer: 5
   Path: {fileID: 0}
@@ -175,7 +175,7 @@ MonoBehaviour:
   jumped: 0
   bullet: {fileID: 3517571761744688880, guid: 57bb3ae0611b7274cb0c21e180d010aa, type: 3}
   fireRate: 0.4
-  imprecision: 1
+  imprecision: 0.1
   xAim: 0
 --- !u!114 &8348260990958963665
 MonoBehaviour:
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b197fcebbe6044bfc336b1942674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 10
   entitySkill: {fileID: 3540965566175353325}
   controllable: 1
   isHidden: 0
