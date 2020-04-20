@@ -35,7 +35,10 @@ public class BouncyBullet : CurvedBulletSharedClass
 
     public override void DoBehavior(GameObject hitObject)
     {
-        Explode();
+        if (hitObject.gameObject != shooter)
+        {
+            Explode();
+        }
     }
 
     private void Explode()

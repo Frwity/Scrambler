@@ -28,7 +28,10 @@ public class RocketBullet : BulletSharedClass
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        Explode();
+        if (!(collision.gameObject == shooter))
+        {
+            Explode();
+        }
     }
 
     public override void DoBehavior(GameObject hitObject)

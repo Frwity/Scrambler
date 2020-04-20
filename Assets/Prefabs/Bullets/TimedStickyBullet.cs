@@ -41,7 +41,7 @@ public class TimedStickyBullet : CurvedBulletSharedClass
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        if ((collision.gameObject != shooter) && !(shooter.CompareTag("Enemy") && collision.gameObject.CompareTag("Enemy")))
         {
             Explode();
         }

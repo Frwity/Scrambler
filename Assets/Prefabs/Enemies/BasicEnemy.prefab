@@ -440,6 +440,7 @@ MonoBehaviour:
   fireRate: 0.4
   imprecision: 0.1
   xAim: 0
+  fireDirectionLerpingFactor: 0.05
 --- !u!114 &8348260990958963665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +464,11 @@ MonoBehaviour:
   hitColor: {r: 1, g: 0, b: 0, a: 1}
   possessColor: {r: 0, g: 0, b: 1, a: 1}
   flashTime: 0.2
+  onPossess:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1643609269
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class suicideIA : EntityAI
 {
-     enum Direction
+    enum Direction
     {
         RIGHT = 1,
         LEFT = -1,
     };
+
     GameObject player;
     private bool shooting;
     [SerializeField]
@@ -17,15 +18,23 @@ public class suicideIA : EntityAI
 
     private short waitFrame = 0;
     private SuicideSkill scs;
+    
     private float currentLostTimer = 0.0f;
-    [SerializeField]private float lostTimer = 0.0f;
+    [SerializeField] private float lostTimer = 0.0f;
     private bool hasPlayerGoneInBack = false; 
     private bool HasTurnedOnce = false;
+    
     [SerializeField] private float Backtimer = 0.0f;
      private float currentBackTimer = 0.0f;
+    
     [SerializeField] private float AIResetTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
+
     [SerializeField] private Road Path;
+
+    [SerializeField] Color possessedColor;
+    [SerializeField] Color disabledColor;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -35,7 +44,8 @@ public class suicideIA : EntityAI
         }
         entity = GetComponent<Entity>(); 
         scs = entity.entitySkill as SuicideSkill;
-        
+
+        entity.onPossess.AddListener(LightChange);
     }
 
     // Update is called once per frame
@@ -44,27 +54,27 @@ public class suicideIA : EntityAI
         if (!isActive)
             return;
         if (!shooting && entity.isPlayerInSight)
-        {
-            
+        {
+
             currentLostTimer = 0.0f;
             currentBackTimer = 0.0f;
             hasPlayerGoneInBack = false;
-            HasTurnedOnce = false;
-            
+            HasTurnedOnce = false;
+
             if (entity.lastPlayerPosKnown.x > transform.position.x && (direction == Direction.LEFT))
             {
-                direction = Direction.RIGHT;
-                
-                transform.rotation =  Quaternion.Euler(0,0,0);
+                direction = Direction.RIGHT;
+
+                transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            else if (entity.lastPlayerPosKnown.x < transform.position.x &&(direction == Direction.RIGHT)) 
+            else if (entity.lastPlayerPosKnown.x < transform.position.x && (direction == Direction.RIGHT))
             {
-                direction = Direction.LEFT;
-                
-                transform.rotation = Quaternion.Euler(0,180,0);
+                direction = Direction.LEFT;
+
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
-            if ((entity.lastPlayerPosKnown.x ) < (transform.position.x  -0.45))
+            if ((entity.lastPlayerPosKnown.x) < (transform.position.x - 0.45))
             {
                 if (direction == Direction.RIGHT)
                 {
@@ -73,10 +83,10 @@ public class suicideIA : EntityAI
                 else
                 {
                     entity.MoveLeft(-1);
-                }
-                    
+                }
+
             }
-            else if ((entity.lastPlayerPosKnown.x ) > (transform.position.x +0.45))
+            else if ((entity.lastPlayerPosKnown.x) > (transform.position.x + 0.45))
             {
                 if (direction == Direction.RIGHT)
                 {
@@ -98,38 +108,38 @@ public class suicideIA : EntityAI
                 return;
             }
             currentAIResetTimer += Time.smoothDeltaTime;
-            if (entity.lastPlayerPosKnown.x > transform.position.x + 0.15*scs.speed && (direction == Direction.LEFT) && !HasTurnedOnce)
+            if (entity.lastPlayerPosKnown.x > transform.position.x + 0.15 * scs.speed && (direction == Direction.LEFT) && !HasTurnedOnce)
             {
-                direction = Direction.RIGHT;
-                
+                direction = Direction.RIGHT;
+
                 hasPlayerGoneInBack = true;
                 HasTurnedOnce = true;
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            else if (entity.lastPlayerPosKnown.x < transform.position.x- 0.15*scs.speed && (direction == Direction.RIGHT) &&
+            else if (entity.lastPlayerPosKnown.x < transform.position.x - 0.15 * scs.speed && (direction == Direction.RIGHT) &&
                      !HasTurnedOnce)
             {
-                direction = Direction.LEFT;
-                
+                direction = Direction.LEFT;
+
                 hasPlayerGoneInBack = true;
                 HasTurnedOnce = true;
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
-            if ((entity.lastPlayerPosKnown.x) < (transform.position.x - 0.15*scs.speed) && !hasPlayerGoneInBack)
+            if ((entity.lastPlayerPosKnown.x) < (transform.position.x - 0.15 * scs.speed) && !hasPlayerGoneInBack)
             {
                 if (direction == Direction.RIGHT)
                 {
                     entity.MoveRight(-1);
                 }
                 else
-                {
-                    
+                {
+
                     entity.MoveLeft(-1);
                 }
 
             }
-            else if ((entity.lastPlayerPosKnown.x) > (transform.position.x + 0.15*scs.speed) && !hasPlayerGoneInBack)
+            else if ((entity.lastPlayerPosKnown.x) > (transform.position.x + 0.15 * scs.speed) && !hasPlayerGoneInBack)
             {
                 if (direction == Direction.RIGHT)
                 {
@@ -190,23 +200,23 @@ public class suicideIA : EntityAI
                 {
                     break;
                 }
-            }
-            
+            }
+
             float currentCheckpointPosX = (Path.Checkpoints[Path.CurrentIndex].checkPointPos.x);
             float currentCheckpointPosY = (Path.Checkpoints[Path.CurrentIndex].checkPointPos.y);
             if (currentCheckpointPosX > transform.position.x && (direction == Direction.LEFT))
             {
                 direction = Direction.RIGHT;
-                transform.rotation =  Quaternion.Euler(0,0,0);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            else if (currentCheckpointPosX < transform.position.x &&(direction == Direction.RIGHT)) 
+            else if (currentCheckpointPosX < transform.position.x && (direction == Direction.RIGHT))
             {
                 direction = Direction.LEFT;
-                transform.rotation = Quaternion.Euler(0,180,0);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
-            if ((currentCheckpointPosX ) < (transform.position.x  -(0.15 * scs.speed)))
-            {
-                
+            if ((currentCheckpointPosX) < (transform.position.x - (0.15 * scs.speed)))
+            {
+
                 if (direction == Direction.RIGHT)
                 {
                     entity.MoveRight(-1);
@@ -214,10 +224,10 @@ public class suicideIA : EntityAI
                 else
                 {
                     entity.MoveLeft(-1);
-                }
-                    
+                }
+
             }
-            else if ((currentCheckpointPosX ) > (transform.position.x +(0.15 * scs.speed)))
+            else if ((currentCheckpointPosX) > (transform.position.x + (0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall && scs.grounded)
@@ -237,7 +247,7 @@ public class suicideIA : EntityAI
                     entity.MoveRight(scs.speed*i);
                 }
             }
-            else if ((currentCheckpointPosY) < (transform.position.y -(0.15 * scs.speed)))
+            else if ((currentCheckpointPosY) < (transform.position.y - (0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall && scs.grounded)
@@ -257,7 +267,7 @@ public class suicideIA : EntityAI
                     entity.MoveLeft(-scs.speed*i);
                 }
             }
-            else if ((currentCheckpointPosY) > (transform.position.y +(0.15 * scs.speed)))
+            else if ((currentCheckpointPosY) > (transform.position.y + (0.15 * scs.speed)))
             {
                 int i = 1;
                 if (scs.touchingWall && scs.grounded)
@@ -282,5 +292,17 @@ public class suicideIA : EntityAI
                 Path.CurrentIndex++;
             }
         }
+    }
+
+    public void LightChange()
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            GetComponentInChildren<Light>().color = possessedColor;
+        }
+        else if (gameObject.CompareTag("Enemy"))
+        {
+            GetComponentInChildren<Light>().color = disabledColor;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EntityAI : Activable
 {
@@ -83,6 +84,9 @@ public class Entity : MonoBehaviour
     [SerializeField] Color hitColor = new Color(1, 0, 0);
     [SerializeField] Color possessColor = new Color(0, 0, 1);
     [SerializeField] float flashTime = 0.5f;
+
+    [HideInInspector] public UnityEvent onPossess;
+
     Renderer[] renderers;
 
     Color[] originalColors;
@@ -193,16 +197,16 @@ public class Entity : MonoBehaviour
         Invoke("ResetFlash", flashTime);
     }
 
-    public void PossessFlash()
-
-    {
-
+    public virtual void PossessFlash()
+    {
         foreach (Renderer renderer in renderers)
         {
             renderer.material.color = possessColor;
         }
 
-        Invoke("ResetFlash", flashTime);
+        Invoke("ResetFlash", flashTime);
+        
+        onPossess.Invoke();
     }
 
     private void ResetFlash()
