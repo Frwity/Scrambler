@@ -214,7 +214,7 @@ MonoBehaviour:
   detectionRange: 35
   distanceToKeepAwayFromPlayer: 10
   maxReactionTime: 1.5
-  flipped: 1
+  flipped: 0
   lostTimer: 0
   HasTurnedOnce: 0
   Backtimer: 0
@@ -247,6 +247,7 @@ MonoBehaviour:
   fireRate: 3
   imprecision: 0
   xAim: 0
+  fireDirectionLerpingFactor: 0.05
 --- !u!114 &5035769846936125500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +271,11 @@ MonoBehaviour:
   hitColor: {r: 1, g: 0, b: 0, a: 1}
   possessColor: {r: 0, g: 0, b: 1, a: 1}
   flashTime: 0.5
+  onPossess:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &3906976981281617752
 MonoBehaviour:
   m_ObjectHideFlags: 0
