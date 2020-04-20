@@ -127,7 +127,7 @@ MonoBehaviour:
   lifeTime: 10
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
-  coneOfFire: 11.5
-  numberOfBullets: 5
+  coneOfFire: 9
+  numberOfBullets: 6
   buckshotPellet: {fileID: 3517571761744688880, guid: 7bbd7d63eed27954283b773c8a5d40d9,
     type: 3}

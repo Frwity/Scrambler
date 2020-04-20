@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
         return new Vector2(Mathf.Round(vector.x * multiplier) / multiplier,
                            Mathf.Round(vector.y * multiplier) / multiplier);
     }
+
     [SerializeField] public GameObject virus;
     [HideInInspector] public RoomManager actualRoom;
 
@@ -99,8 +100,9 @@ public class PlayerControl : MonoBehaviour
             isInVirus = false;
             entity.tag = "Player";
             entity.DesactivateAI();
-            entity.possessFlash();
+            entity.PossessFlash();
             tTransform.transform.position = entity.transform.position;
+            
             return;
         }
         if (Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && !isInVirus)
@@ -108,10 +110,12 @@ public class PlayerControl : MonoBehaviour
             lastControl = Time.time;
             entity.transform.parent = transform.parent;
             entity.tag = "Enemy";
+            entity.onPossess.Invoke();
             entity = Instantiate(virus, entity.transform.position + (Vector3.up * 3), Quaternion.identity, transform).GetComponent<Entity>();
             entity.GetComponent<VirusSkill>().jumped = 1;
             isInVirus = true;
             tTransform.transform.position = entity.transform.position;
+
             return;
         }
         if (Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && isInVirus)

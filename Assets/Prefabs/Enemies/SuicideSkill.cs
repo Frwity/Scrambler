@@ -19,7 +19,7 @@ public class SuicideSkill : EntitySkill
     private int jumped;
     private int wallDir;
     private bool falling;
-    private bool grounded;
+    public bool grounded;
     public bool touchingWall;
     public bool Roofed;
     private Rigidbody rb;
@@ -160,7 +160,7 @@ public class SuicideSkill : EntitySkill
             transform.Translate(new Vector3(speed* moveSpeed * accelerationFactor * Time.smoothDeltaTime,0, 0));
         }
         else if (grounded)
-            rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor, rb.velocity.y, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor , rb.velocity.y, rb.velocity.z);
        
         return true;
     }
@@ -290,5 +290,13 @@ public class SuicideSkill : EntitySkill
             
             
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Color c = Color.red;
+        c.a = 0.3f;
+        Gizmos.color = c;
+        Gizmos.DrawSphere(transform.position, exploRay);
     }
 }
