@@ -108,7 +108,7 @@ public class MenuManager : MonoBehaviour
             Debug.Log("Main already loaded");
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPause && type == loadedType.TYPE_LEVEL)
+        if (Input.GetAxisRaw("start") == 1 && !isPause && type == loadedType.TYPE_LEVEL)
         {
             isPause = true;
             LoadSceneParameters p = new LoadSceneParameters();
