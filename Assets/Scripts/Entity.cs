@@ -187,7 +187,7 @@ public class Entity : MonoBehaviour
         Invoke("ResetFlash", flashTime);
     }
 
-    public void possessFlash()
+    public void PossessFlash()
     {
         foreach (Renderer renderer in renderers)
         {
@@ -205,6 +205,13 @@ public class Entity : MonoBehaviour
             renderer.material.color = originalColors[counter];
             counter++;
         }
+    }
+
+    public void ResetEntity()
+    {
+        ResetFlash();
+
+        isPlayerInSight = false;
     }
 
     private void OnTriggerStay(Collider other)
