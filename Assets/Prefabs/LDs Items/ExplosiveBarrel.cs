@@ -25,12 +25,18 @@ public class ExplosiveBarrel : Activable
 
         foreach (Collider inRange in colliders)
         {
-            if (inRange.CompareTag("Player") || inRange.CompareTag("Enemy"))
+            if (inRange.CompareTag("Player") || inRange.CompareTag("Enemy") || inRange.GetComponent<ExplosiveBarrel>())
             {
                 if (!Physics.Raycast(transform.position, inRange.transform.position - transform.position, 
                                                          Mathf.Abs(transform.position.magnitude - inRange.transform.position.magnitude),
-                                                         1 << LayerMask.NameToLayer("Ground") | (1 << LayerMask.NameToLayer("Shield"))))
-                    inRange.GetComponent<Entity>().InflictDamage(damage);
+                                                         1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Shield")))
+                {
+                    if (inRange.GetComponent<ExplosiveBarrel>())
+                        inRange.GetComponent<ExplosiveBarrel>().Invoke("Explode", 0.3f);
+
+                    else
+                        inRange.GetComponent<Entity>().InflictDamage(damage);
+                }
             }
         }
         Destroy(gameObject);

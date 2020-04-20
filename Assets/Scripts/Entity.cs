@@ -211,12 +211,12 @@ public class Entity : MonoBehaviour
 
     private void ResetFlash()
     {
-        int counter = 0;
-        foreach (Renderer renderer in renderers)
-        {
-            renderer.material.color = originalColors[counter];
-            counter++;
-        }
+        //int counter = 0;
+        //foreach (Renderer renderer in renderers)
+        //{
+        //   renderer.material.color = originalColors[counter];
+        //    counter++;
+        //}
     }
 
     public void ResetEntity()
