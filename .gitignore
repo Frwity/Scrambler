@@ -36,3 +36,6 @@ sysinfo.txt
 *.unitypackage
 Assets/ProBuilder Data/Default Material Palette.asset
 Assets/ProBuilder Data/Default Material Palette.asset.meta
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+Assets/Animation/Animation/Virus_Animation.meta
+Assets/UI/UI Animation/Animation/Transition Credits.anim.meta

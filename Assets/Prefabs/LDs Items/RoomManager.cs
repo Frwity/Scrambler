@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    [SerializeField] private GameObject Door;
+    [SerializeField] private GameObject door;
     [HideInInspector] public Vector3 respawnPoint;
 
     private GameObject[] childCopyList;
     private GameObject[] childList;
+    private GameObject doorCopy;
     private int nbChild;
     private int resetMax = 2;
 
@@ -23,11 +24,11 @@ public class RoomManager : MonoBehaviour
             childList[i - 2] = transform.GetChild(i).gameObject;
             if (!transform.GetChild(i).gameObject.CompareTag("Enemy"))
                 resetMax++;
-
             childCopyList[i - 2] = Instantiate(transform.GetChild(i).gameObject, transform.GetChild(0));
             childCopyList[i - 2].SetActive(false);
+            if (transform.GetChild(i).gameObject == door)
+                doorCopy = childCopyList[i - 2];
         }
-        resetMax = nbChild - resetMax;
     }
 
 
@@ -35,7 +36,7 @@ public class RoomManager : MonoBehaviour
     {
         if (transform.childCount <= resetMax)
         {
-            Destroy(Door);
+            Destroy(door);
         }
     }
 
@@ -47,10 +48,15 @@ public class RoomManager : MonoBehaviour
         }
         for (int i = 0; i < childCopyList.Length; ++i)
         {
-            childList[i] = Instantiate(childCopyList[i].gameObject, childCopyList[i].transform.position, childCopyList[i].transform.rotation);
+
+            childList[i] = Instantiate(childCopyList[i].gameObject, childCopyList[i].transform.position, childCopyList[i].transform.rotation, transform);
             childList[i].SetActive(true);
 
-            childList[i].GetComponent<Entity>().ResetEntity();
+            if (childCopyList[i].gameObject == doorCopy)
+                door = childList[i];
+
+            if (childList[i].GetComponent<Entity>())
+                childList[i].GetComponent<Entity>().ResetEntity();
         }
     }
 }

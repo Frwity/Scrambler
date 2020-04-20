@@ -134,7 +134,7 @@ public class VirusSkill : EntitySkill
                 wallDir = -1;
             else
                 wallDir = 1;
-            if (!grounded)
+            if (!grounded && falling)
             {
                 transform.Translate(0, -wallFallSpeed * Time.deltaTime, 0);
             }

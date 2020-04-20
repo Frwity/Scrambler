@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3299445451293022424}
   - component: {fileID: 7403850859918007643}
   - component: {fileID: 6460570497059771094}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 2959415826523697594}
   - component: {fileID: 2448983846456721851}
   - component: {fileID: 7108472152640565453}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 8401212801849148042}
   - component: {fileID: 6234358630436950502}
   - component: {fileID: 6775604405416080564}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Explosive_Barrel
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34aaed6a0e4b2c4c8a8500fa37cec1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   explosionRange: 0
   damage: 0
 --- !u!1 &6858732192246690320
@@ -227,7 +228,7 @@ GameObject:
   - component: {fileID: 7637932636574553240}
   - component: {fileID: 5913205482716324781}
   - component: {fileID: 812177026687171607}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
