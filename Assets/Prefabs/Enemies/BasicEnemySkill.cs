@@ -29,6 +29,7 @@ public class BasicEnemySkill : EntitySkill
     [HideInInspector] public float xAim = 0f;
 
     Vector3 lastDirection;
+    [SerializeField] [Range(0, 1)] float fireDirectionLerpingFactor = 0.05f;
 
     void Start()
     {
@@ -105,7 +106,14 @@ public class BasicEnemySkill : EntitySkill
     {
         if (directionVector.magnitude < 0.1)
         {
-            directionVector = lastDirection;
+            Vector3 gunTransition = Vector3.zero;
+
+            if (directionVector.x == 0)
+            {
+                gunTransition.x = GetComponent<BasicEnemyAI>().flipped ? 1 : -1;
+            }
+
+            directionVector = Vector3.Lerp(lastDirection, gunTransition, fireDirectionLerpingFactor);
         }
         
         lastDirection = directionVector;
