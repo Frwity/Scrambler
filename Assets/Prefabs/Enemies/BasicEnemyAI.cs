@@ -108,7 +108,7 @@ public class BasicEnemyAI : EntityAI
 
     private bool LookingAtPlayer(float playerXrelativetoEnemy)
     {
-        Debug.Log	($"{playerXrelativetoEnemy} and {lookingRight}");
+        //Debug.Log	($"{playerXrelativetoEnemy} and {lookingRight}");
         if ((playerXrelativetoEnemy > 0 && !lookingRight) || (playerXrelativetoEnemy < 0 && lookingRight))
             return false;
         else
@@ -163,6 +163,7 @@ public class BasicEnemyAI : EntityAI
             previousFlip = flipped;
             currentLostTimer = 0.0f;
             currentBackTimer = 0.0f;
+            currentAIResetTimer = 0.0f;
             hasPlayerGoneInBack = false;
             HasTurnedOnce = false;
 
@@ -180,15 +181,26 @@ public class BasicEnemyAI : EntityAI
         }
         else if (entity.LostPlayer)
         {
+            
             if (currentLostTimer < lostTimer)
             {
                 currentLostTimer += Time.smoothDeltaTime;
                 return;
             }
+            Debug.Log($"{currentAIResetTimer} / {AIResetTimer}");
             currentAIResetTimer += Time.smoothDeltaTime;
             if (!HasTurnedOnce)
             {
-                AIflipControl(vecToPlayer.x);
+                bool b = LookingAtPlayer(vecToPlayer.x);
+                
+                if (!b)
+                {
+                    LookAround();
+                }
+                else
+                {
+                    HasTurnedOnce = true;
+                }
             }
 
             if (previousFlip != flipped)
@@ -202,14 +214,13 @@ public class BasicEnemyAI : EntityAI
             if (vecToPlayer.x > 0.15 * associatedBES.maxSpeed && !hasPlayerGoneInBack)
             {
 
-                entity.MoveRight(lostSpeed / associatedBES.maxSpeed);
+                entity.MoveRight( associatedBES.maxSpeed);
             }
             else if (vecToPlayer.x < -0.15 * associatedBES.maxSpeed && !hasPlayerGoneInBack)
             {
 
-                entity.MoveLeft(-lostSpeed / associatedBES.maxSpeed);
+                entity.MoveLeft(- associatedBES.maxSpeed);
             }
-
             else if (hasPlayerGoneInBack)
             {
 
@@ -218,11 +229,11 @@ public class BasicEnemyAI : EntityAI
                     currentBackTimer += Time.smoothDeltaTime;
                     if (lookingRight)
                     {
-                        entity.MoveRight(1 / associatedBES.maxSpeed);
+                        entity.MoveRight( associatedBES.maxSpeed);
                     }
                     else
                     {
-                        entity.MoveRight(-1 / associatedBES.maxSpeed);
+                        entity.MoveRight(- associatedBES.maxSpeed);
                     }
                 }
             }
