@@ -55,7 +55,8 @@ public abstract class EntitySkill : MonoBehaviour
     }
     public void Uninteract()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+
     }
     
     private void OnDrawGizmos()
@@ -82,7 +83,6 @@ public class Entity : MonoBehaviour
     [SerializeField] Color hitColor = new Color(1, 0, 0);
     [SerializeField] Color possessColor = new Color(0, 0, 1);
     [SerializeField] float flashTime = 0.5f;
-
     Renderer[] renderers;
 
     Color[] originalColors;
@@ -193,8 +193,10 @@ public class Entity : MonoBehaviour
         Invoke("ResetFlash", flashTime);
     }
 
-    public void PossessFlash()
-    {
+    public void PossessFlash()
+
+    {
+
         foreach (Renderer renderer in renderers)
         {
             renderer.material.color = possessColor;
@@ -213,11 +215,16 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void ResetEntity()
-    {
-        ResetFlash();
-
-        isPlayerInSight = false;
+    public void ResetEntity()
+
+    {
+
+        ResetFlash();
+
+
+
+        isPlayerInSight = false;
+        
     }
 
     private void OnTriggerStay(Collider other)
