@@ -18,7 +18,7 @@ public class BasicEnemyAI : EntityAI
 
     private float reactionTime;
 
-    private bool lookingRight = true; // Obviously, if FALSE, the enemy is looking left.
+    private bool lookingRight = false; // Obviously, if FALSE, the enemy is looking left.
 
     private BasicEnemySkill associatedBES;
 
@@ -38,7 +38,14 @@ public class BasicEnemyAI : EntityAI
         player = GameObject.FindGameObjectWithTag("Player");
         entity = GetComponent<Entity>();
         associatedBES = GetComponent<BasicEnemySkill>();
-
+        if ((int)transform.rotation.eulerAngles.y == 0)
+        {
+            lookingRight = false;
+        }
+        else if ((int)transform.rotation.eulerAngles.y == 180)
+        {
+            lookingRight = true;
+        }
 
         reactionTime = maxReactionTime;
 
@@ -112,7 +119,12 @@ public class BasicEnemyAI : EntityAI
     {
         if (!LookingAtPlayer(playerXrelativetoEnemy))
         {
-            if (reactionTime > 0 && !(!entity.isPlayerInSight && entity.LostPlayer))
+            if (!entity.isPlayerInSight && !entity.LostPlayer)
+            {
+                LookAround();
+                return true;
+            }
+            if (reactionTime > 0)
                 reactionTime -= Time.smoothDeltaTime;
             else
             {
