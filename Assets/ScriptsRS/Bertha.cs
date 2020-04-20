@@ -13,6 +13,7 @@ public class Bertha : MonoBehaviour
     [SerializeField] private GameObject DroneToSpawn;
     public SpawnPointData spawnPoint;
     private DroneSkill ds;
+    private DroneAi dai;
     private Entity Drone;
     [SerializeField] private GameObject bullet;
     private float currCooldown = 0.0f;
@@ -26,6 +27,7 @@ public class Bertha : MonoBehaviour
         
         if (Drone != null)
         {
+            dai = Drone.GetComponent<DroneAi>();
             ds = Drone.GetComponent<DroneSkill>();
             ds.myBertha = this;
             ds.OnShoot.AddListener(shootBullet);
@@ -44,7 +46,7 @@ public class Bertha : MonoBehaviour
             return;
         }
 
-        if (Drone.isPlayerInSight)
+        if (Drone.isPlayerInSight && dai.isActive)
         { 
             shootBullet();
             currCooldown = 0.0f;
