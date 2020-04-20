@@ -27,6 +27,7 @@ public class Bertha : MonoBehaviour
         if (Drone != null)
         {
             ds = Drone.GetComponent<DroneSkill>();
+            ds.myBertha = this;
             ds.OnShoot.AddListener(shootBullet);
         }
     }

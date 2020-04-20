@@ -56,6 +56,13 @@ public abstract class EntitySkill : MonoBehaviour
     public void Uninteract()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(transform.position * shootOriginPos, 0.4f);
     }
 }
 
@@ -76,7 +83,6 @@ public class Entity : MonoBehaviour
     [SerializeField] Color hitColor = new Color(1, 0, 0);
     [SerializeField] Color possessColor = new Color(0, 0, 1);
     [SerializeField] float flashTime = 0.5f;
-
     Renderer[] renderers;
 
     Color[] originalColors;
@@ -187,8 +193,10 @@ public class Entity : MonoBehaviour
         Invoke("ResetFlash", flashTime);
     }
 
-    public void possessFlash()
+    public void PossessFlash()
+
     {
+
         foreach (Renderer renderer in renderers)
         {
             renderer.material.color = possessColor;
@@ -205,6 +213,18 @@ public class Entity : MonoBehaviour
             renderer.material.color = originalColors[counter];
             counter++;
         }
+    }
+
+    public void ResetEntity()
+
+    {
+
+        ResetFlash();
+
+
+
+        isPlayerInSight = false;
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -225,5 +245,6 @@ public class Entity : MonoBehaviour
         }
         collidingObj = null;
     }
+
 }
 

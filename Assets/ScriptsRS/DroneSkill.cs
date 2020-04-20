@@ -7,8 +7,11 @@ public class DroneSkill : EntitySkill
 {
     [SerializeField] private float speed;
     [HideInInspector] public UnityEvent OnShoot;
+    [HideInInspector] public Bertha myBertha = null;
+    private float DestroyCD = 0.0f;
+    
     private Entity entity;
-
+    
     void Start()
     {
         entity = GetComponent<Entity>();
@@ -16,7 +19,11 @@ public class DroneSkill : EntitySkill
 
     void Update()
     {
-  
+        DestroyCD += Time.smoothDeltaTime;
+        if (myBertha == null && DestroyCD >1.0f)
+        {
+            Destroy(this.gameObject);    
+        }
     }
 
     public override bool Jump()
