@@ -97,7 +97,14 @@ public class Entity : MonoBehaviour
         collidingObj = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
 
-        renderers = GetComponentsInChildren<Renderer>();
+        if (CompareTag("Player"))
+        {
+            renderers = GetComponents<Renderer>();
+        }
+        else
+        {
+            renderers = GetComponentsInChildren<Renderer>();
+        }
 
         originalColors = new Color[renderers.Length];
 
@@ -197,8 +204,8 @@ public class Entity : MonoBehaviour
         Invoke("ResetFlash", flashTime);
     }
 
-    public virtual void PossessFlash()
-    {
+    public virtual void PossessFlash()
+    {
         foreach (Renderer renderer in renderers)
         {
             renderer.material.color = possessColor;
