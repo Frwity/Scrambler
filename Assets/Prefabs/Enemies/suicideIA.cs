@@ -220,49 +220,61 @@ public class suicideIA : EntityAI
             else if ((currentCheckpointPosX ) > (transform.position.x +(0.15 * scs.speed)))
             {
                 int i = 1;
-                if (scs.touchingWall || scs.Roofed)
+                if (scs.touchingWall && scs.grounded)
+                {
+                    
+                }
+                else if (scs.touchingWall && scs.Roofed)
                 {
                     i *= -1;
                 }
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveLeft(1*i);
+                    entity.MoveLeft(scs.speed*i);
                 }
                 else
                 {
-                    entity.MoveRight(1*i);
+                    entity.MoveRight(scs.speed*i);
                 }
             }
             else if ((currentCheckpointPosY) < (transform.position.y -(0.15 * scs.speed)))
             {
                 int i = 1;
-                if (scs.touchingWall || scs.Roofed)
+                if (scs.touchingWall && scs.grounded)
+                {
+                    
+                }
+                else if (scs.touchingWall && scs.Roofed)
                 {
                     i *= -1;
                 }
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveRight(-1*i);
+                    entity.MoveRight(-scs.speed*i);
                 }
                 else
                 {
-                    entity.MoveLeft(-1*i);
+                    entity.MoveLeft(-scs.speed*i);
                 }
             }
             else if ((currentCheckpointPosY) > (transform.position.y +(0.15 * scs.speed)))
             {
                 int i = 1;
-                if (scs.touchingWall || scs.Roofed)
+                if (scs.touchingWall && scs.grounded)
+                {
+                    
+                }
+                else if (scs.touchingWall && scs.Roofed)
                 {
                     i *= -1;
                 }
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveLeft(1*i);
+                    entity.MoveLeft(scs.speed*i);
                 }
                 else
                 {
-                    entity.MoveRight(1*i);
+                    entity.MoveRight(scs.speed*i);
                 }
             }
             else
