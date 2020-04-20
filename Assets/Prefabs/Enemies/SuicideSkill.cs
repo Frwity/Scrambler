@@ -291,4 +291,12 @@ public class SuicideSkill : EntitySkill
             
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Color c = Color.red;
+        c.a = 128;
+        Gizmos.color = c;
+        Gizmos.DrawSphere(transform.position, exploRay);
+    }
 }

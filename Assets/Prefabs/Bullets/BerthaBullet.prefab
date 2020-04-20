@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   damage: 10
+  hasLimitedTime: 1
+  lifeTime: 10
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
 --- !u!54 &4812617340986648743
@@ -87,21 +89,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5482489749544119923}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a19e36fad7334d14b9719d50bfb93f28,
-        type: 3}
-      propertyPath: m_Name
-      value: Obus_Bertha
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a19e36fad7334d14b9719d50bfb93f28,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a19e36fad7334d14b9719d50bfb93f28,
-        type: 3}
-      propertyPath: m_TagString
-      value: Bullet
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a19e36fad7334d14b9719d50bfb93f28,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -172,6 +159,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a19e36fad7334d14b9719d50bfb93f28,
+        type: 3}
+      propertyPath: m_Name
+      value: Obus_Bertha
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a19e36fad7334d14b9719d50bfb93f28,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a19e36fad7334d14b9719d50bfb93f28,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: a19e36fad7334d14b9719d50bfb93f28,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76160810540c7b243b25e4283f8ff790, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a19e36fad7334d14b9719d50bfb93f28, type: 3}
 --- !u!4 &674394734203935588 stripped
