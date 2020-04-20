@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2554354205711106340}
   - component: {fileID: 2554354205711106341}
   m_Layer: 0
-  m_Name: SideFloor2 (2)
+  m_Name: SideFloor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2554354205711106363}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.221, y: -0.9992729, z: -0.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 2554354206119785246}
   m_Father: {fileID: 0}
