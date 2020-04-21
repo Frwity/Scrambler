@@ -4204,7 +4204,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -4214,7 +4214,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -5839,7 +5839,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -5849,7 +5849,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -7607,7 +7607,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -7617,7 +7617,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -11097,7 +11097,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -11107,7 +11107,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -11410,7 +11410,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -11420,7 +11420,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -17964,7 +17964,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -21980,7 +21980,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -24833,7 +24833,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -24843,7 +24843,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -26997,7 +26997,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -27007,7 +27007,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -27304,7 +27304,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -35686,7 +35686,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -35696,7 +35696,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -44391,7 +44391,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -44401,7 +44401,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -45637,7 +45637,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114858734}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -46650,7 +46650,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -46660,7 +46660,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -57583,7 +57583,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -58155,7 +58155,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -64816,7 +64816,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: laserDimension.z
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
@@ -64826,7 +64826,7 @@ PrefabInstance:
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}
       propertyPath: warningTime
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6797915644793669017, guid: d33fc9f281e926248992ab9fca1f1c88,
         type: 3}

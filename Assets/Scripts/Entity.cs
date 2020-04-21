@@ -101,11 +101,19 @@ public class Entity : MonoBehaviour
     void Start()
     {
         maxLife = life;
+        renderers = GetComponentsInChildren<Renderer>();
         isHidden = false; 
         collidingObj = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
 
-        renderers = GetComponentsInChildren<Renderer>();
+        if (gameObject.CompareTag("Player"))
+        {
+            renderers = transform.GetChild(4).GetComponents<Renderer>();
+        }
+        else
+        { 
+            renderers = GetComponentsInChildren<Renderer>();
+        }
 
         originalColors = new Color[renderers.Length];
 
@@ -113,6 +121,7 @@ public class Entity : MonoBehaviour
         foreach (Renderer renderer in renderers)
         {
             originalColors[counter] = renderer.material.color;
+            
             counter++;
         }
     }
