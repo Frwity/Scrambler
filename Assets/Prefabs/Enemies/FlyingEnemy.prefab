@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b197fcebbe6044bfc336b1942674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 3
+  life: 5
   entitySkill: {fileID: 7546050685290015934}
   controllable: 1
   isHidden: 0
@@ -1522,16 +1522,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.55351
       objectReference: {fileID: 0}
-    - target: {fileID: 8808964878035603859, guid: d32d4cc072be311428ac9f357bac56ff,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.24999988
-      objectReference: {fileID: 0}
-    - target: {fileID: 8808964878035603859, guid: d32d4cc072be311428ac9f357bac56ff,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1533007752548641347, guid: d32d4cc072be311428ac9f357bac56ff,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1546,6 +1536,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808964878035603859, guid: d32d4cc072be311428ac9f357bac56ff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808964878035603859, guid: d32d4cc072be311428ac9f357bac56ff,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 198603562046773920, guid: d32d4cc072be311428ac9f357bac56ff,
         type: 3}
@@ -1562,7 +1562,7 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7568429225422933966, guid: d32d4cc072be311428ac9f357bac56ff,
+    - target: {fileID: 3411367999817619336, guid: d32d4cc072be311428ac9f357bac56ff,
         type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -1572,7 +1572,17 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3411367999817619336, guid: d32d4cc072be311428ac9f357bac56ff,
+    - target: {fileID: 7568429225422933966, guid: d32d4cc072be311428ac9f357bac56ff,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853526734403977773, guid: d32d4cc072be311428ac9f357bac56ff,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990574157340166249, guid: d32d4cc072be311428ac9f357bac56ff,
         type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -1587,22 +1597,12 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1990574157340166249, guid: d32d4cc072be311428ac9f357bac56ff,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2853526734403977773, guid: d32d4cc072be311428ac9f357bac56ff,
+    - target: {fileID: 225265356405708761, guid: d32d4cc072be311428ac9f357bac56ff,
         type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8179750505236143114, guid: d32d4cc072be311428ac9f357bac56ff,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 225265356405708761, guid: d32d4cc072be311428ac9f357bac56ff,
         type: 3}
       propertyPath: playOnAwake
       value: 0

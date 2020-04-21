@@ -14798,7 +14798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9b197fcebbe6044bfc336b1942674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 15
+  life: 12
   entitySkill: {fileID: 4122962322023816584}
   controllable: 1
   isHidden: 0
