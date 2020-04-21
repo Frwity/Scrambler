@@ -48,7 +48,6 @@ public class RoomManager : MonoBehaviour
         }
         for (int i = 0; i < childCopyList.Length; ++i)
         {
-
             childList[i] = Instantiate(childCopyList[i].gameObject, childCopyList[i].transform.position, childCopyList[i].transform.rotation, transform);
             childList[i].SetActive(true);
 

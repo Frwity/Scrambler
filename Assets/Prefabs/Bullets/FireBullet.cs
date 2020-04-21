@@ -33,7 +33,7 @@ public class FireBullet : CurvedBulletSharedClass
             Vector3 roc = collision.transform.rotation.eulerAngles; // roc = Rotation Of Collision
             SpreadFire(new Vector3(roc.x, roc.y, roc.z + (collision.transform.rotation.eulerAngles.z == 0 ? 90 : 0)));
 
-            Debug.Log(collision.transform.rotation.eulerAngles.z);
+            //Debug.Log(collision.transform.rotation.eulerAngles.z);
         }
     }
 
@@ -48,7 +48,7 @@ public class FireBullet : CurvedBulletSharedClass
         fire.GetComponent<DeadZone>().lifeTime = fireLifeTime;
         fire.GetComponent<Activable>().isActive = true;
 
-        Debug.Log(rotation);
+        //Debug.Log(rotation);
 
         Destroy(gameObject);
     }
