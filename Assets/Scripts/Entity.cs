@@ -105,14 +105,7 @@ public class Entity : MonoBehaviour
         collidingObj = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
 
-        if (CompareTag("Player"))
-        {
-            renderers = GetComponents<Renderer>();
-        }
-        else
-        {
-            renderers = GetComponentsInChildren<Renderer>();
-        }
+        renderers = GetComponentsInChildren<Renderer>();
 
         originalColors = new Color[renderers.Length];
 
