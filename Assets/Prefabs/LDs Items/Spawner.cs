@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner : Activable
 {
     [SerializeField]
     private GameObject Entity;
@@ -14,17 +14,22 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isActive = false;
         lastTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isActive)
+            return;
         if (remainingSpawn >= 1 && Time.time - lastTime > spawnRate)
         { 
             Instantiate(Entity, transform.position, Quaternion.identity);
             lastTime = Time.time;
             remainingSpawn--;
         }
+        if (remainingSpawn <= 0)
+            Destroy(gameObject);
     }
 }

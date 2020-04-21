@@ -21,6 +21,7 @@ public class Checkpoint : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             transform.parent.GetComponent<RoomManager>().respawnPoint = transform.position;
+            transform.parent.GetComponent<RoomManager>().ActivateSpawner();
             GameObject.FindGameObjectWithTag("PlayerMove").GetComponent<PlayerControl>().actualRoom = transform.parent.GetComponent<RoomManager>();
         }
     }

@@ -9,6 +9,11 @@ public class PressurePlate : Activable
     private Activable activable;
     void Start()
     {
+        if (!toTrigger)
+        {
+            isActive = false;
+            return;
+        }
         if (toTrigger.GetComponent<Activable>())
         {
             activable = toTrigger.GetComponent<Activable>();
