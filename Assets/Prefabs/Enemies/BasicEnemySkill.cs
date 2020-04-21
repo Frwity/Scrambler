@@ -117,6 +117,7 @@ public class BasicEnemySkill : EntitySkill
         }
         
         lastDirection = directionVector;
+        transform.GetChild(2).transform.rotation = Quaternion.LookRotation(new Vector3(-directionVector.y, directionVector.x, 90), Vector3.forward);
 
         if (Time.time > fireRate + lastFired)
         {    
@@ -194,6 +195,9 @@ public class BasicEnemySkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
+        if (direction.magnitude > 0.3)
+            transform.GetChild(2).transform.rotation = Quaternion.LookRotation(new Vector3(-direction.y, direction.x, 90), Vector3.forward);
+
         xAim = direction.x;
     }
 }

@@ -136,8 +136,8 @@ public class SuicideSkill : EntitySkill
             Vector3 f = new Vector3(0, (speed) * wallDir * moveSpeed, 0);
             Vector3 v = (f / rb.mass) * Time.smoothDeltaTime;
             transform.Translate(v);
-            Debug.Log($"walldir is {wallDir}");
-            Debug.Log($"movespeed is {moveSpeed}");
+            //Debug.Log($"walldir is {wallDir}");
+            //Debug.Log($"movespeed is {moveSpeed}");
             
         }
         else if (Roofed)
@@ -156,7 +156,7 @@ public class SuicideSkill : EntitySkill
             Vector3 f = new Vector3((speed)* moveSpeed* 0.1f* -wallDir *i ,-speed*wallDir*0.1f, 0);
             Vector3 v = (f / rb.mass) * Time.fixedDeltaTime;
             transform.Translate(v);
-            Debug.Log(f);
+            //Debug.Log(f);
         }
         else if (grounded)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor, rb.velocity.y, rb.velocity.z);
@@ -244,9 +244,11 @@ public class SuicideSkill : EntitySkill
                 }
             }
 
+            GetComponentInChildren<LifetimeStaticParticle>().ActivateParticle();
+
             PlayerControl pl = gameObject.GetComponentInParent<PlayerControl>();
             if (!pl)
-                return false;
+                return true;
 
             pl.lastControl = Time.time;
             pl.entity.transform.parent = transform.parent;

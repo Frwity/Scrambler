@@ -95,6 +95,7 @@ public class Entity : MonoBehaviour
     [SerializeField] ParticleSystem triQuartLifeParticle;
     [SerializeField] ParticleSystem halfLifeParticle;
     [SerializeField] ParticleSystem quartLifeParticle;
+    [SerializeField] ParticleSystem shootingParticle;
 
 
     void Start()
@@ -153,7 +154,16 @@ public class Entity : MonoBehaviour
 
     public bool Shoot(Vector3 direction)
     {
-        return entitySkill.Shoot(direction);
+        if (entitySkill.Shoot(direction))
+        {
+            if (shootingParticle)
+            {
+                ParticleLauncher.ActivateParticleWithNewParent(shootingParticle.GetComponent<LifetimeStaticParticle>(), transform);
+            }
+            return true;
+        }
+        else
+            return false;
     }
 
     public void AimDirection(Vector3 direction)
