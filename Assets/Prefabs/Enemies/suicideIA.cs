@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class suicideIA : EntityAI
 {
-    enum Direction
+    public enum Direction
     {
         RIGHT = 1,
         LEFT = -1,
@@ -13,8 +13,8 @@ public class suicideIA : EntityAI
 
     GameObject player;
     private bool shooting;
-    [SerializeField]
-    private Direction direction = Direction.RIGHT;
+    
+    public Direction direction = Direction.RIGHT;
 
     private short waitFrame = 0;
     private SuicideSkill scs;
@@ -54,23 +54,32 @@ public class suicideIA : EntityAI
         if (!isActive)
             return;
         if (!shooting && entity.isPlayerInSight)
-        {
-
+        {
+
+
+
             currentLostTimer = 0.0f;
             currentBackTimer = 0.0f;
             hasPlayerGoneInBack = false;
-            HasTurnedOnce = false;
-
+            HasTurnedOnce = false;
+
+
+
             if (entity.lastPlayerPosKnown.x > transform.position.x && (direction == Direction.LEFT))
             {
-                direction = Direction.RIGHT;
-
+                direction = Direction.RIGHT;
+
+
+
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            else if (entity.lastPlayerPosKnown.x < transform.position.x && (direction == Direction.RIGHT))
+            else if (entity.lastPlayerPosKnown.x < transform.position.x && (direction == Direction.RIGHT))
+
             {
-                direction = Direction.LEFT;
-
+                direction = Direction.LEFT;
+
+
+
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
@@ -83,8 +92,10 @@ public class suicideIA : EntityAI
                 else
                 {
                     entity.MoveLeft(-1);
-                }
-
+                }
+
+
+
             }
             else if ((entity.lastPlayerPosKnown.x) > (transform.position.x + 0.45))
             {
@@ -110,8 +121,10 @@ public class suicideIA : EntityAI
             currentAIResetTimer += Time.smoothDeltaTime;
             if (entity.lastPlayerPosKnown.x > transform.position.x + 0.15 * scs.speed && (direction == Direction.LEFT) && !HasTurnedOnce)
             {
-                direction = Direction.RIGHT;
-
+                direction = Direction.RIGHT;
+
+
+
                 hasPlayerGoneInBack = true;
                 HasTurnedOnce = true;
                 transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -119,8 +132,10 @@ public class suicideIA : EntityAI
             else if (entity.lastPlayerPosKnown.x < transform.position.x - 0.15 * scs.speed && (direction == Direction.RIGHT) &&
                      !HasTurnedOnce)
             {
-                direction = Direction.LEFT;
-
+                direction = Direction.LEFT;
+
+
+
                 hasPlayerGoneInBack = true;
                 HasTurnedOnce = true;
                 transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -133,8 +148,10 @@ public class suicideIA : EntityAI
                     entity.MoveRight(-1);
                 }
                 else
-                {
-
+                {
+
+
+
                     entity.MoveLeft(-1);
                 }
 
@@ -200,8 +217,10 @@ public class suicideIA : EntityAI
                 {
                     break;
                 }
-            }
-
+            }
+
+
+
             float currentCheckpointPosX = (Path.Checkpoints[Path.CurrentIndex].checkPointPos.x);
             float currentCheckpointPosY = (Path.Checkpoints[Path.CurrentIndex].checkPointPos.y);
             if (currentCheckpointPosX > transform.position.x && (direction == Direction.LEFT))
@@ -209,14 +228,17 @@ public class suicideIA : EntityAI
                 direction = Direction.RIGHT;
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            else if (currentCheckpointPosX < transform.position.x && (direction == Direction.RIGHT))
+            else if (currentCheckpointPosX < transform.position.x && (direction == Direction.RIGHT))
+
             {
                 direction = Direction.LEFT;
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             if ((currentCheckpointPosX) < (transform.position.x - (0.15 * scs.speed)))
-            {
-
+            {
+
+
+
                 if (direction == Direction.RIGHT)
                 {
                     entity.MoveRight(-1);
@@ -224,8 +246,10 @@ public class suicideIA : EntityAI
                 else
                 {
                     entity.MoveLeft(-1);
-                }
-
+                }
+
+
+
             }
             else if ((currentCheckpointPosX) > (transform.position.x + (0.15 * scs.speed)))
             {
@@ -240,11 +264,11 @@ public class suicideIA : EntityAI
                 }
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveLeft(scs.speed*i);
+                    entity.MoveLeft(1*i);
                 }
                 else
                 {
-                    entity.MoveRight(scs.speed*i);
+                    entity.MoveRight(1*i);
                 }
             }
             else if ((currentCheckpointPosY) < (transform.position.y - (0.15 * scs.speed)))
@@ -252,7 +276,7 @@ public class suicideIA : EntityAI
                 int i = 1;
                 if (scs.touchingWall && scs.grounded)
                 {
-                    
+                   
                 }
                 else if (scs.touchingWall && scs.Roofed)
                 {
@@ -260,11 +284,11 @@ public class suicideIA : EntityAI
                 }
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveRight(-scs.speed*i);
+                    entity.MoveRight(-1*i);
                 }
                 else
                 {
-                    entity.MoveLeft(-scs.speed*i);
+                    entity.MoveLeft(-1*i);
                 }
             }
             else if ((currentCheckpointPosY) > (transform.position.y + (0.15 * scs.speed)))
@@ -280,11 +304,11 @@ public class suicideIA : EntityAI
                 }
                 if (direction == Direction.RIGHT)
                 {
-                    entity.MoveLeft(scs.speed*i);
+                    entity.MoveLeft(1*i);
                 }
                 else
                 {
-                    entity.MoveRight(scs.speed*i);
+                    entity.MoveRight(1*i);
                 }
             }
             else
@@ -294,15 +318,25 @@ public class suicideIA : EntityAI
         }
     }
 
-    public void LightChange()
-    {
-        if (gameObject.CompareTag("Player"))
-        {
-            GetComponentInChildren<Light>().color = possessedColor;
-        }
-        else if (gameObject.CompareTag("Enemy"))
-        {
-            GetComponentInChildren<Light>().color = disabledColor;
-        }
+    public void LightChange()
+
+    {
+
+        if (gameObject.CompareTag("Player"))
+
+        {
+
+            GetComponentInChildren<Light>().color = possessedColor;
+
+        }
+
+        else if (gameObject.CompareTag("Enemy"))
+
+        {
+
+            GetComponentInChildren<Light>().color = disabledColor;
+
+        }
+
     }
 }
