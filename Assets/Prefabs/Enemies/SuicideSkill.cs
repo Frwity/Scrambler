@@ -13,7 +13,11 @@ public class SuicideSkill : EntitySkill
     [SerializeField] private float jumpForce;
     [SerializeField] [Range(0, 1)] private float airControlFactor;
     [SerializeField] [Range(0, 1)] private float accelerationFactor;
-
+    enum Direction
+    {
+        RIGHT = 1,
+        LEFT = -1,
+    };
 
     
     private int jumped;
@@ -24,8 +28,10 @@ public class SuicideSkill : EntitySkill
     public bool Roofed;
     private Rigidbody rb;
     private float timer = 0;
-
+    private Direction direction = Direction.RIGHT;
     private GameObject player;
+
+    private suicideIA ia;
     //Start is called before the first frame update
     void Start()
     {
@@ -37,12 +43,17 @@ public class SuicideSkill : EntitySkill
         wallDir = 0;
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindWithTag("Player");
+        ia = GetComponent<suicideIA>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (ia.isActive)
+        {
+            direction = (Direction)ia.direction;
+        }
+       
     }
     private void FixedUpdate()
     {
@@ -97,12 +108,24 @@ public class SuicideSkill : EntitySkill
 
     public override bool MoveLeft(float moveSpeed)
     {
+        int i = 1;
+        if (!ia.isActive)
+        {
+            if (direction != Direction.LEFT)
+            {
+                direction = Direction.LEFT;
+                
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
+            i *= -1;
+        }
         if (!grounded && !touchingWall && !Roofed)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * airControlFactor, rb.velocity.y, rb.velocity.z);
         else if (Roofed && touchingWall)
         {
                     rb.velocity = Vector3.zero;
-                    float xy = -speed * wallDir * moveSpeed * accelerationFactor * Time.smoothDeltaTime;
+                    float xy = -(2*speed) * wallDir * moveSpeed * accelerationFactor * Time.smoothDeltaTime;
                     transform.Translate(new Vector3(xy,xy, 0));
                     
         }
@@ -110,34 +133,55 @@ public class SuicideSkill : EntitySkill
         {
             
             rb.velocity = Vector3.zero;
-            transform.Translate(new Vector3(0,-speed* wallDir * moveSpeed * accelerationFactor * Time.smoothDeltaTime, 0));
+            Vector3 f = new Vector3(0, (speed) * wallDir * moveSpeed, 0);
+            Vector3 v = (f / rb.mass) * Time.smoothDeltaTime;
+            transform.Translate(v);
+            //Debug.Log($"walldir is {wallDir}");
+            //Debug.Log($"movespeed is {moveSpeed}");
+            
         }
         else if (Roofed)
         {
             rb.velocity = Vector3.zero;
-            transform.Translate(new Vector3(-speed * moveSpeed * accelerationFactor * Time.smoothDeltaTime,0, 0));
+            Vector3 f = new Vector3(-(speed) * moveSpeed ,0, 0);
+            Vector3 v = (f / rb.mass) * Time.smoothDeltaTime;
+            transform.Translate(v);
+            
 
         }
 
         if (grounded && touchingWall)
         {
-            transform.Translate(new Vector3(speed* moveSpeed * accelerationFactor * Time.smoothDeltaTime,0, 0));
+            moveSpeed = Mathf.Abs(moveSpeed);
+            Vector3 f = new Vector3((speed)* moveSpeed* 0.1f* -wallDir *i ,-speed*wallDir*0.1f, 0);
+            Vector3 v = (f / rb.mass) * Time.fixedDeltaTime;
+            transform.Translate(v);
+            //Debug.Log(f);
         }
         else if (grounded)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor, rb.velocity.y, rb.velocity.z);
         
-        
+       
         return true;
     }
 
     public override bool MoveRight(float moveSpeed)
     {
+        if (!ia.isActive)
+        {
+            if (direction != Direction.RIGHT)
+            {
+                direction = Direction.RIGHT;
+                
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
         if (!grounded && !touchingWall && !Roofed)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * airControlFactor, rb.velocity.y, rb.velocity.z);
         else if (Roofed && touchingWall)
         {
             rb.velocity = Vector3.zero;
-            float xy = -speed * moveSpeed * wallDir * accelerationFactor * Time.smoothDeltaTime;
+            float xy = -(2*speed) * moveSpeed * wallDir * accelerationFactor * Time.smoothDeltaTime;
             
             transform.Translate(new Vector3(xy,xy, 0));
             Debug.Log("eeeee");
@@ -146,22 +190,32 @@ public class SuicideSkill : EntitySkill
         {
             
             rb.velocity = Vector3.zero;
-            transform.Translate(new Vector3(0,-speed* wallDir * moveSpeed* accelerationFactor * Time.smoothDeltaTime, 0));
+            Vector3 f = new Vector3(0, (speed) * wallDir * moveSpeed, 0);
+            Vector3 v = (f / rb.mass) * Time.smoothDeltaTime;
+            transform.Translate(v);
+            
         }
         else if (Roofed)
         {
             rb.velocity = Vector3.zero;
-            transform.Translate(new Vector3(-speed * moveSpeed * accelerationFactor * Time.smoothDeltaTime,0, 0));
-
+            
+            Vector3 f = new Vector3((-speed) * moveSpeed,0, 0);
+            Vector3 v = (f / rb.mass) * Time.smoothDeltaTime;
+            transform.Translate(v);
         }
         if (grounded && touchingWall)
         {
+            moveSpeed = Mathf.Abs(moveSpeed);
             Debug.Log("test");
-            transform.Translate(new Vector3(speed* moveSpeed * accelerationFactor * Time.smoothDeltaTime,0, 0));
+            Vector3 f = new Vector3((speed) * moveSpeed * 0.1f * -wallDir, speed*wallDir*0.1f, 0);
+            Vector3 v = (f / rb.mass) * Time.smoothDeltaTime;
+            transform.Translate(v);
+            Debug.Log(f);
         }
         else if (grounded)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor , rb.velocity.y, rb.velocity.z);
-       
+        
+     
         return true;
     }
 
@@ -190,9 +244,11 @@ public class SuicideSkill : EntitySkill
                 }
             }
 
+            GetComponentInChildren<LifetimeStaticParticle>().ActivateParticle();
+
             PlayerControl pl = gameObject.GetComponentInParent<PlayerControl>();
             if (!pl)
-                return false;
+                return true;
 
             pl.lastControl = Time.time;
             pl.entity.transform.parent = transform.parent;
@@ -262,10 +318,10 @@ public class SuicideSkill : EntitySkill
         if (collision.gameObject.CompareTag("Wall"))
         { 
             touchingWall = true;
-            if (collision.gameObject.transform.position.x - transform.position.x > 0)
-                wallDir = -1;
-            else
+            if ( collision.gameObject.transform.position.x >transform.position.x + 0.015*speed)
                 wallDir = 1;
+            else
+                wallDir = -1;
         }
     }
 

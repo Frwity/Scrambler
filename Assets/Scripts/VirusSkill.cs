@@ -33,6 +33,7 @@ public class VirusSkill : EntitySkill
     void Update()
     {
         camera = GameObject.FindGameObjectWithTag("VirtualCam").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+
     }
 
     private void FixedUpdate()

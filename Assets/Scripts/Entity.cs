@@ -72,6 +72,7 @@ public abstract class EntitySkill : MonoBehaviour
 public class Entity : MonoBehaviour
 {
     [SerializeField] private int life;
+    private int maxLife;
     [SerializeField] public EntitySkill entitySkill;
     [SerializeField] public bool controllable;
     public bool isHidden;
@@ -89,21 +90,28 @@ public class Entity : MonoBehaviour
     [HideInInspector] public UnityEvent onPossess;
 
     Renderer[] renderers;
-
     Color[] originalColors;
+
+    [SerializeField] ParticleSystem triQuartLifeParticle;
+    [SerializeField] ParticleSystem halfLifeParticle;
+    [SerializeField] ParticleSystem quartLifeParticle;
+    [SerializeField] ParticleSystem shootingParticle;
+
 
     void Start()
     {
+        maxLife = life;
+        renderers = GetComponentsInChildren<Renderer>();
         isHidden = false; 
         collidingObj = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
 
-        if (CompareTag("Player"))
+        if (gameObject.CompareTag("Player"))
         {
-            renderers = GetComponents<Renderer>();
+            renderers = transform.GetChild(4).GetComponents<Renderer>();
         }
         else
-        {
+        { 
             renderers = GetComponentsInChildren<Renderer>();
         }
 
@@ -113,6 +121,7 @@ public class Entity : MonoBehaviour
         foreach (Renderer renderer in renderers)
         {
             originalColors[counter] = renderer.material.color;
+            
             counter++;
         }
     }
@@ -147,7 +156,16 @@ public class Entity : MonoBehaviour
 
     public bool Shoot(Vector3 direction)
     {
-        return entitySkill.Shoot(direction);
+        if (entitySkill.Shoot(direction))
+        {
+            if (shootingParticle)
+            {
+                ParticleLauncher.ActivateParticleWithNewParent(shootingParticle.GetComponent<LifetimeStaticParticle>(), transform);
+            }
+            return true;
+        }
+        else
+            return false;
     }
 
     public void AimDirection(Vector3 direction)
@@ -193,6 +211,21 @@ public class Entity : MonoBehaviour
     public void InflictDamage(int damage)
     {
         life -= damage;
+        if (life <= maxLife / 4 * 3)
+        {
+            if (triQuartLifeParticle)
+                triQuartLifeParticle.Play();
+        }
+        if (life <= maxLife / 2)
+        {
+            if (halfLifeParticle)
+                halfLifeParticle.Play();
+        }
+        if (life <= maxLife / 4)
+        {
+            if (quartLifeParticle)
+                quartLifeParticle.Play();
+        }
     }
 
     public void HitFlash()
