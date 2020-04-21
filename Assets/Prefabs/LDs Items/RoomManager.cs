@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     [SerializeField] private GameObject door;
+    [SerializeField] private Activable[] spawners;
     [HideInInspector] public Vector3 respawnPoint;
 
     private GameObject[] childCopyList;
@@ -56,6 +57,14 @@ public class RoomManager : MonoBehaviour
 
             if (childList[i].GetComponent<Entity>())
                 childList[i].GetComponent<Entity>().ResetEntity();
+        }
+    }
+
+    public void ActivateSpawner()
+    {
+        foreach (Activable spawner in spawners)
+        {
+            spawner.isActive = true;
         }
     }
 }
