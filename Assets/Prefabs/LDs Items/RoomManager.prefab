@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b24158a0f5e2c40912829078bc690f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  spawner: []
   respawnPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &3875464389758507146
 GameObject:

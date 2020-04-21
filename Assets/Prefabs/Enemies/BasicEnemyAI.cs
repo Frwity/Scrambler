@@ -189,7 +189,7 @@ public class BasicEnemyAI : EntityAI
                 currentLostTimer += Time.smoothDeltaTime;
                 return;
             }
-            Debug.Log($"{currentAIResetTimer} / {AIResetTimer}");
+            //Debug.Log($"{currentAIResetTimer} / {AIResetTimer}");
             currentAIResetTimer += Time.smoothDeltaTime;
             if (!HasTurnedOnce)
             {

@@ -220,6 +220,9 @@ public class Entity : MonoBehaviour
     private void ResetFlash()
     {
         int counter = 0;
+        if (renderers == null)
+            return;
+
         foreach (Renderer renderer in renderers)
         {
             renderer.material.color = originalColors[counter];
