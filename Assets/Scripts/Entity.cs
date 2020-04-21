@@ -12,7 +12,7 @@ public class EntityAI : Activable
 public abstract class EntitySkill : MonoBehaviour
 {
     [SerializeField] private float interactionRange;
-    [SerializeField] protected Vector2 shootOriginPos;
+    public Vector2 shootOriginPos;
 
     public abstract bool Jump();
     public abstract bool MoveLeft(float moveSpeed);
@@ -21,6 +21,7 @@ public abstract class EntitySkill : MonoBehaviour
     public abstract void AimDirection(Vector3 direction);
     public abstract bool ActivateAI();
     public abstract bool DesactivateAI();
+
     public bool InteractWithBG()
     {
         Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, interactionRange);
@@ -227,15 +228,10 @@ public class Entity : MonoBehaviour
     }
 
     public void ResetEntity()
-
     {
-
         ResetFlash();
 
-
-
         isPlayerInSight = false;
-        
     }
 
     private void OnTriggerStay(Collider other)

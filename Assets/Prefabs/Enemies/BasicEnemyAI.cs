@@ -33,6 +33,7 @@ public class BasicEnemyAI : EntityAI
     private float currentBackTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
     private bool previousFlip = false;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -148,8 +149,9 @@ public class BasicEnemyAI : EntityAI
 
     private void IAcontrol()
     {
-        Vector3 vecToPlayer = (entity.lastPlayerPosKnown - transform.position);
+        Vector3 vecToPlayer = entity.lastPlayerPosKnown - (transform.position + (Vector3)associatedBES.shootOriginPos);
         float distToPlayer = vecToPlayer.magnitude;
+
         if (entity.isInBackGround)
         {
             if (entity.isPlayerInSight)
