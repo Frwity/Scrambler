@@ -39,6 +39,9 @@ public class ExplosiveBarrel : Activable
                 }
             }
         }
+
+        ParticleLauncher.ActivateParticleWithName(gameObject, null, "BigExplosion");
+
         Destroy(gameObject);
     }
 
