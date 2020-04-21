@@ -94,16 +94,16 @@ public class Entity : MonoBehaviour
 
     void Start()
     {
-        isHidden = false; 
+        isHidden = false;
         collidingObj = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
 
-        if (CompareTag("Player"))
+        if (gameObject.CompareTag("Player"))
         {
-            renderers = GetComponents<Renderer>();
+            renderers = transform.GetChild(4).GetComponents<Renderer>();
         }
         else
-        {
+        { 
             renderers = GetComponentsInChildren<Renderer>();
         }
 
@@ -113,6 +113,7 @@ public class Entity : MonoBehaviour
         foreach (Renderer renderer in renderers)
         {
             originalColors[counter] = renderer.material.color;
+            
             counter++;
         }
     }
