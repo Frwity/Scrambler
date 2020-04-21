@@ -4,9 +4,14 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+
+
 
 public class MenuManager : MonoBehaviour
 {
+
     // Start is called before the first frame update
     enum loadedType
     {
@@ -23,6 +28,7 @@ public class MenuManager : MonoBehaviour
     private Scene pause;
     private Scene currentScene;
     private Animator mainAnim;
+    private pointer cursor;
     private loadedType type = loadedType.TYPE_MAIN;
     void Start()
     {
@@ -45,7 +51,9 @@ public class MenuManager : MonoBehaviour
         }
         if (type == loadedType.TYPE_MAIN && !loadedMain && SceneManager.GetSceneByBuildIndex(1).isLoaded)
         {
+            
             GameObject obj = GameObject.FindGameObjectWithTag("Canvas");
+            cursor = obj.GetComponentInChildren<pointer>();
             mainAnim = obj.GetComponent<Animator>();
             if (hasToGoToLevelMenu)
             {
@@ -105,6 +113,8 @@ public class MenuManager : MonoBehaviour
 
         if (loadedMain && type == loadedType.TYPE_MAIN)
         {
+           
+            
             Debug.Log("Main already loaded");
             return;
         }
