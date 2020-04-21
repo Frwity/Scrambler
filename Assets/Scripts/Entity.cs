@@ -72,6 +72,7 @@ public abstract class EntitySkill : MonoBehaviour
 public class Entity : MonoBehaviour
 {
     [SerializeField] private int life;
+    private int maxLife;
     [SerializeField] public EntitySkill entitySkill;
     [SerializeField] public bool controllable;
     public bool isHidden;
@@ -89,11 +90,16 @@ public class Entity : MonoBehaviour
     [HideInInspector] public UnityEvent onPossess;
 
     Renderer[] renderers;
-
     Color[] originalColors;
+
+    [SerializeField] ParticleSystem triQuartLifeParticle;
+    [SerializeField] ParticleSystem halfLifeParticle;
+    [SerializeField] ParticleSystem quartLifeParticle;
+
 
     void Start()
     {
+        maxLife = life;
         isHidden = false; 
         collidingObj = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Vision"), LayerMask.NameToLayer("Ground"), true);
@@ -193,6 +199,21 @@ public class Entity : MonoBehaviour
     public void InflictDamage(int damage)
     {
         life -= damage;
+        if (life <= maxLife / 4 * 3)
+        {
+            if (triQuartLifeParticle)
+                triQuartLifeParticle.Play();
+        }
+        if (life <= maxLife / 2)
+        {
+            if (halfLifeParticle)
+                halfLifeParticle.Play();
+        }
+        if (life <= maxLife / 4)
+        {
+            if (quartLifeParticle)
+                quartLifeParticle.Play();
+        }
     }
 
     public void HitFlash()

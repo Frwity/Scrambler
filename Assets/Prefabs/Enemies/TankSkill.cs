@@ -65,7 +65,7 @@ public class TankSkill : EntitySkill
                         + Mathf.Sqrt(Mathf.Pow(shootingStrength * Mathf.Sin(a * Mathf.Deg2Rad), 2)
                                      + 5* Physics.gravity.magnitude * cannon.transform.localPosition.y))
                      ;
-        Debug.Log(rangePoint);
+        //Debug.Log(rangePoint);
         shootingDir = Rotate(Vector3.right, angleInDeg);
         lastAngle = angleInDeg;
         currentCooldown = 0;

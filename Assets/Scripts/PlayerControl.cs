@@ -140,7 +140,7 @@ public class PlayerControl : MonoBehaviour
             return;
         if (Input.GetAxisRaw("Horizontal") == 0)
         {
-            entity.MoveRight(0);
+            //entity.MoveRight(0);
         }
         else if (Input.GetAxisRaw("Horizontal") > 0.01)
         {
