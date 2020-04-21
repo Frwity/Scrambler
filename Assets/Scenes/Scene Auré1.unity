@@ -77594,7 +77594,7 @@ PrefabInstance:
     - target: {fileID: 8540519294193855691, guid: 8af16cbf1751aa6498a44f185798232a,
         type: 3}
       propertyPath: spawnPoint.pos.y
-      value: 10
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8540519294193855691, guid: 8af16cbf1751aa6498a44f185798232a,
         type: 3}
