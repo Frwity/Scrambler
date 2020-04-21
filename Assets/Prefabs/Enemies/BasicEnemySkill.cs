@@ -106,6 +106,9 @@ public class BasicEnemySkill : EntitySkill
     {
         if (directionVector.magnitude < 0.1)
         {
+            if ( (GetComponent<BasicEnemyAI>().flipped && lastDirection.x < 0) || (!GetComponent<BasicEnemyAI>().flipped && lastDirection.x > 0) )
+            { lastDirection = Vector3.zero; }
+
             Vector3 gunTransition = Vector3.zero;
 
             if (directionVector.x == 0)
