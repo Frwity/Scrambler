@@ -41,6 +41,10 @@ public abstract class BulletSharedClass : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            DoBehavior(collision.gameObject);
+        }
     }
 }
 
