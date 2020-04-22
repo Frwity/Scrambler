@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FlyingEnemySkill : EntitySkill
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 0f;
 
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private float fireRate;
+    [SerializeField] private GameObject bullet = null;
+    [SerializeField] private float fireRate = 0f;
 
-    private Vector3 lastDirection;
-    private Vector3 toShoot;
+    private Vector3 lastDirection = Vector3.zero;
+    private Vector3 toShoot = Vector3.zero;
     private float currentCD = 0.0f;
 
     void Start()

@@ -4,38 +4,38 @@ using UnityEngine;
 
 public class TankSkill : EntitySkill
 {
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private int nbJump;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float wallFallSpeed;
-    [SerializeField] [Range(0, 1)] private float airControlFactor;
-    [SerializeField] [Range(0, 1)] private float accelerationFactor;
-    [SerializeField] private bool canWallJump;
+    [SerializeField] private float maxSpeed = 0f;
+    [SerializeField] private int nbJump = 0;
+    [SerializeField] private float jumpForce = 0f;
+    [SerializeField] private float wallFallSpeed = 0f;
+    [SerializeField] [Range(0, 1)] private float airControlFactor = 0f;
+    [SerializeField] [Range(0, 1)] private float accelerationFactor = 0f;
+    [SerializeField] private bool canWallJump = false;
 
-    [HideInInspector] public int jumped;
-    private int wallDir;
-    private bool falling;
-    private bool grounded;
-    private bool touchingWall;
-    private Rigidbody rb;
+    [HideInInspector] public int jumped = 0;
+    private int wallDir = 0;
+    private bool falling = false;
+    private bool grounded = false;
+    private bool touchingWall = false;
+    private Rigidbody rb = null;
 
     // Start is called before the first frame update
     [SerializeField] private int angleInDeg = 0;
     [SerializeField] private int precision = 0;
-    [SerializeField] private float shootingStrength;
-    [SerializeField] private float cooldown = 0;
+    [SerializeField] private float shootingStrength = 0f;
+    [SerializeField] private float cooldown = 0f;
     [SerializeField] private int numberOfProjectile = 1;    
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab = null;
 
-    /*[HideInInspector]*/ public float rangePoint;
-    private Direction dir;
-    private Vector2 shootingDir;
-    private float currentCooldown;
-    private int lastAngle;
-    private int lastRotationAngle;
-    private int angleRotated;
+    public float rangePoint = 0f;
+    private Direction dir = Direction.NONE;
+    private Vector2 shootingDir = Vector2.zero;
+    private float currentCooldown = 0f;
+    private int lastAngle = 0;
+    private int lastRotationAngle = 0;
+    private int angleRotated = 0;
 
-    [SerializeField] private GameObject cannon;
+    [SerializeField] private GameObject cannon = null;
 
     Vector2 Rotate(Vector2 aPoint, float aDegree)
     {

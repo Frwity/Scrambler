@@ -9,15 +9,15 @@ public class MegaLaser : Activable
     [SerializeField] float warningTime = 2f; // Also serves for the charge-up squence
     [SerializeField] float fireTime = 1f;
 
-    float totalTime;
+    float totalTime = 0f;
     float currentTime = 0f;
     
-    [SerializeField] GameObject laserObject;
+    [SerializeField] GameObject laserObject = null;
     [SerializeField] Vector3 laserDimension = Vector3.zero;
 
-    GameObject actualLazer;
+    GameObject actualLazer = null;
 
-    GameObject waningSphere;
+    GameObject waningSphere = null;
     [SerializeField] float maxWarningSize = 2f;
 
     // Start is called before the first frame update

@@ -13,16 +13,15 @@ public class MenuManager : MonoBehaviour
 {
 
     // Start is called before the first frame update
-    enum loadedType
+    enum LoadedType
     {
         TYPE_LEVEL,
         TYPE_MAIN,
         TYPE_NONE,
     }
+
     private bool isPause = false;
-    private bool loadedCam = false;
     private bool loadedMain = false;
-    private bool loadingScene = false;
     private bool hasToGoToLevelMenu = false;
     private AsyncOperation op;
     private Scene pause;
@@ -32,7 +31,8 @@ public class MenuManager : MonoBehaviour
     [HideInInspector]public bool levelEnded = false;
     private bool EndMenuLoaded = false;
     private pointer cursor;
-    private loadedType type = loadedType.TYPE_MAIN;
+    private LoadedType type = LoadedType.TYPE_MAIN;
+
     void Start()
     {
         currentScene = SceneManager.GetActiveScene();
@@ -52,7 +52,7 @@ public class MenuManager : MonoBehaviour
         {
             op = null;
         }
-        if (type == loadedType.TYPE_MAIN && !loadedMain && SceneManager.GetSceneByBuildIndex(1).isLoaded)
+        if (type == LoadedType.TYPE_MAIN && !loadedMain && SceneManager.GetSceneByBuildIndex(1).isLoaded)
         {
             EndMenuLoaded = false;
             levelEnded = false;
@@ -62,7 +62,7 @@ public class MenuManager : MonoBehaviour
             if (hasToGoToLevelMenu)
             {
                 hasToGoToLevelMenu = false;
-                onLevelsButton();
+                OnLevelsButton();
             }
             
             Button[] butList = obj.GetComponentsInChildren<Button>();
@@ -70,23 +70,23 @@ public class MenuManager : MonoBehaviour
             {
                 if (butList[j].name == "Levels")
                 {
-                    butList[j].onClick.AddListener(onLevelsButton);
+                    butList[j].onClick.AddListener(OnLevelsButton);
                 }
                 else if (butList[j].name == "Controls")
                 {
-                    butList[j].onClick.AddListener(onControlsButton);
+                    butList[j].onClick.AddListener(OnControlsButton);
                 }
                 else if (butList[j].name == "Credits")
                 {
-                    butList[j].onClick.AddListener(onCreditsButton);
+                    butList[j].onClick.AddListener(OnCreditsButton);
                 }
                 else if (butList[j].name == "Exit")
                 {
-                    butList[j].onClick.AddListener(onExitButton);
+                    butList[j].onClick.AddListener(OnExitButton);
                 }
                 else if (butList[j].name == "Back Button")
                 {
-                    butList[j].onClick.AddListener(onBackButton);
+                    butList[j].onClick.AddListener(OnBackButton);
                 }
                 else if (butList[j].name == "Next Button (1)")
                 {
@@ -98,23 +98,23 @@ public class MenuManager : MonoBehaviour
                 }
                 else if (butList[j].name == "Level 1")
                 {
-                    butList[j].onClick.AddListener(launchLevel1);
+                    butList[j].onClick.AddListener(LaunchLevel1);
                 }
                 else if (butList[j].name == "Level 2")
                 {
-                    butList[j].onClick.AddListener(launchLevel2);
+                    butList[j].onClick.AddListener(LaunchLevel2);
                 }
                 else if (butList[j].name == "Level 3")
                 {
-                    butList[j].onClick.AddListener(launchLevel3);
+                    butList[j].onClick.AddListener(LaunchLevel3);
                 }
                 else if (butList[j].name == "Level 4")
                 {
-                    butList[j].onClick.AddListener(launchLevel4);
+                    butList[j].onClick.AddListener(LaunchLevel4);
                 }
                 else if (butList[j].name == "Level 5")
                 {
-                    butList[j].onClick.AddListener(launchLevel5);
+                    butList[j].onClick.AddListener(LaunchLevel5);
                 }
                         
             }
@@ -123,7 +123,7 @@ public class MenuManager : MonoBehaviour
             
         }
 
-        if (loadedMain && type == loadedType.TYPE_MAIN)
+        if (loadedMain && type == LoadedType.TYPE_MAIN)
         {
            
             
@@ -140,14 +140,14 @@ public class MenuManager : MonoBehaviour
             pause = SceneManager.LoadScene("Scenes/PauseMenu", p);
             
         }
-        else if (isPause && Input.GetKeyDown(KeyCode.Escape)&& type == loadedType.TYPE_LEVEL)
+        else if (isPause && Input.GetKeyDown(KeyCode.Escape)&& type == LoadedType.TYPE_LEVEL)
         {
-            onContinueButton();
+            OnContinueButton();
         }
         else if (pause.isLoaded && isPause)
         {
             GameObject[] glist = pause.GetRootGameObjects();
-            bool o = false;
+
             for (int i = 0; i < glist.Length; i++)
             {
                 GameObject obj = glist[i];
@@ -160,25 +160,24 @@ public class MenuManager : MonoBehaviour
                         if (butList[j].name == "Continue" || butList[j].name == "Back")
                         {
                             
-                            butList[j].onClick.AddListener(onContinueButton);
+                            butList[j].onClick.AddListener(OnContinueButton);
                         }
                         else if (butList[j].name == "Retry")
                         {
-                            butList[j].onClick.AddListener(onRetryButton);
+                            butList[j].onClick.AddListener(OnRetryButton);
                         }
                         else if (butList[j].name == "Levels")
                         {
-                            butList[j].onClick.AddListener(onLevelsButton);
+                            butList[j].onClick.AddListener(OnLevelsButton);
                         }
                         else if (butList[j].name == "Menu")
                         {
-                            butList[j].onClick.AddListener(onMenuButton);
+                            butList[j].onClick.AddListener(OnMenuButton);
                         }
 
                     }
                 }
             }
-            loadedCam = true;
         }
 
         if (levelEnded && !EndMenuLoaded)
@@ -222,7 +221,7 @@ public class MenuManager : MonoBehaviour
         }
        
     }
-    public void onContinueButton()
+    public void OnContinueButton()
     {
         if(!isPause)
             return;
@@ -230,11 +229,9 @@ public class MenuManager : MonoBehaviour
         isPause = false;
         SceneManager.UnloadSceneAsync(pause);
         Time.timeScale = 1;
-        loadedCam = false;
-     
     }
 
-    public void onRetryButton()
+    public void OnRetryButton()
     {
         Debug.Log	("replay");
         Scene sceneToUnload = pause	;
@@ -247,7 +244,6 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.UnloadSceneAsync(sceneToUnload);
         isPause = false;
-        loadedCam = false;
         string name = currentScene.name;
         SceneManager.UnloadSceneAsync(name);
         if(op == null)
@@ -261,10 +257,10 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void onLevelsButton()
+    public void OnLevelsButton()
     {
         
-        if(type == loadedType.TYPE_MAIN && mainAnim	!= null)
+        if(type == LoadedType.TYPE_MAIN && mainAnim	!= null)
             mainAnim.SetBool("PressedLevels", true);
         else
         {
@@ -275,7 +271,7 @@ public class MenuManager : MonoBehaviour
                 SceneManager.UnloadSceneAsync(name);
             }
             
-            type = loadedType.TYPE_MAIN	;
+            type = LoadedType.TYPE_MAIN	;
             Time.timeScale = 1;
             loadedMain = false;
             isPause = false;
@@ -284,9 +280,9 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void onMenuButton()
+    public void OnMenuButton()
     {
-        if (type == loadedType.TYPE_MAIN)
+        if (type == LoadedType.TYPE_MAIN)
         {
             return;
         }
@@ -305,11 +301,11 @@ public class MenuManager : MonoBehaviour
             Time.timeScale = 1;
             loadedMain = false;
             isPause = false;
-            type = loadedType.TYPE_MAIN	;
+            type = LoadedType.TYPE_MAIN	;
             hasToGoToLevelMenu = false;
         }
     }
-    public void onControlsButton()
+    public void OnControlsButton()
     {
         mainAnim.SetBool("PressedControls", true);
     }
@@ -326,47 +322,47 @@ public class MenuManager : MonoBehaviour
         mainAnim.SetBool("PressedCredits", true);
     }
 
-    public void onBackButton()
+    public void OnBackButton()
     {
         mainAnim.SetBool("Goback", true);
     }
 
-    public void launchLevel1()
+    public void LaunchLevel1()
     {
-        type = loadedType.TYPE_LEVEL;
+        type = LoadedType.TYPE_LEVEL;
         mainAnim = null;
         SceneManager.LoadScene(2);
         loadedMain = false;
     }
-    public void launchLevel2()
+    public void LaunchLevel2()
     {
-        type = loadedType.TYPE_LEVEL;
+        type = LoadedType.TYPE_LEVEL;
         mainAnim = null;
         SceneManager.LoadScene(3);
         loadedMain = false;
     }
-    public void launchLevel3()
+    public void LaunchLevel3()
     {
-        type = loadedType.TYPE_LEVEL;
+        type = LoadedType.TYPE_LEVEL;
         mainAnim = null;
         SceneManager.LoadScene(4);
         loadedMain = false;
     }
-    public void launchLevel4()
+    public void LaunchLevel4()
     {
-        type = loadedType.TYPE_LEVEL;
+        type = LoadedType.TYPE_LEVEL;
         mainAnim = null;
         SceneManager.LoadScene(5);
         loadedMain = false;
     }
-    public void launchLevel5()
+    public void LaunchLevel5()
     {
-        type = loadedType.TYPE_LEVEL;
+        type = LoadedType.TYPE_LEVEL;
         mainAnim = null;
         SceneManager.LoadScene(6);
         loadedMain = false;
     }
-    public void onExitButton()
+    public void OnExitButton()
     {
         Application.Quit();
     }
