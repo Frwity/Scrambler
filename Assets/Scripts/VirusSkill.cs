@@ -76,7 +76,8 @@ public class VirusSkill : EntitySkill
             rb.velocity = new Vector3(rb.velocity.x + maxSpeed * moveSpeed * airControlFactor, rb.velocity.y, rb.velocity.z);
         else
             rb.velocity = new Vector3(rb.velocity.x + maxSpeed * moveSpeed * accelerationFactor, rb.velocity.y, rb.velocity.z);
-        transform.GetChild(0).rotation = Quaternion.Euler(0, -90, 0);
+
+        transform.GetChild(3).rotation = Quaternion.Euler(0, -90, 0);
         return true;
     }
 
@@ -87,7 +88,7 @@ public class VirusSkill : EntitySkill
         else
             rb.velocity = new Vector3(rb.velocity.x + maxSpeed * moveSpeed * accelerationFactor, rb.velocity.y, rb.velocity.z);
 
-        transform.GetChild(0).rotation = Quaternion.Euler(0, 90, 0);
+        transform.GetChild(3).rotation = Quaternion.Euler(0, 90, 0);
         return true;
     }
 
