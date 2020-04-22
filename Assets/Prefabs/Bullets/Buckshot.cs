@@ -17,7 +17,7 @@ public class Buckshot : BulletSharedClass
 
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         lowerAngle = -coneOfFire / 2;
         upperAngle = coneOfFire / 2;

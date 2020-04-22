@@ -14,6 +14,13 @@ public abstract class BulletSharedClass : MonoBehaviour
 
     [HideInInspector] public GameObject shooter;
 
+    protected string shooterTag = null;
+
+    protected virtual void Start()
+    {
+        shooterTag = shooter.gameObject.tag;
+    }    
+    
     private void LateUpdate()
     {
         if (hasLimitedTime)
@@ -27,7 +34,10 @@ public abstract class BulletSharedClass : MonoBehaviour
 
     public virtual void DoBehavior(GameObject hitObject)
     {
-        if ((hitObject != shooter) && !(shooter.CompareTag("Enemy") && hitObject.CompareTag("Enemy")) )
+        if (!hitObject || !shooter)
+            return;
+
+        if ( (!hitObject.CompareTag(shooterTag)) && hitObject.GetComponent<Entity>() )
         {
             hitObject.GetComponent<Entity>().InflictDamage(damage);
 

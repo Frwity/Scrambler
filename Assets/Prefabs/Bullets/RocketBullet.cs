@@ -9,10 +9,12 @@ public class RocketBullet : BulletSharedClass
     [SerializeField] float speedLimit = 5f;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         transform.localRotation = Quaternion.LookRotation(direction);
         transform.Translate(direction, Space.World);
+
+        shooterTag = shooter.gameObject.tag;
     }
 
     // Update is called once per frame

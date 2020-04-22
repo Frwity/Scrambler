@@ -9,9 +9,11 @@ public class BouncyBullet : CurvedBulletSharedClass
     [SerializeField] float explosionRange = 1f;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         GetComponent<Rigidbody>().AddForce(direction.normalized * speed, ForceMode.Impulse);
+
+        shooterTag = shooter.gameObject.tag;
     }
 
     // Update is called once per frame
