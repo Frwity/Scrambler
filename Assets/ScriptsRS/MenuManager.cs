@@ -90,11 +90,11 @@ public class MenuManager : MonoBehaviour
                 }
                 else if (butList[j].name == "Next Button (1)")
                 {
-                    butList[j].onClick.AddListener(onPrevButton);
+                    butList[j].onClick.AddListener(OnPrevButton);
                 }
                 else if (butList[j].name == "Next Button")
                 {
-                    butList[j].onClick.AddListener(onNextButton);
+                    butList[j].onClick.AddListener(OnNextButton);
                 }
                 else if (butList[j].name == "Level 1")
                 {
@@ -130,12 +130,14 @@ public class MenuManager : MonoBehaviour
             Debug.Log("Main already loaded");
             return;
         }
-        if (Input.GetAxisRaw("start") == 1 && !isPause && type == loadedType.TYPE_LEVEL && !levelEnded)
+        if (Input.GetAxisRaw("start") == 1 && !isPause && type == LoadedType.TYPE_LEVEL && !levelEnded)
         {
             isPause = true;
-            LoadSceneParameters p = new LoadSceneParameters();
-            p.loadSceneMode = LoadSceneMode.Additive;
-            
+            LoadSceneParameters p = new LoadSceneParameters
+            {
+                loadSceneMode = LoadSceneMode.Additive
+            };
+
             Time.timeScale = 0;
             pause = SceneManager.LoadScene("Scenes/PauseMenu", p);
             
@@ -183,16 +185,18 @@ public class MenuManager : MonoBehaviour
         if (levelEnded && !EndMenuLoaded)
         {
             EndMenuLoaded = true;
-            LoadSceneParameters p = new LoadSceneParameters();
-            p.loadSceneMode = LoadSceneMode.Additive;
-            
+            LoadSceneParameters p = new LoadSceneParameters
+            {
+                loadSceneMode = LoadSceneMode.Additive
+            };
+
             Time.timeScale = 0;
             end = SceneManager.LoadScene("Scenes/End", p);
         }
         else if (EndMenuLoaded && end.isLoaded)
         {
             GameObject[] glist = end.GetRootGameObjects();
-            bool o = false;
+
             for (int i = 0; i < glist.Length; i++)
             {
                 GameObject obj = glist[i];
@@ -204,15 +208,15 @@ public class MenuManager : MonoBehaviour
                     {
                         if (butList[j].name == "Replay")
                         {
-                            butList[j].onClick.AddListener(onRetryButton);
+                            butList[j].onClick.AddListener(OnRetryButton);
                         }
                         else if (butList[j].name == "Levels")
                         {
-                            butList[j].onClick.AddListener(onLevelsButton);
+                            butList[j].onClick.AddListener(OnLevelsButton);
                         }
                         else if (butList[j].name == "Menu")
                         {
-                            butList[j].onClick.AddListener(onMenuButton);
+                            butList[j].onClick.AddListener(OnMenuButton);
                         }
 
                     }
@@ -309,15 +313,15 @@ public class MenuManager : MonoBehaviour
     {
         mainAnim.SetBool("PressedControls", true);
     }
-    public void onPrevButton()
+    public void OnPrevButton()
     {
         mainAnim.SetBool("Previous", true);
     }
-    public void onNextButton()
+    public void OnNextButton()
     {
         mainAnim.SetBool("Next", true);
     }
-    public void onCreditsButton()
+    public void OnCreditsButton()
     {
         mainAnim.SetBool("PressedCredits", true);
     }
