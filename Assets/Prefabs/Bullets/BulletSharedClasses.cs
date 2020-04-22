@@ -27,7 +27,7 @@ public abstract class BulletSharedClass : MonoBehaviour
 
     public virtual void DoBehavior(GameObject hitObject)
     {
-        if ((hitObject != shooter) && !(shooter.CompareTag("Enemy") && hitObject.CompareTag("Enemy")) )
+        if ((hitObject != shooter) && !(shooter.CompareTag("Enemy") && hitObject.CompareTag("Enemy")) && hitObject.GetComponent<Entity>())
         {
             hitObject.GetComponent<Entity>().InflictDamage(damage);
 

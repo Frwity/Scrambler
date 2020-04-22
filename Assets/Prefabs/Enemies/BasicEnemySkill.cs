@@ -104,9 +104,11 @@ public class BasicEnemySkill : EntitySkill
 
     public override bool Shoot(Vector3 directionVector)
     {
-        if ( (GetComponent<BasicEnemyAI>().flipped && lastDirection.x < 0) || (!GetComponent<BasicEnemyAI>().flipped && lastDirection.x > 0) )
-        { lastDirection = Vector3.zero; }
-        
+        if ((GetComponent<BasicEnemyAI>().flipped && lastDirection.x < 0) || (!GetComponent<BasicEnemyAI>().flipped && lastDirection.x > 0))
+        { 
+            lastDirection = Vector3.zero;
+        }
+
         Vector3 gunTransition = Vector3.zero;
         
         if (directionVector.magnitude < 0.1)
@@ -199,10 +201,25 @@ public class BasicEnemySkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-        if (direction.magnitude > 0.3)
-            transform.GetChild(2).transform.rotation = Quaternion.LookRotation(new Vector3(-direction.y, direction.x, 90), Vector3.forward);
-
         xAim = direction.x;
+
+
+        Vector3 gunTransition = Vector3.zero;
+
+        if (direction.magnitude < 0.1)
+        {
+
+            if (direction.x == 0)
+            {
+                gunTransition.x = GetComponent<BasicEnemyAI>().flipped ? 1 : -1;
+            }
+        }
+
+        direction = Vector3.Lerp(lastDirection, gunTransition + direction, fireDirectionLerpingFactor);
+
+        lastDirection = direction;
+        transform.GetChild(2).transform.rotation = Quaternion.LookRotation(new Vector3(-direction.y, direction.x, 90), Vector3.forward);
+
     }
 
     private void OnDestroy()
