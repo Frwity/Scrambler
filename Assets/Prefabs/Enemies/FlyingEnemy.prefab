@@ -4629,7 +4629,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: daa594160836db84a9d8de1837df5e67, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.481
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -14429,7 +14429,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09f254f2db6197b4c9f9e9ca1afbfdbd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.066
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -14634,7 +14634,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0ffa808e195039e4aa6517b32afe1d35, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.066
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -24775,6 +24775,9 @@ MonoBehaviour:
   halfLifeParticle: {fileID: 5758465464170932303}
   quartLifeParticle: {fileID: 0}
   shootingParticle: {fileID: 704851070830985337}
+  shootingSound: {fileID: 3941001712620889305}
+  hitSound: {fileID: 6667679391707393122}
+  jumpingSound: {fileID: 0}
 --- !u!1 &7615947149236476337
 GameObject:
   m_ObjectHideFlags: 0

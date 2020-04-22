@@ -31,10 +31,15 @@ public class PlayerControl : MonoBehaviour
     private Vector3 aimDireciton = Vector3.zero;
     private bool jumped = false;
 
+    [SerializeField] ParticleSystem possesionParticle = null;
+    [SerializeField] ParticleSystem unpossessParticle = null;
+    [SerializeField] AudioSource possessionSound      = null;
+    [SerializeField] AudioSource possessionUpSound    = null;
+
     void Start()
     {
         virtualCamera = GameObject.FindGameObjectWithTag("VirtualCam").GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        lastControl = 0;
+        lastControl = Time.time;
         entity = GetComponentInChildren<Entity>();
         jumped = false;
         isInVirus = true;
@@ -43,7 +48,7 @@ public class PlayerControl : MonoBehaviour
         virtualCamera.Follow = tTransform.transform;
         virtualCamera.LookAt = tTransform.transform;
 
-        if (autoSetDefaultSpawnPt) defaultSpawnPoint = transform.GetChild(0).position;
+        if (autoSetDefaultSpawnPt) defaultSpawnPoint = transform.GetChild(4).position;
     }
 
     void Update()
@@ -94,7 +99,7 @@ public class PlayerControl : MonoBehaviour
         && Time.time > controlCD + lastControl && isInVirus) // TODO plsu bo
         {
             lastControl = Time.time;
-            Destroy(transform.GetChild(0).gameObject);
+            Destroy(transform.GetChild(4).gameObject);
             collidingObj.transform.parent.parent = transform;
             entity = collidingObj.transform.parent.GetComponent<Entity>();
             isInVirus = false;
@@ -102,7 +107,13 @@ public class PlayerControl : MonoBehaviour
             entity.DesactivateAI();
             entity.PossessFlash();
             tTransform.transform.position = entity.transform.position;
-            
+            if (possesionParticle)
+            {
+                possesionParticle.transform.position = entity.transform.position;
+                ParticleLauncher.ActivateParticleWithNewParent(possesionParticle.GetComponent<LifetimeStaticParticle>(), entity.transform);
+            }
+            if (possessionSound)
+                possessionSound.Play();
             return;
         }
         if (Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && !isInVirus)
@@ -116,6 +127,13 @@ public class PlayerControl : MonoBehaviour
             isInVirus = true;
             tTransform.transform.position = entity.transform.position;
 
+            if (unpossessParticle)
+            {
+                unpossessParticle.transform.position = entity.transform.position;
+                ParticleLauncher.ActivateParticleWithNewParent(unpossessParticle.GetComponent<LifetimeStaticParticle>(), entity.transform);
+            }
+            if (possessionUpSound)
+                possessionUpSound.Play();
             return;
         }
         if (Input.GetAxisRaw("Fire3") == 1 && Time.time > controlCD + lastControl && isInVirus)

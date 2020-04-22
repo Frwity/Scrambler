@@ -221,9 +221,4 @@ public class BasicEnemySkill : EntitySkill
         transform.GetChild(2).transform.rotation = Quaternion.LookRotation(new Vector3(-direction.y, direction.x, 90), Vector3.forward);
 
     }
-
-    private void OnDestroy()
-    {
-        ParticleLauncher.ActivateParticleWithName(gameObject, null, "Explosion");
-    }
 }
