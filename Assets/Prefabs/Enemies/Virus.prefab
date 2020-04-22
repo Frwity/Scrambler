@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7987167876143128021}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1012857441517921094
 Light:
@@ -302,7 +302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7987167876143128021}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1545943888781514441
 AudioSource:
@@ -707,11 +707,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 193715300194009341}
+  - {fileID: 78180470085515686}
   - {fileID: 2971001398302612648}
   - {fileID: 8629372330084886609}
   - {fileID: 2009090038565689527}
-  - {fileID: 78180470085515686}
-  - {fileID: 193715300194009341}
   - {fileID: 4103696648696020769}
   - {fileID: 3126366499120318459}
   - {fileID: 1929735214857983613}
@@ -735,7 +735,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7987167876143128019}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -845,6 +845,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  triQuartLifeParticle: {fileID: 0}
+  halfLifeParticle: {fileID: 0}
+  quartLifeParticle: {fileID: 0}
+  shootingParticle: {fileID: 0}
 --- !u!114 &504269849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,7 +891,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7987167876143128021}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6513796090787864355
 AudioSource:
@@ -992,15 +996,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7987167876143128021}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 2a7388c03dd727b4d8094a1584407e28,
-        type: 3}
-      propertyPath: m_Name
-      value: Virus
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2a7388c03dd727b4d8094a1584407e28,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2a7388c03dd727b4d8094a1584407e28,
         type: 3}
@@ -1035,7 +1034,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2a7388c03dd727b4d8094a1584407e28,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2a7388c03dd727b4d8094a1584407e28,
         type: 3}
@@ -1066,6 +1065,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2a7388c03dd727b4d8094a1584407e28,
+        type: 3}
+      propertyPath: m_Name
+      value: Virus
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 2a7388c03dd727b4d8094a1584407e28,
         type: 3}
@@ -1100,7 +1104,7 @@ PrefabInstance:
     - target: {fileID: 6625448464464556365, guid: 5dfea74418c81a14eadc01d9fb6e6be4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6625448464464556365, guid: 5dfea74418c81a14eadc01d9fb6e6be4,
         type: 3}
@@ -1130,7 +1134,7 @@ PrefabInstance:
     - target: {fileID: 6625448464464556365, guid: 5dfea74418c81a14eadc01d9fb6e6be4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6625448464464556365, guid: 5dfea74418c81a14eadc01d9fb6e6be4,
         type: 3}
@@ -1152,6 +1156,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b13984feacef4be4d823132c6e49030a, type: 2}
+    - target: {fileID: 6625448464464556362, guid: 5dfea74418c81a14eadc01d9fb6e6be4,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 7.41
+      objectReference: {fileID: 0}
     - target: {fileID: 6625448462461938058, guid: 5dfea74418c81a14eadc01d9fb6e6be4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

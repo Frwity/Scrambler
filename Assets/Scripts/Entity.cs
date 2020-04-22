@@ -226,6 +226,20 @@ public class Entity : MonoBehaviour
             if (quartLifeParticle)
                 quartLifeParticle.Play();
         }
+
+        if (gameObject.GetComponent<VirusSkill>())
+        {
+            if (life <= 2)
+            {
+                ParticleSystem.MainModule test = gameObject.transform.GetChild(1).GetComponent<ParticleSystem>().main;
+                test.startColor = new Color(243, 126, 0, 0.04f);
+
+                if (life <= 1)
+                {
+                    test.startColor = new Color(255, 0, 0, 0.04f);
+                }
+            }
+        }
     }
 
     public void HitFlash()

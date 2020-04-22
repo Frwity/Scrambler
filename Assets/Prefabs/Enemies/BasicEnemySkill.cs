@@ -203,4 +203,9 @@ public class BasicEnemySkill : EntitySkill
 
         xAim = direction.x;
     }
+
+    private void OnDestroy()
+    {
+        ParticleLauncher.ActivateParticleWithName(gameObject, null, "Explosion");
+    }
 }
