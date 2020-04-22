@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4859,7 +4859,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9757,9 +9757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cooldown: 1
-  Imprecision: 0
   shootForce: 30
-  damage: 0
   DroneToSpawn: {fileID: 0}
   spawnPoint:
     ParentPos: {fileID: 8540519294193855697}
@@ -9909,6 +9907,11 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: startDelay.scalar
@@ -10026,6 +10029,11 @@ PrefabInstance:
     - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
@@ -10147,6 +10155,11 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: startDelay.scalar
@@ -10264,6 +10277,11 @@ PrefabInstance:
     - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
@@ -10385,6 +10403,11 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: startDelay.scalar
@@ -10504,6 +10527,11 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: startDelay.scalar
@@ -10582,9 +10610,24 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198330513847097460, guid: 6d02e556140cc2645a33cb92930c4add,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198059729650594372, guid: 6d02e556140cc2645a33cb92930c4add,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198109122245554240, guid: 6d02e556140cc2645a33cb92930c4add,
         type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198109122245554240, guid: 6d02e556140cc2645a33cb92930c4add,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198259602834619840, guid: 6d02e556140cc2645a33cb92930c4add,
@@ -10592,14 +10635,29 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198259602834619840, guid: 6d02e556140cc2645a33cb92930c4add,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198230799747257828, guid: 6d02e556140cc2645a33cb92930c4add,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198230799747257828, guid: 6d02e556140cc2645a33cb92930c4add,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198361538638195554, guid: 6d02e556140cc2645a33cb92930c4add,
         type: 3}
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198361538638195554, guid: 6d02e556140cc2645a33cb92930c4add,
         type: 3}
-      propertyPath: looping
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10896,6 +10954,11 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: startDelay.scalar
@@ -11013,6 +11076,11 @@ PrefabInstance:
     - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
@@ -11134,6 +11202,11 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: startDelay.scalar
@@ -11251,6 +11324,11 @@ PrefabInstance:
     - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
         type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: d51410e8a37ad28439569dbd752fa9cc,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: d51410e8a37ad28439569dbd752fa9cc,
