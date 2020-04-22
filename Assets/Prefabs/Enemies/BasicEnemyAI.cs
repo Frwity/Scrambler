@@ -109,7 +109,7 @@ public class BasicEnemyAI : EntityAI
 
     private bool LookingAtPlayer(float playerXrelativetoEnemy)
     {
-        //Debug.Log	($"{playerXrelativetoEnemy} and {lookingRight}");
+        
         if ((playerXrelativetoEnemy > 0 && !lookingRight) || (playerXrelativetoEnemy < 0 && lookingRight))
             return false;
         else
@@ -135,7 +135,7 @@ public class BasicEnemyAI : EntityAI
 
                 return true;
             }
-           // Debug.Log	("ayayayaya");
+          
             return false;
         }
         else
@@ -189,7 +189,7 @@ public class BasicEnemyAI : EntityAI
                 currentLostTimer += Time.smoothDeltaTime;
                 return;
             }
-            //Debug.Log($"{currentAIResetTimer} / {AIResetTimer}");
+            
             currentAIResetTimer += Time.smoothDeltaTime;
             if (!HasTurnedOnce)
             {

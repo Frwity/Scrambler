@@ -162,7 +162,7 @@ Transform:
   - {fileID: 6900281482076801557}
   - {fileID: 5029648346161854470}
   m_Father: {fileID: 6531962691575589102}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!198 &3608354095724496153
 ParticleSystem:
@@ -18968,7 +18968,7 @@ Transform:
   - {fileID: 3482935955842518590}
   - {fileID: 3237710257021327631}
   m_Father: {fileID: 6531962691575589102}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1447078797425064399
 GameObject:
@@ -28503,7 +28503,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09f254f2db6197b4c9f9e9ca1afbfdbd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.066
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -38420,6 +38420,7 @@ Transform:
   - {fileID: 4884900028703363723}
   - {fileID: 1816207303856427457}
   - {fileID: 6754540412082373810}
+  - {fileID: 7901970594401703223}
   m_Father: {fileID: 6531962691575589102}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38454,7 +38455,7 @@ Transform:
   m_Children:
   - {fileID: 24399293773040317}
   m_Father: {fileID: 6531962691575589102}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -183.067, y: 5.4809875, z: 60.853996}
 --- !u!198 &4564981761496909535
 ParticleSystem:
@@ -52920,7 +52921,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6531962691575589102}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &8686040694338363747
 AudioSource:
@@ -52934,7 +52935,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: daa594160836db84a9d8de1837df5e67, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -72944,7 +72945,6 @@ Transform:
   - {fileID: 3151133006490273988}
   - {fileID: 3920988877809387528}
   - {fileID: 1948857322293449550}
-  - {fileID: 7901970594401703223}
   - {fileID: 5347961321868862583}
   - {fileID: 4781481113372539560}
   - {fileID: 1428933121791059918}
@@ -72999,14 +72999,12 @@ MonoBehaviour:
   isActive: 1
   upperFireRange: 20
   lowerFireRange: 5
-  detectionRange: 25
   distanceToKeepAwayFromPlayer: 5
   maxReactionTime: 2
   flipped: 0
   lostTimer: 1
   HasTurnedOnce: 0
   Backtimer: 20
-  lostSpeed: 2
   AIResetTimer: 5
   Path: {fileID: 0}
 --- !u!114 &3540965566175353325
@@ -73068,6 +73066,9 @@ MonoBehaviour:
   halfLifeParticle: {fileID: 4564981761496909535}
   quartLifeParticle: {fileID: 8700253260889751253}
   shootingParticle: {fileID: 4685332306042577861}
+  shootingSound: {fileID: 2713636237703566046}
+  hitSound: {fileID: 8686040694338363747}
+  jumpingSound: {fileID: 732939131634546218}
 --- !u!114 &1643609269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82728,7 +82729,7 @@ Transform:
   m_Children:
   - {fileID: 3831351315612599848}
   m_Father: {fileID: 6531962691575589102}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &8700253260889751253
 ParticleSystem:
@@ -87538,7 +87539,7 @@ GameObject:
   - component: {fileID: 7901970594401703223}
   - component: {fileID: 2713636237703566046}
   m_Layer: 0
-  m_Name: Sound_GruntFiring
+  m_Name: ShootSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87552,11 +87553,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8047172362118519069}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5262966, y: 0.2564268, z: -0.016916513}
+  m_LocalPosition: {x: 0.5262966, y: -0.54357314, z: -0.016916513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6531962691575589102}
-  m_RootOrder: 5
+  m_Father: {fileID: 3151133006490273988}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2713636237703566046
 AudioSource:
@@ -87570,7 +87571,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0ffa808e195039e4aa6517b32afe1d35, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.066
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -92346,7 +92347,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6531962691575589102}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &732939131634546218
 AudioSource:
@@ -92360,7 +92361,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ebb2b01bdde322f439303e87047dba4c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.519
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -92678,7 +92679,7 @@ PrefabInstance:
     - target: {fileID: 9058938721791350636, guid: 71a3a68473b95ee4d9780b0054ada28f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9058938721791350636, guid: 71a3a68473b95ee4d9780b0054ada28f,
         type: 3}

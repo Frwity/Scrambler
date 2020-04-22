@@ -26,7 +26,7 @@ public class Node : MonoBehaviour
                 teleporting = false;
                 toTeleport.GetComponent<Rigidbody>().useGravity = true;
                 toTeleport.GetComponent<Rigidbody>().isKinematic = false;
-                toTeleport.transform.GetChild(0).gameObject.SetActive(true);
+                toTeleport.transform.GetChild(4).gameObject.SetActive(true);
                 toTeleport.GetComponent<Collider>().enabled = true;
             }
             else if ((toTeleport.transform.position - transform.position).magnitude > (teleportPos - transform.position).magnitude)
@@ -35,7 +35,7 @@ public class Node : MonoBehaviour
                 teleporting = false;
                 toTeleport.GetComponent<Rigidbody>().useGravity = true;
                 toTeleport.GetComponent<Rigidbody>().isKinematic = false;
-                toTeleport.transform.GetChild(0).gameObject.SetActive(true);
+                toTeleport.transform.GetChild(4).gameObject.SetActive(true);
                 toTeleport.GetComponent<Collider>().enabled = true;
             }
         }
@@ -47,7 +47,7 @@ public class Node : MonoBehaviour
         this.toTeleport = toTeleport;
         teleportPos = new Vector3(conjointNode.transform.position.x, conjointNode.transform.position.y, 0);
         direction = (teleportPos - toTeleport.transform.position).normalized;
-        toTeleport.transform.GetChild(0).gameObject.SetActive(false);
+        toTeleport.transform.GetChild(4).gameObject.SetActive(false);
         toTeleport.GetComponent<Rigidbody>().useGravity = false;
         toTeleport.GetComponent<Rigidbody>().isKinematic = true;
         toTeleport.GetComponent<Collider>().enabled = false;

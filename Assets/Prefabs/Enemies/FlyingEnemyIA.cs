@@ -28,7 +28,7 @@ public class FlyingEnemyIA : EntityAI
             return;
         if (!shooting && entity.isPlayerInSight)
         {
-            //Debug.Log("EEEE");
+            
             currentLostTimer = 0.0f;
             if (entity.lastPlayerPosKnown.x - transform.position.x < -0.25)
                 entity.MoveLeft(-1);

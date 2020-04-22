@@ -28,7 +28,7 @@ public class Vision : MonoBehaviour
         
         if (CompareTag("Player") || CompareTag("PossessZone"))
         {
-            Debug.Log($"collided with {gameObject.name}");
+            
             return;
         }
 
@@ -57,14 +57,14 @@ public class Vision : MonoBehaviour
         {
             playerPos = other.transform.position;
             player = other.GetComponent<Entity>();
-            //Debug.Log("player found");
+            
         }
         else
         {
-            //Debug.Log("player not found");
+          
             return;
         }
-        //Debug.Log($"{name}");
+
         playerPos = (playerPos - transform.position);
         playerPos.y -= other.transform.localScale.y/2.0f;
         
@@ -78,10 +78,10 @@ public class Vision : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, mag + 10.0f, visionMask))
             {
-                //Debug.Log(ray.direction);
+               
                 if (hit.collider.CompareTag("Player"))
                 {
-                    //Debug.Log("/*DOUBLE*/ VISION");
+                    
                     entity.isPlayerInSight = true;
                     entity.LostPlayer = false;
                     entity.lastPlayerPosKnown = other.transform.position;

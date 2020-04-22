@@ -12,6 +12,12 @@ public class FireBullet : CurvedBulletSharedClass
 
     protected override void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            DoBehavior(collision.gameObject);
+
+            Destroy(gameObject);
+        }
         if (collision.gameObject.CompareTag("Ground"))
         {
             SpreadFire(collision.transform.rotation.eulerAngles);
