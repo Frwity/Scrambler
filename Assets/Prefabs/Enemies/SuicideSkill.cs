@@ -238,7 +238,7 @@ public class SuicideSkill : EntitySkill
                 Vector3 toEnt = entity.transform.position - (transform.position + transform.right * shootOriginPos.x + transform.up * shootOriginPos.y);
                 if (toEnt.magnitude < exploRay)
                 {
-                    entity.InflictDamage(6);
+                    entity.InflictDamage(damage);
                   
                 }
             }
