@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Travolator : Activable
 {
-    [SerializeField] private Direction direction;
-    [SerializeField] private float speed;
+    [SerializeField] private Direction direction = Direction.NONE;
+    [SerializeField] private float speed = 0f;
 
     private int directionInt;
 

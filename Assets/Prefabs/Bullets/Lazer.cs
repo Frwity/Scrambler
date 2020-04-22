@@ -7,9 +7,9 @@ public class Lazer : BulletSharedClass
     [SerializeField] float range = 5f;
     [SerializeField] float lifeTime = 5f;
 
-    [SerializeField] GameObject lazerBullet;
+    [SerializeField] GameObject lazerBullet = null;
 
-    GameObject firedLazer;
+    GameObject firedLazer = null;
 
     // Start is called before the first frame update
     void Start()

@@ -7,7 +7,7 @@ public class BasicEnemyAI : EntityAI
     [SerializeField] private float upperFireRange = 0.0f;
     [SerializeField] private float lowerFireRange = 0.0f;
 
-    [SerializeField] private float detectionRange = 0.0f; // must be > upperFireRange
+    //[SerializeField] private float detectionRange = 0.0f; // must be > upperFireRange
     [SerializeField] private float distanceToKeepAwayFromPlayer = 0.0f;
 
     [SerializeField] private float maxReactionTime = 0.0f;
@@ -25,7 +25,7 @@ public class BasicEnemyAI : EntityAI
     [SerializeField] private float lostTimer = 0.0f;
     [SerializeField] private bool HasTurnedOnce = false;
     [SerializeField] private float Backtimer = 0.0f;
-    [SerializeField] private float lostSpeed = 2.0f;
+    //[SerializeField] private float lostSpeed = 2.0f;
     [SerializeField] private float AIResetTimer = 0.0f;
     [SerializeField] private Road Path = null;
     private float currentLostTimer = 0.0f;
@@ -52,7 +52,7 @@ public class BasicEnemyAI : EntityAI
 
         if (flipped)
         {
-            LookAround();
+            LookRight();
         }
     }
 

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GravityScale : MonoBehaviour
 {
-    [SerializeField] float gravity;
+    [SerializeField] float gravity = 0f;
 
-    private Rigidbody rb;
+    private Rigidbody rb = null;
 
-    private bool isOnGround;
+    private bool isOnGround = false;
 
     // Start is called before the first frame update
     void Start()

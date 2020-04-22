@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class pointer : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
-
+    [SerializeField] string horizontalAxis = "";
+    [SerializeField] string verticalAxis = "";
     public Vector2 pos; 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class pointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 dir = new Vector2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical"));
+        Vector2 dir = new Vector2(Input.GetAxis(horizontalAxis), Input.GetAxis(verticalAxis));
         transform.Translate(dir * (speed * Time.unscaledDeltaTime));
         RectTransform tr = GetComponent<RectTransform>();
         Vector2 posi = new Vector2(tr.position.x, tr.position.y);

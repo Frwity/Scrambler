@@ -11,13 +11,12 @@ public class suicideIA : EntityAI
         LEFT = -1,
     };
 
-    GameObject player;
-    private bool shooting;
+    private bool shooting = false;
     
     public Direction direction = Direction.RIGHT;
 
     private short waitFrame = 0;
-    private SuicideSkill scs;
+    private SuicideSkill scs = null;
     
     private float currentLostTimer = 0.0f;
     [SerializeField] private float lostTimer = 0.0f;
@@ -30,14 +29,13 @@ public class suicideIA : EntityAI
     [SerializeField] private float AIResetTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
 
-    [SerializeField] private Road Path;
+    [SerializeField] private Road Path = null;
 
-    [SerializeField] Color possessedColor;
-    [SerializeField] Color disabledColor;
+    [SerializeField] Color possessedColor = Color.clear;
+    [SerializeField] Color disabledColor = Color.clear;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         if (direction == Direction.LEFT)
         {
             transform.rotation = Quaternion.Euler(0,180,0);

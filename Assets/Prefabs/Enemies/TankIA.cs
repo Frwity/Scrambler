@@ -8,33 +8,38 @@ public enum Direction
     LEFT = -1,
     NONE = 0,
 };
+
 public class TankIA : EntityAI
 {
-    [SerializeField] private float fireCount;
-    [SerializeField] private float rangePoint;
-    private float nbFired;
-    private bool shooting;
+    [SerializeField] private float fireCount = 0f;
+    private float nbFired = 0f;
+    private bool shooting = false;
+
     public Direction direction = Direction.RIGHT;
+    
     float currentLostTimer = 0.0f;
-    [SerializeField] private float lostTimer;
+    [SerializeField] private float lostTimer = 0f;
+    
     private bool hasPlayerGoneInBack = false;
     private bool HasTurnedOnce = false;
+    
     [SerializeField] private float Backtimer = 0.0f;
     private float currentBackTimer = 0.0f;
-    private TankSkill ts;
-    [SerializeField] private Road Path;
+    
+    private TankSkill ts = null;
+    [SerializeField] private Road Path = null;
     [SerializeField] private float AIResetTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
+    
     void Start()
     {
-
         if (direction == Direction.LEFT)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+
         entity = GetComponent<Entity>();
         ts = entity.entitySkill as TankSkill;
-        rangePoint = ts.rangePoint;
     }
 
     // Update is called once per frame

@@ -4,18 +4,7 @@ using UnityEngine;
 
 public class ColorGizmos : MonoBehaviour
 {
-    [SerializeField] private Color color;
-
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
-    }
+    [SerializeField] private Color color = Color.clear;
 
     private void OnDrawGizmos()
     {  

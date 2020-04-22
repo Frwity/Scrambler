@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public class DroneSkill : EntitySkill
 {
-    [SerializeField] private float speed;
-    [HideInInspector] public UnityEvent OnShoot;
+    [SerializeField] private float speed = 0f;
+    [HideInInspector] public UnityEvent OnShoot = null;
     [HideInInspector] public Bertha myBertha = null;
     private float DestroyCD = 0.0f;
     
-    private Entity entity;
+    private Entity entity = null;
     
     void Start()
     {

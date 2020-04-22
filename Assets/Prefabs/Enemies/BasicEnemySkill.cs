@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class BasicEnemySkill : EntitySkill
 {
-    [SerializeField] public float maxSpeed;
-    [SerializeField] private int nbJump;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float wallFallSpeed;
-    [SerializeField] [Range(0, 1)] private float airControlFactor;
-    [SerializeField] [Range(0, 1)] private float accelerationFactor;
-    [SerializeField] private bool canWallJump;
+    [SerializeField] public float maxSpeed = 0f;
+    [SerializeField] private int nbJump = 0;
+    [SerializeField] private float jumpForce = 0f;
+    [SerializeField] private float wallFallSpeed = 0f;
+    [SerializeField] [Range(0, 1)] private float airControlFactor = 0f;
+    [SerializeField] [Range(0, 1)] private float accelerationFactor = 0f;
+    [SerializeField] private bool canWallJump = false;
 
-    [HideInInspector] public int jumped;
-    private int wallDir;
-    private bool falling;
-    private bool grounded;
-    private bool touchingWall;
-    private Rigidbody rb;
+    [HideInInspector] public int jumped = 0;
+    private int wallDir = 0;
+    private bool falling = false;
+    private bool grounded = false;
+    private bool touchingWall = false;
+    private Rigidbody rb = null;
 
 
-    [SerializeField] private GameObject bullet;
-    
-    [SerializeField] private float fireRate;
-    [SerializeField] private float imprecision; // is a measure in degrees, forming a cone of fire. 
-    private float lastFired;
+    [SerializeField] private GameObject bullet = null;
+
+    [SerializeField] private float fireRate = 0f;
+    [SerializeField] private float imprecision = 0f; // is a measure in degrees, forming a cone of fire. 
+    private float lastFired = 0f;
 
     [HideInInspector] public float xAim = 0f;
 
-    Vector3 lastDirection;
+    Vector3 lastDirection = Vector3.zero;
     [SerializeField] [Range(0, 1)] float fireDirectionLerpingFactor = 0.05f;
 
     void Start()
@@ -104,20 +104,23 @@ public class BasicEnemySkill : EntitySkill
 
     public override bool Shoot(Vector3 directionVector)
     {
+        if ((GetComponent<BasicEnemyAI>().flipped && lastDirection.x < 0) || (!GetComponent<BasicEnemyAI>().flipped && lastDirection.x > 0))
+        { 
+            lastDirection = Vector3.zero;
+        }
+
+        Vector3 gunTransition = Vector3.zero;
+        
         if (directionVector.magnitude < 0.1)
         {
-            if ( (GetComponent<BasicEnemyAI>().flipped && lastDirection.x < 0) || (!GetComponent<BasicEnemyAI>().flipped && lastDirection.x > 0) )
-            { lastDirection = Vector3.zero; }
-
-            Vector3 gunTransition = Vector3.zero;
 
             if (directionVector.x == 0)
             {
                 gunTransition.x = GetComponent<BasicEnemyAI>().flipped ? 1 : -1;
             }
-
-            directionVector = Vector3.Lerp(lastDirection, gunTransition, fireDirectionLerpingFactor);
         }
+
+        directionVector = Vector3.Lerp(lastDirection, gunTransition + directionVector, fireDirectionLerpingFactor);
         
         lastDirection = directionVector;
         transform.GetChild(2).transform.rotation = Quaternion.LookRotation(new Vector3(-directionVector.y, directionVector.x, 90), Vector3.forward);
@@ -198,10 +201,25 @@ public class BasicEnemySkill : EntitySkill
 
     public override void AimDirection(Vector3 direction)
     {
-        if (direction.magnitude > 0.3)
-            transform.GetChild(2).transform.rotation = Quaternion.LookRotation(new Vector3(-direction.y, direction.x, 90), Vector3.forward);
-
         xAim = direction.x;
+
+
+        Vector3 gunTransition = Vector3.zero;
+
+        if (direction.magnitude < 0.1)
+        {
+
+            if (direction.x == 0)
+            {
+                gunTransition.x = GetComponent<BasicEnemyAI>().flipped ? 1 : -1;
+            }
+        }
+
+        direction = Vector3.Lerp(lastDirection, gunTransition + direction, fireDirectionLerpingFactor);
+
+        lastDirection = direction;
+        transform.GetChild(2).transform.rotation = Quaternion.LookRotation(new Vector3(-direction.y, direction.x, 90), Vector3.forward);
+
     }
 
     private void OnDestroy()

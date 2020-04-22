@@ -4610,11 +4610,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2462951506704342495}
-  - component: {fileID: 2462951506704342482}
   - component: {fileID: 2462951506704342494}
   - component: {fileID: 2462951506704342485}
   - component: {fileID: 2462951506704342484}
   - component: {fileID: 2462951506704342483}
+  - component: {fileID: 830954729}
   m_Layer: 9
   m_Name: suicide
   m_TagString: Enemy
@@ -4643,19 +4643,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2462951506704342482
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2462951506704342486}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.94095194, y: 1.7044406, z: 1}
-  m_Center: {x: -0.084621966, y: 0.3522203, z: 0}
 --- !u!54 &2462951506704342494
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4690,8 +4677,8 @@ MonoBehaviour:
   Backtimer: 0
   AIResetTimer: 0
   Path: {fileID: 0}
-  possessedColor: {r: 0, g: 0, b: 0, a: 0}
-  disabledColor: {r: 0, g: 0, b: 0, a: 0}
+  possessedColor: {r: 0.004360993, g: 0.26336032, b: 0.9245283, a: 0}
+  disabledColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0}
 --- !u!114 &2462951506704342484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4712,8 +4699,8 @@ MonoBehaviour:
   damage: 10
   nbJump: 1
   jumpForce: 10
-  airControlFactor: 0.098
-  accelerationFactor: 0.064
+  airControlFactor: 0.05
+  accelerationFactor: 0.5
   grounded: 0
   touchingWall: 0
   Roofed: 0
@@ -4748,7 +4735,21 @@ MonoBehaviour:
   triQuartLifeParticle: {fileID: 6896310260508480063}
   halfLifeParticle: {fileID: 5980215103107650041}
   quartLifeParticle: {fileID: 0}
-  shootParticle: {fileID: 0}
+  shootingParticle: {fileID: 0}
+--- !u!136 &830954729
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462951506704342486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.0871735
+  m_Height: 2.4280777
+  m_Direction: 1
+  m_Center: {x: -0.12608337, y: 0.34867477, z: -0.10027838}
 --- !u!1 &2641082587728194357
 GameObject:
   m_ObjectHideFlags: 0
@@ -46250,11 +46251,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2462951506704342495}
     m_Modifications:
-    - target: {fileID: 9060042659050852064, guid: 71a3a68473b95ee4d9780b0054ada28f,
-        type: 3}
-      propertyPath: m_Name
-      value: BigExplosion
-      objectReference: {fileID: 0}
     - target: {fileID: 9058938721791350636, guid: 71a3a68473b95ee4d9780b0054ada28f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46309,6 +46305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060042659050852064, guid: 71a3a68473b95ee4d9780b0054ada28f,
+        type: 3}
+      propertyPath: m_Name
+      value: BigExplosion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71a3a68473b95ee4d9780b0054ada28f, type: 3}

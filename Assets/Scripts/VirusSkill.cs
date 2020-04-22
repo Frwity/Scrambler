@@ -13,13 +13,14 @@ public class VirusSkill : EntitySkill
     [SerializeField] private bool canWallJump = false;
 
     [HideInInspector] public int jumped = 0;
-    private int wallDir;
-    private bool falling;
-    private bool grounded;
-    private bool touchingWall;
-    private Rigidbody rb;
+    private int wallDir = 0;
+    private bool falling = false;
+    private bool grounded = false;
+    private bool touchingWall = false;
+    private Rigidbody rb = null;
 
-    private Cinemachine.CinemachineVirtualCamera camera;
+    //private Cinemachine.CinemachineVirtualCamera camera;
+    
     void Start()
     {
         grounded = false;
@@ -30,11 +31,10 @@ public class VirusSkill : EntitySkill
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    /*void Update()
     {
         camera = GameObject.FindGameObjectWithTag("VirtualCam").GetComponent<Cinemachine.CinemachineVirtualCamera>();
-
-    }
+    }*/
 
     private void FixedUpdate()
     {

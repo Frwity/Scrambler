@@ -6,14 +6,14 @@ public class Buckshot : BulletSharedClass
 {
     [SerializeField] float coneOfFire = 40; // in degrees, positive half for upper, negative half for lower.
 
-    float lowerAngle;
-    float upperAngle;
+    float lowerAngle = 0f;
+    float upperAngle = 0f;
 
     [SerializeField] short numberOfBullets = 5;
 
-    float anglesInBetween;
+    float anglesInBetween = 0f;
 
-    [SerializeField] GameObject buckshotPellet;
+    [SerializeField] GameObject buckshotPellet = null;
 
 
     // Start is called before the first frame update

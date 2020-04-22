@@ -8,7 +8,7 @@ public abstract class BulletSharedClass : MonoBehaviour
     [SerializeField] protected int damage;
 
     [SerializeField] bool hasLimitedTime = true;
-    [SerializeField] float lifeTime = 10f;
+    [SerializeField] float bulletLifeTime = 10f;
 
     [HideInInspector] public Vector3 direction;
 
@@ -18,16 +18,16 @@ public abstract class BulletSharedClass : MonoBehaviour
     {
         if (hasLimitedTime)
         {
-            lifeTime -= Time.deltaTime;
+            bulletLifeTime -= Time.deltaTime;
 
-            if (lifeTime <= 0)
+            if (bulletLifeTime <= 0)
                 Destroy(gameObject);
         }
     }
 
     public virtual void DoBehavior(GameObject hitObject)
     {
-        if ((hitObject != shooter) && !(shooter.CompareTag("Enemy") && hitObject.CompareTag("Enemy")) )
+        if ((hitObject != shooter) && !(shooter.CompareTag("Enemy") && hitObject.CompareTag("Enemy")) && hitObject.GetComponent<Entity>())
         {
             hitObject.GetComponent<Entity>().InflictDamage(damage);
 

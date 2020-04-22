@@ -11,8 +11,8 @@ public class EntityAI : Activable
 
 public abstract class EntitySkill : MonoBehaviour
 {
-    [SerializeField] private float interactionRange;
-    public Vector2 shootOriginPos;
+    [SerializeField] private float interactionRange = 0f;
+    public Vector2 shootOriginPos = Vector2.zero;
 
     public abstract bool Jump();
     public abstract bool MoveLeft(float moveSpeed);
@@ -38,6 +38,7 @@ public abstract class EntitySkill : MonoBehaviour
         }
         return false;
     }
+
     public bool InteractWithFG()
     {
         Physics.Raycast(transform.position, Vector3.back, out RaycastHit hitInfo, interactionRange);
@@ -92,10 +93,10 @@ public class Entity : MonoBehaviour
     Renderer[] renderers;
     Color[] originalColors;
 
-    [SerializeField] ParticleSystem triQuartLifeParticle;
-    [SerializeField] ParticleSystem halfLifeParticle;
-    [SerializeField] ParticleSystem quartLifeParticle;
-    [SerializeField] ParticleSystem shootingParticle;
+    [SerializeField] ParticleSystem triQuartLifeParticle    = null;
+    [SerializeField] ParticleSystem halfLifeParticle        = null;
+    [SerializeField] ParticleSystem quartLifeParticle       = null;
+    [SerializeField] ParticleSystem shootingParticle        = null;
 
 
     void Start()
