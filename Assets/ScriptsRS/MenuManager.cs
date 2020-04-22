@@ -84,6 +84,14 @@ public class MenuManager : MonoBehaviour
                 {
                     butList[j].onClick.AddListener(onBackButton);
                 }
+                else if (butList[j].name == "Next Button (1)")
+                {
+                    butList[j].onClick.AddListener(onPrevButton);
+                }
+                else if (butList[j].name == "Next Button")
+                {
+                    butList[j].onClick.AddListener(onNextButton);
+                }
                 else if (butList[j].name == "Level 1")
                 {
                     butList[j].onClick.AddListener(launchLevel1);
@@ -255,6 +263,14 @@ public class MenuManager : MonoBehaviour
     public void onControlsButton()
     {
         mainAnim.SetBool("PressedControls", true);
+    }
+    public void onPrevButton()
+    {
+        mainAnim.SetBool("Previous", true);
+    }
+    public void onNextButton()
+    {
+        mainAnim.SetBool("Next", true);
     }
     public void onCreditsButton()
     {

@@ -24,8 +24,29 @@ public class pointer : MonoBehaviour
         Vector2 posi = new Vector2(tr.position.x, tr.position.y);
         
         Vector2 res = new Vector2(Screen.width, Screen.height);
-        float t = res.x / res.y;
-        pos = (posi + (tr.rect.center)) ;
+        Vector2 test = (posi + (tr.rect.center));
+        if (test.x > res.x)
+        {
+            test.x = res.x - tr.rect.center.x -1;
+            transform.position = test;
+        }
+        else if (test.x < 0)
+        {
+            test.x = 0 + tr.rect.center.x +1;
+            transform.position = test;
+        }
+        if (test.y > res.y)
+        {
+            test.y = res.y - tr.rect.center.y -1;
+            transform.position = test;
+        }
+        else if (test.y < 0)
+        {
+            test.y = 0 + tr.rect.center.y +1;
+            transform.position = test;
+        }
+        
+        pos = test ;
         //Debug.Log(pos);
     }
 }
