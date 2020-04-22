@@ -63,6 +63,8 @@ public class Bertha : MonoBehaviour
             return;
         }
 
+        transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+
         GameObject bu = Instantiate(bullet, transform.position + transform.up * 10, Quaternion.identity);
         bu.transform.localScale += Vector3.one;
         

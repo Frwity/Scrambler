@@ -244,7 +244,7 @@ public class SuicideSkill : EntitySkill
                 }
             }
 
-            GetComponentInChildren<LifetimeStaticParticle>().ActivateParticle();
+            ParticleLauncher.ActivateParticleWithName(gameObject, null, "BigExplosion");
 
             PlayerControl pl = gameObject.GetComponentInParent<PlayerControl>();
             if (!pl)
