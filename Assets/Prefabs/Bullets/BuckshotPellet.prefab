@@ -124,7 +124,7 @@ MonoBehaviour:
   speed: 13
   damage: 2
   hasLimitedTime: 1
-  lifeTime: 0.7
+  bulletLifeTime: 0.7
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
   speedImprecision: 0.2
