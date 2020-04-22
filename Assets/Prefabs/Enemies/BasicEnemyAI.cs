@@ -52,7 +52,7 @@ public class BasicEnemyAI : EntityAI
 
         if (flipped)
         {
-            LookAround();
+            LookRight();
         }
     }
 

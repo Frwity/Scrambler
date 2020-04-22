@@ -37,14 +37,10 @@ public class CustomInputModule : PointerInputModule
         
        
         pointerEventData.position =GetComponent<pointer>().pos;
-        Debug.Log(pointerEventData.position);
+
         
         pointerEventData.delta = Vector2.zero;
-        if (pointerEventData.eligibleForClick)
-        {
-            
-            Debug.Log("me");
-        }
+        
     }
      
      private void HandleRaycast()
