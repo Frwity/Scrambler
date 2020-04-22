@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class SuicideSkill : EntitySkill
 {
-    [SerializeField] public float speed;
-    [SerializeField] private float chargeTime;
-    [SerializeField] public float exploRay;
-    [SerializeField] private int damage;
-    [SerializeField] private int nbJump;
-    [SerializeField] private float jumpForce;
-    [SerializeField] [Range(0, 1)] private float airControlFactor;
-    [SerializeField] [Range(0, 1)] private float accelerationFactor;
+    [SerializeField] public float speed = 0f;
+    [SerializeField] private float chargeTime = 0f;
+    [SerializeField] public float exploRay = 0f;
+    //[SerializeField] private int damage = 0;
+    [SerializeField] private int nbJump = 0;
+    [SerializeField] private float jumpForce = 0f;
+    [SerializeField] [Range(0, 1)] private float airControlFactor = 0f;
+    [SerializeField] [Range(0, 1)] private float accelerationFactor = 0f;
+
     enum Direction
     {
         RIGHT = 1,
@@ -20,18 +21,18 @@ public class SuicideSkill : EntitySkill
     };
 
     
-    private int jumped;
-    private int wallDir;
-    private bool falling;
-    public bool grounded;
-    public bool touchingWall;
-    public bool Roofed;
-    private Rigidbody rb;
+    private int jumped = 0;
+    private int wallDir = 0;
+    private bool falling = false;
+    public bool grounded = false;
+    public bool touchingWall = false;
+    public bool Roofed = false;
+    
+    private Rigidbody rb = null;
     private float timer = 0;
     private Direction direction = Direction.RIGHT;
-    private GameObject player;
-
-    private suicideIA ia;
+    private suicideIA ia = null;
+    
     //Start is called before the first frame update
     void Start()
     {
@@ -42,7 +43,6 @@ public class SuicideSkill : EntitySkill
         jumped = 0;
         wallDir = 0;
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindWithTag("Player");
         ia = GetComponent<suicideIA>();
     }
 

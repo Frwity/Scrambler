@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    [SerializeField] private GameObject door;
-    [SerializeField] private Activable[] spawners;
-    [HideInInspector] public Vector3 respawnPoint;
+    [SerializeField] private GameObject door = null;
+    [SerializeField] private Activable[] spawners = null;
+    [HideInInspector] public Vector3 respawnPoint = Vector3.zero;
 
-    private GameObject[] childCopyList;
-    private GameObject[] childList;
-    private GameObject doorCopy;
-    private int nbChild;
+    private GameObject[] childCopyList = null;
+    private GameObject[] childList = null;
+    private GameObject doorCopy = null;
+    private int nbChild = 0;
     private int resetMax = 2;
 
     void Start()

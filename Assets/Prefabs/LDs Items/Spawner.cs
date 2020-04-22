@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Spawner : Activable
 {
-    [SerializeField]
-    private GameObject Entity;
-    [SerializeField]
-    private float spawnRate;
-    private float lastTime;
-    [SerializeField]
-    private float remainingSpawn;
+    [SerializeField] private GameObject Entity = null;
+    [SerializeField] private float spawnRate = 0f;
+    
+    private float lastTime = 0f;
+    
+    [SerializeField] private float remainingSpawn = 0f;
+    
     // Start is called before the first frame update
     void Start()
     {

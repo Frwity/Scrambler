@@ -8,19 +8,7 @@ public class FireBullet : CurvedBulletSharedClass
     
     [SerializeField] float fireLifeTime = 2f;
 
-    [SerializeField] GameObject fireZone;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //GetComponent<Rigidbody>().AddForce(velocity.normalized * speed, ForceMode.Impulse);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] GameObject fireZone = null;
 
     protected override void OnCollisionEnter(Collision collision)
     {
@@ -32,8 +20,6 @@ public class FireBullet : CurvedBulletSharedClass
         {
             Vector3 roc = collision.transform.rotation.eulerAngles; // roc = Rotation Of Collision
             SpreadFire(new Vector3(roc.x, roc.y, roc.z + (collision.transform.rotation.eulerAngles.z == 0 ? 90 : 0)));
-
-            //Debug.Log(collision.transform.rotation.eulerAngles.z);
         }
     }
 
@@ -47,8 +33,6 @@ public class FireBullet : CurvedBulletSharedClass
 
         fire.GetComponent<DeadZone>().lifeTime = fireLifeTime;
         fire.GetComponent<Activable>().isActive = true;
-
-        //Debug.Log(rotation);
 
         Destroy(gameObject);
     }

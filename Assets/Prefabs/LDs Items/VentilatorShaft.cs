@@ -4,19 +4,7 @@ using UnityEngine;
 
 public class VentilatorShaft : Activable
 {
-    [SerializeField] private float speed;
-
-
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
-    }
+    [SerializeField] private float speed = 0f;
 
     private void OnTriggerStay(Collider other)
     {

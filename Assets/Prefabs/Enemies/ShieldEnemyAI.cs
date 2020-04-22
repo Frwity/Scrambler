@@ -8,7 +8,7 @@ public class ShieldEnemyAI : EntityAI
     [SerializeField] private float lostTimer = 0.0f;
     [SerializeField] private float AIResetTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
-    [SerializeField] private Road Path;
+    [SerializeField] private Road Path = null;
 
     void Start()
     {

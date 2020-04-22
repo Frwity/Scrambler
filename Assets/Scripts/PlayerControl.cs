@@ -12,24 +12,24 @@ public class PlayerControl : MonoBehaviour
                            Mathf.Round(vector.y * multiplier) / multiplier);
     }
 
-    [SerializeField] public GameObject virus;
-    [HideInInspector] public RoomManager actualRoom;
+    [SerializeField] public GameObject virus = null;
+    [HideInInspector] public RoomManager actualRoom = null;
 
-    private Cinemachine.CinemachineVirtualCamera virtualCamera;
-    private GameObject tTransform;
+    private Cinemachine.CinemachineVirtualCamera virtualCamera = null;
+    private GameObject tTransform = null;
 
-    [HideInInspector] public Entity entity;
-    [HideInInspector] public bool isInVirus;
-    private GameObject collidingObj;
+    [HideInInspector] public Entity entity = null;
+    [HideInInspector] public bool isInVirus = false;
+    private GameObject collidingObj = null;
 
     [SerializeField] bool autoSetDefaultSpawnPt = false;
-    [SerializeField] private Vector3 defaultSpawnPoint;
+    [SerializeField] private Vector3 defaultSpawnPoint = Vector3.zero;
 
-    [SerializeField] private float controlCD;
-    [HideInInspector] public float lastControl;
-    [HideInInspector] public short lastDirection;
-    private Vector3 aimDireciton;
-    private bool jumped;
+    [SerializeField] private float controlCD = 0f;
+    [HideInInspector] public float lastControl = 0f;
+    [HideInInspector] public short lastDirection = 0;
+    private Vector3 aimDireciton = Vector3.zero;
+    private bool jumped = false;
 
     void Start()
     {

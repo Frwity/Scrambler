@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    [SerializeField] private GameObject conjointNode;
-    [SerializeField] private float teleportationSpeed;
-    private GameObject toTeleport;
-    private Vector3 teleportPos;
-    private Vector3 direction;
-    bool teleporting;
+    [SerializeField] private GameObject conjointNode = null;
+    [SerializeField] private float teleportationSpeed = 0f;
+    private GameObject toTeleport = null;
+    private Vector3 teleportPos = Vector3.zero;
+    private Vector3 direction = Vector3.zero;
+    bool teleporting = false;
 
     void Start()
     {

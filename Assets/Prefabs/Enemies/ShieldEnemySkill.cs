@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class ShieldEnemySkill : EntitySkill
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 0f;
 
-    [SerializeField] private int nbJump;
-    [SerializeField] private float jumpForce;
-    private int jumped;
-    private bool falling;
-    private Rigidbody rb;
+    [SerializeField] private int nbJump = 0;
+    [SerializeField] private float jumpForce = 0f;
+    private int jumped = 0;
+    private bool falling = false;
+    private Rigidbody rb = null;
 
-    [SerializeField] private float slamCD;
-    [SerializeField] private int slamDamage;
-    private float lastSlam;
+    [SerializeField] private float slamCD = 0f;
+    [SerializeField] private int slamDamage = 0;
+    private float lastSlam = 0;
 
-    [HideInInspector] public GameObject shieldSlamCollider;
+    [HideInInspector] public GameObject shieldSlamCollider = null;
 
-    private GameObject shield;
+    private GameObject shield = null;
 
     void Start()
     {

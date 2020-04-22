@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PressurePlate : Activable
 {
-    [SerializeField] private GameObject toTrigger;
+    [SerializeField] private GameObject toTrigger = null;
 
     private Activable activable;
     void Start()
