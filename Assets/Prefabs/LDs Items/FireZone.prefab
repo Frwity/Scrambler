@@ -9475,9 +9475,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  damage: 1
-  timeToTrigger: 0
-  timeToReTrigger: 0
+  damage: 5
+  timeToTrigger: 0.1
+  timeToReTrigger: 0.1
   lifeTime: -1
 --- !u!1001 &2986653959825485417
 PrefabInstance:
