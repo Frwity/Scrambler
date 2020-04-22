@@ -32,6 +32,7 @@ TagManager:
   - LV3
   - LV4
   - LV5
+  - EndScreen
   layers:
   - Default
   - TransparentFX
