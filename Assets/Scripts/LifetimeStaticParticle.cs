@@ -64,5 +64,21 @@ public class LifetimeStaticParticle : MonoBehaviour
         lifetime = GetComponent<ParticleSystem>().main.duration;
         GetComponent<ParticleSystem>().Play();
         transform.parent = null;
+        if (transform.GetChild(0).GetComponent<AudioSource>())
+            transform.GetChild(0).GetComponent<AudioSource>().Play();
+    }
+
+    private void OnDestroy()
+    {
+        if (transform.GetChild(0).GetComponent<AudioSource>())
+        {
+            transform.GetChild(0).GetComponent<AudioSource>().Stop();
+            transform.GetChild(0).GetComponent<AudioSource>().mute = true;
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        DestroyImmediate(gameObject);
     }
 }

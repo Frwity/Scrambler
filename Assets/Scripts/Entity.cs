@@ -97,7 +97,9 @@ public class Entity : MonoBehaviour
     [SerializeField] ParticleSystem halfLifeParticle        = null;
     [SerializeField] ParticleSystem quartLifeParticle       = null;
     [SerializeField] ParticleSystem shootingParticle        = null;
-
+    [SerializeField] AudioSource shootingSound              = null;
+    [SerializeField] AudioSource hitSound                   = null;
+    [SerializeField] AudioSource jumpingSound               = null;
 
     void Start()
     {
@@ -142,7 +144,13 @@ public class Entity : MonoBehaviour
 
     public bool Jump()
     {
-        return entitySkill.Jump();
+        if (entitySkill.Jump())
+        {
+            if (jumpingSound)
+                jumpingSound.Play();
+            return true;
+        }
+        return false;
     }
 
     public bool MoveLeft(float moveSpeed)
@@ -162,6 +170,7 @@ public class Entity : MonoBehaviour
             if (shootingParticle)
             {
                 ParticleLauncher.ActivateParticleWithNewParent(shootingParticle.GetComponent<LifetimeStaticParticle>(), transform);
+                shootingSound.Play();
             }
             return true;
         }
@@ -211,6 +220,8 @@ public class Entity : MonoBehaviour
     }
     public void InflictDamage(int damage)
     {
+        if (hitSound)
+            hitSound.Play();
         life -= damage;
         if (life <= maxLife / 4 * 3)
         {
@@ -231,15 +242,21 @@ public class Entity : MonoBehaviour
         if (gameObject.GetComponent<VirusSkill>())
         {
             if (life <= 2)
-            {
-                ParticleSystem.MainModule test = gameObject.transform.GetChild(1).GetComponent<ParticleSystem>().main;
-                test.startColor = new Color(243, 126, 0, 0.04f);
+            {        
+                gameObject.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
+                gameObject.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
 
                 if (life <= 1)
                 {
-                    test.startColor = new Color(255, 0, 0, 0.04f);
+                    gameObject.transform.GetChild(1).GetComponent<ParticleSystem>().Stop();
+                    gameObject.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                 }
             }
+        }
+
+        if (life <= 0)
+        {
+            ParticleLauncher.ActivateParticleWithName(gameObject, null, "Explosion");
         }
     }
 

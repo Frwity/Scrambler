@@ -83,7 +83,7 @@ MonoBehaviour:
   lifeTime: 10
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
-  explosionRange: 10
+  explosionRange: 7
 --- !u!1001 &5485765595536765054
 PrefabInstance:
   m_ObjectHideFlags: 0

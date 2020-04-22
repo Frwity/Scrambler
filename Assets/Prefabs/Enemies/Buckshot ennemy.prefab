@@ -19137,7 +19137,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: daa594160836db84a9d8de1837df5e67, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -38149,7 +38149,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ac40edbf1386d9f48a463778c64c8a61, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.066
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -48203,14 +48203,12 @@ MonoBehaviour:
   isActive: 1
   upperFireRange: 20
   lowerFireRange: 5
-  detectionRange: 25
   distanceToKeepAwayFromPlayer: 5
   maxReactionTime: 1.5
   flipped: 0
   lostTimer: 1
   HasTurnedOnce: 0
   Backtimer: 20
-  lostSpeed: 2
   AIResetTimer: 0
   Path: {fileID: 0}
 --- !u!114 &4122962322023816584
@@ -48272,6 +48270,9 @@ MonoBehaviour:
   halfLifeParticle: {fileID: 6486927111971313869}
   quartLifeParticle: {fileID: 337850281739437232}
   shootingParticle: {fileID: 6583917262167588189}
+  shootingSound: {fileID: 2367943127226703998}
+  hitSound: {fileID: 4318996975840841212}
+  jumpingSound: {fileID: 2656123699130908854}
 --- !u!114 &582016622118467792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48385,7 +48386,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ebb2b01bdde322f439303e87047dba4c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.066
   m_Pitch: 1
   Loop: 0
   Mute: 0

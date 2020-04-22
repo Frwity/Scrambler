@@ -23,6 +23,7 @@ public class MenuManager : MonoBehaviour
     private bool isPause = false;
     private bool loadedMain = false;
     private bool hasToGoToLevelMenu = false;
+    private bool LoadedPauseButton = false;
     private AsyncOperation op;
     private Scene pause;
     private Scene end;
@@ -56,8 +57,26 @@ public class MenuManager : MonoBehaviour
         {
             EndMenuLoaded = false;
             levelEnded = false;
-            GameObject obj = GameObject.FindGameObjectWithTag("Canvas");
-            cursor = obj.GetComponentInChildren<pointer>();
+            GameObject obj = null;
+            if (mainAnim == null)
+            {
+                GameObject[] objs = SceneManager.GetActiveScene().GetRootGameObjects();
+                
+                for (int i = 0; i < objs.Length; i++)
+                {
+                    if (objs[i].name == "Canvas")
+                    {
+                        obj = objs[i];
+                        break;
+                    }
+                }
+            }
+
+            if (obj == null)
+            {
+                Debug.LogError("Canvas not found");
+                return;
+            }
             mainAnim = obj.GetComponent<Animator>();
             if (hasToGoToLevelMenu)
             {
@@ -118,7 +137,7 @@ public class MenuManager : MonoBehaviour
                 }
                         
             }
-            Debug.Log(butList.Length);
+            
             loadedMain = true;
             
         }
@@ -126,9 +145,7 @@ public class MenuManager : MonoBehaviour
         if (loadedMain && type == LoadedType.TYPE_MAIN)
         {
            
-            
-            Debug.Log("Main already loaded");
-            return;
+           return;
         }
         if (Input.GetAxisRaw("start") == 1 && !isPause && type == LoadedType.TYPE_LEVEL && !levelEnded)
         {
@@ -146,17 +163,18 @@ public class MenuManager : MonoBehaviour
         {
             OnContinueButton();
         }
-        else if (pause.isLoaded && isPause)
+        else if (pause.isLoaded && isPause && !LoadedPauseButton)
         {
             GameObject[] glist = pause.GetRootGameObjects();
 
             for (int i = 0; i < glist.Length; i++)
             {
                 GameObject obj = glist[i];
-      
+                
                 if (obj.CompareTag("Canvas"))
                 {
                     Button[] butList = obj.GetComponentsInChildren<Button>();
+                   
                     for (int j = 0; j < butList.Length; j++)
                     {
                         if (butList[j].name == "Continue" || butList[j].name == "Back")
@@ -177,7 +195,9 @@ public class MenuManager : MonoBehaviour
                             butList[j].onClick.AddListener(OnMenuButton);
                         }
 
+                        LoadedPauseButton = true;
                     }
+                    break;
                 }
             }
         }
@@ -227,17 +247,20 @@ public class MenuManager : MonoBehaviour
     }
     public void OnContinueButton()
     {
+        
         if(!isPause)
             return;
-        Debug.Log("vvvvvv");
+        
+        
         isPause = false;
         SceneManager.UnloadSceneAsync(pause);
         Time.timeScale = 1;
+        LoadedPauseButton = false;
     }
 
     public void OnRetryButton()
     {
-        Debug.Log	("replay");
+        
         Scene sceneToUnload = pause	;
         if (levelEnded)
         {
@@ -248,6 +271,8 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.UnloadSceneAsync(sceneToUnload);
         isPause = false;
+        LoadedPauseButton = false;
+
         string name = currentScene.name;
         SceneManager.UnloadSceneAsync(name);
         if(op == null)
@@ -279,7 +304,8 @@ public class MenuManager : MonoBehaviour
             Time.timeScale = 1;
             loadedMain = false;
             isPause = false;
-            
+            LoadedPauseButton = false;
+
             hasToGoToLevelMenu = true;
         }
     }
@@ -307,6 +333,8 @@ public class MenuManager : MonoBehaviour
             isPause = false;
             type = LoadedType.TYPE_MAIN	;
             hasToGoToLevelMenu = false;
+            LoadedPauseButton = false;
+
         }
     }
     public void OnControlsButton()

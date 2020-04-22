@@ -168,7 +168,7 @@ public class suicideIA : EntityAI
             else if (hasPlayerGoneInBack && currentBackTimer < Backtimer)
             {
                 currentBackTimer += Time.smoothDeltaTime;
-                Debug.Log("HERE");
+               
                 if (direction == Direction.RIGHT)
                 {
                     entity.MoveLeft(1);

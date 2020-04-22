@@ -209,6 +209,51 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Scale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: NoiseModule.frequency
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 351517084142716476, guid: 1708f41c1f70a4d48934956422215da0,
+        type: 3}
+      propertyPath: NoiseModule.scrollSpeed.scalar
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1708f41c1f70a4d48934956422215da0, type: 3}
 --- !u!4 &3973634348139165358 stripped
