@@ -26,8 +26,11 @@ public class MenuManager : MonoBehaviour
     private bool hasToGoToLevelMenu = false;
     private AsyncOperation op;
     private Scene pause;
+    private Scene end;
     private Scene currentScene;
     private Animator mainAnim;
+    [HideInInspector]public bool levelEnded = false;
+    private bool EndMenuLoaded = false;
     private pointer cursor;
     private loadedType type = loadedType.TYPE_MAIN;
     void Start()
@@ -51,7 +54,8 @@ public class MenuManager : MonoBehaviour
         }
         if (type == loadedType.TYPE_MAIN && !loadedMain && SceneManager.GetSceneByBuildIndex(1).isLoaded)
         {
-            
+            EndMenuLoaded = false;
+            levelEnded = false;
             GameObject obj = GameObject.FindGameObjectWithTag("Canvas");
             cursor = obj.GetComponentInChildren<pointer>();
             mainAnim = obj.GetComponent<Animator>();
@@ -126,7 +130,7 @@ public class MenuManager : MonoBehaviour
             Debug.Log("Main already loaded");
             return;
         }
-        if (Input.GetAxisRaw("start") == 1 && !isPause && type == loadedType.TYPE_LEVEL)
+        if (Input.GetAxisRaw("start") == 1 && !isPause && type == loadedType.TYPE_LEVEL && !levelEnded)
         {
             isPause = true;
             LoadSceneParameters p = new LoadSceneParameters();
@@ -174,9 +178,47 @@ public class MenuManager : MonoBehaviour
                     }
                 }
             }
-
-           
             loadedCam = true;
+        }
+
+        if (levelEnded && !EndMenuLoaded)
+        {
+            EndMenuLoaded = true;
+            LoadSceneParameters p = new LoadSceneParameters();
+            p.loadSceneMode = LoadSceneMode.Additive;
+            
+            Time.timeScale = 0;
+            end = SceneManager.LoadScene("Scenes/End", p);
+        }
+        else if (EndMenuLoaded && end.isLoaded)
+        {
+            GameObject[] glist = end.GetRootGameObjects();
+            bool o = false;
+            for (int i = 0; i < glist.Length; i++)
+            {
+                GameObject obj = glist[i];
+      
+                if (obj.CompareTag("Canvas"))
+                {
+                    Button[] butList = obj.GetComponentsInChildren<Button>();
+                    for (int j = 0; j < butList.Length; j++)
+                    {
+                        if (butList[j].name == "Replay")
+                        {
+                            butList[j].onClick.AddListener(onRetryButton);
+                        }
+                        else if (butList[j].name == "Levels")
+                        {
+                            butList[j].onClick.AddListener(onLevelsButton);
+                        }
+                        else if (butList[j].name == "Menu")
+                        {
+                            butList[j].onClick.AddListener(onMenuButton);
+                        }
+
+                    }
+                }
+            }
         }
        
     }
@@ -194,9 +236,16 @@ public class MenuManager : MonoBehaviour
 
     public void onRetryButton()
     {
-        
+        Debug.Log	("replay");
+        Scene sceneToUnload = pause	;
+        if (levelEnded)
+        {
+            levelEnded = false;
+            EndMenuLoaded = false;
+            sceneToUnload = end;
+        }
         Time.timeScale = 1;
-        SceneManager.UnloadSceneAsync(pause);
+        SceneManager.UnloadSceneAsync(sceneToUnload);
         isPause = false;
         loadedCam = false;
         string name = currentScene.name;

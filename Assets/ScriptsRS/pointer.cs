@@ -19,7 +19,7 @@ public class pointer : MonoBehaviour
     void Update()
     {
         Vector2 dir = new Vector2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical"));
-        transform.Translate(dir * (speed * Time.smoothDeltaTime));
+        transform.Translate(dir * (speed * Time.unscaledDeltaTime));
         RectTransform tr = GetComponent<RectTransform>();
         Vector2 posi = new Vector2(tr.position.x, tr.position.y);
         
@@ -47,6 +47,6 @@ public class pointer : MonoBehaviour
         }
         
         pos = test ;
-        //Debug.Log(pos);
+        
     }
 }
