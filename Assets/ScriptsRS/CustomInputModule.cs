@@ -132,7 +132,7 @@ public class CustomInputModule : PointerInputModule
             // PointerUp notification
             if (released)
             {
-                // Debug.Log("Executing pressup on: " + pointer.pointerPress);
+               
                 ExecuteEvents.Execute(pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerUpHandler);
  
                 // see if we mouse up on the same element that we clicked on...
