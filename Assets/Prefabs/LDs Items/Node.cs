@@ -51,5 +51,6 @@ public class Node : MonoBehaviour
         toTeleport.GetComponent<Rigidbody>().useGravity = false;
         toTeleport.GetComponent<Rigidbody>().isKinematic = true;
         toTeleport.GetComponent<Collider>().enabled = false;
+        toTeleport.GetComponent<VirusSkill>().jumped++;
     }
 }
