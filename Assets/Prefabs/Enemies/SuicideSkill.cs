@@ -257,7 +257,7 @@ public class SuicideSkill : EntitySkill
 
             pl.isInVirus = true;
             
-            Destroy(pl.transform.GetChild(0).gameObject);
+            Destroy(pl.transform.GetChild(4).gameObject);
             return true;
         }
         return false;
