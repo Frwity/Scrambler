@@ -15,6 +15,8 @@ public class FireBullet : CurvedBulletSharedClass
         if (collision.gameObject.CompareTag("Player"))
         {
             DoBehavior(collision.gameObject);
+
+            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Ground"))
         {
