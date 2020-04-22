@@ -60,7 +60,7 @@ public class TankIA : EntityAI
                 ts.changeRotation();
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
-            //Debug.Log(ts.rangePoint);
+           
             if ((entity.lastPlayerPosKnown.x) < (transform.position.x + ((int)direction * ts.rangePoint) - 0.15))
             {
                 if (direction == Direction.RIGHT)

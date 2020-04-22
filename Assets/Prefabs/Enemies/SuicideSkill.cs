@@ -136,8 +136,7 @@ public class SuicideSkill : EntitySkill
             Vector3 f = new Vector3(0, (speed) * wallDir * moveSpeed, 0);
             Vector3 v = (f / rb.mass) * Time.smoothDeltaTime;
             transform.Translate(v);
-            //Debug.Log($"walldir is {wallDir}");
-            //Debug.Log($"movespeed is {moveSpeed}");
+            
             
         }
         else if (Roofed)
@@ -156,7 +155,7 @@ public class SuicideSkill : EntitySkill
             Vector3 f = new Vector3((speed)* moveSpeed* 0.1f* -wallDir *i ,-speed*wallDir*0.1f, 0);
             Vector3 v = (f / rb.mass) * Time.fixedDeltaTime;
             transform.Translate(v);
-            //Debug.Log(f);
+         
         }
         else if (grounded)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor, rb.velocity.y, rb.velocity.z);
@@ -184,7 +183,7 @@ public class SuicideSkill : EntitySkill
             float xy = -(2*speed) * moveSpeed * wallDir * accelerationFactor * Time.smoothDeltaTime;
             
             transform.Translate(new Vector3(xy,xy, 0));
-            Debug.Log("eeeee");
+            
         }
         else if (touchingWall)
         {
@@ -206,11 +205,11 @@ public class SuicideSkill : EntitySkill
         if (grounded && touchingWall)
         {
             moveSpeed = Mathf.Abs(moveSpeed);
-            Debug.Log("test");
+         
             Vector3 f = new Vector3((speed) * moveSpeed * 0.1f * -wallDir, speed*wallDir*0.1f, 0);
             Vector3 v = (f / rb.mass) * Time.smoothDeltaTime;
             transform.Translate(v);
-            Debug.Log(f);
+
         }
         else if (grounded)
             rb.velocity = new Vector3(rb.velocity.x + speed * moveSpeed * accelerationFactor , rb.velocity.y, rb.velocity.z);
@@ -222,7 +221,7 @@ public class SuicideSkill : EntitySkill
     public override bool Shoot(Vector3 direction)
     {
         timer += Time.smoothDeltaTime;
-        //Debug.Log($"timer : {timer} / {chargeTime}");
+        
         if (timer >= chargeTime)
         {
             Entity[] entitylist = FindObjectsOfType<Entity>();
@@ -240,7 +239,7 @@ public class SuicideSkill : EntitySkill
                 if (toEnt.magnitude < exploRay)
                 {
                     entity.InflictDamage(6);
-                    //Debug.LogWarning($"inflicted damage to {entity.name}");
+                  
                 }
             }
 
