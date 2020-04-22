@@ -5,9 +5,11 @@ using UnityEngine;
 public class SniperBullet : BulletSharedClass
 {
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         transform.localRotation = Quaternion.LookRotation(direction);
+
+        shooterTag = shooter.gameObject.tag;
     }
 
     // Update is called once per frame

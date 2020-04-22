@@ -7,10 +7,12 @@ public class BerthaBullet : BulletSharedClass
 {
     [SerializeField] private float explosionRange = 0f;
 
-    void Start()
+    protected override void Start()
     {
         transform.Rotate(-90, 0, 0);
         transform.Rotate(Quaternion.LookRotation(direction).eulerAngles);
+
+        shooterTag = shooter.gameObject.tag;
     }
 
     public override void DoBehavior(GameObject hitObject)

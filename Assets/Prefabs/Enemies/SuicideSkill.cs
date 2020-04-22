@@ -8,7 +8,7 @@ public class SuicideSkill : EntitySkill
     [SerializeField] public float speed = 0f;
     [SerializeField] private float chargeTime = 0f;
     [SerializeField] public float exploRay = 0f;
-    //[SerializeField] private int damage = 0;
+    [SerializeField] private int damage = 0;
     [SerializeField] private int nbJump = 0;
     [SerializeField] private float jumpForce = 0f;
     [SerializeField] [Range(0, 1)] private float airControlFactor = 0f;

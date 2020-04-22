@@ -43,6 +43,14 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.P))
+        {
+            AudioListener.volume += 0.01f;
+        }
+        if (Input.GetKey(KeyCode.M))
+        {
+            AudioListener.volume -= 0.01f;
+        }
         currentScene = SceneManager.GetActiveScene();
         if (Input.GetKeyDown(KeyCode.R))
         {

@@ -12,7 +12,7 @@ public class Lazer : BulletSharedClass
     GameObject firedLazer = null;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         if ( Physics.Raycast(transform.position, direction, out RaycastHit hit, range, LayerMask.GetMask("Entity")) )
         {
@@ -30,6 +30,8 @@ public class Lazer : BulletSharedClass
         {
             Destroy(gameObject);
         }
+
+        shooterTag = shooter.gameObject.tag;
     }
 
     // Update is called once per frame
