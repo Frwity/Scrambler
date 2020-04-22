@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BerthaBullet : BulletSharedClass
 {
-    [SerializeField] private float explosionRange;
+    [SerializeField] private float explosionRange = 0f;
 
     void Start()
     {
@@ -47,7 +47,7 @@ public class BerthaBullet : BulletSharedClass
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {

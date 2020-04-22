@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ExplosiveBarrel : Activable
 {
-    [SerializeField] private float explosionRange;
-    [SerializeField] private int damage;
+    [SerializeField] private float explosionRange = 0f;
+    [SerializeField] private int damage = 0;
 
     void Start()
     {

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class FlyingEnemyIA : EntityAI
 {
-    [SerializeField] private float fireCount;
-    private float nbFired;
-    private bool shooting;
+    [SerializeField] private float fireCount = 0f;
+    private float nbFired = 0f;
+    private bool shooting = false;
     private float currentLostTimer = 0.0f;
-    [SerializeField]private float lostTimer = 0.0f;
+    [SerializeField] private float lostTimer = 0.0f;
     
-    [SerializeField] private Road Path;
+    [SerializeField] private Road Path = null;
     [SerializeField] private float AIResetTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
+
     void Start()
     {
         nbFired = 0;

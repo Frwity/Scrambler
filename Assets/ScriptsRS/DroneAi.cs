@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class DroneAi : MonoBehaviour
 {
-        public bool isActive;
-    private Entity entity;
+    public bool isActive = false;
+    private Entity entity = null;
     
-    [SerializeField] private float fireCount;
-    private float nbFired;
-    private bool shooting;
-    private bool haveTarget;
+    [SerializeField] private float fireCount = 0f;
+    private float nbFired = 0f;
+    private bool shooting = false;
+
     private float currentLostTimer = 0.0f;
     [SerializeField]private float lostTimer = 0.0f;
     
-    [SerializeField] private Road Path;
-    private Vector3 targetPos;
+    [SerializeField] private Road Path = null;
+
     [SerializeField] private float AIResetTimer = 0.0f;
     private float currentAIResetTimer = 0.0f;
     void Start()
     {
         nbFired = 0;
         shooting = false;
-        haveTarget = false;
 
         entity = GetComponent<Entity>();
     }
@@ -103,16 +102,6 @@ public class DroneAi : MonoBehaviour
             {
                 Path.CurrentIndex++;
             }
-        }
-    }
-    
-
-   
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            haveTarget = false;
         }
     }
 }

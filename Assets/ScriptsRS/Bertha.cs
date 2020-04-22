@@ -6,17 +6,17 @@ using UnityEngine;
 #endif
 public class Bertha : MonoBehaviour
 {
-    [SerializeField] private float Cooldown;
-    [SerializeField] private float Imprecision;
-    [SerializeField] private float shootForce = 0.0f;
-    [SerializeField] private float damage;
-    [SerializeField] private GameObject DroneToSpawn;
-    public SpawnPointData spawnPoint;
-    private DroneSkill ds;
-    private DroneAi dai;
-    private Entity Drone;
-    [SerializeField] private GameObject bullet;
-    private float currCooldown = 0.0f;
+    [SerializeField] private float Cooldown = 0f;
+    //[SerializeField] private float Imprecision = 0f;
+    [SerializeField] private float shootForce = 0f;
+    //[SerializeField] private float damage = 0f;
+    [SerializeField] private GameObject DroneToSpawn = null;
+    public SpawnPointData spawnPoint = null;
+    private DroneSkill ds = null;
+    private DroneAi dai = null;
+    private Entity Drone = null;
+    [SerializeField] private GameObject bullet = null;
+    private float currCooldown = 0f;
     
     // Start is called before the first frame update
     void Start()

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class DeadZone : Activable
 {
-    [SerializeField] private int damage;
-    [SerializeField] private float timeToTrigger;
-    [SerializeField] private float timeToReTrigger;
-    private float actualTriggeringTime;
+    [SerializeField] private int damage = 0;
+    [SerializeField] private float timeToTrigger = 0f;
+    [SerializeField] private float timeToReTrigger = 0f;
+    private float actualTriggeringTime = 0f;
 
-    private Entity entity;
+    private Entity entity = null;
 
-    private bool isTriggering;
-    private float timer;
+    private bool isTriggering = false;
+    private float timer = 0f;
 
     public float lifeTime = -1f; // May be modified externally at creation / Set at 0 or bellow and the time drain will not be triggered (infinite life time)
 
