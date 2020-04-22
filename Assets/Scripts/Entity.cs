@@ -118,12 +118,16 @@ public class Entity : MonoBehaviour
             renderers = GetComponentsInChildren<Renderer>();
         }
 
+        if (renderers == null)
+            return;
+
         originalColors = new Color[renderers.Length];
 
         int counter = 0;
         foreach (Renderer renderer in renderers)
-        {
-            originalColors[counter] = renderer.material.color;
+        { 
+            if (renderer && renderer.material && renderer.material.HasProperty("_Color") && renderer.material.color != null)
+                originalColors[counter] = renderer.material.color;
             
             counter++;
         }
