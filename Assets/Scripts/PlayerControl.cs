@@ -57,7 +57,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (!isInVirus)
             {
-                entity = Instantiate(virus, tTransform.transform.position + Vector3.up * 0.5f, Quaternion.identity, transform).GetComponent<Entity>();
+                entity = Instantiate(virus, tTransform.transform.position + Vector3.up * 0.75f, Quaternion.identity, transform).GetComponent<Entity>();
             }
             else
             {

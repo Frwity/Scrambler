@@ -24,18 +24,22 @@ public class Node : MonoBehaviour
             if ((teleportPos - toTeleport.transform.position).magnitude < 0.5)
             {
                 teleporting = false;
+                toTeleport.transform.GetChild(3).gameObject.SetActive(true);
+                toTeleport.GetComponent<VirusSkill>().ResetBool();
                 toTeleport.GetComponent<Rigidbody>().useGravity = true;
                 toTeleport.GetComponent<Rigidbody>().isKinematic = false;
-                toTeleport.transform.GetChild(3).gameObject.SetActive(true);
+                toTeleport.GetComponent<Rigidbody>().WakeUp();
                 toTeleport.GetComponent<Collider>().enabled = true;
             }
             else if ((toTeleport.transform.position - transform.position).magnitude > (teleportPos - transform.position).magnitude)
             {
                 toTeleport.transform.position = teleportPos;
                 teleporting = false;
+                toTeleport.transform.GetChild(3).gameObject.SetActive(true);
+                toTeleport.GetComponent<VirusSkill>().ResetBool();
                 toTeleport.GetComponent<Rigidbody>().useGravity = true;
                 toTeleport.GetComponent<Rigidbody>().isKinematic = false;
-                toTeleport.transform.GetChild(3).gameObject.SetActive(true);
+                toTeleport.GetComponent<Rigidbody>().WakeUp();
                 toTeleport.GetComponent<Collider>().enabled = true;
             }
         }
@@ -47,10 +51,10 @@ public class Node : MonoBehaviour
         this.toTeleport = toTeleport;
         teleportPos = new Vector3(conjointNode.transform.position.x, conjointNode.transform.position.y, 0);
         direction = (teleportPos - toTeleport.transform.position).normalized;
-        toTeleport.transform.GetChild(3).gameObject.SetActive(false);
         toTeleport.GetComponent<Rigidbody>().useGravity = false;
         toTeleport.GetComponent<Rigidbody>().isKinematic = true;
         toTeleport.GetComponent<Collider>().enabled = false;
-        toTeleport.GetComponent<VirusSkill>().jumped++;
+        toTeleport.GetComponent<VirusSkill>().ResetBool();
+        toTeleport.transform.GetChild(3).gameObject.SetActive(false);
     }
 }

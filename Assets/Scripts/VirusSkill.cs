@@ -20,7 +20,16 @@ public class VirusSkill : EntitySkill
     private Rigidbody rb = null;
 
     //private Cinemachine.CinemachineVirtualCamera camera;
-    
+
+    public void ResetBool()
+    {
+        falling = true;
+        grounded = false;
+        touchingWall = false;
+        jumped++;
+    }
+
+
     void Start()
     {
         grounded = false;

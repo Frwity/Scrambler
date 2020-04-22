@@ -57,7 +57,7 @@ public class RocketBullet : BulletSharedClass
                 }
             }
         }
-
+        ParticleLauncher.ActivateParticleWithName(gameObject, null, "Explosion");
         Destroy(gameObject);
     }
 }

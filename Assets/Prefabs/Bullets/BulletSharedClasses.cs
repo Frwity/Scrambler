@@ -18,7 +18,8 @@ public abstract class BulletSharedClass : MonoBehaviour
 
     protected virtual void Start()
     {
-        shooterTag = shooter.gameObject.tag;
+        if (shooter && shooter.gameObject)
+            shooterTag = shooter.gameObject.tag;
     }    
     
     private void LateUpdate()
