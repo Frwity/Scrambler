@@ -80,7 +80,7 @@ MonoBehaviour:
   speed: 0
   damage: 10
   hasLimitedTime: 1
-  lifeTime: 10
+  bulletLifeTime: 10
   direction: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
   explosionRange: 7
@@ -270,6 +270,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.0777273
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113077185221444845, guid: 71a3a68473b95ee4d9780b0054ada28f,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113077185221444845, guid: 71a3a68473b95ee4d9780b0054ada28f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.839
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71a3a68473b95ee4d9780b0054ada28f, type: 3}

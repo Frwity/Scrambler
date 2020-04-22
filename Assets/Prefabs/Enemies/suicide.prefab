@@ -4736,6 +4736,9 @@ MonoBehaviour:
   halfLifeParticle: {fileID: 5980215103107650041}
   quartLifeParticle: {fileID: 0}
   shootingParticle: {fileID: 0}
+  shootingSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  jumpingSound: {fileID: 0}
 --- !u!136 &830954729
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -27969,7 +27972,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -27999,7 +28002,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.029
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -46251,6 +46254,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2462951506704342495}
     m_Modifications:
+    - target: {fileID: 9060042659050852064, guid: 71a3a68473b95ee4d9780b0054ada28f,
+        type: 3}
+      propertyPath: m_Name
+      value: BigExplosion
+      objectReference: {fileID: 0}
     - target: {fileID: 9058938721791350636, guid: 71a3a68473b95ee4d9780b0054ada28f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46305,11 +46313,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060042659050852064, guid: 71a3a68473b95ee4d9780b0054ada28f,
-        type: 3}
-      propertyPath: m_Name
-      value: BigExplosion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71a3a68473b95ee4d9780b0054ada28f, type: 3}
